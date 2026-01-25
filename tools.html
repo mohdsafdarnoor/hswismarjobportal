@@ -1,1 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Tools Directory | Hochschule Wismar</title>
+  <meta name="description" content="Curated AI tools and platforms for internships, Werkstudent jobs, Master thesis collaborations, and full-time employment in Germany." />
+  <link rel="stylesheet" href="css/style.css" />
+
+  <style>
+    /* Tools page specific styling */
+    .tools-wrap{padding:18px 0 44px;}
+    .tools-intro{
+      background:#fff;
+      border:1px solid rgba(0,0,0,.08);
+      border-radius:14px;
+      padding:18px;
+      box-shadow:0 6px 18px rgba(0,0,0,.08);
+      margin-bottom:14px;
+    }
+    .tools-intro p{margin:0;color:#5f6368;}
+
+    .jumpbar{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      margin:14px 0 18px;
+    }
+    .jumpbtn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:10px 12px;
+      border-radius:12px;
+      border:1px solid rgba(0,0,0,.12);
+      background:#fff;
+      font-weight:900;
+      cursor:pointer;
+    }
+    .jumpbtn:hover{border-color:rgba(51,153,51,.45); background:rgba(51,153,51,.06);}
+
+    .job-section{
+      margin-top:18px;
+      background:#fff;
+      border:1px solid rgba(0,0,0,.08);
+      border-radius:14px;
+      box-shadow:0 6px 18px rgba(0,0,0,.08);
+      overflow:hidden;
+    }
+    .job-head{
+      padding:16px;
+      background: linear-gradient(135deg, rgba(51,153,51,.14), rgba(47,50,41,.04));
+      border-bottom:1px solid rgba(0,0,0,.08);
+    }
+    .job-head h2{margin:0;color:#2f3229;}
+    .job-head p{margin:6px 0 0;color:#5f6368;}
+
+    .stages{
+      display:grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap:14px;
+      padding:16px;
+    }
+    .stage{
+      border:1px solid rgba(0,0,0,.10);
+      border-radius:14px;
+      padding:14px;
+      background:#fff;
+    }
+    .stage h3{
+      margin:0 0 8px;
+      color:#2f3229;
+      font-size:1.05rem;
+    }
+    .tool-list{margin:0; padding-left:1.2rem; color:#5f6368;}
+    .tool-list li{margin:8px 0;}
+    .tool-name{color:#2f3229; font-weight:900;}
+    .tool-note{color:#5f6368;}
+    .mini{
+      margin:16px;
+      margin-top:0;
+      color:#5f6368;
+      font-size:.95rem;
+    }
+
+    @media (max-width: 900px){
+      .stages{grid-template-columns:1fr;}
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="container">
+      <div class="header-content">
+        <div class="logo">
+          <a href="index.html">
+            <img src="assets/hsw-logo.png" alt="Hochschule Wismar" />
+          </a>
+        </div>
+
+        <nav class="nav-desktop">
+          <a href="index.html" class="nav-link">Home</a>
+          <a href="tools.html" class="nav-link active">AI Tools</a>
+          <a href="prompts.html" class="nav-link">AI Prompts</a>
+          <a href="guidelines.html" class="nav-link">Guidelines</a>
+          <a href="faqs.html" class="nav-link">FAQs</a>
+          <a href="contact.html" class="nav-link">Contact</a>
+        </nav>
+
+        <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Toggle menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <nav class="mobile-nav">
+      <a href="index.html" class="mobile-nav-link">Home</a>
+      <a href="tools.html" class="mobile-nav-link active">AI Tools</a>
+      <a href="prompts.html" class="mobile-nav-link">AI Prompts</a>
+      <a href="guidelines.html" class="mobile-nav-link">Guidelines</a>
+      <a href="faqs.html" class="mobile-nav-link">FAQs</a>
+      <a href="contact.html" class="mobile-nav-link">Contact</a>
+    </nav>
+  </div>
+
+  <!-- Page Header -->
+  <section class="page-header">
+    <div class="container">
+      <h1 class="page-title">AI Tools Directory</h1>
+      <p class="page-description">Select your goal and use the right tools for each stage: Orientation → Application → Interview → Onboarding.</p>
+
+      <div class="jumpbar">
+        <a class="jumpbtn" href="#werkstudent">💼 Part-time</a>
+        <a class="jumpbtn" href="#internships">🎓 Internships</a>
+        <a class="jumpbtn" href="#thesis">📚 Master Thesis</a>
+        <a class="jumpbtn" href="#fulltime">🚀 Full-time</a>
+      </div>
+    </div>
+  </section>
+
+  <main class="tools-wrap">
+    <div class="container">
+      <div class="tools-intro">
+        <p>
+          These tool recommendations are organized exactly as in your reference PDF: each job type has 4 stages (Orientation, Application, Interview, Onboarding). [file:1]
+        </p>
+      </div>
+
+      <!-- PART-TIME / WERKSTUDENT -->
+      <section class="job-section" id="werkstudent">
+        <div class="job-head">
+          <h2>💼 Part-Time Jobs (Werkstudent)</h2>
+          <p>Best when you want a student job while studying in Germany. [file:1]</p>
+        </div>
+
+        <div class="stages">
+          <div class="stage">
+            <h3>Orientation (What suits me & where to apply)</h3>
+            <ul class="tool-list">
+              <li><span class="tool-name">LinkedIn Career Explorer</span> – Understand part-time role options & skill gaps. [file:1]</li>
+              <li><span class="tool-name">CareerExplorer</span> – Match interests with flexible roles. [file:1]</li>
+              <li><span class="tool-name">Indeed</span> – Broad part-time job discovery. [file:1]</li>
+              <li><span class="tool-name">JobMensa</span> – Student-focused part-time roles in Germany. [file:1]</li>
+              <li><span class="tool-name">StepStone</span> – Job listings + upload CV for recruiter attention; good for local jobs in Germany. [file:1]</li>
+            </ul>
+          </div>
+
+          <div class="stage">
+            <h3>Application (Apply fast & smart)</h3>
+            <ul class="tool-list">
+              <li><span class="tool-name">Canva</span> – Simple, clean CVs for part-time roles. [file:1]</li>
+              <li><span class="tool-name">Resume.io</span> – ATS-friendly resumes. [file:1]</li>
+              <li><span class="tool-name">Simplify</span> – Faster applications & tracking. [file:1]</li>
+              <li><span class="tool-name">LoopCV</span> – Automates part-time applications. [file:1]</li>
+            </ul>
+          </div>
+
+          <div class="stage">
+            <h3>Interview (Quick hiring interviews)</h3>
+            <ul class="tool-list">
+              <li><span class="tool-name">Google Interview Warmup</span> – Practice common questions. [file:1]</li>
+              <li><span class="tool-name">Interview Lift</span> – Mock interviews. [file:1]</li>
+              <li><span class="tool-name">Elevator Pitch</span> – 30-second self-introduction practice. [file:1]</li>
+            </ul>
+          </div>
+
+          <div class="stage">
+            <h3>Onboarding (Quick adaptation)</h3>
+            <ul class="tool-list">
+              <li><span class="tool-name">ChatGPT</span> – Emails, shift communication, FAQs. [file:1]</li>
+              <li><span class="tool-name">DeepL</span> – Language support (useful in EU workplaces). [file:1]</li>
+              <li><span class="tool-name">Google</span> – Company & role understanding. [file:1]</li>
+            </ul>
+          </div>
+        </div>
+
+        <p class="mini">Tip: Combine “Tools” with the “AI Prompts” page to get better outputs quickly.</p>
+      </section>
+
+      <!-- INTERNSHIPS -->
+      <section class="job-section" id="internships">
+        <div class="job-head">
+          <h2>🎓 Internships (Praktikum)</h2>
+          <p>For Pflichtpraktikum or voluntary internships during your studies. [file:1]</p>
+        </div>
+
+        <div class="stages">
+          <div class="stage">
+            <h3>Orientation</h3>
+            <ul class="tool-list">
+              <li><span class="tool-name">Handshake</span> – Student-focused internship discovery. [file:1]</li>
+              <li><span class="tool-name">LinkedIn Jobs</span> – Paid & remote internships. [file:1]</li>
+              <li><span class="tool-name">Nextjobs</span> – Graduate & student roles. [file:1]</li>
+              <li><span class="tool-name">Coursera</span> – Skill preparation for internships. [file:1]</li>
+              <li><span class="tool-name">meinpraktikum.de / praktikum.de / praktikum.info</span> – German internship portals with local postings. [file:1]</li>
+              <li><span class="tool-name">Indeed / LinkedIn</span> – Internship filters + LinkedIn AI-assisted search features. [file:1]</li>
+            </ul>
+          </div>
+
+          <div class="stage">
+            <h3>Application</h3>
+            <ul class="tool-list">
+              <li><span class="tool-name">Canva</span> – Student-friendly CVs. [file:1]</li>
+              <li><span class="tool-name">VMock</span> – Academic resume feedback. [file:1]</li>
+              <li><span class="tool-name">Simplify</span> – Internship application autofill. [file:1]</li>
+              <li><span class="tool-name">Jobsgpt</span> – AI internship matching. [file:1]</li>
+            </ul>
+          </div>
+
+          <div class="stage">
+            <h3>Interview</h3>
+            <ul class="tool-list">
+              <li><span class="tool-name">Google Interview Warmup</span> – Entry-level interview practice. [file:1]</li>
+              <li><span class="tool-name">Elevator Pitch</span> – “Tell me about yourself” practice. [file:1]</li>
+              <li><span class="tool-name">Yoodli Interview</span> – Communication improvement. [file:1]</li>
+            </ul>
+          </div>
+
+          <div class="stage">
+            <h3>Onboarding</h3>
+            <ul class="tool-list">
+              <li><span class="tool-name">ChatGPT</span> – Internship reports, emails, learning support. [file:1]</li>
+              <li><span class="tool-name">Google</span> – Tools & company basics. [file:1]</li>
+              <li><span class="tool-name">DeepL</span> – Multilingual workplace communication. [file:1]</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- MASTER THESIS -->
+      <section class="job-section" id="thesis">
+        <div class="job-head">
+          <h2>📚 Master Thesis (Company Collaboration)</h2>
+          <p>Use these tools to find thesis-friendly companies and prepare meetings. [file:1]</p>
+        </div>
+
+        <div class="stages">
+          <div class="stage">
+            <h3>Orientation</h3>
+            <ul class="tool-list">
+              <li><span class="tool-name">Excelerate</span> – Company collaboration opportunities. [file:1]</li>
+              <li><span class="tool-name">Studyond</span> – Thesis opportunities platform. [file:1]</li>
+              <li><span class="tool-name">Thesisforyou</span> – Thesis listings / matching. [file:1]</li>
+              <li><span class="tool-name">LinkedIn Career Explorer</span> – Industry research roles. [file:1]</li>
+              <li><span class="tool-name">Handshake</span> – Thesis + industry projects. [file:1]</li>
+            </ul>
+          </div>
+
+          <div class="stage">
+            <h3>Application</h3>
+            <ul class="tool-list">
+              <li><span class="tool-name">Cheetah AI</span> – Thesis proposal & motivation letters. [file:1]</li>
+            </ul>
+          </div>
+
+          <div class="stage">
+            <h3>Interview (Supervisor & company meetings)</h3>
+            <ul class="tool-list">
+              <li><span class="tool-name">Final Round AI</span> – Structured explanations. [file:1]</li>
+              <li><span class="tool-name">Elevator Pitch</span> – Thesis topic clarity. [file:1]</li>
+              <li><span class="tool-name">Interview Lift</span> – Presentation & discussion practice. [file:1]</li>
+            </ul>
+          </div>
+
+          <div class="stage">
+            <h3>Onboarding (Research & company integration)</h3>
+            <ul class="tool-list">
+              <li><span class="tool-name">ChatGPT</span> – Literature review, methodology, writing support. [file:1]</li>
+              <li><span class="tool-name">DeepL</span> – Academic & professional language. [file:1]</li>
+              <li><span class="tool-name">Coach</span> – Research productivity & goal setting. [file:1]</li>
+              <li><span class="tool-name">Career Mastery</span> – Transition from thesis to job. [file:1]</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- FULL-TIME -->
+      <section class="job-section" id="fulltime">
+        <div class="job-head">
+          <h2>🚀 Full-Time Jobs</h2>
+          <p>For after graduation and long-term career growth in Germany. [file:1]</p>
+        </div>
+
+        <div class="stages">
+          <div class="stage">
+            <h3>Orientation</h3>
+            <ul class="tool-list">
+              <li><span class="tool-name">EURES</span> – European Employment Services. [file:1]</li>
+              <li><span class="tool-name">XING</span> – German professional network + jobs. [file:1]</li>
+              <li><span class="tool-name">LinkedIn Career Explorer</span> – Career transitions. [file:1]</li>
+              <li><span class="tool-name">Jobright.ai</span> – AI job recommendations. [file:1]</li>
+              <li><span class="tool-name">After Graduation</span> – Post-study career direction. [file:1]</li>
+            </ul>
+          </div>
+
+          <div class="stage">
+            <h3>Application</h3>
+            <ul class="tool-list">
+              <li><span class="tool-name">VMock</span> – Resume scoring & optimization. [file:1]</li>
+              <li><span class="tool-name">Resume.io / Europass</span> – Professional CVs. [file:1]</li>
+              <li><span class="tool-name">Cheetah AI</span> – AI cover letters & resumes. [file:1]</li>
+              <li><span class="tool-name">Notion / Airtable</span> – Job application tracking. [file:1]</li>
+            </ul>
+          </div>
+
+          <div class="stage">
+            <h3>Interview</h3>
+            <ul class="tool-list">
+              <li><span class="tool-name">Final Round AI</span> – Structured interview answers (STAR). [file:1]</li>
+              <li><span class="tool-name">Yoodli Interview</span> – Communication & confidence coaching. [file:1]</li>
+              <li><span class="tool-name">Interview Lift</span> – Behavioral & technical interview practice. [file:1]</li>
+            </ul>
+          </div>
+
+          <div class="stage">
+            <h3>Onboarding</h3>
+            <ul class="tool-list">
+              <li><span class="tool-name">ChatGPT</span> – Workplace communication & learning. [file:1]</li>
+              <li><span class="tool-name">Career Mastery</span> – Long-term growth mindset. [file:1]</li>
+              <li><span class="tool-name">Coach</span> – Performance & career guidance. [file:1]</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h4>Hochschule Wismar</h4>
+          <p>University of Applied Sciences<br />Technology, Business and Design</p>
+          <p>Philipp-Müller-Straße 14<br />23966 Wismar, Germany</p>
+        </div>
+
+        <div class="footer-section">
+          <h4>Contact</h4>
+          <p>Phone: +49 3841 753-0</p>
+          <p>Email: <a href="mailto:postmaster@hs-wismar.de">postmaster@hs-wismar.de</a></p>
+          <p><a href="https://www.hs-wismar.de" target="_blank" rel="noopener">www.hs-wismar.de</a></p>
+        </div>
+
+        <div class="footer-section">
+          <h4>About This Portal</h4>
+          <p>This is a student project created to support international students in their job search using AI-powered tools and resources.</p>
+          <p><strong>Disclaimer:</strong> Content is informational and AI-supported. Always verify information for your specific situation.</p>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 Hochschule Wismar. Student Project - International Management Program.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
 
