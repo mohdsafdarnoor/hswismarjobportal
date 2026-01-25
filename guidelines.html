@@ -1,244 +1,195 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Guidelines | Hochschule Wismar</title>
-  <meta name="description" content="Practical guidelines for international students applying for part-time jobs, internships, thesis collaborations, and full-time roles in Germany." />
+  <meta name="description" content="Practical job search guidelines for international students applying in Germany." />
   <link rel="stylesheet" href="css/style.css" />
-
-  <style>
-    /* ===== Make header green (requested) ===== */
-    .header{
-      background: rgba(51,153,51,.96);
-      border-bottom: 1px solid rgba(0,0,0,.10);
-    }
-    .nav-link{ color:#fff; }
-    .nav-link:hover{ background: rgba(255,255,255,.14); color:#fff; }
-    .nav-link.active{ background:#fff; color:#2f3229; }
-    .mobile-menu-btn{ background: rgba(255,255,255,.14); border-color: rgba(255,255,255,.35); }
-    .mobile-menu-btn span{ background:#fff; }
-    .mobile-menu{ background:#fff; }
-
-    /* ===== Page styling ===== */
-    .guide-wrap{ padding: 18px 0 44px; }
-
-    .card{
-      background:#fff;
-      border:1px solid rgba(0,0,0,.10);
-      border-radius:14px;
-      padding:16px;
-      box-shadow:0 6px 18px rgba(0,0,0,.08);
-      margin-bottom:14px;
-    }
-    .card h2{
-      margin:0 0 10px;
-      color:#2f3229;
-      font-size:1.15rem;
-    }
-    .card p{
-      margin:0;
-      color:#5f6368;
-      line-height:1.55;
-    }
-
-    .grid{
-      display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap:14px;
-    }
-    @media (max-width: 900px){
-      .grid{ grid-template-columns:1fr; }
-    }
-
-    .badge{
-      display:inline-block;
-      padding:6px 10px;
-      border-radius:999px;
-      background: rgba(51,153,51,.12);
-      border: 1px solid rgba(51,153,51,.22);
-      color:#2f3229;
-      font-weight:900;
-      font-size:.92rem;
-      margin-bottom:10px;
-    }
-
-    .list{
-      margin:10px 0 0;
-      padding-left:1.1rem;
-      color:#5f6368;
-      line-height:1.55;
-    }
-    .list li{ margin:8px 0; }
-
-    .note{
-      border-left:6px solid #339933;
-      background: linear-gradient(135deg, rgba(51,153,51,.12), rgba(47,50,41,.04));
-    }
-
-    .link{
-      color:#339933;
-      font-weight:900;
-      text-decoration:underline;
-      text-underline-offset:3px;
-    }
-  </style>
 </head>
 
 <body>
-  <!-- Header -->
   <header class="header">
     <div class="container">
-      <div class="header-content">
-        <div class="logo">
-          <a href="index.html">
-            <img src="assets/hsw-logo.png" alt="Hochschule Wismar" />
-          </a>
-        </div>
+      <div class="header-inner">
+        <a class="brand" href="index.html" aria-label="Hochschule Wismar home">
+          <img src="assets/hsw-logo.png" alt="Hochschule Wismar" />
+          <div class="brand-title">
+            <strong>AI Job Search Support</strong>
+            <span>Hochschule Wismar</span>
+          </div>
+        </a>
 
-        <nav class="nav-desktop">
-          <a href="index.html" class="nav-link">Home</a>
-          <a href="tools.html" class="nav-link">AI Tools</a>
-          <a href="prompts.html" class="nav-link">AI Prompts</a>
-          <a href="guidelines.html" class="nav-link active">Guidelines</a>
-          <a href="faqs.html" class="nav-link">FAQs</a>
-          <a href="contact.html" class="nav-link">Contact</a>
+        <nav class="nav" aria-label="Primary">
+          <a href="index.html">Home</a>
+          <a href="tools.html">AI Tools</a>
+          <a href="prompts.html">AI Prompts</a>
+          <a href="guidelines.html" aria-current="page">Guidelines</a>
+          <a href="faqs.html">FAQs</a>
+          <a href="contact.html">Contact</a>
         </nav>
 
-        <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Toggle menu">
-          <span></span><span></span><span></span>
+        <button class="mobile-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobilePanel">
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path fill="currentColor" d="M4 6h16v2H4V6zm0 5h16v2H4v-2zm0 5h16v2H4v-2z"></path>
+          </svg>
         </button>
+      </div>
+
+      <div class="mobile-panel" id="mobilePanel" aria-hidden="true">
+        <nav class="mobile-nav" aria-label="Mobile">
+          <a href="index.html">Home</a>
+          <a href="tools.html">AI Tools</a>
+          <a href="prompts.html">AI Prompts</a>
+          <a href="guidelines.html" aria-current="page">Guidelines</a>
+          <a href="faqs.html">FAQs</a>
+          <a href="contact.html">Contact</a>
+        </nav>
       </div>
     </div>
   </header>
 
-  <!-- Mobile Menu -->
-  <div class="mobile-menu" id="mobileMenu">
-    <nav class="mobile-nav">
-      <a href="index.html" class="mobile-nav-link">Home</a>
-      <a href="tools.html" class="mobile-nav-link">AI Tools</a>
-      <a href="prompts.html" class="mobile-nav-link">AI Prompts</a>
-      <a href="guidelines.html" class="mobile-nav-link active">Guidelines</a>
-      <a href="faqs.html" class="mobile-nav-link">FAQs</a>
-      <a href="contact.html" class="mobile-nav-link">Contact</a>
-    </nav>
-  </div>
-
-  <!-- Page Header -->
-  <section class="page-header">
-    <div class="container">
-      <h1 class="page-title">Guidelines</h1>
-      <p class="page-description">Practical, Germany-focused tips for applications, interviews, and onboarding.</p>
-    </div>
-  </section>
-
-  <main class="guide-wrap">
-    <div class="container">
-
-      <section class="card note">
-        <h2>Important note</h2>
-        <p>
-          This portal is a student project. Always verify legal/visa rules and company requirements for your personal situation.
+  <main>
+    <section class="section">
+      <div class="container">
+        <h1 class="section-title" style="font-size:clamp(1.4rem, 2.4vw, 1.9rem); margin-bottom:10px;">Guidelines</h1>
+        <p class="lead">
+          A practical checklist for applications in Germany: structure, quality, and consistency across your CV, cover letter, and interview preparation.
         </p>
-      </section>
-
-      <div class="grid">
-        <section class="card">
-          <div class="badge">1) Orientation</div>
-          <h2>Choose the right target</h2>
-          <p>Most people lose time by applying to “everything.” Choose a clear target role family and build a focused profile.</p>
-          <ul class="list">
-            <li>Pick 2–3 job titles and 1–2 industries (example: “Marketing Intern”, “Working Student Data Analyst”).</li>
-            <li>Write a 2–3 line profile: who you are, what role you want, what you can do, and where you are based.</li>
-            <li>Collect 10–15 job descriptions and list repeated keywords (skills, tools, responsibilities).</li>
-          </ul>
-        </section>
-
-        <section class="card">
-          <div class="badge">2) Application</div>
-          <h2>Make your CV easy to scan</h2>
-          <p>German recruiters often prefer clarity and structure over creativity (especially for business and tech roles).</p>
-          <ul class="list">
-            <li>Use 1 page if you have limited experience; keep bullets short and measurable.</li>
-            <li>Mirror keywords from the job description naturally (skills/tools/methods).</li>
-            <li>Show impact: “Improved…”, “Reduced…”, “Built…”, “Automated…”, with numbers when possible.</li>
-          </ul>
-        </section>
-
-        <section class="card">
-          <div class="badge">3) Interview</div>
-          <h2>Answer with structure (STAR)</h2>
-          <p>Structured answers sound confident and professional, even if your German is not perfect.</p>
-          <ul class="list">
-            <li>Use STAR: Situation → Task → Action → Result.</li>
-            <li>Prepare your “Tell me about yourself” (30–45 seconds) for each category: internship, Werkstudent, full-time.</li>
-            <li>For international students: be direct about availability and working language.</li>
-          </ul>
-        </section>
-
-        <section class="card">
-          <div class="badge">4) Onboarding</div>
-          <h2>First 2 weeks: build trust</h2>
-          <p>Early trust comes from reliability, communication, and taking notes—not from pretending you know everything.</p>
-          <ul class="list">
-            <li>Clarify expectations: tasks, priorities, deadlines, and who approves what.</li>
-            <li>Send short updates: what you did, what’s blocked, what you’ll do next.</li>
-            <li>Ask questions early, but show you tried first (include what you already checked).</li>
-          </ul>
-        </section>
       </div>
+    </section>
 
-      <section class="card">
-        <h2>Common mistakes to avoid</h2>
-        <ul class="list">
-          <li>Applying without tailoring: same CV for every role.</li>
-          <li>Overlong CVs: too much text, no measurable results.</li>
-          <li>Weak subject lines and emails: unclear role, no availability, no location.</li>
-          <li>Unclear German level: write it clearly (A2/B1/B2/C1) and show willingness to improve.</li>
-        </ul>
-      </section>
+    <section class="section" style="padding-top:10px;">
+      <div class="container">
+        <div class="grid grid-2">
+          <article class="card card-pad">
+            <h2 style="margin:0 0 10px; font-size:1.15rem;">Application package</h2>
+            <ul style="margin:0;">
+              <li>CV: clean layout, consistent dates, role-relevant keywords.</li>
+              <li>Cover letter (if requested): short, specific, and proof-based.</li>
+              <li>Portfolio (if applicable): 3–6 strongest items, clearly described.</li>
+              <li>Attachments: name files clearly (e.g., Firstname_Lastname_CV.pdf).</li>
+            </ul>
+          </article>
 
-      <section class="card">
-        <h2>Recommended workflow (simple)</h2>
-        <ul class="list">
-          <li>Pick category (Werkstudent / Internship / Thesis / Full-time) → read tools → choose a stage.</li>
-          <li>Use prompts to draft CV + cover letter → verify facts → submit.</li>
-          <li>Track applications in a simple sheet; follow up after 7–10 days if appropriate.</li>
-        </ul>
-        <p style="margin-top:10px;">
-          Go to: <a class="link" href="tools.html">AI Tools</a> or <a class="link" href="prompts.html">AI Prompts</a>.
-        </p>
-      </section>
+          <article class="card card-pad">
+            <h2 style="margin:0 0 10px; font-size:1.15rem;">Quality checks</h2>
+            <ul style="margin:0;">
+              <li>Every claim must be true and consistent across CV, LinkedIn, and interview answers.</li>
+              <li>Remove filler: “hardworking, motivated, passionate” without proof.</li>
+              <li>Use numbers where possible: scope, time saved, users, revenue, accuracy, latency.</li>
+              <li>Check language: grammar, spelling, and tone before sending.</li>
+            </ul>
+          </article>
+        </div>
 
-    </div>
+        <div class="grid" style="margin-top:14px;">
+          <article class="card card-pad">
+            <h2 style="margin:0 0 12px; font-size:1.15rem;">Recommended workflow</h2>
+
+            <div class="grid grid-3">
+              <div class="card" style="padding:14px; border-radius:12px; border-color:rgba(0,0,0,.10); box-shadow:none;">
+                <span class="badge">1</span>
+                <h3 style="margin:10px 0 6px; font-size:1.05rem;">Target roles</h3>
+                <p class="lead" style="margin:0; font-size:.98rem;">
+                  Choose 1–2 role titles and build a list of companies that match your skills and constraints.
+                </p>
+              </div>
+
+              <div class="card" style="padding:14px; border-radius:12px; border-color:rgba(0,0,0,.10); box-shadow:none;">
+                <span class="badge">2</span>
+                <h3 style="margin:10px 0 6px; font-size:1.05rem;">Tailor documents</h3>
+                <p class="lead" style="margin:0; font-size:.98rem;">
+                  Align CV bullets and the cover letter with the job description language and requirements.
+                </p>
+              </div>
+
+              <div class="card" style="padding:14px; border-radius:12px; border-color:rgba(0,0,0,.10); box-shadow:none;">
+                <span class="badge">3</span>
+                <h3 style="margin:10px 0 6px; font-size:1.05rem;">Prepare interviews</h3>
+                <p class="lead" style="margin:0; font-size:.98rem;">
+                  Practice role questions, STAR stories, and a clear self-introduction in 60–90 seconds.
+                </p>
+              </div>
+            </div>
+          </article>
+
+          <article class="card card-pad notice">
+            <div class="icon" aria-hidden="true">!</div>
+            <div>
+              <h2>Use AI without losing credibility</h2>
+              <p>
+                AI can help structure and language, but applications that look fully automated are easy to spot. Keep your writing specific, human, and consistent.
+              </p>
+              <ul>
+                <li>Write in your own voice and keep the details verifiable.</li>
+                <li>Prefer short sentences and concrete evidence over adjectives.</li>
+                <li>Never claim experience you cannot explain in an interview.</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="card card-pad">
+            <h2 style="margin:0 0 10px; font-size:1.15rem;">Interview checklist</h2>
+            <div class="grid grid-2">
+              <div>
+                <h3 style="margin:0 0 8px; font-size:1.05rem;">Before</h3>
+                <ul style="margin:0;">
+                  <li>Read the job description again and highlight key requirements.</li>
+                  <li>Prepare 5 proof points (numbers, outcomes, demos, links).</li>
+                  <li>Research the company: product, customers, and recent news.</li>
+                  <li>Prepare 6 questions to ask the interviewer.</li>
+                </ul>
+              </div>
+              <div>
+                <h3 style="margin:0 0 8px; font-size:1.05rem;">During</h3>
+                <ul style="margin:0;">
+                  <li>Answer with structure: context → action → result.</li>
+                  <li>Be transparent about constraints and work authorization when asked.</li>
+                  <li>If you don’t know, say so and explain how you would find the answer.</li>
+                  <li>Take notes and confirm the next steps.</li>
+                </ul>
+              </div>
+            </div>
+          </article>
+
+          <article class="card card-pad">
+            <h2 style="margin:0 0 10px; font-size:1.15rem;">After the interview</h2>
+            <ul style="margin:0;">
+              <li>Send a short follow-up message within 24 hours (thank you + 1–2 key points).</li>
+              <li>Track applications and outcomes so you can iterate fast.</li>
+              <li>Update your CV with new learnings and better proof points.</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
   </main>
 
-  <!-- Footer -->
   <footer class="footer">
     <div class="container">
-      <div class="footer-content">
-        <div class="footer-section">
+      <div class="footer-inner">
+        <div>
           <h4>Hochschule Wismar</h4>
           <p>University of Applied Sciences<br />Technology, Business and Design</p>
           <p>Philipp-Müller-Straße 14<br />23966 Wismar, Germany</p>
         </div>
 
-        <div class="footer-section">
+        <div>
           <h4>Contact</h4>
           <p>Phone: +49 3841 753-0</p>
           <p>Email: <a href="mailto:postmaster@hs-wismar.de">postmaster@hs-wismar.de</a></p>
           <p><a href="https://www.hs-wismar.de" target="_blank" rel="noopener">www.hs-wismar.de</a></p>
         </div>
 
-        <div class="footer-section">
-          <h4>About This Portal</h4>
-          <p>This is a student project to support international students with job search tools and AI resources.</p>
-          <p><strong>Disclaimer:</strong> Always verify information for your specific situation.</p>
+        <div>
+          <h4>Tip</h4>
+          <p>Keep filenames, dates, and role titles consistent across your application package.</p>
         </div>
       </div>
 
       <div class="footer-bottom">
-        <p>&copy; 2026 Hochschule Wismar. Student Project - International Management Program.</p>
+        <p>&copy; 2026 Hochschule Wismar</p>
       </div>
     </div>
   </footer>
