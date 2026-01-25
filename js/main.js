@@ -2,14 +2,12 @@
   const SELECTORS = {
     mobileToggle: ".mobile-toggle",
     mobilePanel: "#mobilePanel",
-    primaryNav: ".nav",
   };
 
   function setActiveNavLinks() {
     const path = (window.location.pathname || "").split("/").pop() || "index.html";
 
-    const links = document.querySelectorAll('a[href]');
-    links.forEach((a) => {
+    document.querySelectorAll('a[href]').forEach((a) => {
       const href = a.getAttribute("href");
       if (!href) return;
 
@@ -37,7 +35,6 @@
   function initMobileMenu() {
     const toggleBtn = document.querySelector(SELECTORS.mobileToggle);
     const panel = document.querySelector(SELECTORS.mobilePanel);
-
     if (!toggleBtn || !panel) return;
 
     const isOpen = () => panel.classList.contains("open");
@@ -54,14 +51,12 @@
       toggleBtn.setAttribute("aria-expanded", "false");
     };
 
-    const toggle = () => (isOpen() ? close() : open());
-
     toggleBtn.setAttribute("aria-expanded", "false");
     panel.setAttribute("aria-hidden", "true");
 
     toggleBtn.addEventListener("click", (e) => {
       e.preventDefault();
-      toggle();
+      isOpen() ? close() : open();
     });
 
     panel.addEventListener("click", (e) => {
@@ -85,8 +80,7 @@
   }
 
   function initExternalLinks() {
-    const anchors = document.querySelectorAll('a[href^="http://"], a[href^="https://"]');
-    anchors.forEach((a) => {
+    document.querySelectorAll('a[href^="http://"], a[href^="https://"]').forEach((a) => {
       const url = a.getAttribute("href");
       if (!url) return;
 
