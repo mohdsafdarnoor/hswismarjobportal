@@ -1,1 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact | Hochschule Wismar</title>
+  <meta name="description" content="Contact the project owner. Send messages via the official contact form." />
+  <link rel="stylesheet" href="css/style.css" />
+
+  <style>
+    .contact-wrap{padding:18px 0 44px;}
+    .box{
+      background:#fff;
+      border:1px solid rgba(0,0,0,.08);
+      border-radius:14px;
+      padding:20px;
+      box-shadow:0 6px 18px rgba(0,0,0,.08);
+      margin-bottom:14px;
+    }
+    .box h2{margin:0 0 10px;color:#2f3229;}
+    .box p{margin:0 0 10px;color:#5f6368;}
+    .box p:last-child{margin-bottom:0}
+
+    .link{
+      color:#339933;
+      font-weight:900;
+      text-decoration:underline;
+      text-underline-offset:3px;
+    }
+
+    .notice{
+      background: linear-gradient(135deg, rgba(51,153,51,.12), rgba(47,50,41,.04));
+      border:1px solid rgba(0,0,0,.08);
+      border-left:6px solid #339933;
+    }
+
+    .two{
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap:14px;
+      align-items:start;
+    }
+    @media (max-width: 900px){
+      .two{grid-template-columns:1fr;}
+    }
+
+    .small{font-size:.95rem;color:#5f6368;}
+  </style>
+</head>
+
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="container">
+      <div class="header-content">
+        <div class="logo">
+          <a href="index.html">
+            <img src="assets/hsw-logo.png" alt="Hochschule Wismar" />
+          </a>
+        </div>
+
+        <nav class="nav-desktop">
+          <a href="index.html" class="nav-link">Home</a>
+          <a href="tools.html" class="nav-link">AI Tools</a>
+          <a href="prompts.html" class="nav-link">AI Prompts</a>
+          <a href="guidelines.html" class="nav-link">Guidelines</a>
+          <a href="faqs.html" class="nav-link">FAQs</a>
+          <a href="contact.html" class="nav-link active">Contact</a>
+        </nav>
+
+        <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Toggle menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <nav class="mobile-nav">
+      <a href="index.html" class="mobile-nav-link">Home</a>
+      <a href="tools.html" class="mobile-nav-link">AI Tools</a>
+      <a href="prompts.html" class="mobile-nav-link">AI Prompts</a>
+      <a href="guidelines.html" class="mobile-nav-link">Guidelines</a>
+      <a href="faqs.html" class="mobile-nav-link">FAQs</a>
+      <a href="contact.html" class="mobile-nav-link active">Contact</a>
+    </nav>
+  </div>
+
+  <!-- Page Header -->
+  <section class="page-header">
+    <div class="container">
+      <h1 class="page-title">Contact</h1>
+      <p class="page-description">Use this form for project feedback, corrections, or requests.</p>
+    </div>
+  </section>
+
+  <main class="contact-wrap">
+    <div class="container">
+
+      <div class="box notice">
+        <h2>Before you send</h2>
+        <p>Please include: your study program, what you are applying for (internship/Werkstudent/thesis/full-time), and a link to the job description (if available).</p>
+      </div>
+
+      <div class="two">
+        <!-- Contact form -->
+        <div class="contact-form-container">
+          <h2>Send a message</h2>
+
+          <!-- IMPORTANT:
+               1) Replace action URL with your Formspree endpoint.
+               2) Ensure _next points to a real page on your site.
+          -->
+          <form
+            action="https://formspree.io/f/XXXXXXXX"
+            method="POST"
+          >
+            <!-- Redirect after submit -->
+            <input type="hidden" name="_next" value="thankyou.html" />
+
+            <!-- Optional: subject -->
+            <input type="hidden" name="_subject" value="New message from AI Job Search Support Portal" />
+
+            <!-- Honeypot spam protection -->
+            <input type="text" name="_gotcha" style="display:none" />
+
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="name">Full name</label>
+                <input class="form-input" id="name" name="name" type="text" placeholder="Your name" required />
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="email">Email</label>
+                <input class="form-input" id="email" name="email" type="email" placeholder="your@email.com" required />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="topic">Topic</label>
+              <select class="form-input" id="topic" name="topic" required>
+                <option value="" selected disabled>Select a topic</option>
+                <option>Website feedback / bug</option>
+                <option>AI Tools suggestion</option>
+                <option>AI Prompt request</option>
+                <option>Thesis collaboration guidance</option>
+                <option>Other</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="message">Message</label>
+              <textarea class="form-textarea" id="message" name="message" placeholder="Write your message..." required></textarea>
+            </div>
+
+            <button class="form-button" type="submit">Send message</button>
+
+            <p class="form-note">
+              This form is powered by Formspree (no backend required on GitHub Pages). You will receive the message by email after you connect your endpoint. [web:397][web:404]
+            </p>
+          </form>
+        </div>
+
+        <!-- Right info -->
+        <div>
+          <div class="box">
+            <h2>Official HS Wismar contacts</h2>
+            <p class="small">
+              If you need official university support, use the official HS Wismar contact pages.
+            </p>
+            <p class="small">
+              International Office: <a class="link" href="https://www.hs-wismar.de/international/beratung/internationales-buero/" target="_blank" rel="noopener">Internationales Büro</a>. [web:385]
+            </p>
+            <p class="small">
+              General contact: <a class="link" href="https://www.hs-wismar.de/en/kontakt/" target="_blank" rel="noopener">hs-wismar.de/en/kontakt</a>. [web:391]
+            </p>
+          </div>
+
+          <div class="box">
+            <h2>Project owner</h2>
+            <p class="small">
+              Replace this section with your official profile/contact link when you’re ready (LinkedIn, HS Wismar profile, etc.).
+            </p>
+            <p class="small">
+              Example: <a class="link" href="https://www.hs-wismar.de" target="_blank" rel="noopener">Your official link here</a>
+            </p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h4>Hochschule Wismar</h4>
+          <p>University of Applied Sciences<br />Technology, Business and Design</p>
+          <p>Philipp-Müller-Straße 14<br />23966 Wismar, Germany</p>
+        </div>
+
+        <div class="footer-section">
+          <h4>Contact</h4>
+          <p>Phone: +49 3841 753-0</p>
+          <p>Email: <a href="mailto:postmaster@hs-wismar.de">postmaster@hs-wismar.de</a></p>
+          <p><a href="https://www.hs-wismar.de" target="_blank" rel="noopener">www.hs-wismar.de</a></p>
+        </div>
+
+        <div class="footer-section">
+          <h4>About This Portal</h4>
+          <p>This is a student project created to support international students in their job search using AI-powered tools and resources.</p>
+          <p><strong>Disclaimer:</strong> Content is informational and AI-supported. Always verify information for your specific situation.</p>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 Hochschule Wismar. Student Project - International Management Program.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
 
