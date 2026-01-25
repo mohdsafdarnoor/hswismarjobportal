@@ -1,532 +1,114 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>AI Tools Directory | Hochschule Wismar</title>
-  <meta name="description" content="Curated tools for internships, Werkstudent jobs, Master thesis collaborations, and full-time jobs in Germany." />
+  <meta name="description" content="Browse AI tools by job category and stage: orientation, application, interview, onboarding." />
   <link rel="stylesheet" href="css/style.css" />
-
-  <style>
-    /* ===== Make header green (requested) ===== */
-    .header{
-      background: rgba(51,153,51,.96);
-      border-bottom: 1px solid rgba(0,0,0,.10);
-    }
-    .nav-link{ color:#fff; }
-    .nav-link:hover{ background: rgba(255,255,255,.14); color:#fff; }
-    .nav-link.active{ background:#fff; color:#2f3229; }
-    .mobile-menu-btn{ background: rgba(255,255,255,.14); border-color: rgba(255,255,255,.35); }
-    .mobile-menu-btn span{ background:#fff; }
-    .mobile-menu{ background:#fff; }
-
-    /* ===== Page styling ===== */
-    .tools-wrap{ padding: 18px 0 44px; }
-
-    /* FORCE one below other on desktop (requested) */
-    .tools-list{
-      display:flex;
-      flex-direction:column;
-      gap:14px;
-    }
-
-    .acc{
-      background:#fff;
-      border:1px solid rgba(0,0,0,.10);
-      border-radius:14px;
-      overflow:hidden;
-      box-shadow:0 6px 18px rgba(0,0,0,.08);
-    }
-
-    .acc-btn{
-      width:100%;
-      border:none;
-      cursor:pointer;
-      text-align:left;
-      padding:16px;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:12px;
-      background: linear-gradient(135deg, rgba(51,153,51,.14), rgba(47,50,41,.04));
-    }
-    .acc-btn:focus{ outline:none; box-shadow:0 0 0 4px rgba(51,153,51,.14); }
-
-    .acc-title{
-      font-weight:900;
-      color:#2f3229;
-      font-size:1.06rem;
-    }
-    .acc-sub{
-      margin-top:4px;
-      color:#5f6368;
-      font-weight:600;
-      font-size:.95rem;
-    }
-    .acc-arrow{
-      color:#339933;
-      font-size:1.4rem;
-      font-weight:900;
-      line-height:1;
-      transition: transform .15s ease;
-    }
-    .acc-btn[aria-expanded="true"] .acc-arrow{ transform: rotate(90deg); }
-
-    .acc-panel{
-      display:none;
-      padding:14px 16px 16px;
-      border-top:1px solid rgba(0,0,0,.08);
-      background:#fff;
-    }
-
-    .stage{
-      border:1px solid rgba(0,0,0,.10);
-      border-radius:14px;
-      overflow:hidden;
-      margin-bottom:12px;
-    }
-    .stage:last-child{ margin-bottom:0; }
-
-    .stage-btn{
-      width:100%;
-      border:none;
-      cursor:pointer;
-      text-align:left;
-      padding:14px;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:12px;
-      background: rgba(47,50,41,.03);
-      font-weight:900;
-      color:#2f3229;
-    }
-    .stage-btn:focus{ outline:none; box-shadow:0 0 0 4px rgba(51,153,51,.14); }
-    .stage-btn span{
-      color:#339933;
-      font-size:1.2rem;
-      font-weight:900;
-      transition: transform .15s ease;
-    }
-    .stage-btn[aria-expanded="true"] span{ transform: rotate(90deg); }
-
-    .stage-panel{
-      display:none;
-      padding:14px;
-      border-top:1px solid rgba(0,0,0,.08);
-      background:#fff;
-    }
-
-    .tool-list{
-      margin:0;
-      padding-left:1.1rem;
-      color:#5f6368;
-    }
-    .tool-list li{ margin:10px 0; }
-    .tool-list a{
-      color:#339933;
-      font-weight:900;
-      text-decoration: underline;
-      text-underline-offset: 3px;
-    }
-    .tool-desc{
-      display:block;
-      color:#5f6368;
-      font-weight:600;
-      margin-top:4px;
-    }
-
-    .mini-note{
-      margin-top:10px;
-      color:#5f6368;
-      font-size:.95rem;
-    }
-  </style>
 </head>
 
 <body>
-  <!-- Header -->
   <header class="header">
     <div class="container">
-      <div class="header-content">
-        <div class="logo">
-          <a href="index.html">
-            <img src="assets/hsw-logo.png" alt="Hochschule Wismar" />
-          </a>
-        </div>
+      <div class="header-inner">
+        <a class="brand" href="index.html" aria-label="Hochschule Wismar home">
+          <img src="assets/hsw-logo.png" alt="Hochschule Wismar" />
+          <div class="brand-title">
+            <strong>AI Job Search Support</strong>
+            <span>Hochschule Wismar</span>
+          </div>
+        </a>
 
-        <nav class="nav-desktop">
-          <a href="index.html" class="nav-link">Home</a>
-          <a href="tools.html" class="nav-link active">AI Tools</a>
-          <a href="prompts.html" class="nav-link">AI Prompts</a>
-          <a href="guidelines.html" class="nav-link">Guidelines</a>
-          <a href="faqs.html" class="nav-link">FAQs</a>
-          <a href="contact.html" class="nav-link">Contact</a>
+        <nav class="nav" aria-label="Primary">
+          <a href="index.html">Home</a>
+          <a href="tools.html" aria-current="page">AI Tools</a>
+          <a href="prompts.html">AI Prompts</a>
+          <a href="guidelines.html">Guidelines</a>
+          <a href="faqs.html">FAQs</a>
+          <a href="contact.html">Contact</a>
         </nav>
 
-        <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Toggle menu">
-          <span></span><span></span><span></span>
+        <button class="mobile-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobilePanel">
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path fill="currentColor" d="M4 6h16v2H4V6zm0 5h16v2H4v-2zm0 5h16v2H4v-2z"></path>
+          </svg>
         </button>
+      </div>
+
+      <div class="mobile-panel" id="mobilePanel" aria-hidden="true">
+        <nav class="mobile-nav" aria-label="Mobile">
+          <a href="index.html">Home</a>
+          <a href="tools.html" aria-current="page">AI Tools</a>
+          <a href="prompts.html">AI Prompts</a>
+          <a href="guidelines.html">Guidelines</a>
+          <a href="faqs.html">FAQs</a>
+          <a href="contact.html">Contact</a>
+        </nav>
       </div>
     </div>
   </header>
 
-  <!-- Mobile Menu -->
-  <div class="mobile-menu" id="mobileMenu">
-    <nav class="mobile-nav">
-      <a href="index.html" class="mobile-nav-link">Home</a>
-      <a href="tools.html" class="mobile-nav-link active">AI Tools</a>
-      <a href="prompts.html" class="mobile-nav-link">AI Prompts</a>
-      <a href="guidelines.html" class="mobile-nav-link">Guidelines</a>
-      <a href="faqs.html" class="mobile-nav-link">FAQs</a>
-      <a href="contact.html" class="mobile-nav-link">Contact</a>
-    </nav>
-  </div>
-
-  <!-- Page Header -->
-  <section class="page-header">
-    <div class="container">
-      <h1 class="page-title">AI Tools Directory</h1>
-      <p class="page-description">Choose a category → choose a stage → open the tool website.</p>
-    </div>
-  </section>
-
-  <main class="tools-wrap">
-    <div class="container">
-
-      <div class="tools-list">
-
-        <!-- ================= PART-TIME ================= -->
-        <section class="acc" id="werkstudent">
-          <button class="acc-btn" type="button" data-acc="cat" aria-expanded="false">
-            <div>
-              <div class="acc-title">💼 Part-time Jobs (Werkstudent)</div>
-              <div class="acc-sub">Orientation • Application • Interview • Onboarding</div>
-            </div>
-            <div class="acc-arrow">›</div>
-          </button>
-
-          <div class="acc-panel">
-            <!-- Orientation -->
-            <div class="stage">
-              <button class="stage-btn" type="button" data-acc="stage" aria-expanded="false">
-                Orientation <span>›</span>
-              </button>
-              <div class="stage-panel">
-                <ul class="tool-list">
-                  <li>
-                    <a href="https://www.linkedin.com/" target="_blank" rel="noopener">LinkedIn Career Explorer</a>
-                    <span class="tool-desc">Understand role options and skill gaps.</span>
-                  </li>
-                  <li>
-                    <a href="https://www.careerexplorer.com/" target="_blank" rel="noopener">CareerExplorer</a>
-                    <span class="tool-desc">Match interests with roles.</span>
-                  </li>
-                  <li>
-                    <a href="https://de.indeed.com/" target="_blank" rel="noopener">Indeed</a>
-                    <span class="tool-desc">Broad job search in Germany.</span>
-                  </li>
-                  <li>
-                    <a href="https://jobmensa.de/" target="_blank" rel="noopener">JobMensa</a>
-                    <span class="tool-desc">Student jobs and part-time roles in Germany.</span>
-                  </li>
-                  <li>
-                    <a href="https://www.stepstone.de/" target="_blank" rel="noopener">StepStone</a>
-                    <span class="tool-desc">Part-time jobs and CV upload for recruiter attention.</span>
-                  </li>
-                </ul>
-              </div>
-            </div>
-
-            <!-- Application -->
-            <div class="stage">
-              <button class="stage-btn" type="button" data-acc="stage" aria-expanded="false">
-                Application <span>›</span>
-              </button>
-              <div class="stage-panel">
-                <ul class="tool-list">
-                  <li>
-                    <a href="https://www.canva.com/" target="_blank" rel="noopener">Canva</a>
-                    <span class="tool-desc">Simple, clean CV templates.</span>
-                  </li>
-                  <li>
-                    <a href="https://resume.io/" target="_blank" rel="noopener">Resume.io</a>
-                    <span class="tool-desc">ATS-friendly resumes.</span>
-                  </li>
-                  <li>
-                    <a href="https://simplify.jobs/" target="_blank" rel="noopener">Simplify</a>
-                    <span class="tool-desc">Faster applications and tracking.</span>
-                  </li>
-                  <li>
-                    <a href="https://www.loopcv.pro/" target="_blank" rel="noopener">LoopCV</a>
-                    <span class="tool-desc">Automates applications.</span>
-                  </li>
-                </ul>
-              </div>
-            </div>
-
-            <!-- Interview -->
-            <div class="stage">
-              <button class="stage-btn" type="button" data-acc="stage" aria-expanded="false">
-                Interview <span>›</span>
-              </button>
-              <div class="stage-panel">
-                <ul class="tool-list">
-                  <li>
-                    <a href="https://grow.google/certificates/interview-warmup/" target="_blank" rel="noopener">Google Interview Warmup</a>
-                    <span class="tool-desc">Practice common interview questions.</span>
-                  </li>
-                  <li>
-                    <a href="https://interviewlift.com/" target="_blank" rel="noopener">Interview Lift</a>
-                    <span class="tool-desc">Mock interview practice.</span>
-                  </li>
-                  <li>
-                    <a href="https://www.google.com/search?q=elevator+pitch+30+second+introduction" target="_blank" rel="noopener">Elevator Pitch (guide)</a>
-                    <span class="tool-desc">Practice a 30-second self-introduction.</span>
-                  </li>
-                </ul>
-              </div>
-            </div>
-
-            <!-- Onboarding -->
-            <div class="stage">
-              <button class="stage-btn" type="button" data-acc="stage" aria-expanded="false">
-                Onboarding <span>›</span>
-              </button>
-              <div class="stage-panel">
-                <ul class="tool-list">
-                  <li>
-                    <a href="https://chat.openai.com/" target="_blank" rel="noopener">ChatGPT</a>
-                    <span class="tool-desc">Emails, shift communication, FAQs.</span>
-                  </li>
-                  <li>
-                    <a href="https://www.deepl.com/" target="_blank" rel="noopener">DeepL</a>
-                    <span class="tool-desc">Translation and language support.</span>
-                  </li>
-                  <li>
-                    <a href="https://www.google.com/" target="_blank" rel="noopener">Google</a>
-                    <span class="tool-desc">Company and role understanding.</span>
-                  </li>
-                </ul>
-              </div>
-            </div>
-
-            <p class="mini-note">Click any tool name to open the official website in a new tab.</p>
-          </div>
-        </section>
-
-        <!-- ================= INTERNSHIPS ================= -->
-        <section class="acc" id="internships">
-          <button class="acc-btn" type="button" data-acc="cat" aria-expanded="false">
-            <div>
-              <div class="acc-title">🎓 Internships (Praktikum)</div>
-              <div class="acc-sub">Orientation • Application • Interview • Onboarding</div>
-            </div>
-            <div class="acc-arrow">›</div>
-          </button>
-
-          <div class="acc-panel">
-            <div class="stage">
-              <button class="stage-btn" type="button" data-acc="stage" aria-expanded="false">Orientation <span>›</span></button>
-              <div class="stage-panel">
-                <ul class="tool-list">
-                  <li><a href="https://joinhandshake.com/" target="_blank" rel="noopener">Handshake</a><span class="tool-desc">Student-focused internship discovery.</span></li>
-                  <li><a href="https://www.linkedin.com/jobs/" target="_blank" rel="noopener">LinkedIn Jobs</a><span class="tool-desc">Paid and remote internships.</span></li>
-                  <li><a href="https://www.coursera.org/" target="_blank" rel="noopener">Coursera</a><span class="tool-desc">Skill preparation for internships.</span></li>
-                  <li><a href="https://www.meinpraktikum.de/" target="_blank" rel="noopener">meinpraktikum.de</a><span class="tool-desc">German internship listings.</span></li>
-                  <li><a href="https://www.praktikum.de/" target="_blank" rel="noopener">praktikum.de</a><span class="tool-desc">German internship listings.</span></li>
-                  <li><a href="https://www.praktikum.info/" target="_blank" rel="noopener">praktikum.info</a><span class="tool-desc">German internship listings.</span></li>
-                  <li><a href="https://de.indeed.com/" target="_blank" rel="noopener">Indeed</a><span class="tool-desc">Internship filters in Germany.</span></li>
-                </ul>
-              </div>
-            </div>
-
-            <div class="stage">
-              <button class="stage-btn" type="button" data-acc="stage" aria-expanded="false">Application <span>›</span></button>
-              <div class="stage-panel">
-                <ul class="tool-list">
-                  <li><a href="https://www.canva.com/" target="_blank" rel="noopener">Canva</a><span class="tool-desc">Student-friendly CVs.</span></li>
-                  <li><a href="https://www.vmock.com/" target="_blank" rel="noopener">VMock</a><span class="tool-desc">Resume feedback/scoring.</span></li>
-                  <li><a href="https://simplify.jobs/" target="_blank" rel="noopener">Simplify</a><span class="tool-desc">Application autofill and tracking.</span></li>
-                  <li><a href="https://jobsgpt.ai/" target="_blank" rel="noopener">Jobsgpt</a><span class="tool-desc">AI job matching.</span></li>
-                </ul>
-              </div>
-            </div>
-
-            <div class="stage">
-              <button class="stage-btn" type="button" data-acc="stage" aria-expanded="false">Interview <span>›</span></button>
-              <div class="stage-panel">
-                <ul class="tool-list">
-                  <li><a href="https://grow.google/certificates/interview-warmup/" target="_blank" rel="noopener">Google Interview Warmup</a><span class="tool-desc">Entry-level interview practice.</span></li>
-                  <li><a href="https://www.yoodli.ai/" target="_blank" rel="noopener">Yoodli</a><span class="tool-desc">Communication improvement.</span></li>
-                  <li><a href="https://www.google.com/search?q=tell+me+about+yourself+elevator+pitch" target="_blank" rel="noopener">Elevator Pitch (guide)</a><span class="tool-desc">Tell-me-about-yourself practice.</span></li>
-                </ul>
-              </div>
-            </div>
-
-            <div class="stage">
-              <button class="stage-btn" type="button" data-acc="stage" aria-expanded="false">Onboarding <span>›</span></button>
-              <div class="stage-panel">
-                <ul class="tool-list">
-                  <li><a href="https://chat.openai.com/" target="_blank" rel="noopener">ChatGPT</a><span class="tool-desc">Reports, emails, learning support.</span></li>
-                  <li><a href="https://www.google.com/" target="_blank" rel="noopener">Google</a><span class="tool-desc">Tools & company basics.</span></li>
-                  <li><a href="https://www.deepl.com/" target="_blank" rel="noopener">DeepL</a><span class="tool-desc">Multilingual workplace communication.</span></li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- ================= MASTER THESIS ================= -->
-        <section class="acc" id="thesis">
-          <button class="acc-btn" type="button" data-acc="cat" aria-expanded="false">
-            <div>
-              <div class="acc-title">📚 Master Thesis (Company Collaboration)</div>
-              <div class="acc-sub">Orientation • Application • Interview • Onboarding</div>
-            </div>
-            <div class="acc-arrow">›</div>
-          </button>
-
-          <div class="acc-panel">
-            <div class="stage">
-              <button class="stage-btn" type="button" data-acc="stage" aria-expanded="false">Orientation <span>›</span></button>
-              <div class="stage-panel">
-                <ul class="tool-list">
-                  <li><a href="https://excelerate.dk/en/" target="_blank" rel="noopener">Excelerate</a><span class="tool-desc">Thesis/company collaboration opportunities.</span></li>
-                  <li><a href="https://studyond.com/" target="_blank" rel="noopener">Studyond</a><span class="tool-desc">Thesis opportunities platform.</span></li>
-                  <li><a href="https://thesisforyou.com/en/english/" target="_blank" rel="noopener">Thesisforyou</a><span class="tool-desc">Thesis listings/matching.</span></li>
-                  <li><a href="https://www.linkedin.com/" target="_blank" rel="noopener">LinkedIn Career Explorer</a><span class="tool-desc">Industry research roles.</span></li>
-                  <li><a href="https://joinhandshake.com/" target="_blank" rel="noopener">Handshake</a><span class="tool-desc">Thesis + industry projects.</span></li>
-                </ul>
-              </div>
-            </div>
-
-            <div class="stage">
-              <button class="stage-btn" type="button" data-acc="stage" aria-expanded="false">Application <span>›</span></button>
-              <div class="stage-panel">
-                <ul class="tool-list">
-                  <li><a href="https://cheetah.ai/" target="_blank" rel="noopener">Cheetah AI</a><span class="tool-desc">Thesis proposal and motivation letters.</span></li>
-                </ul>
-              </div>
-            </div>
-
-            <div class="stage">
-              <button class="stage-btn" type="button" data-acc="stage" aria-expanded="false">Interview <span>›</span></button>
-              <div class="stage-panel">
-                <ul class="tool-list">
-                  <li><a href="https://finalroundai.com/" target="_blank" rel="noopener">Final Round AI</a><span class="tool-desc">Structured explanations and interview answers.</span></li>
-                  <li><a href="https://interviewlift.com/" target="_blank" rel="noopener">Interview Lift</a><span class="tool-desc">Presentation and discussion practice.</span></li>
-                  <li><a href="https://www.google.com/search?q=thesis+elevator+pitch" target="_blank" rel="noopener">Elevator Pitch (guide)</a><span class="tool-desc">Thesis topic clarity.</span></li>
-                </ul>
-              </div>
-            </div>
-
-            <div class="stage">
-              <button class="stage-btn" type="button" data-acc="stage" aria-expanded="false">Onboarding <span>›</span></button>
-              <div class="stage-panel">
-                <ul class="tool-list">
-                  <li><a href="https://chat.openai.com/" target="_blank" rel="noopener">ChatGPT</a><span class="tool-desc">Literature review, methodology, writing support.</span></li>
-                  <li><a href="https://www.deepl.com/" target="_blank" rel="noopener">DeepL</a><span class="tool-desc">Academic and professional language.</span></li>
-                  <li><a href="https://www.google.com/search?q=research+productivity+coach+app" target="_blank" rel="noopener">Coach (productivity)</a><span class="tool-desc">Research productivity and goal setting.</span></li>
-                  <li><a href="https://www.google.com/search?q=career+mastery+career+coaching" target="_blank" rel="noopener">Career Mastery</a><span class="tool-desc">Transition from thesis to job.</span></li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- ================= FULL TIME ================= -->
-        <section class="acc" id="fulltime">
-          <button class="acc-btn" type="button" data-acc="cat" aria-expanded="false">
-            <div>
-              <div class="acc-title">🚀 Full-time Jobs</div>
-              <div class="acc-sub">Orientation • Application • Interview • Onboarding</div>
-            </div>
-            <div class="acc-arrow">›</div>
-          </button>
-
-          <div class="acc-panel">
-            <div class="stage">
-              <button class="stage-btn" type="button" data-acc="stage" aria-expanded="false">Orientation <span>›</span></button>
-              <div class="stage-panel">
-                <ul class="tool-list">
-                  <li><a href="https://eures.europa.eu/" target="_blank" rel="noopener">EURES</a><span class="tool-desc">European Employment Services.</span></li>
-                  <li><a href="https://www.xing.com/" target="_blank" rel="noopener">XING</a><span class="tool-desc">German professional network and jobs.</span></li>
-                  <li><a href="https://www.linkedin.com/" target="_blank" rel="noopener">LinkedIn Career Explorer</a><span class="tool-desc">Career transitions.</span></li>
-                  <li><a href="https://jobright.ai/" target="_blank" rel="noopener">Jobright.ai</a><span class="tool-desc">AI job recommendations.</span></li>
-                  <li><a href="https://www.google.com/search?q=after+graduation+career+planning" target="_blank" rel="noopener">After Graduation (guide)</a><span class="tool-desc">Post-study career direction.</span></li>
-                </ul>
-              </div>
-            </div>
-
-            <div class="stage">
-              <button class="stage-btn" type="button" data-acc="stage" aria-expanded="false">Application <span>›</span></button>
-              <div class="stage-panel">
-                <ul class="tool-list">
-                  <li><a href="https://www.vmock.com/" target="_blank" rel="noopener">VMock</a><span class="tool-desc">Resume scoring and optimization.</span></li>
-                  <li><a href="https://resume.io/" target="_blank" rel="noopener">Resume.io</a><span class="tool-desc">Professional CV builder.</span></li>
-                  <li><a href="https://europa.eu/europass/" target="_blank" rel="noopener">Europass</a><span class="tool-desc">EU standard CV format.</span></li>
-                  <li><a href="https://cheetah.ai/" target="_blank" rel="noopener">Cheetah AI</a><span class="tool-desc">AI cover letters and resumes.</span></li>
-                  <li><a href="https://www.notion.so/" target="_blank" rel="noopener">Notion</a><span class="tool-desc">Application tracking.</span></li>
-                  <li><a href="https://airtable.com/" target="_blank" rel="noopener">Airtable</a><span class="tool-desc">Application tracking.</span></li>
-                </ul>
-              </div>
-            </div>
-
-            <div class="stage">
-              <button class="stage-btn" type="button" data-acc="stage" aria-expanded="false">Interview <span>›</span></button>
-              <div class="stage-panel">
-                <ul class="tool-list">
-                  <li><a href="https://finalroundai.com/" target="_blank" rel="noopener">Final Round AI</a><span class="tool-desc">Structured interview answers (STAR).</span></li>
-                  <li><a href="https://www.yoodli.ai/" target="_blank" rel="noopener">Yoodli</a><span class="tool-desc">Communication and confidence coaching.</span></li>
-                  <li><a href="https://interviewlift.com/" target="_blank" rel="noopener">Interview Lift</a><span class="tool-desc">Behavioral and technical practice.</span></li>
-                </ul>
-              </div>
-            </div>
-
-            <div class="stage">
-              <button class="stage-btn" type="button" data-acc="stage" aria-expanded="false">Onboarding <span>›</span></button>
-              <div class="stage-panel">
-                <ul class="tool-list">
-                  <li><a href="https://chat.openai.com/" target="_blank" rel="noopener">ChatGPT</a><span class="tool-desc">Workplace communication and learning.</span></li>
-                  <li><a href="https://www.google.com/search?q=career+mastery+coaching" target="_blank" rel="noopener">Career Mastery</a><span class="tool-desc">Long-term growth mindset.</span></li>
-                  <li><a href="https://www.google.com/search?q=performance+career+coach" target="_blank" rel="noopener">Coach (performance)</a><span class="tool-desc">Performance and career guidance.</span></li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </section>
-
+  <main>
+    <section class="section">
+      <div class="container">
+        <h1 class="section-title" style="font-size:clamp(1.4rem, 2.4vw, 1.9rem); margin-bottom:10px;">AI Tools Directory</h1>
+        <p class="lead">Select a job category, then a stage, and open the tool you need.</p>
       </div>
-    </div>
+    </section>
+
+    <section class="section" style="padding-top:10px;">
+      <div class="container">
+        <div class="card card-pad">
+          <div class="tabs-row" role="tablist" aria-label="Job categories">
+            <button class="tab" type="button" role="tab" aria-selected="true" data-category="part-time">Part-Time</button>
+            <button class="tab" type="button" role="tab" aria-selected="false" data-category="werkstudent">Working Student (Werkstudent)</button>
+            <button class="tab" type="button" role="tab" aria-selected="false" data-category="internship">Internship</button>
+            <button class="tab" type="button" role="tab" aria-selected="false" data-category="thesis">Master Thesis</button>
+            <button class="tab" type="button" role="tab" aria-selected="false" data-category="full-time">Full-Time</button>
+          </div>
+
+          <div style="margin-top:14px;">
+            <div class="stage-row" role="tablist" aria-label="Stages">
+              <button class="stage" type="button" role="tab" aria-selected="true" data-stage="orientation">Orientation</button>
+              <button class="stage" type="button" role="tab" aria-selected="false" data-stage="application">Application</button>
+              <button class="stage" type="button" role="tab" aria-selected="false" data-stage="interview">Interview</button>
+              <button class="stage" type="button" role="tab" aria-selected="false" data-stage="onboarding">Onboarding</button>
+            </div>
+          </div>
+        </div>
+
+        <div style="margin-top:16px;">
+          <div id="toolsGrid" class="tool-grid" aria-live="polite"></div>
+        </div>
+      </div>
+    </section>
   </main>
 
-  <!-- Footer -->
   <footer class="footer">
     <div class="container">
-      <div class="footer-content">
-        <div class="footer-section">
+      <div class="footer-inner">
+        <div>
           <h4>Hochschule Wismar</h4>
           <p>University of Applied Sciences<br />Technology, Business and Design</p>
           <p>Philipp-Müller-Straße 14<br />23966 Wismar, Germany</p>
         </div>
 
-        <div class="footer-section">
+        <div>
           <h4>Contact</h4>
           <p>Phone: +49 3841 753-0</p>
           <p>Email: <a href="mailto:postmaster@hs-wismar.de">postmaster@hs-wismar.de</a></p>
           <p><a href="https://www.hs-wismar.de" target="_blank" rel="noopener">www.hs-wismar.de</a></p>
         </div>
 
-        <div class="footer-section">
-          <h4>About This Portal</h4>
-          <p>This is a student project to support international students with job search tools and AI resources.</p>
-          <p><strong>Disclaimer:</strong> Always verify information for your specific situation.</p>
+        <div>
+          <h4>About</h4>
+          <p>This directory lists external AI tools. Always review outputs critically and tailor to your real experience.</p>
         </div>
       </div>
 
       <div class="footer-bottom">
-        <p>&copy; 2026 Hochschule Wismar. Student Project - International Management Program.</p>
+        <p>&copy; 2026 Hochschule Wismar</p>
       </div>
     </div>
   </footer>
@@ -534,54 +116,181 @@
   <script src="js/main.js"></script>
 
   <script>
-    // Category accordion
-    (function () {
-      const catBtns = document.querySelectorAll('[data-acc="cat"]');
+    (() => {
+      const toolsByCategory = {
+        "part-time": {
+          orientation: [
+            { name: "Perplexity", desc: "Research companies, roles, and requirements with sourced answers.", url: "https://www.perplexity.ai" },
+            { name: "Google Gemini", desc: "Draft role search strategies and quick summaries for listings.", url: "https://gemini.google.com" }
+          ],
+          application: [
+            { name: "ChatGPT", desc: "Draft and refine CV bullet points and cover letters with constraints.", url: "https://chat.openai.com" },
+            { name: "Grammarly", desc: "Polish tone, clarity, and correctness for English applications.", url: "https://www.grammarly.com" },
+            { name: "LanguageTool", desc: "Grammar/spell checks for German and English.", url: "https://languagetool.org" }
+          ],
+          interview: [
+            { name: "ChatGPT", desc: "Mock interviews, STAR answers, and question banks.", url: "https://chat.openai.com" },
+            { name: "Google Gemini", desc: "Practice interview Q&A and role-specific prep.", url: "https://gemini.google.com" }
+          ],
+          onboarding: [
+            { name: "DeepL", desc: "Translate onboarding documents and emails accurately.", url: "https://www.deepl.com" },
+            { name: "LanguageTool", desc: "Check German/English workplace communication.", url: "https://languagetool.org" }
+          ]
+        },
 
-      catBtns.forEach((btn) => {
+        "werkstudent": {
+          orientation: [
+            { name: "Perplexity", desc: "Company research and role discovery with citations.", url: "https://www.perplexity.ai" },
+            { name: "Google Gemini", desc: "Build search queries and role targeting plans.", url: "https://gemini.google.com" }
+          ],
+          application: [
+            { name: "ChatGPT", desc: "Generate tailored drafts from your experience and the job ad.", url: "https://chat.openai.com" },
+            { name: "LanguageTool", desc: "German/English writing accuracy.", url: "https://languagetool.org" },
+            { name: "DeepL Write", desc: "Rewrite and improve tone (German/English).", url: "https://www.deepl.com/write" }
+          ],
+          interview: [
+            { name: "ChatGPT", desc: "Technical/behavioral mock interview practice.", url: "https://chat.openai.com" },
+            { name: "Perplexity", desc: "Prepare company + product deep dives quickly.", url: "https://www.perplexity.ai" }
+          ],
+          onboarding: [
+            { name: "DeepL", desc: "Translate internal docs and emails for clarity.", url: "https://www.deepl.com" },
+            { name: "Notion", desc: "Organize tasks, onboarding notes, and checklists.", url: "https://www.notion.so" }
+          ]
+        },
+
+        "internship": {
+          orientation: [
+            { name: "Perplexity", desc: "Research internship portals, role types, and company context.", url: "https://www.perplexity.ai" },
+            { name: "Google Gemini", desc: "Plan target industries and search strategy.", url: "https://gemini.google.com" }
+          ],
+          application: [
+            { name: "ChatGPT", desc: "Draft application documents; ensure you personalize and verify.", url: "https://chat.openai.com" },
+            { name: "DeepL Write", desc: "Rewrite for a natural German/English tone.", url: "https://www.deepl.com/write" },
+            { name: "LanguageTool", desc: "German/English checks before sending.", url: "https://languagetool.org" }
+          ],
+          interview: [
+            { name: "ChatGPT", desc: "Mock interview + internship motivation answers.", url: "https://chat.openai.com" },
+            { name: "Google Gemini", desc: "Role-specific Q&A and explanations.", url: "https://gemini.google.com" }
+          ],
+          onboarding: [
+            { name: "DeepL", desc: "Translate onboarding tasks and communications.", url: "https://www.deepl.com" },
+            { name: "Notion", desc: "Track onboarding goals and learning notes.", url: "https://www.notion.so" }
+          ]
+        },
+
+        "thesis": {
+          orientation: [
+            { name: "Perplexity", desc: "Explore thesis topics, papers, and company problems to solve.", url: "https://www.perplexity.ai" },
+            { name: "Google Scholar", desc: "Find papers and citations for your topic area.", url: "https://scholar.google.com" }
+          ],
+          application: [
+            { name: "ChatGPT", desc: "Draft outreach emails and proposal outlines (then customize).", url: "https://chat.openai.com" },
+            { name: "DeepL Write", desc: "Improve German/English pitch email tone.", url: "https://www.deepl.com/write" }
+          ],
+          interview: [
+            { name: "ChatGPT", desc: "Prepare for thesis discussions and technical questions.", url: "https://chat.openai.com" },
+            { name: "Perplexity", desc: "Company and domain research for meetings.", url: "https://www.perplexity.ai" }
+          ],
+          onboarding: [
+            { name: "Zotero", desc: "Reference management for papers and thesis writing.", url: "https://www.zotero.org" },
+            { name: "Notion", desc: "Plan milestones, notes, and research logs.", url: "https://www.notion.so" }
+          ]
+        },
+
+        "full-time": {
+          orientation: [
+            { name: "Perplexity", desc: "Research roles, companies, and requirements with sources.", url: "https://www.perplexity.ai" },
+            { name: "Google Gemini", desc: "Plan targeting and skills gap analysis.", url: "https://gemini.google.com" }
+          ],
+          application: [
+            { name: "ChatGPT", desc: "Draft CV bullets/cover letter; keep it factual and specific.", url: "https://chat.openai.com" },
+            { name: "LanguageTool", desc: "Quality checks for German/English.", url: "https://languagetool.org" },
+            { name: "Grammarly", desc: "Clarity and tone for English applications.", url: "https://www.grammarly.com" }
+          ],
+          interview: [
+            { name: "ChatGPT", desc: "Mock interviews, salary/negotiation scripts, follow-ups.", url: "https://chat.openai.com" },
+            { name: "Perplexity", desc: "Fast company research before interviews.", url: "https://www.perplexity.ai" }
+          ],
+          onboarding: [
+            { name: "DeepL", desc: "Translate emails and docs during onboarding.", url: "https://www.deepl.com" },
+            { name: "Notion", desc: "Organize onboarding tasks and personal knowledge base.", url: "https://www.notion.so" }
+          ]
+        }
+      };
+
+      const categoryTabs = Array.from(document.querySelectorAll('.tab[data-category]'));
+      const stageTabs = Array.from(document.querySelectorAll('.stage[data-stage]'));
+      const grid = document.getElementById("toolsGrid");
+
+      if (!grid || categoryTabs.length === 0 || stageTabs.length === 0) return;
+
+      const state = {
+        category: categoryTabs.find(t => t.getAttribute("aria-selected") === "true")?.dataset.category || "part-time",
+        stage: stageTabs.find(t => t.getAttribute("aria-selected") === "true")?.dataset.stage || "orientation",
+      };
+
+      function setSelected(list, selectedEl) {
+        list.forEach((el) => el.setAttribute("aria-selected", el === selectedEl ? "true" : "false"));
+      }
+
+      function escapeHtml(str) {
+        return String(str)
+          .replaceAll("&", "&amp;")
+          .replaceAll("<", "&lt;")
+          .replaceAll(">", "&gt;")
+          .replaceAll('"', "&quot;")
+          .replaceAll("'", "&#039;");
+      }
+
+      function render() {
+        const tools = toolsByCategory?.[state.category]?.[state.stage] ?? [];
+        if (tools.length === 0) {
+          grid.innerHTML = `
+            <div class="card card-pad" style="grid-column:1 / -1;">
+              <p class="lead" style="margin:0;">No tools available for this selection.</p>
+            </div>
+          `;
+          return;
+        }
+
+        grid.innerHTML = tools.map((t) => {
+          const name = escapeHtml(t.name);
+          const desc = escapeHtml(t.desc);
+          const url = escapeHtml(t.url);
+
+          return `
+            <a class="tool-card" href="${url}">
+              <div class="tool-meta">
+                <span class="badge">${escapeHtml(state.stage)}</span>
+                <span class="badge">External</span>
+              </div>
+              <h3>${name}</h3>
+              <p>${desc}</p>
+              <div class="actions">
+                <span class="btn btn-link btn-sm" aria-hidden="true">Open →</span>
+              </div>
+            </a>
+          `;
+        }).join("");
+      }
+
+      categoryTabs.forEach((btn) => {
         btn.addEventListener("click", () => {
-          const isOpen = btn.getAttribute("aria-expanded") === "true";
-
-          // close all categories
-          catBtns.forEach((b) => {
-            b.setAttribute("aria-expanded", "false");
-            const p = b.closest(".acc").querySelector(".acc-panel");
-            if (p) p.style.display = "none";
-          });
-
-          // open current
-          if (!isOpen) {
-            btn.setAttribute("aria-expanded", "true");
-            const panel = btn.closest(".acc").querySelector(".acc-panel");
-            if (panel) panel.style.display = "block";
-          }
+          state.category = btn.dataset.category;
+          setSelected(categoryTabs, btn);
+          render();
         });
       });
 
-      // Stage accordion (inside category)
-      const stageBtns = document.querySelectorAll('[data-acc="stage"]');
-      stageBtns.forEach((btn) => {
+      stageTabs.forEach((btn) => {
         btn.addEventListener("click", () => {
-          const isOpen = btn.getAttribute("aria-expanded") === "true";
-          const accPanel = btn.closest(".acc-panel");
-
-          // close all stages inside same category
-          if (accPanel) {
-            accPanel.querySelectorAll('[data-acc="stage"]').forEach((b) => {
-              b.setAttribute("aria-expanded", "false");
-              const p = b.closest(".stage").querySelector(".stage-panel");
-              if (p) p.style.display = "none";
-            });
-          }
-
-          // open current stage
-          if (!isOpen) {
-            btn.setAttribute("aria-expanded", "true");
-            const panel = btn.closest(".stage").querySelector(".stage-panel");
-            if (panel) panel.style.display = "block";
-          }
+          state.stage = btn.dataset.stage;
+          setSelected(stageTabs, btn);
+          render();
         });
       });
+
+      render();
     })();
   </script>
 </body>
