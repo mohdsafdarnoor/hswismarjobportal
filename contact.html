@@ -3,280 +3,163 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Contact | Hochschule Wismar</title>
-  <meta name="description" content="Contact the HS Wismar international careers portal team for support, feedback, or partnership requests." />
+  <title>Contact | AI Job Search Support</title>
+  <meta name="description" content="Contact the student team behind the AI Job Search Support Portal at Hochschule Wismar." />
   <link rel="stylesheet" href="css/style.css" />
-
-  <style>
-    /* ===== Header green (same across pages) ===== */
-    .header{
-      background: rgba(51,153,51,.96);
-      border-bottom: 1px solid rgba(0,0,0,.10);
-    }
-    .nav-link{ color:#fff; }
-    .nav-link:hover{ background: rgba(255,255,255,.14); color:#fff; }
-    .nav-link.active{ background:#fff; color:#2f3229; }
-    .mobile-menu-btn{ background: rgba(255,255,255,.14); border-color: rgba(255,255,255,.35); }
-    .mobile-menu-btn span{ background:#fff; }
-    .mobile-menu{ background:#fff; }
-
-    /* ===== Page layout ===== */
-    .contact-wrap{ padding: 18px 0 44px; }
-    .card{
-      background:#fff;
-      border:1px solid rgba(0,0,0,.10);
-      border-radius:14px;
-      padding:16px;
-      box-shadow:0 6px 18px rgba(0,0,0,.08);
-      margin-bottom:14px;
-    }
-    .intro{
-      background: linear-gradient(135deg, rgba(51,153,51,.12), rgba(47,50,41,.04));
-      border-left: 6px solid #339933;
-    }
-
-    .grid{
-      display:grid;
-      grid-template-columns: 1.2fr .8fr;
-      gap:14px;
-      align-items:start;
-    }
-    @media (max-width: 950px){
-      .grid{ grid-template-columns:1fr; }
-    }
-
-    label{
-      display:block;
-      font-weight:800;
-      color:#2f3229;
-      margin: 10px 0 6px;
-    }
-    input, textarea, select{
-      width:100%;
-      padding:12px 12px;
-      border-radius:12px;
-      border:1px solid rgba(0,0,0,.14);
-      outline:none;
-      font: inherit;
-      background:#fff;
-    }
-    input:focus, textarea:focus, select:focus{
-      border-color: rgba(51,153,51,.55);
-      box-shadow: 0 0 0 4px rgba(51,153,51,.14);
-    }
-    textarea{ min-height: 140px; resize: vertical; }
-
-    .btn{
-      display:inline-block;
-      width:100%;
-      margin-top: 12px;
-      padding: 12px 14px;
-      border-radius: 12px;
-      border: 1px solid rgba(0,0,0,.10);
-      background:#339933;
-      color:#fff;
-      font-weight: 900;
-      cursor:pointer;
-      transition: transform .12s ease, box-shadow .12s ease;
-    }
-    .btn:hover{
-      transform: translateY(-1px);
-      box-shadow: 0 10px 22px rgba(51,153,51,.22);
-    }
-    .muted{ color:#5f6368; line-height:1.55; }
-    .small{ font-size: .95rem; }
-
-    .info-row{
-      display:flex;
-      justify-content:space-between;
-      gap:10px;
-      padding:10px 0;
-      border-bottom:1px solid rgba(0,0,0,.08);
-    }
-    .info-row:last-child{ border-bottom:none; }
-
-    .tag{
-      display:inline-block;
-      font-size:.85rem;
-      font-weight:800;
-      padding:6px 10px;
-      border-radius:999px;
-      background: rgba(51,153,51,.12);
-      color:#2f3229;
-      border:1px solid rgba(51,153,51,.22);
-      margin-top:8px;
-    }
-    .success, .error{
-      display:none;
-      margin-top:10px;
-      padding:10px 12px;
-      border-radius:12px;
-      font-weight:800;
-    }
-    .success{
-      background: rgba(51,153,51,.12);
-      border: 1px solid rgba(51,153,51,.25);
-      color:#2f3229;
-    }
-    .error{
-      background: rgba(255,93,2,.10);
-      border: 1px solid rgba(255,93,2,.25);
-      color:#2f3229;
-    }
-  </style>
 </head>
 
 <body>
-
-  <!-- ===== Header / Nav (keep your existing header markup if already consistent) ===== -->
+  <!-- Header -->
   <header class="header">
-    <div class="container nav-container">
-      <a href="index.html" class="logo">Hochschule Wismar</a>
+    <div class="container">
+      <div class="header-content">
+        <div class="logo">
+          <a href="index.html" aria-label="Home">
+            <img src="assets/hsw-logo.png" alt="Hochschule Wismar" />
+          </a>
+        </div>
 
-      <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Open menu">
-        <span></span><span></span><span></span>
-      </button>
+        <nav class="nav-desktop" aria-label="Primary">
+          <a href="index.html" class="nav-link">Home</a>
+          <a href="tools.html" class="nav-link">AI Tools</a>
+          <a href="prompts.html" class="nav-link">AI Prompts</a>
+          <a href="guidelines.html" class="nav-link">Guidelines</a>
+          <a href="faqs.html" class="nav-link">FAQs</a>
+          <a href="contact.html" class="nav-link active" aria-current="page">Contact</a>
+        </nav>
 
-      <nav class="nav" id="nav">
-        <a class="nav-link" href="index.html">Home</a>
-        <a class="nav-link" href="faqs.html">FAQs</a>
-        <a class="nav-link active" href="contact.html">Contact</a>
-      </nav>
-    </div>
-
-    <div class="mobile-menu" id="mobileMenu">
-      <a class="nav-link" href="index.html">Home</a>
-      <a class="nav-link" href="faqs.html">FAQs</a>
-      <a class="nav-link active" href="contact.html">Contact</a>
+        <button class="mobile-menu-btn" type="button" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobileMenu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
     </div>
   </header>
 
-  <!-- ===== Main ===== -->
-  <main class="container contact-wrap">
-    <section class="card intro">
-      <h1 style="margin:0 0 6px;color:#2f3229;">Contact</h1>
-      <p class="muted" style="margin:0;">
-        Use this form to ask questions, report a bug, or suggest improvements.
-        If you’re proposing a partnership, choose “Partnership” in the subject.
-      </p>
-      <span class="tag">Reply time: usually 1–3 working days</span>
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu" aria-label="Mobile menu">
+    <nav class="mobile-nav" aria-label="Mobile primary">
+      <a href="index.html" class="mobile-nav-link">Home</a>
+      <a href="tools.html" class="mobile-nav-link">AI Tools</a>
+      <a href="prompts.html" class="mobile-nav-link">AI Prompts</a>
+      <a href="guidelines.html" class="mobile-nav-link">Guidelines</a>
+      <a href="faqs.html" class="mobile-nav-link">FAQs</a>
+      <a href="contact.html" class="mobile-nav-link active" aria-current="page">Contact</a>
+    </nav>
+  </div>
+
+  <main>
+    <section class="page-header">
+      <div class="container">
+        <h1 class="page-title">Contact</h1>
+        <p class="page-description">
+          Questions, feedback, or suggestions? Send a message and we’ll reply when possible.
+        </p>
+      </div>
     </section>
 
-    <section class="grid">
-      <!-- Form -->
-      <section class="card">
-        <h2 style="margin:0 0 8px;color:#2f3229;">Send a message</h2>
-        <p class="muted small" style="margin:0 0 10px;">
-          This is a demo form (client-side). Later we can connect it to EmailJS / Formspree / a backend API.
-        </p>
+    <section class="contact-section">
+      <div class="container">
 
-        <form id="contactForm" novalidate>
-          <label for="fullName">Full name</label>
-          <input id="fullName" name="fullName" type="text" placeholder="Your name" required />
+        <div class="contact-form-container">
+          <h2>Send a message</h2>
 
-          <label for="email">Email</label>
-          <input id="email" name="email" type="email" placeholder="you@example.com" required />
+          <form class="contact-form" action="#" method="post">
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="firstName">First name</label>
+                <input class="form-input" id="firstName" name="firstName" type="text" autocomplete="given-name" required />
+              </div>
 
-          <label for="subject">Subject</label>
-          <select id="subject" name="subject" required>
-            <option value="">Select a topic</option>
-            <option>General question</option>
-            <option>Portal bug / issue</option>
-            <option>Feedback / suggestion</option>
-            <option>Partnership</option>
-          </select>
+              <div class="form-group">
+                <label class="form-label" for="lastName">Last name</label>
+                <input class="form-input" id="lastName" name="lastName" type="text" autocomplete="family-name" required />
+              </div>
+            </div>
 
-          <label for="message">Message</label>
-          <textarea id="message" name="message" placeholder="Write your message..." required></textarea>
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="email">Email</label>
+                <input class="form-input" id="email" name="email" type="email" autocomplete="email" required />
+              </div>
 
-          <button class="btn" type="submit">Send message</button>
+              <div class="form-group">
+                <label class="form-label" for="topic">Topic</label>
+                <select class="form-input" id="topic" name="topic" required>
+                  <option value="" selected disabled>Select a topic</option>
+                  <option value="bug">Report a bug</option>
+                  <option value="suggestion">Suggestion</option>
+                  <option value="content">Content question</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
+            </div>
 
-          <div class="success" id="successBox">Message prepared. (Demo) We will connect this to email sending next.</div>
-          <div class="error" id="errorBox">Please fill all required fields correctly.</div>
-        </form>
-      </section>
+            <div class="form-group">
+              <label class="form-label" for="message">Message</label>
+              <textarea class="form-textarea" id="message" name="message" required></textarea>
+            </div>
 
-      <!-- Info -->
-      <aside class="card">
-        <h2 style="margin:0 0 8px;color:#2f3229;">Official contact</h2>
-        <p class="muted small" style="margin:0 0 12px;">
-          University contact details are shown here in the official format used in HS Wismar materials.
-        </p>
-
-        <div class="info-row">
-          <strong>University</strong>
-          <span class="muted">Hochschule Wismar</span>
+            <button class="form-button" type="submit">Send</button>
+            <p class="form-note">
+              Note: This is a student project. Please avoid sharing sensitive personal data.
+            </p>
+          </form>
         </div>
 
-        <div class="info-row">
-          <strong>Post address</strong>
-          <span class="muted">Postfach 1210, 23952 Wismar</span>
+        <div class="contact-info-grid">
+          <div class="info-card">
+            <h3>University</h3>
+            <p>Hochschule Wismar</p>
+            <p>Philipp-Müller-Straße 14</p>
+            <p>23966 Wismar, Germany</p>
+          </div>
+
+          <div class="info-card">
+            <h3>General contact</h3>
+            <p>Phone: +49 3841 753-0</p>
+            <p><a href="mailto:postmaster@hs-wismar.de">postmaster@hs-wismar.de</a></p>
+          </div>
+
+          <div class="info-card">
+            <h3>Website</h3>
+            <p><a href="https://www.hs-wismar.de" target="_blank" rel="noopener">www.hs-wismar.de</a></p>
+          </div>
         </div>
 
-        <div class="info-row">
-          <strong>Visitor address</strong>
-          <span class="muted">Philipp-Müller-Straße 14, 23966 Wismar</span>
-        </div>
-
-        <div class="info-row">
-          <strong>Phone</strong>
-          <span class="muted">+49 3841 753-0</span>
-        </div>
-
-        <div class="info-row">
-          <strong>Fax</strong>
-          <span class="muted">+49 3841 753-383</span>
-        </div>
-
-        <div class="info-row">
-          <strong>Email</strong>
-          <span class="muted">postmaster@hs-wismar.de</span>
-        </div>
-
-        <div class="info-row">
-          <strong>Website</strong>
-          <span class="muted">www.hs-wismar.de</span>
-        </div>
-      </aside>
+      </div>
     </section>
   </main>
 
-  <script>
-    // Simple demo validation (no backend yet)
-    const form = document.getElementById('contactForm');
-    const successBox = document.getElementById('successBox');
-    const errorBox = document.getElementById('errorBox');
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h4>Hochschule Wismar</h4>
+          <p>University of Applied Sciences<br />Technology, Business and Design</p>
+          <p>Philipp-Müller-Straße 14<br />23966 Wismar, Germany</p>
+        </div>
 
-    form.addEventListener('submit', (e) => {
-      e.preventDefault();
-      successBox.style.display = 'none';
-      errorBox.style.display = 'none';
+        <div class="footer-section">
+          <h4>Contact</h4>
+          <p>Phone: +49 3841 753-0</p>
+          <p>Email: <a href="mailto:postmaster@hs-wismar.de">postmaster@hs-wismar.de</a></p>
+          <p><a href="https://www.hs-wismar.de" target="_blank" rel="noopener">www.hs-wismar.de</a></p>
+        </div>
 
-      const fullName = document.getElementById('fullName').value.trim();
-      const email = document.getElementById('email').value.trim();
-      const subject = document.getElementById('subject').value.trim();
-      const message = document.getElementById('message').value.trim();
+        <div class="footer-section">
+          <h4>About This Portal</h4>
+          <p>This is a student project created to support international students in their job search using AI-powered tools and resources.</p>
+          <p><strong>Disclaimer:</strong> Content is informational and AI-supported. Always verify information for your specific situation.</p>
+        </div>
+      </div>
 
-      const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+      <div class="footer-bottom">
+        <p>&copy; 2026 Hochschule Wismar. Student Project - International Management Program.</p>
+      </div>
+    </div>
+  </footer>
 
-      if (!fullName || !emailOk || !subject || !message) {
-        errorBox.style.display = 'block';
-        return;
-      }
-
-      successBox.style.display = 'block';
-      form.reset();
-    });
-
-    // Optional: your existing mobile menu JS can live in main.js instead
-    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-    const mobileMenu = document.getElementById('mobileMenu');
-    if (mobileMenuBtn && mobileMenu) {
-      mobileMenuBtn.addEventListener('click', () => {
-        mobileMenu.classList.toggle('open');
-      });
-    }
-  </script>
-
+  <script src="js/main.js"></script>
 </body>
 </html>
