@@ -1,1 +1,877 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Prompts Library | Hochschule Wismar</title>
+  <meta name="description" content="Ready-to-use AI prompts for Werkstudent jobs, internships, Master thesis collaborations, and full-time employment in Germany." />
+  <link rel="stylesheet" href="css/style.css" />
+
+  <style>
+    /* Page-specific styles */
+    .prompt-page-wrap{
+      padding:18px 0 40px;
+    }
+    .prompt-intro{
+      background:#fff;
+      border:1px solid rgba(0,0,0,.08);
+      border-radius:14px;
+      padding:18px;
+      box-shadow:0 6px 18px rgba(0,0,0,.08);
+      margin-bottom:16px;
+    }
+    .prompt-intro p{color:#5f6368;margin:0}
+
+    .prompt-categories{
+      display:grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap:14px;
+      margin-top:14px;
+    }
+
+    .prompt-cat{
+      background:#fff;
+      border:1px solid rgba(0,0,0,.10);
+      border-radius:14px;
+      box-shadow:0 6px 18px rgba(0,0,0,.08);
+      overflow:hidden;
+    }
+
+    .prompt-cat-btn{
+      width:100%;
+      border:none;
+      background: linear-gradient(135deg, rgba(51,153,51,.14), rgba(47,50,41,.04));
+      padding:16px;
+      cursor:pointer;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      text-align:left;
+    }
+    .prompt-cat-title{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      font-weight:900;
+      color:#2f3229;
+      font-size:1.05rem;
+    }
+    .prompt-cat-sub{
+      font-weight:600;
+      color:#5f6368;
+      font-size:.95rem;
+      margin-top:4px;
+    }
+    .prompt-cat-btn:focus{
+      outline:none;
+      box-shadow:0 0 0 4px rgba(51,153,51,.14);
+    }
+    .prompt-cat-arrow{
+      font-weight:900;
+      color:#339933;
+      transition: transform .15s ease;
+      font-size:1.3rem;
+      line-height:1;
+    }
+    .prompt-cat-btn[aria-expanded="true"] .prompt-cat-arrow{
+      transform: rotate(90deg);
+    }
+
+    .prompt-cat-panel{
+      padding:16px;
+      background:#fff;
+      border-top:1px solid rgba(0,0,0,.08);
+    }
+
+    .prompt-group{
+      border:1px solid rgba(0,0,0,.10);
+      border-radius:14px;
+      overflow:hidden;
+      margin-bottom:12px;
+    }
+    .prompt-group:last-child{margin-bottom:0}
+
+    .prompt-group-btn{
+      width:100%;
+      border:none;
+      background:rgba(47,50,41,.03);
+      padding:14px 14px;
+      cursor:pointer;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:12px;
+      text-align:left;
+      font-weight:900;
+      color:#2f3229;
+    }
+    .prompt-group-btn:focus{
+      outline:none;
+      box-shadow:0 0 0 4px rgba(51,153,51,.14);
+    }
+    .prompt-group-btn span{
+      color:#339933;
+      font-size:1.2rem;
+      line-height:1;
+      transition: transform .15s ease;
+    }
+    .prompt-group-btn[aria-expanded="true"] span{
+      transform: rotate(90deg);
+    }
+
+    .prompt-group-panel{
+      padding:14px;
+      background:#fff;
+      border-top:1px solid rgba(0,0,0,.08);
+    }
+
+    .prompt-card{
+      border:1px solid rgba(0,0,0,.10);
+      border-radius:14px;
+      padding:14px;
+      margin-bottom:12px;
+      background:#fff;
+    }
+    .prompt-card:last-child{margin-bottom:0}
+    .prompt-card h4{
+      margin:0 0 8px;
+      color:#2f3229;
+      font-size:1.05rem;
+    }
+    .prompt-card p{
+      margin:0 0 10px;
+      color:#5f6368;
+    }
+
+    .prompt-box{
+      width:100%;
+      min-height:220px;
+      resize:vertical;
+      padding:12px;
+      border-radius:12px;
+      border:1px solid rgba(0,0,0,.14);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size:.93rem;
+      line-height:1.55;
+      background:#fbfbfb;
+    }
+
+    .copy-row{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-top:10px;
+    }
+    .copy-btn{
+      border:none;
+      border-radius:12px;
+      padding:10px 12px;
+      background:#339933;
+      color:#fff;
+      font-weight:900;
+      cursor:pointer;
+    }
+    .copy-btn:hover{filter:brightness(.95)}
+    .small-btn{
+      border:1px solid rgba(0,0,0,.12);
+      border-radius:12px;
+      padding:10px 12px;
+      background:#fff;
+      font-weight:800;
+      cursor:pointer;
+    }
+
+    .note{
+      margin-top:10px;
+      color:#5f6368;
+      font-size:.95rem;
+    }
+
+    @media (max-width: 900px){
+      .prompt-categories{grid-template-columns:1fr;}
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="container">
+      <div class="header-content">
+        <div class="logo">
+          <a href="index.html">
+            <img src="assets/hsw-logo.png" alt="Hochschule Wismar" />
+          </a>
+        </div>
+
+        <nav class="nav-desktop">
+          <a href="index.html" class="nav-link">Home</a>
+          <a href="tools.html" class="nav-link">AI Tools</a>
+          <a href="prompts.html" class="nav-link active">AI Prompts</a>
+          <a href="guidelines.html" class="nav-link">Guidelines</a>
+          <a href="faqs.html" class="nav-link">FAQs</a>
+          <a href="contact.html" class="nav-link">Contact</a>
+        </nav>
+
+        <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Toggle menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <nav class="mobile-nav">
+      <a href="index.html" class="mobile-nav-link">Home</a>
+      <a href="tools.html" class="mobile-nav-link">AI Tools</a>
+      <a href="prompts.html" class="mobile-nav-link active">AI Prompts</a>
+      <a href="guidelines.html" class="mobile-nav-link">Guidelines</a>
+      <a href="faqs.html" class="mobile-nav-link">FAQs</a>
+      <a href="contact.html" class="mobile-nav-link">Contact</a>
+    </nav>
+  </div>
+
+  <!-- Page Header -->
+  <section class="page-header">
+    <div class="container">
+      <h1 class="page-title">AI Prompts Library</h1>
+      <p class="page-description">Pick a category, expand it, and copy prompts for Germany-focused job applications.</p>
+    </div>
+  </section>
+
+  <main class="prompt-page-wrap">
+    <div class="container">
+      <div class="prompt-intro">
+        <p>
+          Use these prompts in ChatGPT/Claude/etc. Replace the brackets with your real details. These categories and tasks are adapted from your Germany Career Prompt Books. [file:83][file:84][file:82][file:81]
+        </p>
+      </div>
+
+      <!-- CATEGORIES (level 1) -->
+      <div class="prompt-categories" id="promptCategories">
+
+        <!-- Part-time / Werkstudent -->
+        <div class="prompt-cat">
+          <button class="prompt-cat-btn" type="button" data-acc="cat" aria-expanded="false">
+            <div>
+              <div class="prompt-cat-title">💼 Part-Time Jobs (Werkstudent)</div>
+              <div class="prompt-cat-sub">No experience • Early experience • Career shift</div>
+            </div>
+            <div class="prompt-cat-arrow">›</div>
+          </button>
+
+          <div class="prompt-cat-panel" style="display:none;">
+            <!-- Level 2 groups -->
+            <div class="prompt-group">
+              <button class="prompt-group-btn" type="button" data-acc="group" aria-expanded="false">
+                Werkstudent – No Experience <span>›</span>
+              </button>
+              <div class="prompt-group-panel" style="display:none;">
+                <div class="prompt-card">
+                  <h4>Prompt: Werkstudent role suggestions + CV framing</h4>
+                  <p>Use when you have no work experience and want realistic roles + how to position yourself.</p>
+                  <textarea class="prompt-box" readonly>
+You are a career assistant specialized in the German job market.
+
+I am an international student in Germany and I want to apply for a Werkstudent / part-time role.
+
+BACKGROUND (fill in):
+- Degree & field of study: [ ]
+- University & current semester: [ ]
+- Relevant coursework / academic projects: [ ]
+- Tools / software / methods I know: [ ]
+- German level: [ ] | English level: [ ]
+- Weekly availability (hours): [ ]
+- Preferred city/region in Germany: [ ]
+- Target industries (optional): [ ]
+
+TASKS:
+1) Suggest 8–12 realistic Werkstudent roles suitable for candidates with no prior work experience (titles + short explanation).
+2) Tell me which roles are typically open to international students and why.
+3) Rewrite my CV summary (3–4 lines) to highlight academic strengths and transferable skills.
+4) Give me strong answers to: “Do you have practical experience?” (3 versions: short, medium, detailed).
+5) Advise how to position myself as reliable and trainable (what evidence to show).
+Output in clear bullet points.
+                  </textarea>
+                  <div class="copy-row">
+                    <button class="copy-btn" type="button" onclick="copyPrompt(this)">Copy prompt</button>
+                    <button class="small-btn" type="button" onclick="selectPrompt(this)">Select text</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="prompt-group">
+              <button class="prompt-group-btn" type="button" data-acc="group" aria-expanded="false">
+                Werkstudent – Early Experience (0–2 years) <span>›</span>
+              </button>
+              <div class="prompt-group-panel" style="display:none;">
+                <div class="prompt-card">
+                  <h4>Prompt: Rewrite CV bullets + short HR email</h4>
+                  <p>Use when you already have internships/part-time work and want German-market bullet points.</p>
+                  <textarea class="prompt-box" readonly>
+You are a career assistant specialized in German recruiter expectations for Werkstudent roles.
+
+BACKGROUND (fill in):
+- Degree & field of study: [ ]
+- Previous internships / Werkstudent / part-time roles: [ ]
+- Key responsibilities handled: [ ]
+- Tools / systems / processes used: [ ]
+- Target Werkstudent role or industry: [ ]
+- German level: [ ] | English level: [ ]
+
+TASKS:
+1) Align my experience with German market expectations for Werkstudent roles.
+2) Rewrite 8–12 CV bullet points using impact and contribution language (keep them honest).
+3) Identify gaps and suggest fast ways to close them within 2–4 weeks.
+4) Draft a short professional email to HR expressing interest in a Werkstudent position (German OR English; ask me which is better).
+                  </textarea>
+                  <div class="copy-row">
+                    <button class="copy-btn" type="button" onclick="copyPrompt(this)">Copy prompt</button>
+                    <button class="small-btn" type="button" onclick="selectPrompt(this)">Select text</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="prompt-group">
+              <button class="prompt-group-btn" type="button" data-acc="group" aria-expanded="false">
+                Career Shift (No German Experience) <span>›</span>
+              </button>
+              <div class="prompt-group-panel" style="display:none;">
+                <div class="prompt-card">
+                  <h4>Prompt: Transferable skills + interview answers</h4>
+                  <p>Use if you are changing role/industry and need to reduce hiring risk for German employers.</p>
+                  <textarea class="prompt-box" readonly>
+You are a career assistant specialized in career changes in Germany.
+
+BACKGROUND (fill in):
+- Previous role/industry: [ ]
+- Target role/field in Germany: [ ]
+- Transferable skills from previous experience: [ ]
+- Reason for career change: [ ]
+- Current education/upskilling: [ ]
+- German level: [ ] | English level: [ ]
+
+TASKS:
+1) Identify transferable skills relevant to the new role (map old → new).
+2) Rewrite my CV profile section to reduce perceived hiring risk.
+3) Help me position the shift as logical and intentional (2–3 story angles).
+4) Prepare convincing interview answers explaining the transition (STAR style).
+5) List what German recruiters will worry about and how to address each concern.
+                  </textarea>
+                  <div class="copy-row">
+                    <button class="copy-btn" type="button" onclick="copyPrompt(this)">Copy prompt</button>
+                    <button class="small-btn" type="button" onclick="selectPrompt(this)">Select text</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <p class="note">Source structure: Werkstudent prompt book sections 2A–2C. [file:83]</p>
+          </div>
+        </div>
+
+        <!-- Internships -->
+        <div class="prompt-cat">
+          <button class="prompt-cat-btn" type="button" data-acc="cat" aria-expanded="false">
+            <div>
+              <div class="prompt-cat-title">🎓 Internships (Praktikum)</div>
+              <div class="prompt-cat-sub">Mandatory • Voluntary • With experience • ATS + Interview</div>
+            </div>
+            <div class="prompt-cat-arrow">›</div>
+          </button>
+
+          <div class="prompt-cat-panel" style="display:none;">
+            <div class="prompt-group">
+              <button class="prompt-group-btn" type="button" data-acc="group" aria-expanded="false">
+                Mandatory Internship (Pflichtpraktikum) – No Experience <span>›</span>
+              </button>
+              <div class="prompt-group-panel" style="display:none;">
+                <div class="prompt-card">
+                  <h4>Prompt: Pflichtpraktikum roles + one-page German CV</h4>
+                  <p>Use when internship is mandatory and you have no experience.</p>
+                  <textarea class="prompt-box" readonly>
+You are a career assistant specialized in internships in Germany.
+
+I am applying for a mandatory internship (Pflichtpraktikum).
+
+BACKGROUND (fill in):
+- Degree & specialization: [ ]
+- University & current semester: [ ]
+- Relevant coursework & academic projects: [ ]
+- Tools/software/methods: [ ]
+- German level (A1–C1): [ ]
+- Internship is mandatory: Yes
+- Preferred city/region: [ ]
+- Desired start date + duration: [ ]
+
+TASKS:
+1) Suggest 5–7 suitable Pflichtpraktikum roles aligned with my profile.
+2) Translate coursework/projects into CV-ready experience bullets (honest, measurable).
+3) Create a one-page, ATS-friendly German-style CV outline (sections + what to write).
+4) List common German interview questions for Pflichtpraktikum candidates.
+5) Highlight frequent mistakes international students make and how to avoid them.
+                  </textarea>
+                  <div class="copy-row">
+                    <button class="copy-btn" type="button" onclick="copyPrompt(this)">Copy prompt</button>
+                    <button class="small-btn" type="button" onclick="selectPrompt(this)">Select text</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="prompt-group">
+              <button class="prompt-group-btn" type="button" data-acc="group" aria-expanded="false">
+                Voluntary Internship (Freiwilliges Praktikum) – No Experience <span>›</span>
+              </button>
+              <div class="prompt-group-panel" style="display:none;">
+                <div class="prompt-card">
+                  <h4>Prompt: Recruiter expectations + short Anschreiben</h4>
+                  <p>Use if it’s voluntary (not required) and you want a realistic strategy.</p>
+                  <textarea class="prompt-box" readonly>
+You are a career assistant specialized in the German internship market.
+
+I am applying for a voluntary internship (Freiwilliges Praktikum) and I have little/no experience.
+
+BACKGROUND (fill in):
+- Degree / field of study: [ ]
+- University & study focus: [ ]
+- Transferable skills / academic strengths: [ ]
+- Availability + preferred duration: [ ]
+- Target roles/industries: [ ]
+- German level: [ ] | English level: [ ]
+
+TASKS:
+1) Explain what German recruiters realistically expect from voluntary interns (bullet points).
+2) Rewrite my CV profile to emphasize learning ability, reliability, and structure.
+3) Draft a short German-style cover letter (Anschreiben) (ask me whether to write in German or English).
+4) Suggest strong answers to common “no experience” interview questions (5–7 Q&A).
+                  </textarea>
+                  <div class="copy-row">
+                    <button class="copy-btn" type="button" onclick="copyPrompt(this)">Copy prompt</button>
+                    <button class="small-btn" type="button" onclick="selectPrompt(this)">Select text</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="prompt-group">
+              <button class="prompt-group-btn" type="button" data-acc="group" aria-expanded="false">
+                Internship With Prior Experience <span>›</span>
+              </button>
+              <div class="prompt-group-panel" style="display:none;">
+                <div class="prompt-card">
+                  <h4>Prompt: High-impact positioning + negotiation</h4>
+                  <p>Use when you already have internship/work/project experience.</p>
+                  <textarea class="prompt-box" readonly>
+You are a career assistant for internships in Germany.
+
+BACKGROUND (fill in):
+- Degree & specialization: [ ]
+- Previous internships/jobs/projects: [ ]
+- Key tools/skills/methods used: [ ]
+- Type of internship I’m applying for: [ ]
+- Target job description (paste): [ ]
+
+TASKS:
+1) Position me as a high-impact intern (not a beginner).
+2) Rewrite my CV bullet points to show contribution + results.
+3) Provide examples of weak vs strong CV bullets (3 pairs).
+4) Suggest how to negotiate responsibilities or compensation professionally (email template + talk track).
+                  </textarea>
+                  <div class="copy-row">
+                    <button class="copy-btn" type="button" onclick="copyPrompt(this)">Copy prompt</button>
+                    <button class="small-btn" type="button" onclick="selectPrompt(this)">Select text</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <p class="note">Source structure: Internship prompt book sections 1–3 (plus idea of ATS/interview). [file:84]</p>
+          </div>
+        </div>
+
+        <!-- Master Thesis -->
+        <div class="prompt-cat">
+          <button class="prompt-cat-btn" type="button" data-acc="cat" aria-expanded="false">
+            <div>
+              <div class="prompt-cat-title">📚 Master Thesis Collaboration</div>
+              <div class="prompt-cat-sub">Find companies • Convince HR • Define topic • Solve problems</div>
+            </div>
+            <div class="prompt-cat-arrow">›</div>
+          </button>
+
+          <div class="prompt-cat-panel" style="display:none;">
+            <div class="prompt-group">
+              <button class="prompt-group-btn" type="button" data-acc="group" aria-expanded="false">
+                Find companies for Master’s thesis + job <span>›</span>
+              </button>
+              <div class="prompt-group-panel" style="display:none;">
+                <div class="prompt-card">
+                  <h4>Prompt: Thesis-friendly companies + platforms</h4>
+                  <textarea class="prompt-box" readonly>
+You are a career assistant specialized in Master’s thesis collaborations in Germany.
+
+BACKGROUND (fill in):
+- Degree & specialization: [ ]
+- University & thesis requirements: [ ]
+- Preferred industry/function: [ ]
+- Location preference (Germany/city): [ ]
+- Working student or part-time status: [ ]
+
+TASKS:
+1) Identify types of companies open to Master’s thesis collaborations (corporate/SME/startup) and differences.
+2) Suggest departments where theses are commonly offered.
+3) List platforms/portals/strategies to find thesis-friendly companies (Germany).
+4) Advise how early I should approach companies before thesis start.
+5) Give me a 2-week action plan to contact companies.
+                  </textarea>
+                  <div class="copy-row">
+                    <button class="copy-btn" type="button" onclick="copyPrompt(this)">Copy prompt</button>
+                    <button class="small-btn" type="button" onclick="selectPrompt(this)">Select text</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="prompt-group">
+              <button class="prompt-group-btn" type="button" data-acc="group" aria-expanded="false">
+                Convince a company to allow a thesis <span>›</span>
+              </button>
+              <div class="prompt-group-panel" style="display:none;">
+                <div class="prompt-card">
+                  <h4>Prompt: Email to HR/hiring manager + objections</h4>
+                  <textarea class="prompt-box" readonly>
+You are a German business communication assistant.
+
+BACKGROUND (fill in):
+- Current/target company: [ ]
+- My current role there (if any): [ ]
+- Thesis duration + university requirements: [ ]
+- Proposed general thesis area: [ ]
+- Data/confidentiality concerns (if any): [ ]
+
+TASKS:
+1) Frame my Master’s thesis as a business solution (not academic burden).
+2) Draft a convincing professional email to HR/hiring manager (German or English — ask me).
+3) Address concerns: time commitment, workload balance, confidentiality/data/IP.
+4) Explain how supervision can be low-effort for the company (simple process).
+                  </textarea>
+                  <div class="copy-row">
+                    <button class="copy-btn" type="button" onclick="copyPrompt(this)">Copy prompt</button>
+                    <button class="small-btn" type="button" onclick="selectPrompt(this)">Select text</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="prompt-group">
+              <button class="prompt-group-btn" type="button" data-acc="group" aria-expanded="false">
+                Define a business-relevant thesis topic <span>›</span>
+              </button>
+              <div class="prompt-group-panel" style="display:none;">
+                <div class="prompt-card">
+                  <h4>Prompt: 3 thesis topics + value + deliverables</h4>
+                  <textarea class="prompt-box" readonly>
+You are a thesis topic generator for business-relevant Master’s theses in Germany.
+
+BACKGROUND (fill in):
+- Degree & specialization: [ ]
+- Target company/industry: [ ]
+- Known business challenges/pain points: [ ]
+- Preferred research methods (optional): [ ]
+
+TASKS:
+1) Propose 3 Master’s thesis topics aligned with company needs and my degree.
+2) For each topic: business value, expected outcomes/deliverables, why low-risk + practical.
+3) Suggest what data I may need and how to request it professionally.
+                  </textarea>
+                  <div class="copy-row">
+                    <button class="copy-btn" type="button" onclick="copyPrompt(this)">Copy prompt</button>
+                    <button class="small-btn" type="button" onclick="selectPrompt(this)">Select text</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="prompt-group">
+              <button class="prompt-group-btn" type="button" data-acc="group" aria-expanded="false">
+                Problems in thesis + job combination <span>›</span>
+              </button>
+              <div class="prompt-group-panel" style="display:none;">
+                <div class="prompt-card">
+                  <h4>Prompt: Resolve conflicts + templates</h4>
+                  <textarea class="prompt-box" readonly>
+You are a practical advisor for managing Master’s thesis + job conflicts in Germany.
+
+BACKGROUND (fill in):
+- Current thesis/job situation: [ ]
+- University supervisor expectations: [ ]
+- Company supervisor expectations: [ ]
+- Current problem: [ ]
+
+TASKS:
+1) Advise how to handle when work output is expected but thesis is not recognized.
+2) Help resolve conflicts between university requirements and company expectations.
+3) Suggest strategies for low supervisor availability/support.
+4) Provide professional email templates/messages (university + company).
+5) List my responsibilities and what I should document weekly.
+                  </textarea>
+                  <div class="copy-row">
+                    <button class="copy-btn" type="button" onclick="copyPrompt(this)">Copy prompt</button>
+                    <button class="small-btn" type="button" onclick="selectPrompt(this)">Select text</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <p class="note">Source structure: Master thesis prompt book sections 4A–4D. [file:82]</p>
+          </div>
+        </div>
+
+        <!-- Full-time -->
+        <div class="prompt-cat">
+          <button class="prompt-cat-btn" type="button" data-acc="cat" aria-expanded="false">
+            <div>
+              <div class="prompt-cat-title">🚀 Full-Time Employment</div>
+              <div class="prompt-cat-sub">CV + Anschreiben • Interview • 30–60–90 days</div>
+            </div>
+            <div class="prompt-cat-arrow">›</div>
+          </button>
+
+          <div class="prompt-cat-panel" style="display:none;">
+            <div class="prompt-group">
+              <button class="prompt-group-btn" type="button" data-acc="group" aria-expanded="false">
+                Full-time applications (CV + Anschreiben) <span>›</span>
+              </button>
+              <div class="prompt-group-panel" style="display:none;">
+                <div class="prompt-card">
+                  <h4>Prompt: ATS CV + German-style cover letter</h4>
+                  <textarea class="prompt-box" readonly>
+You are a career assistant specialized in full-time jobs in Germany.
+
+BACKGROUND (fill in):
+- Degree & specialization: [ ]
+- Graduation month/year: [ ]
+- Relevant internships/work experience: [ ]
+- Target job roles/industries: [ ]
+- Key tools/systems/methodologies: [ ]
+- Languages: German [ ], English [ ]
+- Job description (paste): [ ]
+
+TASKS:
+1) Rewrite my CV to position me as job-ready for this role (ATS-friendly).
+2) Optimize for German recruiter screening (clear structure, strong keywords).
+3) Tailor CV language to German market expectations (professional, precise).
+4) Draft a German-style cover letter (Anschreiben). Ask whether to write German or English.
+5) Highlight strengths and address potential concerns proactively (visa, language, limited experience) without overexplaining.
+                  </textarea>
+                  <div class="copy-row">
+                    <button class="copy-btn" type="button" onclick="copyPrompt(this)">Copy prompt</button>
+                    <button class="small-btn" type="button" onclick="selectPrompt(this)">Select text</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="prompt-group">
+              <button class="prompt-group-btn" type="button" data-acc="group" aria-expanded="false">
+                Full-time interview preparation (Germany-focused) <span>›</span>
+              </button>
+              <div class="prompt-group-panel" style="display:none;">
+                <div class="prompt-card">
+                  <h4>Prompt: Mock interview + feedback after each answer</h4>
+                  <textarea class="prompt-box" readonly>
+You are an interview coach for Germany.
+
+BACKGROUND (fill in):
+- Target role + company type (startup/SME/corporate): [ ]
+- Years of experience: [ ]
+- Job description (paste): [ ]
+- My top 5 projects/achievements: [ ]
+
+TASKS:
+1) Conduct a mock interview for this role in Germany (ask one question at a time).
+2) After each of my answers, evaluate structure, clarity, and cultural fit.
+3) Explain what German interviewers value in strong answers.
+4) Suggest improved versions of weak answers.
+5) Highlight common interview mistakes graduates make in Germany.
+Start by asking Question 1.
+                  </textarea>
+                  <div class="copy-row">
+                    <button class="copy-btn" type="button" onclick="copyPrompt(this)">Copy prompt</button>
+                    <button class="small-btn" type="button" onclick="selectPrompt(this)">Select text</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="prompt-group">
+              <button class="prompt-group-btn" type="button" data-acc="group" aria-expanded="false">
+                Onboarding + first 90 days plan <span>›</span>
+              </button>
+              <div class="prompt-group-panel" style="display:none;">
+                <div class="prompt-card">
+                  <h4>Prompt: 30–60–90 day plan</h4>
+                  <textarea class="prompt-box" readonly>
+You are a workplace success coach for new hires in Germany.
+
+BACKGROUND (fill in):
+- Job role + department: [ ]
+- Company type: [ ]
+- Working language + team structure: [ ]
+- Key responsibilities: [ ]
+
+TASKS:
+1) Create a detailed 30–60–90 day onboarding plan.
+2) Explain performance expectations for new hires in Germany.
+3) Outline communication norms and feedback culture.
+4) Highlight cultural dos and don’ts (meetings, documentation, ownership).
+5) Help me build credibility and trust in the first 3 months.
+                  </textarea>
+                  <div class="copy-row">
+                    <button class="copy-btn" type="button" onclick="copyPrompt(this)">Copy prompt</button>
+                    <button class="small-btn" type="button" onclick="selectPrompt(this)">Select text</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <p class="note">Source structure: Full-time prompt book sections 3A–3C. [file:81]</p>
+          </div>
+        </div>
+
+      </div>
+
+      <p class="note">
+        If you want, I can also add a “Download PDF prompt books” section and link your PDFs (must be uploaded to your repo).
+      </p>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h4>Hochschule Wismar</h4>
+          <p>University of Applied Sciences<br />Technology, Business and Design</p>
+          <p>Philipp-Müller-Straße 14<br />23966 Wismar, Germany</p>
+        </div>
+
+        <div class="footer-section">
+          <h4>Contact</h4>
+          <p>Phone: +49 3841 753-0</p>
+          <p>Email: <a href="mailto:postmaster@hs-wismar.de">postmaster@hs-wismar.de</a></p>
+          <p><a href="https://www.hs-wismar.de" target="_blank" rel="noopener">www.hs-wismar.de</a></p>
+        </div>
+
+        <div class="footer-section">
+          <h4>About This Portal</h4>
+          <p>This is a student project created to support international students in their job search using AI-powered tools and resources.</p>
+          <p><strong>Disclaimer:</strong> Content is informational and AI-supported. Always verify information for your specific situation.</p>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 Hochschule Wismar. Student Project - International Management Program.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+
+  <script>
+    // ============================
+    // Accordion: Categories + Groups
+    // ============================
+    (function initPromptsAccordions(){
+      const cats = document.querySelectorAll('[data-acc="cat"]');
+      cats.forEach((btn) => {
+        const panel = btn.parentElement.querySelector(".prompt-cat-panel");
+        if (!panel) return;
+
+        btn.addEventListener("click", () => {
+          const open = btn.getAttribute("aria-expanded") === "true";
+
+          // close all categories
+          cats.forEach((b) => {
+            b.setAttribute("aria-expanded", "false");
+            const p = b.parentElement.querySelector(".prompt-cat-panel");
+            if (p) p.style.display = "none";
+          });
+
+          // open current if closed
+          if (!open) {
+            btn.setAttribute("aria-expanded", "true");
+            panel.style.display = "block";
+          }
+        });
+      });
+
+      // groups inside each category
+      const groupBtns = document.querySelectorAll('[data-acc="group"]');
+      groupBtns.forEach((btn) => {
+        const panel = btn.parentElement.querySelector(".prompt-group-panel");
+        if (!panel) return;
+
+        btn.addEventListener("click", () => {
+          const open = btn.getAttribute("aria-expanded") === "true";
+
+          // close all groups inside the same category panel
+          const catPanel = btn.closest(".prompt-cat-panel");
+          if (catPanel) {
+            catPanel.querySelectorAll('[data-acc="group"]').forEach((b) => {
+              b.setAttribute("aria-expanded", "false");
+              const p = b.parentElement.querySelector(".prompt-group-panel");
+              if (p) p.style.display = "none";
+            });
+          }
+
+          if (!open) {
+            btn.setAttribute("aria-expanded", "true");
+            panel.style.display = "block";
+          }
+        });
+      });
+    })();
+
+    // ============================
+    // Copy / Select helpers
+    // ============================
+    function getTextareaFromButton(btn){
+      const card = btn.closest(".prompt-card");
+      if (!card) return null;
+      return card.querySelector(".prompt-box");
+    }
+
+    function selectPrompt(btn){
+      const ta = getTextareaFromButton(btn);
+      if (!ta) return;
+      ta.focus();
+      ta.select();
+    }
+
+    async function copyPrompt(btn){
+      const ta = getTextareaFromButton(btn);
+      if (!ta) return;
+      try{
+        await navigator.clipboard.writeText(ta.value);
+        btn.textContent = "Copied!";
+        setTimeout(() => btn.textContent = "Copy prompt", 1200);
+      }catch(e){
+        // fallback
+        ta.focus();
+        ta.select();
+        document.execCommand("copy");
+        btn.textContent = "Copied!";
+        setTimeout(() => btn.textContent = "Copy prompt", 1200);
+      }
+    }
+  </script>
+</body>
+</html>
 
