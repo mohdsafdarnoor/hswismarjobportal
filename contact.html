@@ -4,225 +4,279 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Contact | Hochschule Wismar</title>
-  <meta name="description" content="Contact the project owner. Send messages via the official contact form." />
+  <meta name="description" content="Contact the HS Wismar international careers portal team for support, feedback, or partnership requests." />
   <link rel="stylesheet" href="css/style.css" />
 
   <style>
-    .contact-wrap{padding:18px 0 44px;}
-    .box{
+    /* ===== Header green (same across pages) ===== */
+    .header{
+      background: rgba(51,153,51,.96);
+      border-bottom: 1px solid rgba(0,0,0,.10);
+    }
+    .nav-link{ color:#fff; }
+    .nav-link:hover{ background: rgba(255,255,255,.14); color:#fff; }
+    .nav-link.active{ background:#fff; color:#2f3229; }
+    .mobile-menu-btn{ background: rgba(255,255,255,.14); border-color: rgba(255,255,255,.35); }
+    .mobile-menu-btn span{ background:#fff; }
+    .mobile-menu{ background:#fff; }
+
+    /* ===== Page layout ===== */
+    .contact-wrap{ padding: 18px 0 44px; }
+    .card{
       background:#fff;
-      border:1px solid rgba(0,0,0,.08);
+      border:1px solid rgba(0,0,0,.10);
       border-radius:14px;
-      padding:20px;
+      padding:16px;
       box-shadow:0 6px 18px rgba(0,0,0,.08);
       margin-bottom:14px;
     }
-    .box h2{margin:0 0 10px;color:#2f3229;}
-    .box p{margin:0 0 10px;color:#5f6368;}
-    .box p:last-child{margin-bottom:0}
-
-    .link{
-      color:#339933;
-      font-weight:900;
-      text-decoration:underline;
-      text-underline-offset:3px;
-    }
-
-    .notice{
+    .intro{
       background: linear-gradient(135deg, rgba(51,153,51,.12), rgba(47,50,41,.04));
-      border:1px solid rgba(0,0,0,.08);
-      border-left:6px solid #339933;
+      border-left: 6px solid #339933;
     }
 
-    .two{
+    .grid{
       display:grid;
       grid-template-columns: 1.2fr .8fr;
       gap:14px;
       align-items:start;
     }
-    @media (max-width: 900px){
-      .two{grid-template-columns:1fr;}
+    @media (max-width: 950px){
+      .grid{ grid-template-columns:1fr; }
     }
 
-    .small{font-size:.95rem;color:#5f6368;}
+    label{
+      display:block;
+      font-weight:800;
+      color:#2f3229;
+      margin: 10px 0 6px;
+    }
+    input, textarea, select{
+      width:100%;
+      padding:12px 12px;
+      border-radius:12px;
+      border:1px solid rgba(0,0,0,.14);
+      outline:none;
+      font: inherit;
+      background:#fff;
+    }
+    input:focus, textarea:focus, select:focus{
+      border-color: rgba(51,153,51,.55);
+      box-shadow: 0 0 0 4px rgba(51,153,51,.14);
+    }
+    textarea{ min-height: 140px; resize: vertical; }
+
+    .btn{
+      display:inline-block;
+      width:100%;
+      margin-top: 12px;
+      padding: 12px 14px;
+      border-radius: 12px;
+      border: 1px solid rgba(0,0,0,.10);
+      background:#339933;
+      color:#fff;
+      font-weight: 900;
+      cursor:pointer;
+      transition: transform .12s ease, box-shadow .12s ease;
+    }
+    .btn:hover{
+      transform: translateY(-1px);
+      box-shadow: 0 10px 22px rgba(51,153,51,.22);
+    }
+    .muted{ color:#5f6368; line-height:1.55; }
+    .small{ font-size: .95rem; }
+
+    .info-row{
+      display:flex;
+      justify-content:space-between;
+      gap:10px;
+      padding:10px 0;
+      border-bottom:1px solid rgba(0,0,0,.08);
+    }
+    .info-row:last-child{ border-bottom:none; }
+
+    .tag{
+      display:inline-block;
+      font-size:.85rem;
+      font-weight:800;
+      padding:6px 10px;
+      border-radius:999px;
+      background: rgba(51,153,51,.12);
+      color:#2f3229;
+      border:1px solid rgba(51,153,51,.22);
+      margin-top:8px;
+    }
+    .success, .error{
+      display:none;
+      margin-top:10px;
+      padding:10px 12px;
+      border-radius:12px;
+      font-weight:800;
+    }
+    .success{
+      background: rgba(51,153,51,.12);
+      border: 1px solid rgba(51,153,51,.25);
+      color:#2f3229;
+    }
+    .error{
+      background: rgba(255,93,2,.10);
+      border: 1px solid rgba(255,93,2,.25);
+      color:#2f3229;
+    }
   </style>
 </head>
 
 <body>
-  <!-- Header -->
+
+  <!-- ===== Header / Nav (keep your existing header markup if already consistent) ===== -->
   <header class="header">
-    <div class="container">
-      <div class="header-content">
-        <div class="logo">
-          <a href="index.html">
-            <img src="assets/hsw-logo.png" alt="Hochschule Wismar" />
-          </a>
-        </div>
+    <div class="container nav-container">
+      <a href="index.html" class="logo">Hochschule Wismar</a>
 
-        <nav class="nav-desktop">
-          <a href="index.html" class="nav-link">Home</a>
-          <a href="tools.html" class="nav-link">AI Tools</a>
-          <a href="prompts.html" class="nav-link">AI Prompts</a>
-          <a href="guidelines.html" class="nav-link">Guidelines</a>
-          <a href="faqs.html" class="nav-link">FAQs</a>
-          <a href="contact.html" class="nav-link active">Contact</a>
-        </nav>
+      <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
 
-        <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Toggle menu">
-          <span></span><span></span><span></span>
-        </button>
-      </div>
+      <nav class="nav" id="nav">
+        <a class="nav-link" href="index.html">Home</a>
+        <a class="nav-link" href="faqs.html">FAQs</a>
+        <a class="nav-link active" href="contact.html">Contact</a>
+      </nav>
+    </div>
+
+    <div class="mobile-menu" id="mobileMenu">
+      <a class="nav-link" href="index.html">Home</a>
+      <a class="nav-link" href="faqs.html">FAQs</a>
+      <a class="nav-link active" href="contact.html">Contact</a>
     </div>
   </header>
 
-  <!-- Mobile Menu -->
-  <div class="mobile-menu" id="mobileMenu">
-    <nav class="mobile-nav">
-      <a href="index.html" class="mobile-nav-link">Home</a>
-      <a href="tools.html" class="mobile-nav-link">AI Tools</a>
-      <a href="prompts.html" class="mobile-nav-link">AI Prompts</a>
-      <a href="guidelines.html" class="mobile-nav-link">Guidelines</a>
-      <a href="faqs.html" class="mobile-nav-link">FAQs</a>
-      <a href="contact.html" class="mobile-nav-link active">Contact</a>
-    </nav>
-  </div>
+  <!-- ===== Main ===== -->
+  <main class="container contact-wrap">
+    <section class="card intro">
+      <h1 style="margin:0 0 6px;color:#2f3229;">Contact</h1>
+      <p class="muted" style="margin:0;">
+        Use this form to ask questions, report a bug, or suggest improvements.
+        If you’re proposing a partnership, choose “Partnership” in the subject.
+      </p>
+      <span class="tag">Reply time: usually 1–3 working days</span>
+    </section>
 
-  <!-- Page Header -->
-  <section class="page-header">
-    <div class="container">
-      <h1 class="page-title">Contact</h1>
-      <p class="page-description">Use this form for project feedback, corrections, or requests.</p>
-    </div>
-  </section>
+    <section class="grid">
+      <!-- Form -->
+      <section class="card">
+        <h2 style="margin:0 0 8px;color:#2f3229;">Send a message</h2>
+        <p class="muted small" style="margin:0 0 10px;">
+          This is a demo form (client-side). Later we can connect it to EmailJS / Formspree / a backend API.
+        </p>
 
-  <main class="contact-wrap">
-    <div class="container">
+        <form id="contactForm" novalidate>
+          <label for="fullName">Full name</label>
+          <input id="fullName" name="fullName" type="text" placeholder="Your name" required />
 
-      <div class="box notice">
-        <h2>Before you send</h2>
-        <p>Please include: your study program, what you are applying for (internship/Werkstudent/thesis/full-time), and a link to the job description (if available).</p>
-      </div>
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" placeholder="you@example.com" required />
 
-      <div class="two">
-        <!-- Contact form -->
-        <div class="contact-form-container">
-          <h2>Send a message</h2>
+          <label for="subject">Subject</label>
+          <select id="subject" name="subject" required>
+            <option value="">Select a topic</option>
+            <option>General question</option>
+            <option>Portal bug / issue</option>
+            <option>Feedback / suggestion</option>
+            <option>Partnership</option>
+          </select>
 
-          <!-- IMPORTANT:
-               1) Replace action URL with your Formspree endpoint.
-               2) Ensure _next points to a real page on your site.
-          -->
-          <form
-            action="https://formspree.io/f/XXXXXXXX"
-            method="POST"
-          >
-            <!-- Redirect after submit -->
-            <input type="hidden" name="_next" value="thankyou.html" />
+          <label for="message">Message</label>
+          <textarea id="message" name="message" placeholder="Write your message..." required></textarea>
 
-            <!-- Optional: subject -->
-            <input type="hidden" name="_subject" value="New message from AI Job Search Support Portal" />
+          <button class="btn" type="submit">Send message</button>
 
-            <!-- Honeypot spam protection -->
-            <input type="text" name="_gotcha" style="display:none" />
+          <div class="success" id="successBox">Message prepared. (Demo) We will connect this to email sending next.</div>
+          <div class="error" id="errorBox">Please fill all required fields correctly.</div>
+        </form>
+      </section>
 
-            <div class="form-row">
-              <div class="form-group">
-                <label class="form-label" for="name">Full name</label>
-                <input class="form-input" id="name" name="name" type="text" placeholder="Your name" required />
-              </div>
+      <!-- Info -->
+      <aside class="card">
+        <h2 style="margin:0 0 8px;color:#2f3229;">Official contact</h2>
+        <p class="muted small" style="margin:0 0 12px;">
+          University contact details are shown here in the official format used in HS Wismar materials.
+        </p>
 
-              <div class="form-group">
-                <label class="form-label" for="email">Email</label>
-                <input class="form-input" id="email" name="email" type="email" placeholder="your@email.com" required />
-              </div>
-            </div>
-
-            <div class="form-group">
-              <label class="form-label" for="topic">Topic</label>
-              <select class="form-input" id="topic" name="topic" required>
-                <option value="" selected disabled>Select a topic</option>
-                <option>Website feedback / bug</option>
-                <option>AI Tools suggestion</option>
-                <option>AI Prompt request</option>
-                <option>Thesis collaboration guidance</option>
-                <option>Other</option>
-              </select>
-            </div>
-
-            <div class="form-group">
-              <label class="form-label" for="message">Message</label>
-              <textarea class="form-textarea" id="message" name="message" placeholder="Write your message..." required></textarea>
-            </div>
-
-            <button class="form-button" type="submit">Send message</button>
-
-            <p class="form-note">
-              This form is powered by Formspree (no backend required on GitHub Pages). You will receive the message by email after you connect your endpoint. [web:397][web:404]
-            </p>
-          </form>
+        <div class="info-row">
+          <strong>University</strong>
+          <span class="muted">Hochschule Wismar</span>
         </div>
 
-        <!-- Right info -->
-        <div>
-          <div class="box">
-            <h2>Official HS Wismar contacts</h2>
-            <p class="small">
-              If you need official university support, use the official HS Wismar contact pages.
-            </p>
-            <p class="small">
-              International Office: <a class="link" href="https://www.hs-wismar.de/international/beratung/internationales-buero/" target="_blank" rel="noopener">Internationales Büro</a>. [web:385]
-            </p>
-            <p class="small">
-              General contact: <a class="link" href="https://www.hs-wismar.de/en/kontakt/" target="_blank" rel="noopener">hs-wismar.de/en/kontakt</a>. [web:391]
-            </p>
-          </div>
-
-          <div class="box">
-            <h2>Project owner</h2>
-            <p class="small">
-              Replace this section with your official profile/contact link when you’re ready (LinkedIn, HS Wismar profile, etc.).
-            </p>
-            <p class="small">
-              Example: <a class="link" href="https://www.hs-wismar.de" target="_blank" rel="noopener">Your official link here</a>
-            </p>
-          </div>
+        <div class="info-row">
+          <strong>Post address</strong>
+          <span class="muted">Postfach 1210, 23952 Wismar</span>
         </div>
-      </div>
 
-    </div>
+        <div class="info-row">
+          <strong>Visitor address</strong>
+          <span class="muted">Philipp-Müller-Straße 14, 23966 Wismar</span>
+        </div>
+
+        <div class="info-row">
+          <strong>Phone</strong>
+          <span class="muted">+49 3841 753-0</span>
+        </div>
+
+        <div class="info-row">
+          <strong>Fax</strong>
+          <span class="muted">+49 3841 753-383</span>
+        </div>
+
+        <div class="info-row">
+          <strong>Email</strong>
+          <span class="muted">postmaster@hs-wismar.de</span>
+        </div>
+
+        <div class="info-row">
+          <strong>Website</strong>
+          <span class="muted">www.hs-wismar.de</span>
+        </div>
+      </aside>
+    </section>
   </main>
 
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-content">
-        <div class="footer-section">
-          <h4>Hochschule Wismar</h4>
-          <p>University of Applied Sciences<br />Technology, Business and Design</p>
-          <p>Philipp-Müller-Straße 14<br />23966 Wismar, Germany</p>
-        </div>
+  <script>
+    // Simple demo validation (no backend yet)
+    const form = document.getElementById('contactForm');
+    const successBox = document.getElementById('successBox');
+    const errorBox = document.getElementById('errorBox');
 
-        <div class="footer-section">
-          <h4>Contact</h4>
-          <p>Phone: +49 3841 753-0</p>
-          <p>Email: <a href="mailto:postmaster@hs-wismar.de">postmaster@hs-wismar.de</a></p>
-          <p><a href="https://www.hs-wismar.de" target="_blank" rel="noopener">www.hs-wismar.de</a></p>
-        </div>
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      successBox.style.display = 'none';
+      errorBox.style.display = 'none';
 
-        <div class="footer-section">
-          <h4>About This Portal</h4>
-          <p>This is a student project created to support international students in their job search using AI-powered tools and resources.</p>
-          <p><strong>Disclaimer:</strong> Content is informational and AI-supported. Always verify information for your specific situation.</p>
-        </div>
-      </div>
+      const fullName = document.getElementById('fullName').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const subject = document.getElementById('subject').value.trim();
+      const message = document.getElementById('message').value.trim();
 
-      <div class="footer-bottom">
-        <p>&copy; 2026 Hochschule Wismar. Student Project - International Management Program.</p>
-      </div>
-    </div>
-  </footer>
+      const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 
-  <script src="js/main.js"></script>
+      if (!fullName || !emailOk || !subject || !message) {
+        errorBox.style.display = 'block';
+        return;
+      }
+
+      successBox.style.display = 'block';
+      form.reset();
+    });
+
+    // Optional: your existing mobile menu JS can live in main.js instead
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    if (mobileMenuBtn && mobileMenu) {
+      mobileMenuBtn.addEventListener('click', () => {
+        mobileMenu.classList.toggle('open');
+      });
+    }
+  </script>
+
 </body>
 </html>
-
