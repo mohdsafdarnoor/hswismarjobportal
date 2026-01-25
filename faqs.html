@@ -1,1 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FAQs | Hochschule Wismar</title>
+  <meta name="description" content="Frequently asked questions for international students using the AI Job Search Support Portal at Hochschule Wismar." />
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    /* FAQ-only styling (kept here so this file looks good even if you forget to add more CSS later) */
+    .faq-wrap{
+      background:#fff;
+      border:1px solid rgba(0,0,0,.08);
+      border-radius:14px;
+      padding:22px;
+      box-shadow:0 6px 18px rgba(0,0,0,.08);
+      margin:18px 0 34px;
+    }
+    .faq{
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+      margin-top:14px;
+    }
+    .faq-item{
+      border:1px solid rgba(0,0,0,.10);
+      border-radius:14px;
+      overflow:hidden;
+      background:#fff;
+    }
+    .faq-q{
+      width:100%;
+      text-align:left;
+      border:none;
+      background:rgba(47,50,41,.03);
+      padding:14px 14px;
+      font-weight:900;
+      cursor:pointer;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      color:#2f3229;
+    }
+    .faq-q:focus{
+      outline: none;
+      box-shadow:0 0 0 4px rgba(51,153,51,.14);
+    }
+    .faq-q .chev{
+      font-weight:900;
+      color:#339933;
+      transition: transform .15s ease;
+    }
+    .faq-q[aria-expanded="true"] .chev{ transform: rotate(90deg); }
+    .faq-a{
+      padding:14px 14px 16px;
+      color:#5f6368;
+      line-height:1.7;
+    }
+    .faq-a p{margin:0 0 10px}
+    .faq-a p:last-child{margin-bottom:0}
+
+    .about-project{
+      background: linear-gradient(135deg, rgba(51,153,51,.12), rgba(47,50,41,.04));
+      border:1px solid rgba(0,0,0,.08);
+      border-radius:14px;
+      padding:18px;
+      box-shadow:0 6px 18px rgba(0,0,0,.08);
+      margin-bottom:34px;
+    }
+    .about-project h2{margin:0 0 10px;color:#2f3229}
+    .about-project p{margin:0;color:#5f6368}
+
+    .mini-note{
+      margin-top:10px;
+      font-size:.95rem;
+      color:#5f6368;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="container">
+      <div class="header-content">
+        <div class="logo">
+          <a href="index.html">
+            <img src="assets/hsw-logo.png" alt="Hochschule Wismar" />
+          </a>
+        </div>
+
+        <nav class="nav-desktop">
+          <a href="index.html" class="nav-link">Home</a>
+          <a href="tools.html" class="nav-link">AI Tools</a>
+          <a href="prompts.html" class="nav-link">AI Prompts</a>
+          <a href="guidelines.html" class="nav-link">Guidelines</a>
+          <a href="faqs.html" class="nav-link active">FAQs</a>
+          <a href="contact.html" class="nav-link">Contact</a>
+        </nav>
+
+        <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Toggle menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <nav class="mobile-nav">
+      <a href="index.html" class="mobile-nav-link">Home</a>
+      <a href="tools.html" class="mobile-nav-link">AI Tools</a>
+      <a href="prompts.html" class="mobile-nav-link">AI Prompts</a>
+      <a href="guidelines.html" class="mobile-nav-link">Guidelines</a>
+      <a href="faqs.html" class="mobile-nav-link active">FAQs</a>
+      <a href="contact.html" class="mobile-nav-link">Contact</a>
+    </nav>
+  </div>
+
+  <!-- Page Header -->
+  <section class="page-header">
+    <div class="container">
+      <h1 class="page-title">Frequently Asked Questions (FAQs)</h1>
+      <p class="page-description">Quick answers for international students using the AI Job Search Support Portal.</p>
+    </div>
+  </section>
+
+  <main class="guidelines-section">
+    <div class="container">
+
+      <div class="about-project">
+        <h2>About this portal</h2>
+        <p>This portal is a student project created to support international students at Hochschule Wismar with AI tools, prompts, and job search guidance.</p>
+        <p class="mini-note">Reminder: Always personalize AI output and verify facts before applying.</p>
+      </div>
+
+      <div class="faq-wrap">
+        <h2 class="section-title">General questions</h2>
+
+        <!-- FAQ accordion root -->
+        <div class="faq" data-faq>
+
+          <div class="faq-item">
+            <button class="faq-q" type="button">
+              Is it okay to use AI for my CV and cover letter?
+              <span class="chev">›</span>
+            </button>
+            <div class="faq-a">
+              <p>Yes—use AI to draft and improve structure, grammar, and clarity.</p>
+              <p>But you must personalize everything with your real experience and ensure the final text matches the job and company.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" type="button">
+              Why do some companies reject “AI-sounding” applications?
+              <span class="chev">›</span>
+            </button>
+            <div class="faq-a">
+              <p>Generic phrases, repeated templates, and missing real examples can look automated.</p>
+              <p>Add measurable outcomes, specific courses/projects, and company-specific motivation to make it authentic.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" type="button">
+              Where should I search for Werkstudent jobs and internships?
+              <span class="chev">›</span>
+            </button>
+            <div class="faq-a">
+              <p>Start with company career pages and well-known German job platforms, then use LinkedIn/XING for networking.</p>
+              <p>The Tools page lists platforms by category so you can avoid wasting time.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" type="button">
+              Can I apply in English or do I need German?
+              <span class="chev">›</span>
+            </button>
+            <div class="faq-a">
+              <p>It depends on the role and company. Many international/tech roles accept English, but German increases options.</p>
+              <p>If you apply in English, still follow German-style application expectations (clear structure, formal tone).</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" type="button">
+              I clicked FAQs and got a 404. Why?
+              <span class="chev">›</span>
+            </button>
+            <div class="faq-a">
+              <p>Most common reasons: the file is not uploaded, the filename case doesn’t match (e.g., FAQs.html vs faqs.html), or it’s in a different folder.</p>
+              <p>Create a file named exactly <strong>faqs.html</strong> in the repo root, then wait 1–3 minutes for GitHub Pages to rebuild.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h4>Hochschule Wismar</h4>
+          <p>University of Applied Sciences<br>Technology, Business and Design</p>
+          <p>Philipp-Müller-Straße 14<br>23966 Wismar, Germany</p>
+        </div>
+
+        <div class="footer-section">
+          <h4>Contact</h4>
+          <p>Phone: +49 3841 753-0</p>
+          <p>Email: <a href="mailto:postmaster@hs-wismar.de">postmaster@hs-wismar.de</a></p>
+          <p><a href="https://www.hs-wismar.de" target="_blank" rel="noopener">www.hs-wismar.de</a></p>
+        </div>
+
+        <div class="footer-section">
+          <h4>About This Portal</h4>
+          <p>This is a student project created to support international students in their job search using AI-powered tools and resources.</p>
+          <p><strong>Disclaimer:</strong> Content is informational and AI-supported. Always verify information for your specific situation.</p>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 Hochschule Wismar. Student Project - International Management Program.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
 
