@@ -4,20 +4,17 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>AI Job Search Support | Hochschule Wismar</title>
-  <meta name="description" content="AI-powered tools and prompts to support international students at Hochschule Wismar in finding internships, part-time jobs, Master thesis opportunities, and full-time employment." />
+  <meta name="description" content="AI-supported tools and prompts to help students at Hochschule Wismar with part-time jobs, working student positions, internships, Master theses, and full-time roles." />
   <link rel="stylesheet" href="css/style.css" />
 </head>
 
 <body>
-  <header class="header">
+  <!-- Header: logo only, no portal title text -->
+  <header class="site-header">
     <div class="container">
       <div class="header-inner">
-        <a class="brand" href="index.html" aria-label="Hochschule Wismar home">
+        <a class="brand" href="index.html" aria-label="Hochschule Wismar">
           <img src="assets/hsw-logo.png" alt="Hochschule Wismar" />
-          <div class="brand-title">
-            <strong>AI Job Search Support</strong>
-            <span>Hochschule Wismar</span>
-          </div>
         </a>
 
         <nav class="nav" aria-label="Primary">
@@ -29,7 +26,8 @@
           <a href="contact.html">Contact</a>
         </nav>
 
-        <button class="mobile-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobilePanel">
+        <button class="mobile-toggle icon-btn" type="button"
+                aria-label="Open menu" aria-expanded="false" aria-controls="mobilePanel">
           <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
             <path fill="currentColor" d="M4 6h16v2H4V6zm0 5h16v2H4v-2zm0 5h16v2H4v-2z"></path>
           </svg>
@@ -49,53 +47,48 @@
     </div>
   </header>
 
-  <main>
+  <main class="page">
     <section class="hero">
-      <div class="container">
-        <div class="hero-wrap">
-          <div>
-            <h1 class="hero-title">AI Job Search Support Portal</h1>
-            <p class="hero-subtitle">For international students at Hochschule Wismar</p>
-            <p class="lead">
-              Use curated AI tools and structured prompts to move faster—from discovering roles to writing strong applications and preparing interviews for the German job market.
-            </p>
+      <div class="container hero-wrap">
+        <div>
+          <h1 class="page-title">AI Job Search Support</h1>
+          <p class="page-subtitle">Supporting students of Hochschule Wismar</p>
+          <p class="lead">
+            Use curated AI tools and structured prompts to explore part-time jobs, working student roles, internships, Master theses, and full-time positions in Germany.
+          </p>
 
-            <div class="hero-actions">
-              <a class="btn btn-primary" href="tools.html">Explore AI Tools</a>
-              <a class="btn btn-outline" href="prompts.html">Browse Prompts</a>
-              <a class="btn btn-outline" href="guidelines.html">Read Guidelines</a>
-            </div>
+          <div class="hero-actions">
+            <a class="btn" href="tools.html">Open AI Tools Directory</a>
+            <a class="btn secondary" href="prompts.html">Open AI Prompts Library</a>
+            <a class="btn secondary" href="guidelines.html">Open Guidelines</a>
           </div>
-
-          <aside class="card card-pad">
-            <span class="badge">Workflow</span>
-            <h2 style="margin:12px 0 8px; font-size:1.15rem;">Start with a clear goal</h2>
-            <p class="lead" style="font-size:.98rem;">
-              Pick a category → Choose a stage → Open a tool → Personalize output → Apply.
-            </p>
-            <div style="margin-top:12px; display:flex; gap:10px; flex-wrap:wrap;">
-              <span class="badge" style="border-color:rgba(255,93,2,.35); background:rgba(255,93,2,.08);">Be authentic</span>
-              <span class="badge" style="border-color:rgba(0,177,219,.35); background:rgba(0,177,219,.08);">Verify facts</span>
-              <span class="badge" style="border-color:rgba(51,153,51,.35); background:rgba(51,153,51,.08);">Keep it concise</span>
-            </div>
-          </aside>
         </div>
+
+        <aside class="card">
+          <span class="badge">Recommended workflow</span>
+          <h2 class="card-title">Target → Tailor → Prepare</h2>
+          <ul class="simple-list">
+            <li>Choose 1–2 target roles and employers.</li>
+            <li>Align your CV and cover letter with the job description.</li>
+            <li>Prepare role questions, STAR stories, and a short self‑introduction.</li>
+          </ul>
+        </aside>
       </div>
     </section>
 
     <section class="section">
       <div class="container">
-        <div class="card card-pad notice">
+        <div class="card notice">
           <div class="icon" aria-hidden="true">!</div>
           <div>
-            <h2>Important: Use AI responsibly</h2>
+            <h2 class="card-title">Use AI without losing credibility</h2>
             <p>
-              AI should support your job search—not replace your work. Many companies reject applications that look fully automated.
+              AI can support your language and structure, but applications that look fully automated are easy to recognise.
             </p>
             <ul>
-              <li>Use AI for structure, grammar, and brainstorming.</li>
-              <li>Add your real experience (projects, coursework, measurable results).</li>
-              <li>Verify every claim before submitting an application.</li>
+              <li>Write in your own voice and keep all details verifiable.</li>
+              <li>Prefer short sentences and concrete evidence over adjectives.</li>
+              <li>Never claim experience you cannot explain in an interview.</li>
             </ul>
           </div>
         </div>
@@ -113,21 +106,21 @@
               <span class="badge">Stages</span>
             </div>
             <h3>AI Tools Directory</h3>
-            <p>Find tools by job category and stage: orientation, application, interview, onboarding.</p>
+            <p>Choose Part‑time, Working Student, Internship, Master thesis, or Full‑time and open tools by stage (orientation, application, interview, onboarding).</p>
             <div class="actions">
-              <span class="btn btn-link btn-sm" aria-hidden="true">Open →</span>
+              <span class="btn-link">Open →</span>
             </div>
           </a>
 
           <a class="tool-card" href="prompts.html">
             <div class="tool-meta">
               <span class="badge">Prompts</span>
-              <span class="badge">Copy-ready</span>
+              <span class="badge">Copy‑ready</span>
             </div>
             <h3>AI Prompts Library</h3>
-            <p>Copy structured prompts for CVs, cover letters, interview prep, and follow-ups.</p>
+            <p>Open prompts for CV, cover letter, interview, and onboarding; then choose Draft, Improve, Tailor, or Check.</p>
             <div class="actions">
-              <span class="btn btn-link btn-sm" aria-hidden="true">Open →</span>
+              <span class="btn-link">Open →</span>
             </div>
           </a>
 
@@ -137,9 +130,9 @@
               <span class="badge">Practical</span>
             </div>
             <h3>Guidelines</h3>
-            <p>Polished guidance on timelines, expectations, and quality checks before applying.</p>
+            <p>One page with accordion sections for timelines, expectations, quality checks, and legal notes.</p>
             <div class="actions">
-              <span class="btn btn-link btn-sm" aria-hidden="true">Open →</span>
+              <span class="btn-link">Open →</span>
             </div>
           </a>
 
@@ -149,9 +142,9 @@
               <span class="badge">Support</span>
             </div>
             <h3>Contact</h3>
-            <p>Report broken links, suggest tools, or request prompt improvements.</p>
+            <p>Send questions, report issues, or suggest additional tools and prompts.</p>
             <div class="actions">
-              <span class="btn btn-link btn-sm" aria-hidden="true">Open →</span>
+              <span class="btn-link">Open →</span>
             </div>
           </a>
         </div>
@@ -159,32 +152,30 @@
     </section>
   </main>
 
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-inner">
-        <div>
-          <h4>Hochschule Wismar</h4>
-          <p>University of Applied Sciences<br />Technology, Business and Design</p>
-          <p>Philipp-Müller-Straße 14<br />23966 Wismar, Germany</p>
-        </div>
-
-        <div>
-          <h4>Contact</h4>
-          <p>Phone: +49 3841 753-0</p>
-          <p>Email: <a href="mailto:postmaster@hs-wismar.de">postmaster@hs-wismar.de</a></p>
-          <p><a href="https://www.hs-wismar.de" target="_blank" rel="noopener">www.hs-wismar.de</a></p>
-        </div>
-
-        <div>
-          <h4>About</h4>
-          <p>This portal is a student project to support international students with job search resources.</p>
-          <p>All content is informational. Verify details for your specific situation.</p>
-        </div>
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div>
+        <h4>Hochschule Wismar</h4>
+        <p>University of Applied Sciences<br>Technology, Business and Design</p>
+        <p>Philipp‑Müller‑Straße 14<br>23966 Wismar, Germany</p>
       </div>
 
-      <div class="footer-bottom">
-        <p>&copy; 2026 Hochschule Wismar</p>
+      <div>
+        <h4>Contact</h4>
+        <p>Phone: +49 3841 753‑0</p>
+        <p>Email: <a href="mailto:postmaster@hs-wismar.de">postmaster@hs-wismar.de</a></p>
+        <p><a href="https://www.hs-wismar.de" target="_blank" rel="noopener">www.hs-wismar.de</a></p>
       </div>
+
+      <div>
+        <h4>About this page</h4>
+        <p>This portal is a student project to support job search activities for students of Hochschule Wismar.</p>
+        <p>Please verify all legal and contractual details with official university sources.</p>
+      </div>
+    </div>
+
+    <div class="container footer-bottom">
+      <p>&copy; 2026 Hochschule Wismar</p>
     </div>
   </footer>
 
