@@ -1,108 +1,120 @@
-(() => {
-  const SELECTORS = {
-    mobileToggle: ".mobile-toggle",
-    mobilePanel: "#mobilePanel",
-  };
+// Central content store (keeps HTML clean)
 
-  function setActiveNavLinks() {
-    const path = (window.location.pathname || "").split("/").pop() || "index.html";
+window.HSW = window.HSW || {};
 
-    document.querySelectorAll('a[href]').forEach((a) => {
-      const href = a.getAttribute("href");
-      if (!href) return;
+window.HSW.toolsByCategory = {
+  "working-student": {
+    orientation: [
+      { name: "Perplexity", desc: "Research companies, roles, and requirements with sourced answers.", url: "https://www.perplexity.ai" },
+      { name: "Google Gemini", desc: "Build search strategy and role targeting plan.", url: "https://gemini.google.com" }
+    ],
+    application: [
+      { name: "ChatGPT", desc: "Draft and tailor CV bullets and cover letters from your real experience.", url: "https://chat.openai.com" },
+      { name: "LanguageTool", desc: "German/English grammar and spelling checks.", url: "https://languagetool.org" },
+      { name: "DeepL Write", desc: "Rewrite text for clearer German/English tone.", url: "https://www.deepl.com/write" }
+    ],
+    interview: [
+      { name: "ChatGPT", desc: "Mock interviews, STAR answers, and question bank.", url: "https://chat.openai.com" },
+      { name: "Perplexity", desc: "Company/product research before interviews.", url: "https://www.perplexity.ai" }
+    ],
+    onboarding: [
+      { name: "DeepL", desc: "Translate onboarding docs and emails.", url: "https://www.deepl.com" },
+      { name: "Notion", desc: "Track onboarding tasks and notes.", url: "https://www.notion.so" }
+    ]
+  },
 
-      const isExternal =
-        href.startsWith("http://") ||
-        href.startsWith("https://") ||
-        href.startsWith("mailto:") ||
-        href.startsWith("tel:");
+  "internship": {
+    orientation: [
+      { name: "Perplexity", desc: "Research internship portals and company context.", url: "https://www.perplexity.ai" },
+      { name: "Google Gemini", desc: "Plan targeting and search queries.", url: "https://gemini.google.com" }
+    ],
+    application: [
+      { name: "ChatGPT", desc: "Draft applications; personalise and verify every claim.", url: "https://chat.openai.com" },
+      { name: "DeepL Write", desc: "Improve German/English tone.", url: "https://www.deepl.com/write" },
+      { name: "LanguageTool", desc: "Final language checks.", url: "https://languagetool.org" }
+    ],
+    interview: [
+      { name: "ChatGPT", desc: "Internship motivation + mock interview practice.", url: "https://chat.openai.com" },
+      { name: "Google Gemini", desc: "Role-specific Q&A practice.", url: "https://gemini.google.com" }
+    ],
+    onboarding: [
+      { name: "DeepL", desc: "Translate internal communications.", url: "https://www.deepl.com" },
+      { name: "Notion", desc: "Onboarding checklist and learning notes.", url: "https://www.notion.so" }
+    ]
+  },
 
-      if (isExternal) return;
+  "master-thesis": {
+    orientation: [
+      { name: "Perplexity", desc: "Explore thesis topics and company problems to solve.", url: "https://www.perplexity.ai" },
+      { name: "Google Scholar", desc: "Find papers and citations.", url: "https://scholar.google.com" }
+    ],
+    application: [
+      { name: "ChatGPT", desc: "Draft outreach emails and proposal outlines (customise).", url: "https://chat.openai.com" },
+      { name: "DeepL Write", desc: "Refine tone for German/English outreach.", url: "https://www.deepl.com/write" }
+    ],
+    interview: [
+      { name: "ChatGPT", desc: "Prepare for thesis discussions and technical questions.", url: "https://chat.openai.com" },
+      { name: "Perplexity", desc: "Company/domain research for meetings.", url: "https://www.perplexity.ai" }
+    ],
+    onboarding: [
+      { name: "Zotero", desc: "Reference manager for papers and thesis writing.", url: "https://www.zotero.org" },
+      { name: "Notion", desc: "Plan milestones and research logs.", url: "https://www.notion.so" }
+    ]
+  },
 
-      const normalized = href.split("#")[0].split("?")[0];
-      if (!normalized || normalized === "/") return;
-
-      const current =
-        normalized === path ||
-        (path === "" && normalized === "index.html") ||
-        (path === "index.html" && normalized === "./index.html");
-
-      if (current) a.setAttribute("aria-current", "page");
-      else if (a.getAttribute("aria-current") === "page") a.removeAttribute("aria-current");
-    });
+  "full-time-job": {
+    orientation: [
+      { name: "Perplexity", desc: "Research roles, companies, and requirements with sources.", url: "https://www.perplexity.ai" },
+      { name: "Google Gemini", desc: "Plan targeting and skills gap analysis.", url: "https://gemini.google.com" }
+    ],
+    application: [
+      { name: "ChatGPT", desc: "Draft CV/cover letter; keep it factual and specific.", url: "https://chat.openai.com" },
+      { name: "LanguageTool", desc: "German/English quality checks.", url: "https://languagetool.org" },
+      { name: "Grammarly", desc: "Clarity and tone for English applications.", url: "https://www.grammarly.com" }
+    ],
+    interview: [
+      { name: "ChatGPT", desc: "Mock interviews, negotiation scripts, follow-ups.", url: "https://chat.openai.com" },
+      { name: "Perplexity", desc: "Fast company research before interviews.", url: "https://www.perplexity.ai" }
+    ],
+    onboarding: [
+      { name: "DeepL", desc: "Translate emails and documents.", url: "https://www.deepl.com" },
+      { name: "Notion", desc: "Organise onboarding tasks and notes.", url: "https://www.notion.so" }
+    ]
   }
+};
 
-  function initMobileMenu() {
-    const toggleBtn = document.querySelector(SELECTORS.mobileToggle);
-    const panel = document.querySelector(SELECTORS.mobilePanel);
-    if (!toggleBtn || !panel) return;
+// Prompt templates (short + structured; you can expand later)
+window.HSW.prompts = {
+  categories: ["cv","cover-letter","interview","onboarding"],
+  actions: ["draft","improve","tailor","check"],
 
-    const isOpen = () => panel.classList.contains("open");
+  templates: {
+    cv: {
+      draft: `Write 5–8 ATS-friendly CV bullet points for this experience.\n\nRole type: {{CATEGORY}}\nTarget job title: {{JOB_TITLE}}\nMy experience (facts only):\n{{EXPERIENCE}}\n\nRules:\n- Use action verbs, add measurable outcomes (time, scope, users, accuracy).\n- Keep each bullet 1 line.\n- Do not invent skills or results.`,
+      improve: `Improve these CV bullets for clarity and ATS keywords. Keep all facts unchanged.\n\nTarget job title: {{JOB_TITLE}}\nJob description keywords:\n{{JD_KEYWORDS}}\n\nBullets:\n{{TEXT}}`,
+      tailor: `Tailor my CV bullets to this job description. Keep facts unchanged.\n\nJob ad:\n{{JOB_AD}}\n\nMy bullets:\n{{TEXT}}`,
+      check: `Check these CV bullets for truthfulness risks, vague claims, and missing metrics. Suggest edits without inventing facts.\n\nBullets:\n{{TEXT}}`
+    },
 
-    const open = () => {
-      panel.classList.add("open");
-      panel.setAttribute("aria-hidden", "false");
-      toggleBtn.setAttribute("aria-expanded", "true");
-    };
+    "cover-letter": {
+      draft: `Draft a short cover letter (180–220 words) for Germany.\n\nRole type: {{CATEGORY}}\nCompany: {{COMPANY}}\nJob title: {{JOB_TITLE}}\nMy facts:\n{{FACTS}}\n\nRules:\n- Simple, direct language.\n- No exaggerated adjectives.\n- Mention 2–3 relevant proof points.`,
+      improve: `Improve this cover letter for clarity and consistency. Keep facts unchanged.\n\nLetter:\n{{TEXT}}`,
+      tailor: `Tailor this cover letter to the job ad. Keep facts unchanged.\n\nJob ad:\n{{JOB_AD}}\n\nLetter:\n{{TEXT}}`,
+      check: `Check the letter for risky claims, inconsistencies, and unnatural AI tone. Suggest safer wording.\n\nLetter:\n{{TEXT}}`
+    },
 
-    const close = () => {
-      panel.classList.remove("open");
-      panel.setAttribute("aria-hidden", "true");
-      toggleBtn.setAttribute("aria-expanded", "false");
-    };
+    interview: {
+      draft: `Create an interview prep pack.\n\nRole type: {{CATEGORY}}\nJob title: {{JOB_TITLE}}\nCompany: {{COMPANY}}\nMy background (facts):\n{{FACTS}}\n\nOutput:\n- 10 likely questions\n- 6 STAR story outlines (context→action→result)\n- 6 questions to ask interviewer`,
+      improve: `Improve these interview answers for structure (context→action→result) and clarity. Keep facts unchanged.\n\nAnswers:\n{{TEXT}}`,
+      tailor: `Tailor my interview prep to the company and job ad.\n\nJob ad:\n{{JOB_AD}}\nCompany notes:\n{{COMPANY_NOTES}}\n\nMy answers:\n{{TEXT}}`,
+      check: `Check these interview answers for unverifiable claims and filler. Suggest improvements.\n\nAnswers:\n{{TEXT}}`
+    },
 
-    toggleBtn.setAttribute("aria-expanded", "false");
-    panel.setAttribute("aria-hidden", "true");
-
-    toggleBtn.addEventListener("click", (e) => {
-      e.preventDefault();
-      isOpen() ? close() : open();
-    });
-
-    panel.addEventListener("click", (e) => {
-      const link = e.target.closest("a");
-      if (link) close();
-    });
-
-    document.addEventListener("click", (e) => {
-      const clickedToggle = toggleBtn.contains(e.target);
-      const clickedPanel = panel.contains(e.target);
-      if (!clickedToggle && !clickedPanel) close();
-    });
-
-    document.addEventListener("keydown", (e) => {
-      if (e.key === "Escape") close();
-    });
-
-    window.addEventListener("resize", () => {
-      if (window.innerWidth > 860) close();
-    });
+    onboarding: {
+      draft: `Create a 14-day onboarding plan for this role in Germany.\n\nRole type: {{CATEGORY}}\nJob title: {{JOB_TITLE}}\nTeam context:\n{{CONTEXT}}\n\nOutput:\n- Days 1–3, 4–7, 8–14 goals\n- Questions to ask\n- Documents to request`,
+      improve: `Improve this onboarding email/message for clarity and professionalism.\n\nText:\n{{TEXT}}`,
+      tailor: `Tailor this onboarding message to the company tone.\n\nCompany tone notes:\n{{COMPANY_TONE}}\nText:\n{{TEXT}}`,
+      check: `Check this message for grammar, tone, and clarity. Suggest a final version.\n\nText:\n{{TEXT}}`
+    }
   }
-
-  function initExternalLinks() {
-    document.querySelectorAll('a[href^="http://"], a[href^="https://"]').forEach((a) => {
-      const url = a.getAttribute("href");
-      if (!url) return;
-
-      const isSameHost = (() => {
-        try {
-          const u = new URL(url, window.location.href);
-          return u.host === window.location.host;
-        } catch {
-          return false;
-        }
-      })();
-
-      if (!isSameHost) {
-        a.setAttribute("target", "_blank");
-        a.setAttribute("rel", "noopener noreferrer");
-      }
-    });
-  }
-
-  document.addEventListener("DOMContentLoaded", () => {
-    setActiveNavLinks();
-    initMobileMenu();
-    initExternalLinks();
-  });
-})();
+};
