@@ -1,654 +1,114 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AI Prompts | Hochschule Wismar</title>
-  <meta name="description" content="Copy-paste prompt packs for internships, Werkstudent jobs, and full-time jobs in Germany." />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AI Prompts Library | Hochschule Wismar</title>
+  <meta name="description" content="Copy-ready AI prompts for job search tasks in Germany: CV, cover letters, interview prep, and onboarding." />
   <link rel="stylesheet" href="css/style.css" />
-
-  <style>
-    /* ===== Make header green (requested) ===== */
-    .header{
-      background: rgba(51,153,51,.96);
-      border-bottom: 1px solid rgba(0,0,0,.10);
-    }
-    .nav-link{ color:#fff; }
-    .nav-link:hover{ background: rgba(255,255,255,.14); color:#fff; }
-    .nav-link.active{ background:#fff; color:#2f3229; }
-    .mobile-menu-btn{ background: rgba(255,255,255,.14); border-color: rgba(255,255,255,.35); }
-    .mobile-menu-btn span{ background:#fff; }
-    .mobile-menu{ background:#fff; }
-
-    /* ===== Page styling ===== */
-    .prompts-wrap{ padding: 18px 0 44px; }
-
-    .box{
-      background:#fff;
-      border:1px solid rgba(0,0,0,.10);
-      border-radius:14px;
-      padding:16px;
-      box-shadow:0 6px 18px rgba(0,0,0,.08);
-      margin-bottom:14px;
-    }
-    .box h2{margin:0 0 8px;color:#2f3229;}
-    .box p{margin:0;color:#5f6368;}
-
-    /* Accordions - single column on desktop */
-    .acc-wrap{ display:flex; flex-direction:column; gap:14px; }
-
-    .acc{
-      background:#fff;
-      border:1px solid rgba(0,0,0,.10);
-      border-radius:14px;
-      overflow:hidden;
-      box-shadow:0 6px 18px rgba(0,0,0,.08);
-    }
-
-    .acc-btn{
-      width:100%;
-      border:none;
-      cursor:pointer;
-      text-align:left;
-      padding:16px;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:12px;
-      background: linear-gradient(135deg, rgba(51,153,51,.14), rgba(47,50,41,.04));
-    }
-    .acc-btn:focus{ outline:none; box-shadow:0 0 0 4px rgba(51,153,51,.14); }
-
-    .acc-title{ font-weight:900; color:#2f3229; font-size:1.06rem; }
-    .acc-sub{ margin-top:4px; color:#5f6368; font-weight:600; font-size:.95rem; }
-
-    .acc-arrow{
-      color:#339933;
-      font-size:1.4rem;
-      font-weight:900;
-      line-height:1;
-      transition: transform .15s ease;
-    }
-    .acc-btn[aria-expanded="true"] .acc-arrow{ transform: rotate(90deg); }
-
-    .acc-panel{
-      display:none;
-      padding:14px 16px 16px;
-      border-top:1px solid rgba(0,0,0,.08);
-      background:#fff;
-    }
-
-    .group{
-      border:1px solid rgba(0,0,0,.10);
-      border-radius:14px;
-      overflow:hidden;
-      margin-bottom:12px;
-    }
-    .group:last-child{ margin-bottom:0; }
-
-    .group-btn{
-      width:100%;
-      border:none;
-      cursor:pointer;
-      text-align:left;
-      padding:14px;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:12px;
-      background: rgba(47,50,41,.03);
-      font-weight:900;
-      color:#2f3229;
-    }
-    .group-btn:focus{ outline:none; box-shadow:0 0 0 4px rgba(51,153,51,.14); }
-    .group-btn span{
-      color:#339933;
-      font-size:1.2rem;
-      font-weight:900;
-      transition: transform .15s ease;
-    }
-    .group-btn[aria-expanded="true"] span{ transform: rotate(90deg); }
-
-    .group-panel{
-      display:none;
-      padding:14px;
-      border-top:1px solid rgba(0,0,0,.08);
-      background:#fff;
-    }
-
-    .prompt-card{
-      border:1px solid rgba(0,0,0,.10);
-      border-radius:14px;
-      padding:14px;
-      margin-bottom:12px;
-      background:#fff;
-    }
-    .prompt-card:last-child{ margin-bottom:0; }
-
-    .prompt-title{
-      margin:0 0 8px;
-      color:#2f3229;
-      font-weight:900;
-    }
-
-    textarea.prompt{
-      width:100%;
-      min-height:160px;
-      border:1px solid rgba(0,0,0,.12);
-      border-radius:12px;
-      padding:12px;
-      font-size:0.98rem;
-      resize:vertical;
-      background:#fbfbfb;
-      color:#2f3229;
-      line-height:1.4;
-    }
-
-    .row{
-      display:flex;
-      gap:10px;
-      flex-wrap:wrap;
-      margin-top:10px;
-    }
-
-    .btn{
-      border:none;
-      cursor:pointer;
-      padding:10px 12px;
-      border-radius:12px;
-      font-weight:900;
-      background:#339933;
-      color:#fff;
-    }
-    .btn:active{ transform: translateY(1px); }
-
-    .btn-ghost{
-      background: rgba(47,50,41,.06);
-      color:#2f3229;
-      border:1px solid rgba(0,0,0,.10);
-    }
-
-    .hint{
-      margin-top:8px;
-      color:#5f6368;
-      font-size:.95rem;
-    }
-  </style>
 </head>
 
 <body>
-  <!-- Header -->
   <header class="header">
     <div class="container">
-      <div class="header-content">
-        <div class="logo">
-          <a href="index.html">
-            <img src="assets/hsw-logo.png" alt="Hochschule Wismar" />
-          </a>
-        </div>
+      <div class="header-inner">
+        <a class="brand" href="index.html" aria-label="Hochschule Wismar home">
+          <img src="assets/hsw-logo.png" alt="Hochschule Wismar" />
+          <div class="brand-title">
+            <strong>AI Job Search Support</strong>
+            <span>Hochschule Wismar</span>
+          </div>
+        </a>
 
-        <nav class="nav-desktop">
-          <a href="index.html" class="nav-link">Home</a>
-          <a href="tools.html" class="nav-link">AI Tools</a>
-          <a href="prompts.html" class="nav-link active">AI Prompts</a>
-          <a href="guidelines.html" class="nav-link">Guidelines</a>
-          <a href="faqs.html" class="nav-link">FAQs</a>
-          <a href="contact.html" class="nav-link">Contact</a>
+        <nav class="nav" aria-label="Primary">
+          <a href="index.html">Home</a>
+          <a href="tools.html">AI Tools</a>
+          <a href="prompts.html" aria-current="page">AI Prompts</a>
+          <a href="guidelines.html">Guidelines</a>
+          <a href="faqs.html">FAQs</a>
+          <a href="contact.html">Contact</a>
         </nav>
 
-        <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Toggle menu">
-          <span></span><span></span><span></span>
+        <button class="mobile-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobilePanel">
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path fill="currentColor" d="M4 6h16v2H4V6zm0 5h16v2H4v-2zm0 5h16v2H4v-2z"></path>
+          </svg>
         </button>
+      </div>
+
+      <div class="mobile-panel" id="mobilePanel" aria-hidden="true">
+        <nav class="mobile-nav" aria-label="Mobile">
+          <a href="index.html">Home</a>
+          <a href="tools.html">AI Tools</a>
+          <a href="prompts.html" aria-current="page">AI Prompts</a>
+          <a href="guidelines.html">Guidelines</a>
+          <a href="faqs.html">FAQs</a>
+          <a href="contact.html">Contact</a>
+        </nav>
       </div>
     </div>
   </header>
 
-  <!-- Mobile Menu -->
-  <div class="mobile-menu" id="mobileMenu">
-    <nav class="mobile-nav">
-      <a href="index.html" class="mobile-nav-link">Home</a>
-      <a href="tools.html" class="mobile-nav-link">AI Tools</a>
-      <a href="prompts.html" class="mobile-nav-link active">AI Prompts</a>
-      <a href="guidelines.html" class="mobile-nav-link">Guidelines</a>
-      <a href="faqs.html" class="mobile-nav-link">FAQs</a>
-      <a href="contact.html" class="mobile-nav-link">Contact</a>
-    </nav>
-  </div>
-
-  <!-- Page Header -->
-  <section class="page-header">
-    <div class="container">
-      <h1 class="page-title">AI Prompts</h1>
-      <p class="page-description">Click a category → open a prompt → copy → paste into ChatGPT/Claude.</p>
-    </div>
-  </section>
-
-  <main class="prompts-wrap">
-    <div class="container">
-
-      <div class="box">
-        <h2>How to use</h2>
-        <p>Fill the brackets like [YOUR DEGREE], then click Copy and paste into your AI assistant.</p>
+  <main>
+    <section class="section">
+      <div class="container">
+        <h1 class="section-title" style="font-size:clamp(1.4rem, 2.4vw, 1.9rem); margin-bottom:10px;">AI Prompts Library</h1>
+        <p class="lead">
+          Copy a prompt, replace the placeholders, and keep every claim factual. For German applications, write in simple, direct language.
+        </p>
       </div>
+    </section>
 
-      <div class="acc-wrap">
+    <section class="section" style="padding-top:10px;">
+      <div class="container">
+        <div class="card card-pad">
+          <div class="tabs-row" role="tablist" aria-label="Prompt groups">
+            <button class="tab" type="button" role="tab" aria-selected="true" data-group="cv">CV</button>
+            <button class="tab" type="button" role="tab" aria-selected="false" data-group="cover-letter">Cover Letter</button>
+            <button class="tab" type="button" role="tab" aria-selected="false" data-group="interview">Interview</button>
+            <button class="tab" type="button" role="tab" aria-selected="false" data-group="outreach">Outreach</button>
+            <button class="tab" type="button" role="tab" aria-selected="false" data-group="onboarding">Onboarding</button>
+          </div>
 
-        <!-- ================= Werkstudent ================= -->
-        <section class="acc">
-          <button class="acc-btn" type="button" data-acc="cat" aria-expanded="false">
-            <div>
-              <div class="acc-title">💼 Werkstudent / Part-time Prompts</div>
-              <div class="acc-sub">No experience • Early experience • Career shift</div>
-            </div>
-            <div class="acc-arrow">›</div>
-          </button>
-
-          <div class="acc-panel">
-            <!-- Group 1 -->
-            <div class="group">
-              <button class="group-btn" type="button" data-acc="group" aria-expanded="false">
-                No experience <span>›</span>
-              </button>
-              <div class="group-panel">
-                <div class="prompt-card">
-                  <h3 class="prompt-title">1) Suggest suitable Werkstudent roles</h3>
-                  <textarea class="prompt" readonly>
-You are a German job market assistant. Suggest 6–8 realistic Werkstudent (part-time) roles in Germany for my profile.
-
-My profile:
-- Degree + specialization: [YOUR DEGREE]
-- University + semester: [YOUR UNIVERSITY + SEMESTER]
-- Location: [CITY IN GERMANY]
-- Skills/tools: [SKILLS]
-- German level: [A1/A2/B1/B2/C1]
-- Weekly availability (hours): [HOURS]
-
-Output:
-1) Role titles (German + English if useful)
-2) What the job typically includes
-3) Why it's realistic for me
-4) Keywords to search on LinkedIn/Indeed/StepStone
-                  </textarea>
-                  <div class="row">
-                    <button class="btn" type="button" onclick="copyPrompt(this)">Copy</button>
-                    <button class="btn btn-ghost" type="button" onclick="selectPrompt(this)">Select all</button>
-                  </div>
-                  <div class="hint">Tip: Replace brackets, keep the structure.</div>
-                </div>
-
-                <div class="prompt-card">
-                  <h3 class="prompt-title">2) Rewrite CV bullets (student style, German market)</h3>
-                  <textarea class="prompt" readonly>
-Rewrite my CV bullets for Werkstudent roles in Germany. Keep it honest, ATS-friendly, and concise.
-
-Target role: [TARGET ROLE]
-Job description: [PASTE JD]
-
-My current bullets:
-[PASTE YOUR BULLETS]
-
-Rules:
-- Use action verbs
-- Include tools/skills
-- Add results where possible (numbers if I provide them)
-- Use 1 line per bullet, max 2 lines
-Return: improved bullets + 10 keywords I should include
-                  </textarea>
-                  <div class="row">
-                    <button class="btn" type="button" onclick="copyPrompt(this)">Copy</button>
-                    <button class="btn btn-ghost" type="button" onclick="selectPrompt(this)">Select all</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Group 2 -->
-            <div class="group">
-              <button class="group-btn" type="button" data-acc="group" aria-expanded="false">
-                Early experience (0–2 years) <span>›</span>
-              </button>
-              <div class="group-panel">
-                <div class="prompt-card">
-                  <h3 class="prompt-title">1) Align experience to German expectations</h3>
-                  <textarea class="prompt" readonly>
-Act as a German recruiter. Align my experience for a Werkstudent role.
-
-Target role: [TARGET ROLE]
-Job description: [PASTE JD]
-
-My experience:
-- Internship/Job: [TITLE + COMPANY + DATES]
-- Main tasks: [TASKS]
-- Tools used: [TOOLS]
-- Achievements: [RESULTS]
-
-Output:
-1) What a German recruiter will like
-2) Red flags (if any) and how to fix them
-3) 6 improved CV bullets
-4) A short “Why me” paragraph for applications
-                  </textarea>
-                  <div class="row">
-                    <button class="btn" type="button" onclick="copyPrompt(this)">Copy</button>
-                    <button class="btn btn-ghost" type="button" onclick="selectPrompt(this)">Select all</button>
-                  </div>
-                </div>
-
-                <div class="prompt-card">
-                  <h3 class="prompt-title">2) Email to HR (Werkstudent interest)</h3>
-                  <textarea class="prompt" readonly>
-Write a short, professional email to HR in Germany expressing interest in a Werkstudent role.
-
-Inputs:
-- Company: [COMPANY]
-- Role: [ROLE]
-- My degree: [DEGREE]
-- Availability: [HOURS/WEEK], start date: [DATE]
-- Work authorization: Student in Germany, eligible for Werkstudent work
-- My strengths: [3 BULLETS]
-
-Write:
-1) Subject line
-2) Email in English
-3) Email in German (simple and polite)
-                  </textarea>
-                  <div class="row">
-                    <button class="btn" type="button" onclick="copyPrompt(this)">Copy</button>
-                    <button class="btn btn-ghost" type="button" onclick="selectPrompt(this)">Select all</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Group 3 -->
-            <div class="group">
-              <button class="group-btn" type="button" data-acc="group" aria-expanded="false">
-                Career shift (new field in Germany) <span>›</span>
-              </button>
-              <div class="group-panel">
-                <div class="prompt-card">
-                  <h3 class="prompt-title">Career shift positioning</h3>
-                  <textarea class="prompt" readonly>
-Help me position a career shift for the German market (Werkstudent or entry-level).
-
-My background:
-- Previous field: [FIELD]
-- Target field: [TARGET FIELD]
-- Why I’m changing: [REASON]
-- Transferable skills: [SKILLS]
-- Proof (projects/courses): [PROOF]
-- German level: [LEVEL]
-
-Output:
-1) A clear story (30 seconds)
-2) 6 CV bullets using transferable skills
-3) Best job titles to search in Germany
-4) What NOT to say in interviews
-                  </textarea>
-                  <div class="row">
-                    <button class="btn" type="button" onclick="copyPrompt(this)">Copy</button>
-                    <button class="btn btn-ghost" type="button" onclick="selectPrompt(this)">Select all</button>
-                  </div>
-                </div>
-              </div>
+          <div style="margin-top:14px;">
+            <div class="stage-row" role="tablist" aria-label="Prompt intent">
+              <button class="stage" type="button" role="tab" aria-selected="true" data-intent="draft">Draft</button>
+              <button class="stage" type="button" role="tab" aria-selected="false" data-intent="improve">Improve</button>
+              <button class="stage" type="button" role="tab" aria-selected="false" data-intent="tailor">Tailor</button>
+              <button class="stage" type="button" role="tab" aria-selected="false" data-intent="check">Check</button>
             </div>
           </div>
-        </section>
+        </div>
 
-        <!-- ================= Internship ================= -->
-        <section class="acc">
-          <button class="acc-btn" type="button" data-acc="cat" aria-expanded="false">
-            <div>
-              <div class="acc-title">🎓 Internship Prompts</div>
-              <div class="acc-sub">Mandatory/Voluntary • ATS • Interviews</div>
-            </div>
-            <div class="acc-arrow">›</div>
-          </button>
-
-          <div class="acc-panel">
-            <div class="group">
-              <button class="group-btn" type="button" data-acc="group" aria-expanded="false">
-                Internship applications <span>›</span>
-              </button>
-              <div class="group-panel">
-                <div class="prompt-card">
-                  <h3 class="prompt-title">Internship CV + cover letter (Germany)</h3>
-                  <textarea class="prompt" readonly>
-Create a one-page, ATS-friendly internship CV and a German-style cover letter (Anschreiben).
-
-Inputs:
-- Degree + semester: [DEGREE + SEMESTER]
-- Target internship role: [ROLE]
-- Job description: [PASTE JD]
-- Projects/coursework: [PASTE]
-- Tools/skills: [TOOLS]
-- Languages: [LANGUAGES]
-- Location + availability: [CITY + DATES]
-
-Output:
-1) CV structure + bullet points
-2) Cover letter in English
-3) Cover letter in German (simple and polite)
-                  </textarea>
-                  <div class="row">
-                    <button class="btn" type="button" onclick="copyPrompt(this)">Copy</button>
-                    <button class="btn btn-ghost" type="button" onclick="selectPrompt(this)">Select all</button>
-                  </div>
-                </div>
-
-                <div class="prompt-card">
-                  <h3 class="prompt-title">ATS keyword optimization</h3>
-                  <textarea class="prompt" readonly>
-Act like an ATS and a German recruiter.
-
-Job description:
-[PASTE JD]
-
-My CV:
-[PASTE CV TEXT]
-
-Output:
-1) Missing keywords (top 20)
-2) 10 edits to improve scan-ability (German market)
-3) A revised “Skills” section
-4) A revised “Profile/Summary” (3–4 lines)
-                  </textarea>
-                  <div class="row">
-                    <button class="btn" type="button" onclick="copyPrompt(this)">Copy</button>
-                    <button class="btn btn-ghost" type="button" onclick="selectPrompt(this)">Select all</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="group">
-              <button class="group-btn" type="button" data-acc="group" aria-expanded="false">
-                Interview preparation <span>›</span>
-              </button>
-              <div class="group-panel">
-                <div class="prompt-card">
-                  <h3 class="prompt-title">Mock interview (internship, Germany)</h3>
-                  <textarea class="prompt" readonly>
-Run a mock interview for an internship in Germany.
-
-Target role: [ROLE]
-Company type: [STARTUP/SME/CORPORATE]
-My background: [SHORT SUMMARY]
-German level: [LEVEL]
-
-Rules:
-- Ask 10 questions one by one
-- After each answer, rate: structure, clarity, cultural fit
-- Give a stronger alternative answer
-- Add 1 tip for German interview style
-Start with question 1 now.
-                  </textarea>
-                  <div class="row">
-                    <button class="btn" type="button" onclick="copyPrompt(this)">Copy</button>
-                    <button class="btn btn-ghost" type="button" onclick="selectPrompt(this)">Select all</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- ================= Full-time ================= -->
-        <section class="acc">
-          <button class="acc-btn" type="button" data-acc="cat" aria-expanded="false">
-            <div>
-              <div class="acc-title">🚀 Full-time Job Prompts</div>
-              <div class="acc-sub">Applications • Interviews • 30/60/90 onboarding</div>
-            </div>
-            <div class="acc-arrow">›</div>
-          </button>
-
-          <div class="acc-panel">
-            <div class="group">
-              <button class="group-btn" type="button" data-acc="group" aria-expanded="false">
-                Applications <span>›</span>
-              </button>
-              <div class="group-panel">
-                <div class="prompt-card">
-                  <h3 class="prompt-title">Tailor CV for a full-time role</h3>
-                  <textarea class="prompt" readonly>
-Tailor my CV for a full-time job in Germany (ATS-friendly and recruiter-friendly).
-
-Target role: [ROLE]
-Job description: [PASTE JD]
-
-My CV:
-[PASTE CV TEXT]
-
-Output:
-1) A revised “Profile” (3–4 lines)
-2) Improved experience bullets
-3) Skills section (keywords)
-4) 5 achievements I should quantify (tell me what numbers to add)
-                  </textarea>
-                  <div class="row">
-                    <button class="btn" type="button" onclick="copyPrompt(this)">Copy</button>
-                    <button class="btn btn-ghost" type="button" onclick="selectPrompt(this)">Select all</button>
-                  </div>
-                </div>
-
-                <div class="prompt-card">
-                  <h3 class="prompt-title">German-style cover letter (Anschreiben)</h3>
-                  <textarea class="prompt" readonly>
-Write a German-style cover letter (Anschreiben) that is professional, confident, and not exaggerated.
-
-Inputs:
-- Role + company: [ROLE + COMPANY]
-- Job description: [PASTE JD]
-- My strengths (3): [STRENGTHS]
-- My experience proof: [EXPERIENCE/PROJECTS]
-- Availability: [DATE]
-- German level: [LEVEL]
-
-Output:
-1) Cover letter in English
-2) Cover letter in German (simple and polite)
-                  </textarea>
-                  <div class="row">
-                    <button class="btn" type="button" onclick="copyPrompt(this)">Copy</button>
-                    <button class="btn btn-ghost" type="button" onclick="selectPrompt(this)">Select all</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="group">
-              <button class="group-btn" type="button" data-acc="group" aria-expanded="false">
-                Interviews <span>›</span>
-              </button>
-              <div class="group-panel">
-                <div class="prompt-card">
-                  <h3 class="prompt-title">Full-time mock interview (Germany)</h3>
-                  <textarea class="prompt" readonly>
-Conduct a mock interview for a full-time role in Germany.
-
-Target role: [ROLE]
-Job description: [PASTE JD]
-My experience: [SHORT SUMMARY]
-
-Rules:
-- Ask 12 questions one by one (mix: behavioral + technical/business)
-- After each answer: critique + stronger rewrite
-- Add a “German recruiter note” after each question
-Start with question 1 now.
-                  </textarea>
-                  <div class="row">
-                    <button class="btn" type="button" onclick="copyPrompt(this)">Copy</button>
-                    <button class="btn btn-ghost" type="button" onclick="selectPrompt(this)">Select all</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="group">
-              <button class="group-btn" type="button" data-acc="group" aria-expanded="false">
-                Onboarding (30/60/90 days) <span>›</span>
-              </button>
-              <div class="group-panel">
-                <div class="prompt-card">
-                  <h3 class="prompt-title">30/60/90 day plan</h3>
-                  <textarea class="prompt" readonly>
-Create a 30/60/90 day onboarding plan for a new hire in Germany.
-
-Inputs:
-- Job role: [ROLE]
-- Department: [DEPARTMENT]
-- Company type: [STARTUP/SME/CORPORATE]
-- Working language: [EN/DE/MIX]
-- My gaps (if any): [GAPS]
-
-Output:
-- 30 days: learning + relationships + quick wins
-- 60 days: ownership + measurable deliverables
-- 90 days: autonomy + impact
-Add weekly milestones and communication routines.
-                  </textarea>
-                  <div class="row">
-                    <button class="btn" type="button" onclick="copyPrompt(this)">Copy</button>
-                    <button class="btn btn-ghost" type="button" onclick="selectPrompt(this)">Select all</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-          </div>
-        </section>
-
+        <div id="promptsGrid" class="tool-grid" style="margin-top:16px;" aria-live="polite"></div>
       </div>
-    </div>
+    </section>
   </main>
 
-  <!-- Footer -->
   <footer class="footer">
     <div class="container">
-      <div class="footer-content">
-        <div class="footer-section">
+      <div class="footer-inner">
+        <div>
           <h4>Hochschule Wismar</h4>
           <p>University of Applied Sciences<br />Technology, Business and Design</p>
           <p>Philipp-Müller-Straße 14<br />23966 Wismar, Germany</p>
         </div>
 
-        <div class="footer-section">
+        <div>
           <h4>Contact</h4>
           <p>Phone: +49 3841 753-0</p>
           <p>Email: <a href="mailto:postmaster@hs-wismar.de">postmaster@hs-wismar.de</a></p>
           <p><a href="https://www.hs-wismar.de" target="_blank" rel="noopener">www.hs-wismar.de</a></p>
         </div>
 
-        <div class="footer-section">
-          <h4>About This Portal</h4>
-          <p>This is a student project to support international students with job search prompts and resources.</p>
-          <p><strong>Disclaimer:</strong> Always verify information for your specific situation.</p>
+        <div>
+          <h4>Tip</h4>
+          <p>Keep your documents consistent with the job ad and your real experience.</p>
         </div>
       </div>
 
       <div class="footer-bottom">
-        <p>&copy; 2026 Hochschule Wismar. Student Project - International Management Program.</p>
+        <p>&copy; 2026 Hochschule Wismar</p>
       </div>
     </div>
   </footer>
@@ -656,85 +116,563 @@ Add weekly milestones and communication routines.
   <script src="js/main.js"></script>
 
   <script>
-    // Category accordion
-    (function () {
-      const catBtns = document.querySelectorAll('[data-acc="cat"]');
+    (() => {
+      const prompts = {
+        "cv": {
+          "draft": [
+            {
+              title: "ATS-ready bullet points from experience",
+              desc: "Turn raw experience into measurable CV bullets (German or English).",
+              text:
+`You are a career-focused writing assistant.
 
-      catBtns.forEach((btn) => {
-        btn.addEventListener("click", () => {
-          const isOpen = btn.getAttribute("aria-expanded") === "true";
+Goal:
+Rewrite my experience into 5–8 ATS-friendly CV bullet points for a role in Germany.
 
-          // Close all categories
-          catBtns.forEach((b) => {
-            b.setAttribute("aria-expanded", "false");
-            const p = b.closest(".acc").querySelector(".acc-panel");
-            if (p) p.style.display = "none";
-          });
+Input (paste):
+1) Target role title:
+2) Job description (paste):
+3) My raw notes / tasks / projects (paste):
+4) Tools/tech used:
+5) Results/metrics (numbers if possible):
+6) Language: German or English
 
-          // Open current
-          if (!isOpen) {
-            btn.setAttribute("aria-expanded", "true");
-            const panel = btn.closest(".acc").querySelector(".acc-panel");
-            if (panel) panel.style.display = "block";
-          }
-        });
-      });
+Constraints:
+- Use action verbs.
+- Keep each bullet 1–2 lines.
+- Include measurable outcomes when available.
+- Do not invent facts. If data is missing, ask up to 5 questions first.`
+            },
+            {
+              title: "CV summary (2 versions)",
+              desc: "Create a concise summary and a more detailed summary.",
+              text:
+`Write two CV summaries for the German job market based on my profile.
 
-      // Group accordion (inside category)
-      const groupBtns = document.querySelectorAll('[data-acc="group"]');
-      groupBtns.forEach((btn) => {
-        btn.addEventListener("click", () => {
-          const isOpen = btn.getAttribute("aria-expanded") === "true";
-          const accPanel = btn.closest(".acc-panel");
+Input:
+- Target role:
+- Top 5 skills:
+- 2–3 strongest projects/achievements (with metrics):
+- Work authorization status (optional):
+- Language: German or English
 
-          // Close all groups inside same category
-          if (accPanel) {
-            accPanel.querySelectorAll('[data-acc="group"]').forEach((b) => {
-              b.setAttribute("aria-expanded", "false");
-              const p = b.closest(".group").querySelector(".group-panel");
-              if (p) p.style.display = "none";
-            });
-          }
+Output:
+1) Summary (max 3 lines).
+2) Summary (max 6 lines).
+Rules:
+- Professional and direct.
+- No buzzword stuffing.
+- No invented claims.`
+            }
+          ],
+          "improve": [
+            {
+              title: "Improve clarity and remove fluff",
+              desc: "Reduce repetition, improve structure, keep it factual.",
+              text:
+`Improve my CV content for clarity and impact.
 
-          // Open current
-          if (!isOpen) {
-            btn.setAttribute("aria-expanded", "true");
-            const panel = btn.closest(".group").querySelector(".group-panel");
-            if (panel) panel.style.display = "block";
-          }
-        });
-      });
-    })();
+Input:
+- Current CV bullets (paste):
+- Target role + job description (paste):
+- Language: German or English
 
-    function getTextareaFromButton(btn){
-      const card = btn.closest(".prompt-card");
-      if(!card) return null;
-      return card.querySelector("textarea.prompt");
-    }
+Tasks:
+- Remove fluff and generic phrases.
+- Make verbs stronger.
+- Align terminology with the job description.
+- Keep everything factual and consistent.
 
-    function selectPrompt(btn){
-      const ta = getTextareaFromButton(btn);
-      if(!ta) return;
-      ta.focus();
-      ta.select();
-    }
+Output:
+- Revised bullets.
+- 6 keywords that match the job ad (only if present in the ad).`
+            }
+          ],
+          "tailor": [
+            {
+              title: "Tailor CV to job ad (gap-aware)",
+              desc: "Align your bullets and highlight relevant skills without making false claims.",
+              text:
+`Tailor my CV to this job description for Germany.
 
-    async function copyPrompt(btn){
-      const ta = getTextareaFromButton(btn);
-      if(!ta) return;
-      ta.focus();
-      ta.select();
+Input:
+- Job description (paste):
+- My CV (paste):
+- My skill inventory (bullet list):
+- Language: German or English
 
-      try{
-        await navigator.clipboard.writeText(ta.value);
-        btn.textContent = "Copied";
-        setTimeout(() => (btn.textContent = "Copy"), 900);
-      }catch(e){
-        document.execCommand("copy");
-        btn.textContent = "Copied";
-        setTimeout(() => (btn.textContent = "Copy"), 900);
+Output:
+1) A tailored set of bullets for the most relevant 2–3 experiences.
+2) A short “skills” section (6–10 items).
+3) A list of gaps (skills asked but not present in my profile) without inventing anything.`
+            }
+          ],
+          "check": [
+            {
+              title: "Consistency + red-flag check",
+              desc: "Catch contradictions, vague claims, and risky statements.",
+              text:
+`Check my CV for issues that could reduce trust.
+
+Input:
+- CV (paste)
+- Optional: LinkedIn (paste)
+
+Check for:
+- Contradictions or timeline gaps.
+- Vague claims with no evidence.
+- Overstated responsibilities.
+- Grammar and tone issues.
+
+Output:
+- A list of issues (with exact text quoted).
+- A corrected version for each issue.`
+            }
+          ]
+        },
+
+        "cover-letter": {
+          "draft": [
+            {
+              title: "Cover letter draft (German market style)",
+              desc: "Short, direct structure with a clear value proposition.",
+              text:
+`Write a cover letter for the German job market.
+
+Input:
+- Job title:
+- Company:
+- Job description (paste):
+- My background (paste):
+- 2 relevant achievements with metrics:
+- Why this company (2 bullets):
+- Language: German or English
+
+Constraints:
+- Keep it to ~220–320 words.
+- Use simple sentences.
+- Do not invent achievements.
+- End with a polite, professional closing and availability.`
+            }
+          ],
+          "improve": [
+            {
+              title: "Improve cover letter (tone + structure)",
+              desc: "Make it tighter, more specific, and less generic.",
+              text:
+`Improve my cover letter for a German employer.
+
+Input:
+- Job ad (paste):
+- Current cover letter (paste):
+- Language: German or English
+
+Output:
+- Revised cover letter.
+- 5 concrete edits you made (short bullets).
+Rules:
+- Keep it concise.
+- Remove generic claims.
+- No invented facts.`
+            }
+          ],
+          "tailor": [
+            {
+              title: "Tailor to requirements (proof-first)",
+              desc: "Map requirements to proof from your experience.",
+              text:
+`Tailor my cover letter to the job requirements.
+
+Input:
+- Job description (paste)
+- My experience bullets (paste)
+
+Output:
+- A cover letter draft
+- A “requirement → proof” mapping table (requirement + where in my experience it is proven)
+Rules:
+- If a requirement has no proof, state “not covered” and suggest a truthful workaround (coursework, personal project, learning plan).`
+            }
+          ],
+          "check": [
+            {
+              title: "Fact-check + ATS phrase alignment",
+              desc: "Ensure claims are supported and wording matches the job ad.",
+              text:
+`Review my cover letter for:
+1) factual support,
+2) clarity,
+3) alignment with the job description language.
+
+Input:
+- Job description (paste)
+- Cover letter (paste)
+
+Output:
+- Lines that are too strong or unsupported (quote them).
+- Safer rewrites.
+- 8 ATS-friendly phrases extracted from the job ad (only exact phrases).`
+            }
+          ]
+        },
+
+        "interview": {
+          "draft": [
+            {
+              title: "Interview questions (role-specific)",
+              desc: "Generate a realistic interview pack based on the job ad.",
+              text:
+`Create a role-specific interview prep pack for Germany.
+
+Input:
+- Job description (paste)
+- My CV summary (paste)
+- Language: German or English
+
+Output:
+- 10 technical/role questions.
+- 10 behavioral questions.
+- 6 “company fit” questions.
+- A list of documents I should bring / have ready (Germany-friendly, generic).`
+            }
+          ],
+          "improve": [
+            {
+              title: "Improve my STAR answers",
+              desc: "Make answers clearer and more measurable.",
+              text:
+`Improve my STAR answers.
+
+Input:
+- Role + job description (paste)
+- My STAR answers (paste)
+
+Tasks:
+- Make the “Result” measurable where possible.
+- Reduce unnecessary detail.
+- Keep it truthful.
+
+Output:
+- Improved answers + 1 follow-up question per answer that an interviewer might ask.`
+            }
+          ],
+          "tailor": [
+            {
+              title: "Company research briefing",
+              desc: "Create a concise briefing from sources I paste.",
+              text:
+`Create a company research briefing for my interview.
+
+Input:
+- Company website text snippets I paste:
+- Product/service overview I paste:
+- Job description I paste:
+- Language: German or English
+
+Output:
+- 8 key facts (only from my pasted text).
+- 6 smart questions to ask the interviewer.
+- 3 risks/concerns to clarify during interview.`
+            }
+          ],
+          "check": [
+            {
+              title: "Red flags in my answers",
+              desc: "Detect oversharing, weak phrasing, and missing proof.",
+              text:
+`Review my interview answers for red flags.
+
+Input:
+- Job description (paste)
+- My answers (paste)
+
+Output:
+- Red flags (quote exact sentences).
+- Safer rewrites.
+- 5 “proof points” I should prepare (documents, numbers, examples).`
+            }
+          ]
+        },
+
+        "outreach": {
+          "draft": [
+            {
+              title: "Cold outreach email (short and professional)",
+              desc: "For internships, Werkstudent roles, or thesis collaboration.",
+              text:
+`Write a short cold outreach email to a company in Germany.
+
+Input:
+- Recipient role (HR / team lead / professor / supervisor):
+- Goal (internship / Werkstudent / thesis / full-time):
+- Role/topic interest:
+- 3 relevant strengths (bullets):
+- 1 project/portfolio link:
+- Language: German or English
+
+Constraints:
+- 120–160 words max.
+- Clear subject line.
+- Ask for a short call or next step.
+- No exaggerated claims.`
+            }
+          ],
+          "improve": [
+            {
+              title: "Improve email (clarity + CTA)",
+              desc: "Sharper subject line and clearer ask.",
+              text:
+`Improve my outreach email.
+
+Input:
+- Current email (paste)
+- Goal + role (paste)
+- Language: German or English
+
+Output:
+- Improved email
+- 3 alternative subject lines
+Rules:
+- Keep it short.
+- Make the call-to-action specific (e.g., 15-minute call).`
+            }
+          ],
+          "tailor": [
+            {
+              title: "Tailor outreach to a company page",
+              desc: "Use only facts from the pasted company text.",
+              text:
+`Tailor my outreach message using only the company information I paste.
+
+Input:
+- Company page text (paste):
+- My background (paste):
+- What I offer (bullets):
+- Language: German or English
+
+Output:
+- Tailored email
+- 2 tailored opening lines
+- 1 tailored “value proposition” sentence grounded in the pasted company text.`
+            }
+          ],
+          "check": [
+            {
+              title: "Check for tone and mistakes",
+              desc: "Avoid overly casual tone; fix grammar.",
+              text:
+`Check my outreach email for:
+- professionalism,
+- grammar,
+- clarity,
+- overly casual tone.
+
+Input:
+- Email draft (paste)
+- Language: German or English
+
+Output:
+- Corrected email
+- A short list of changes (max 6 bullets).`
+            }
+          ]
+        },
+
+        "onboarding": {
+          "draft": [
+            {
+              title: "30-60-90 plan (starter)",
+              desc: "Create a realistic onboarding plan for a new role.",
+              text:
+`Create a 30-60-90 day plan for my new role.
+
+Input:
+- Role title:
+- Team context (what I know):
+- Expected responsibilities (paste from job ad if available):
+- My skills (bullets):
+- Language: German or English
+
+Output:
+- 30/60/90 objectives
+- Key stakeholders to meet
+- Metrics to track
+Rules:
+- Keep it practical and realistic.`
+            }
+          ],
+          "improve": [
+            {
+              title: "Rewrite message for manager (status update)",
+              desc: "Short, structured weekly update draft.",
+              text:
+`Rewrite my weekly status update message for my manager.
+
+Input:
+- My rough notes (paste)
+- Language: German or English
+
+Output:
+- A short update with:
+  - Progress
+  - Blockers
+  - Next steps
+  - Help needed (if any)`
+            }
+          ],
+          "tailor": [
+            {
+              title: "Translate responsibilities into first-week checklist",
+              desc: "Turn a job description into actionable onboarding items.",
+              text:
+`Turn this job description into a first-week onboarding checklist.
+
+Input:
+- Job description (paste)
+- Tools used by the team (if known)
+- Language: German or English
+
+Output:
+- Checklist grouped by:
+  - Access & setup
+  - People to meet
+  - Systems to learn
+  - First deliverables
+- Keep each item short and actionable.`
+            }
+          ],
+          "check": [
+            {
+              title: "Email tone check (German workplace)",
+              desc: "Make it respectful and clear.",
+              text:
+`Check this email for German workplace tone and clarity.
+
+Input:
+- Email text (paste)
+- Context (who is the recipient and why)
+
+Output:
+- Improved email
+- 3 alternative subject lines (if applicable)
+Rules:
+- Keep it direct and polite.
+- Avoid over-apologizing.`
+            }
+          ]
+        }
+      };
+
+      const groupTabs = Array.from(document.querySelectorAll('.tab[data-group]'));
+      const intentTabs = Array.from(document.querySelectorAll('.stage[data-intent]'));
+      const grid = document.getElementById("promptsGrid");
+
+      if (!grid || groupTabs.length === 0 || intentTabs.length === 0) return;
+
+      const state = {
+        group: groupTabs.find(t => t.getAttribute("aria-selected") === "true")?.dataset.group || "cv",
+        intent: intentTabs.find(t => t.getAttribute("aria-selected") === "true")?.dataset.intent || "draft",
+      };
+
+      function setSelected(list, selectedEl) {
+        list.forEach((el) => el.setAttribute("aria-selected", el === selectedEl ? "true" : "false"));
       }
-    }
+
+      function escapeHtml(str) {
+        return String(str)
+          .replaceAll("&", "&amp;")
+          .replaceAll("<", "&lt;")
+          .replaceAll(">", "&gt;")
+          .replaceAll('"', "&quot;")
+          .replaceAll("'", "&#039;");
+      }
+
+      async function copyToClipboard(text) {
+        try {
+          await navigator.clipboard.writeText(text);
+          return true;
+        } catch {
+          return false;
+        }
+      }
+
+      function render() {
+        const list = prompts?.[state.group]?.[state.intent] ?? [];
+        if (list.length === 0) {
+          grid.innerHTML = `
+            <div class="card card-pad" style="grid-column:1 / -1;">
+              <p class="lead" style="margin:0;">No prompts available for this selection.</p>
+            </div>
+          `;
+          return;
+        }
+
+        grid.innerHTML = list.map((p, idx) => {
+          const title = escapeHtml(p.title);
+          const desc = escapeHtml(p.desc);
+          const id = `prompt_${state.group}_${state.intent}_${idx}`;
+
+          return `
+            <article class="tool-card" style="cursor:default;">
+              <div class="tool-meta">
+                <span class="badge">${escapeHtml(state.group)}</span>
+                <span class="badge">${escapeHtml(state.intent)}</span>
+              </div>
+
+              <h3>${title}</h3>
+              <p>${desc}</p>
+
+              <div class="card" style="padding:12px; border-radius:12px; border-color:rgba(0,0,0,.10); box-shadow:none;">
+                <pre id="${id}" style="margin:0; white-space:pre-wrap; word-break:break-word; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace; font-size:.92rem; line-height:1.5;">${escapeHtml(p.text)}</pre>
+              </div>
+
+              <div class="actions" style="justify-content:flex-end;">
+                <button class="btn btn-primary btn-sm" type="button" data-copy="${id}">Copy prompt</button>
+              </div>
+            </article>
+          `;
+        }).join("");
+      }
+
+      groupTabs.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          state.group = btn.dataset.group;
+          setSelected(groupTabs, btn);
+          render();
+        });
+      });
+
+      intentTabs.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          state.intent = btn.dataset.intent;
+          setSelected(intentTabs, btn);
+          render();
+        });
+      });
+
+      document.addEventListener("click", async (e) => {
+        const btn = e.target.closest("button[data-copy]");
+        if (!btn) return;
+
+        const id = btn.getAttribute("data-copy");
+        const el = id ? document.getElementById(id) : null;
+        if (!el) return;
+
+        const text = el.textContent || "";
+        const ok = await copyToClipboard(text);
+
+        const original = btn.textContent;
+        btn.textContent = ok ? "Copied" : "Copy failed";
+        btn.disabled = true;
+
+        window.setTimeout(() => {
+          btn.textContent = original;
+          btn.disabled = false;
+        }, 1100);
+      });
+
+      render();
+    })();
   </script>
 </body>
 </html>
