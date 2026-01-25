@@ -1,161 +1,168 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Contact | AI Job Search Support</title>
-  <meta name="description" content="Contact the student team behind the AI Job Search Support Portal at Hochschule Wismar." />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Contact | Hochschule Wismar</title>
+  <meta name="description" content="Contact the project team. Send feedback, report broken links, or suggest improvements." />
   <link rel="stylesheet" href="css/style.css" />
 </head>
 
 <body>
-  <!-- Header -->
   <header class="header">
     <div class="container">
-      <div class="header-content">
-        <div class="logo">
-          <a href="index.html" aria-label="Home">
-            <img src="assets/hsw-logo.png" alt="Hochschule Wismar" />
-          </a>
-        </div>
+      <div class="header-inner">
+        <a class="brand" href="index.html" aria-label="Hochschule Wismar home">
+          <img src="assets/hsw-logo.png" alt="Hochschule Wismar" />
+          <div class="brand-title">
+            <strong>AI Job Search Support</strong>
+            <span>Hochschule Wismar</span>
+          </div>
+        </a>
 
-        <nav class="nav-desktop" aria-label="Primary">
-          <a href="index.html" class="nav-link">Home</a>
-          <a href="tools.html" class="nav-link">AI Tools</a>
-          <a href="prompts.html" class="nav-link">AI Prompts</a>
-          <a href="guidelines.html" class="nav-link">Guidelines</a>
-          <a href="faqs.html" class="nav-link">FAQs</a>
-          <a href="contact.html" class="nav-link active" aria-current="page">Contact</a>
+        <nav class="nav" aria-label="Primary">
+          <a href="index.html">Home</a>
+          <a href="tools.html">AI Tools</a>
+          <a href="prompts.html">AI Prompts</a>
+          <a href="guidelines.html">Guidelines</a>
+          <a href="faqs.html">FAQs</a>
+          <a href="contact.html" aria-current="page">Contact</a>
         </nav>
 
-        <button class="mobile-menu-btn" type="button" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobileMenu">
-          <span></span><span></span><span></span>
+        <button class="mobile-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobilePanel">
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path fill="currentColor" d="M4 6h16v2H4V6zm0 5h16v2H4v-2zm0 5h16v2H4v-2z"></path>
+          </svg>
         </button>
+      </div>
+
+      <div class="mobile-panel" id="mobilePanel" aria-hidden="true">
+        <nav class="mobile-nav" aria-label="Mobile">
+          <a href="index.html">Home</a>
+          <a href="tools.html">AI Tools</a>
+          <a href="prompts.html">AI Prompts</a>
+          <a href="guidelines.html">Guidelines</a>
+          <a href="faqs.html">FAQs</a>
+          <a href="contact.html" aria-current="page">Contact</a>
+        </nav>
       </div>
     </div>
   </header>
 
-  <!-- Mobile Menu -->
-  <div class="mobile-menu" id="mobileMenu" aria-label="Mobile menu">
-    <nav class="mobile-nav" aria-label="Mobile primary">
-      <a href="index.html" class="mobile-nav-link">Home</a>
-      <a href="tools.html" class="mobile-nav-link">AI Tools</a>
-      <a href="prompts.html" class="mobile-nav-link">AI Prompts</a>
-      <a href="guidelines.html" class="mobile-nav-link">Guidelines</a>
-      <a href="faqs.html" class="mobile-nav-link">FAQs</a>
-      <a href="contact.html" class="mobile-nav-link active" aria-current="page">Contact</a>
-    </nav>
-  </div>
-
   <main>
-    <section class="page-header">
+    <section class="section">
       <div class="container">
-        <h1 class="page-title">Contact</h1>
-        <p class="page-description">
-          Questions, feedback, or suggestions? Send a message and we’ll reply when possible.
-        </p>
+        <h1 class="section-title" style="font-size:clamp(1.4rem, 2.4vw, 1.9rem); margin-bottom:10px;">Contact</h1>
+        <p class="lead">Send feedback, report broken links, or suggest tools/prompts to improve this portal.</p>
       </div>
     </section>
 
-    <section class="contact-section">
+    <section class="section" style="padding-top:10px;">
       <div class="container">
+        <div class="grid grid-2">
+          <section class="card card-pad">
+            <h2 style="margin:0 0 12px; font-size:1.15rem;">Send a message</h2>
 
-        <div class="contact-form-container">
-          <h2>Send a message</h2>
+            <form class="grid" action="https://api.web3forms.com/submit" method="POST" autocomplete="on">
+              <input type="hidden" name="access_key" value="REPLACE_WITH_YOUR_WEB3FORMS_KEY" />
+              <input type="hidden" name="subject" value="AI Job Search Portal — New Contact Message" />
+              <input type="hidden" name="from_name" value="AI Job Search Support Portal" />
 
-          <form class="contact-form" action="#" method="post">
-            <div class="form-row">
-              <div class="form-group">
-                <label class="form-label" for="firstName">First name</label>
-                <input class="form-input" id="firstName" name="firstName" type="text" autocomplete="given-name" required />
+              <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" aria-hidden="true" />
+
+              <div class="grid grid-2" style="gap:12px;">
+                <div>
+                  <label for="name" style="display:block; font-weight:900; margin:0 0 6px;">Full name</label>
+                  <input id="name" name="name" type="text" required
+                         style="width:100%; padding:12px 12px; border-radius:12px; border:1px solid rgba(0,0,0,.14); background:#fff;" />
+                </div>
+
+                <div>
+                  <label for="email" style="display:block; font-weight:900; margin:0 0 6px;">Email</label>
+                  <input id="email" name="email" type="email" required
+                         style="width:100%; padding:12px 12px; border-radius:12px; border:1px solid rgba(0,0,0,.14); background:#fff;" />
+                </div>
               </div>
 
-              <div class="form-group">
-                <label class="form-label" for="lastName">Last name</label>
-                <input class="form-input" id="lastName" name="lastName" type="text" autocomplete="family-name" required />
-              </div>
-            </div>
-
-            <div class="form-row">
-              <div class="form-group">
-                <label class="form-label" for="email">Email</label>
-                <input class="form-input" id="email" name="email" type="email" autocomplete="email" required />
-              </div>
-
-              <div class="form-group">
-                <label class="form-label" for="topic">Topic</label>
-                <select class="form-input" id="topic" name="topic" required>
+              <div>
+                <label for="topic" style="display:block; font-weight:900; margin:0 0 6px;">Topic</label>
+                <select id="topic" name="topic" required
+                        style="width:100%; padding:12px 12px; border-radius:12px; border:1px solid rgba(0,0,0,.14); background:#fff;">
                   <option value="" selected disabled>Select a topic</option>
-                  <option value="bug">Report a bug</option>
-                  <option value="suggestion">Suggestion</option>
-                  <option value="content">Content question</option>
-                  <option value="other">Other</option>
+                  <option value="Broken link">Broken link</option>
+                  <option value="Tool suggestion">Tool suggestion</option>
+                  <option value="Prompt suggestion">Prompt suggestion</option>
+                  <option value="UI/UX issue">UI/UX issue</option>
+                  <option value="Other">Other</option>
                 </select>
               </div>
-            </div>
 
-            <div class="form-group">
-              <label class="form-label" for="message">Message</label>
-              <textarea class="form-textarea" id="message" name="message" required></textarea>
-            </div>
+              <div>
+                <label for="message" style="display:block; font-weight:900; margin:0 0 6px;">Message</label>
+                <textarea id="message" name="message" required rows="7"
+                          style="width:100%; padding:12px 12px; border-radius:12px; border:1px solid rgba(0,0,0,.14); background:#fff; resize:vertical;"></textarea>
+                <p class="lead" style="margin:.6rem 0 0; font-size:.95rem;">
+                  Please avoid sharing sensitive personal data. Include links and clear steps to reproduce issues.
+                </p>
+              </div>
 
-            <button class="form-button" type="submit">Send</button>
-            <p class="form-note">
-              Note: This is a student project. Please avoid sharing sensitive personal data.
-            </p>
-          </form>
+              <button class="btn btn-primary" type="submit">Send message</button>
+            </form>
+          </section>
+
+          <aside class="grid" style="gap:14px;">
+            <section class="card card-pad">
+              <h2 style="margin:0 0 10px; font-size:1.15rem;">Official contact</h2>
+              <p style="margin:0 0 10px; color:var(--muted);">
+                Hochschule Wismar, University of Applied Sciences Technology, Business and Design
+              </p>
+              <p style="margin:0 0 6px;"><strong>Phone:</strong> +49 3841 753-0</p>
+              <p style="margin:0 0 6px;"><strong>Email:</strong> <a href="mailto:postmaster@hs-wismar.de" style="font-weight:900; text-decoration:underline; text-underline-offset:3px;">postmaster@hs-wismar.de</a></p>
+              <p style="margin:0;"><strong>Website:</strong> <a href="https://www.hs-wismar.de" target="_blank" rel="noopener" style="font-weight:900; text-decoration:underline; text-underline-offset:3px;">www.hs-wismar.de</a></p>
+            </section>
+
+            <section class="card card-pad notice">
+              <div class="icon" aria-hidden="true">!</div>
+              <div>
+                <h2>Before you send</h2>
+                <p>For faster handling, include:</p>
+                <ul>
+                  <li>The page where the issue occurs.</li>
+                  <li>What you expected vs. what happened.</li>
+                  <li>A link to the tool or prompt that needs changes.</li>
+                </ul>
+              </div>
+            </section>
+          </aside>
         </div>
-
-        <div class="contact-info-grid">
-          <div class="info-card">
-            <h3>University</h3>
-            <p>Hochschule Wismar</p>
-            <p>Philipp-Müller-Straße 14</p>
-            <p>23966 Wismar, Germany</p>
-          </div>
-
-          <div class="info-card">
-            <h3>General contact</h3>
-            <p>Phone: +49 3841 753-0</p>
-            <p><a href="mailto:postmaster@hs-wismar.de">postmaster@hs-wismar.de</a></p>
-          </div>
-
-          <div class="info-card">
-            <h3>Website</h3>
-            <p><a href="https://www.hs-wismar.de" target="_blank" rel="noopener">www.hs-wismar.de</a></p>
-          </div>
-        </div>
-
       </div>
     </section>
   </main>
 
-  <!-- Footer -->
   <footer class="footer">
     <div class="container">
-      <div class="footer-content">
-        <div class="footer-section">
+      <div class="footer-inner">
+        <div>
           <h4>Hochschule Wismar</h4>
           <p>University of Applied Sciences<br />Technology, Business and Design</p>
           <p>Philipp-Müller-Straße 14<br />23966 Wismar, Germany</p>
         </div>
 
-        <div class="footer-section">
+        <div>
           <h4>Contact</h4>
           <p>Phone: +49 3841 753-0</p>
           <p>Email: <a href="mailto:postmaster@hs-wismar.de">postmaster@hs-wismar.de</a></p>
           <p><a href="https://www.hs-wismar.de" target="_blank" rel="noopener">www.hs-wismar.de</a></p>
         </div>
 
-        <div class="footer-section">
-          <h4>About This Portal</h4>
-          <p>This is a student project created to support international students in their job search using AI-powered tools and resources.</p>
-          <p><strong>Disclaimer:</strong> Content is informational and AI-supported. Always verify information for your specific situation.</p>
+        <div>
+          <h4>About</h4>
+          <p>This portal is a student project to support international students with job search resources.</p>
         </div>
       </div>
 
       <div class="footer-bottom">
-        <p>&copy; 2026 Hochschule Wismar. Student Project - International Management Program.</p>
+        <p>&copy; 2026 Hochschule Wismar</p>
       </div>
     </div>
   </footer>
