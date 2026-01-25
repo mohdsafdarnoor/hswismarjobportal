@@ -14,13 +14,13 @@
     <div class="container">
       <div class="header-content">
         <div class="logo">
-          <a href="index.html" aria-label="Home">
+          <a href="index.html">
             <img src="assets/hsw-logo.png" alt="Hochschule Wismar" />
           </a>
         </div>
 
-        <nav class="nav-desktop" aria-label="Primary">
-          <a href="index.html" class="nav-link active" aria-current="page">Home</a>
+        <nav class="nav-desktop" aria-label="Primary navigation">
+          <a href="index.html" class="nav-link active">Home</a>
           <a href="tools.html" class="nav-link">AI Tools</a>
           <a href="prompts.html" class="nav-link">AI Prompts</a>
           <a href="guidelines.html" class="nav-link">Guidelines</a>
@@ -28,7 +28,7 @@
           <a href="contact.html" class="nav-link">Contact</a>
         </nav>
 
-        <button class="mobile-menu-btn" type="button" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobileMenu">
+        <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Toggle menu">
           <span></span><span></span><span></span>
         </button>
       </div>
@@ -36,9 +36,9 @@
   </header>
 
   <!-- Mobile Menu -->
-  <div class="mobile-menu" id="mobileMenu" aria-label="Mobile menu">
-    <nav class="mobile-nav" aria-label="Mobile primary">
-      <a href="index.html" class="mobile-nav-link active" aria-current="page">Home</a>
+  <div class="mobile-menu" id="mobileMenu">
+    <nav class="mobile-nav" aria-label="Mobile navigation">
+      <a href="index.html" class="mobile-nav-link active">Home</a>
       <a href="tools.html" class="mobile-nav-link">AI Tools</a>
       <a href="prompts.html" class="mobile-nav-link">AI Prompts</a>
       <a href="guidelines.html" class="mobile-nav-link">Guidelines</a>
@@ -51,7 +51,7 @@
   <main>
     <!-- Hero -->
     <section class="hero">
-      <div class="container">
+      <div class="container hero-grid">
         <div>
           <h1 class="hero-title">AI Job Search Support Portal</h1>
           <p class="hero-subtitle">For International Students at Hochschule Wismar</p>
@@ -59,17 +59,17 @@
             Use curated AI tools and structured prompts to move faster—from discovering roles to writing strong applications and preparing interviews for the German job market.
           </p>
 
-          <div style="display:flex; gap:10px; flex-wrap:wrap;">
-            <a href="tools.html" class="nav-link" style="background:#339933; color:#fff;">Explore AI Tools</a>
-            <a href="prompts.html" class="nav-link" style="border:1px solid rgba(0,0,0,.12); background:#fff;">Browse Prompts</a>
-            <a href="guidelines.html" class="nav-link" style="border:1px solid rgba(0,0,0,.12); background:#fff;">Read Guidelines</a>
+          <div class="hero-cta">
+            <a href="tools.html" class="btn btn-primary">Explore AI Tools</a>
+            <a href="prompts.html" class="btn btn-outline">Browse Prompts</a>
+            <a href="guidelines.html" class="btn btn-outline">Read Guidelines</a>
           </div>
         </div>
 
         <aside class="hero-card">
           <h3>What you can do here</h3>
           <p>Choose a job type → Pick tools → Copy prompts → Personalize → Apply.</p>
-          <p style="margin-top:10px; color:#5f6368;">
+          <p class="muted mt-10">
             Tip: Don’t submit fully AI-generated text. Always tailor it with your real projects, skills, and results.
           </p>
         </aside>
@@ -80,7 +80,7 @@
     <section class="notice-section">
       <div class="container">
         <div class="notice-box">
-          <div class="notice-icon" aria-hidden="true">⚠️</div>
+          <div class="notice-icon" aria-hidden="true">!</div>
           <div class="notice-content">
             <h2 class="notice-title">Important: Use AI Responsibly</h2>
             <p>
