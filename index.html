@@ -2,166 +2,212 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>AI Job Search Support | Hochschule Wismar</title>
-  <meta name="description" content="AI tools and prompts to support international students at Hochschule Wismar with applications, interviews, and onboarding for jobs in Germany." />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>AI Tools Directory | AI Job Search Support</title>
+
   <link rel="stylesheet" href="css/style.css" />
 </head>
 
 <body>
-  <header class="header">
-    <div class="container">
-      <div class="header-inner">
-        <a class="brand" href="index.html" aria-label="Home">
-          <img src="assets/hsw-logo.png" alt="Hochschule Wismar" />
-          <div class="brand-title">
-            <strong>AI Job Search Support</strong>
-            <span>Hochschule Wismar</span>
-          </div>
-        </a>
+  <!-- Top Nav -->
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <a class="brand" href="index.html">
+        <span class="brand-title">Hochschule Wismar</span>
+        <span class="brand-sub">AI Job Search Support</span>
+      </a>
 
-        <nav class="nav" aria-label="Primary">
-          <a href="index.html">Home</a>
-          <a href="tools.html">AI Tools</a>
-          <a href="prompts.html">AI Prompts</a>
-          <a href="guidelines.html">Guidelines</a>
-          <a href="faqs.html">FAQs</a>
-          <a href="contact.html">Contact</a>
-        </nav>
+      <button class="mobile-toggle" type="button" aria-label="Open menu">
+        ☰
+      </button>
 
-        <button class="mobile-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobilePanel">
-          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-            <path fill="currentColor" d="M4 6h16v2H4V6zm0 5h16v2H4v-2zm0 5h16v2H4v-2z"></path>
-          </svg>
-        </button>
-      </div>
+      <nav class="nav">
+        <a href="index.html">Home</a>
+        <a href="tools.html">AI Tools</a>
+        <a href="prompts.html">AI Prompts</a>
+        <a href="guidelines.html">Guidelines</a>
+        <a href="faqs.html">FAQs</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
 
-      <div class="mobile-panel" id="mobilePanel" aria-hidden="true">
-        <nav class="mobile-nav" aria-label="Mobile">
-          <a href="index.html">Home</a>
-          <a href="tools.html">AI Tools</a>
-          <a href="prompts.html">AI Prompts</a>
-          <a href="guidelines.html">Guidelines</a>
-          <a href="faqs.html">FAQs</a>
-          <a href="contact.html">Contact</a>
-        </nav>
-      </div>
+    <div id="mobilePanel" class="mobile-panel">
+      <a href="index.html">Home</a>
+      <a href="tools.html">AI Tools</a>
+      <a href="prompts.html">AI Prompts</a>
+      <a href="guidelines.html">Guidelines</a>
+      <a href="faqs.html">FAQs</a>
+      <a href="contact.html">Contact</a>
     </div>
   </header>
 
-  <main>
-    <section class="section">
-      <div class="container">
-        <h1 class="section-title" style="font-size:clamp(1.55rem, 3vw, 2.2rem); margin-bottom:10px;">
-          AI Job Search Support Portal
-        </h1>
-        <p class="lead">
-          A structured, practical toolkit for international students in Wismar: discover roles, write better applications, prepare interviews, and onboard confidently.
-        </p>
-
-        <div style="margin-top:16px; display:flex; gap:10px; flex-wrap:wrap;">
-          <a class="btn btn-primary" href="tools.html">Open AI Tools</a>
-          <a class="btn btn-outline" href="prompts.html">Open AI Prompts</a>
-          <a class="btn btn-outline" href="guidelines.html">Read Guidelines</a>
-        </div>
-      </div>
+  <main class="container">
+    <section class="page-head">
+      <h1>AI Tools Directory</h1>
+      <p class="muted">Click a category (arrow) → pick a stage → see tools below.</p>
     </section>
 
-    <section class="section" style="padding-top:10px;">
-      <div class="container">
-        <div class="card card-pad notice">
-          <div class="icon" aria-hidden="true">!</div>
-          <div>
-            <h2>Use AI responsibly</h2>
-            <p>
-              AI should improve your quality and speed, but your application must stay truthful and consistent across CV, cover letter, and interviews.
-            </p>
-            <ul>
-              <li>Use AI for structure, grammar, and brainstorming.</li>
-              <li>Add concrete proof (numbers, outcomes, links).</li>
-              <li>Never claim skills or experience you cannot explain.</li>
-            </ul>
+    <!-- ACCORDION -->
+    <section class="card card-pad">
+      <div id="toolsAccordion" class="tools-accordion" aria-label="Tools categories">
+
+        <!-- Working Student -->
+        <div class="tool-acc-item">
+          <button
+            type="button"
+            class="tool-acc-btn"
+            data-category="working-student"
+            aria-expanded="true"
+            aria-controls="panel-working-student"
+            id="btn-working-student">
+            <span>Working Student</span>
+            <span class="tool-acc-icon" aria-hidden="true">▾</span>
+          </button>
+
+          <div
+            id="panel-working-student"
+            class="tool-acc-panel"
+            role="region"
+            aria-labelledby="btn-working-student">
+            <div class="stage-row" role="tablist" aria-label="Working Student stages">
+              <button type="button" class="stage" data-stage="orientation" aria-selected="true">Orientation</button>
+              <button type="button" class="stage" data-stage="application" aria-selected="false">Application</button>
+              <button type="button" class="stage" data-stage="interview" aria-selected="false">Interview</button>
+              <button type="button" class="stage" data-stage="onboarding" aria-selected="false">Onboarding</button>
+            </div>
           </div>
         </div>
-      </div>
-    </section>
 
-    <section class="section">
-      <div class="container">
-        <h2 class="section-title">What you can do here</h2>
+        <!-- Internship -->
+        <div class="tool-acc-item">
+          <button
+            type="button"
+            class="tool-acc-btn"
+            data-category="internship"
+            aria-expanded="false"
+            aria-controls="panel-internship"
+            id="btn-internship">
+            <span>Internship</span>
+            <span class="tool-acc-icon" aria-hidden="true">▾</span>
+          </button>
 
-        <div class="grid grid-3">
-          <a class="tool-card" href="tools.html">
-            <div class="tool-meta">
-              <span class="badge">Directory</span>
-              <span class="badge">Stages</span>
+          <div
+            id="panel-internship"
+            class="tool-acc-panel"
+            role="region"
+            aria-labelledby="btn-internship"
+            hidden>
+            <div class="stage-row" role="tablist" aria-label="Internship stages">
+              <button type="button" class="stage" data-stage="orientation" aria-selected="true">Orientation</button>
+              <button type="button" class="stage" data-stage="application" aria-selected="false">Application</button>
+              <button type="button" class="stage" data-stage="interview" aria-selected="false">Interview</button>
+              <button type="button" class="stage" data-stage="onboarding" aria-selected="false">Onboarding</button>
             </div>
-            <h3>Find the right tool</h3>
-            <p>Browse by category and stage: orientation, application, interview, onboarding.</p>
-            <div class="actions">
-              <span class="btn btn-link btn-sm" aria-hidden="true">Open →</span>
-            </div>
-          </a>
-
-          <a class="tool-card" href="prompts.html">
-            <div class="tool-meta">
-              <span class="badge">Copy-ready</span>
-              <span class="badge">Practical</span>
-            </div>
-            <h3>Use structured prompts</h3>
-            <p>Generate drafts you can trust: proof-first, consistent, and easy to refine.</p>
-            <div class="actions">
-              <span class="btn btn-link btn-sm" aria-hidden="true">Open →</span>
-            </div>
-          </a>
-
-          <a class="tool-card" href="contact.html">
-            <div class="tool-meta">
-              <span class="badge">Feedback</span>
-              <span class="badge">Support</span>
-            </div>
-            <h3>Report issues</h3>
-            <p>Send broken links, tool suggestions, or prompt improvement requests.</p>
-            <div class="actions">
-              <span class="btn btn-link btn-sm" aria-hidden="true">Open →</span>
-            </div>
-          </a>
+          </div>
         </div>
+
+        <!-- Master Thesis -->
+        <div class="tool-acc-item">
+          <button
+            type="button"
+            class="tool-acc-btn"
+            data-category="master-thesis"
+            aria-expanded="false"
+            aria-controls="panel-master-thesis"
+            id="btn-master-thesis">
+            <span>Master Thesis</span>
+            <span class="tool-acc-icon" aria-hidden="true">▾</span>
+          </button>
+
+          <div
+            id="panel-master-thesis"
+            class="tool-acc-panel"
+            role="region"
+            aria-labelledby="btn-master-thesis"
+            hidden>
+            <div class="stage-row" role="tablist" aria-label="Master Thesis stages">
+              <button type="button" class="stage" data-stage="orientation" aria-selected="true">Orientation</button>
+              <button type="button" class="stage" data-stage="application" aria-selected="false">Application</button>
+              <button type="button" class="stage" data-stage="interview" aria-selected="false">Interview</button>
+              <button type="button" class="stage" data-stage="onboarding" aria-selected="false">Onboarding</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Full-Time -->
+        <div class="tool-acc-item">
+          <button
+            type="button"
+            class="tool-acc-btn"
+            data-category="full-time"
+            aria-expanded="false"
+            aria-controls="panel-full-time"
+            id="btn-full-time">
+            <span>Full-Time</span>
+            <span class="tool-acc-icon" aria-hidden="true">▾</span>
+          </button>
+
+          <div
+            id="panel-full-time"
+            class="tool-acc-panel"
+            role="region"
+            aria-labelledby="btn-full-time"
+            hidden>
+            <div class="stage-row" role="tablist" aria-label="Full-Time stages">
+              <button type="button" class="stage" data-stage="orientation" aria-selected="true">Orientation</button>
+              <button type="button" class="stage" data-stage="application" aria-selected="false">Application</button>
+              <button type="button" class="stage" data-stage="interview" aria-selected="false">Interview</button>
+              <button type="button" class="stage" data-stage="onboarding" aria-selected="false">Onboarding</button>
+            </div>
+          </div>
+        </div>
+
       </div>
     </section>
+
+    <!-- TOOLS GRID -->
+    <section id="toolsGrid" class="tools-grid" aria-live="polite"></section>
+
+    <!-- DATA -->
+    <script id="toolsData" type="application/json">
+{
+  "working-student": {
+    "orientation": [
+      { "name": "LinkedIn", "desc": "Build your profile and discover roles.", "url": "https://www.linkedin.com/", "tag": "Orientation" },
+      { "name": "Google Jobs", "desc": "Search jobs across the web.", "url": "https://www.google.com/search?q=jobs", "tag": "Orientation" }
+    ],
+    "application": [
+      { "name": "Europass CV", "desc": "Create an EU-format CV.", "url": "https://europass.europa.eu/en/create-europass-cv", "tag": "Application" }
+    ],
+    "interview": [
+      { "name": "Big Interview", "desc": "Interview practice and tips.", "url": "https://biginterview.com/", "tag": "Interview" }
+    ],
+    "onboarding": [
+      { "name": "Notion", "desc": "Track tasks and onboarding notes.", "url": "https://www.notion.so/", "tag": "Onboarding" }
+    ]
+  },
+  "internship": {
+    "orientation": [],
+    "application": [],
+    "interview": [],
+    "onboarding": []
+  },
+  "master-thesis": {
+    "orientation": [],
+    "application": [],
+    "interview": [],
+    "onboarding": []
+  },
+  "full-time": {
+    "orientation": [],
+    "application": [],
+    "interview": [],
+    "onboarding": []
+  }
+}
+    </script>
   </main>
 
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-inner">
-        <div>
-          <h4>Hochschule Wismar</h4>
-          <p>University of Applied Sciences<br />Technology, Business and Design</p>
-          <p>Philipp-Müller-Straße 14<br />23966 Wismar, Germany</p>
-        </div>
-
-        <div>
-          <h4>Contact</h4>
-          <p>Phone: +49 3841 753-0</p>
-          <p>Email: <a href="mailto:postmaster@hs-wismar.de">postmaster@hs-wismar.de</a></p>
-          <p><a href="https://www.hs-wismar.de" target="_blank" rel="noopener">www.hs-wismar.de</a></p>
-        </div>
-
-        <div>
-          <h4>Brand</h4>
-          <p>Slogan: Mit allen Wassern gewaschen.</p>
-          <p style="margin:0; color:rgba(255,255,255,.86);">
-            This portal is informational and intended to support student job search workflows.
-          </p>
-        </div>
-      </div>
-
-      <div class="footer-bottom">
-        <p>&copy; 2026 Hochschule Wismar</p>
-      </div>
-    </div>
-  </footer>
-
-  <script src="js/main.js"></script>
+  <script src="js/main.js" defer></script>
 </body>
 </html>
