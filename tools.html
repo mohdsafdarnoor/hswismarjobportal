@@ -2,295 +2,212 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>AI Tools | AI Job Search Support</title>
-  <meta name="description" content="AI tools directory organized by category and stage: orientation, application, interview, onboarding." />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>AI Tools Directory | AI Job Search Support</title>
+
   <link rel="stylesheet" href="css/style.css" />
 </head>
 
 <body>
-  <header class="header">
-    <div class="container">
-      <div class="header-inner">
-        <a class="brand" href="index.html" aria-label="Home">
-          <img src="assets/hsw-logo.png" alt="Hochschule Wismar" />
-          <div class="brand-title">
-            <strong>AI Job Search Support</strong>
-            <span>Hochschule Wismar</span>
-          </div>
-        </a>
+  <!-- Top Nav -->
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <a class="brand" href="index.html">
+        <span class="brand-title">Hochschule Wismar</span>
+        <span class="brand-sub">AI Job Search Support</span>
+      </a>
 
-        <nav class="nav" aria-label="Primary">
-          <a href="index.html">Home</a>
-          <a href="tools.html">AI Tools</a>
-          <a href="prompts.html">AI Prompts</a>
-          <a href="guidelines.html">Guidelines</a>
-          <a href="faqs.html">FAQs</a>
-          <a href="contact.html">Contact</a>
-        </nav>
+      <button class="mobile-toggle" type="button" aria-label="Open menu">
+        ☰
+      </button>
 
-        <button class="mobile-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobilePanel">
-          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-            <path fill="currentColor" d="M4 6h16v2H4V6zm0 5h16v2H4v-2zm0 5h16v2H4v-2z"></path>
-          </svg>
-        </button>
-      </div>
+      <nav class="nav">
+        <a href="index.html">Home</a>
+        <a href="tools.html">AI Tools</a>
+        <a href="prompts.html">AI Prompts</a>
+        <a href="guidelines.html">Guidelines</a>
+        <a href="faqs.html">FAQs</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
 
-      <div class="mobile-panel" id="mobilePanel" aria-hidden="true">
-        <nav class="mobile-nav" aria-label="Mobile">
-          <a href="index.html">Home</a>
-          <a href="tools.html">AI Tools</a>
-          <a href="prompts.html">AI Prompts</a>
-          <a href="guidelines.html">Guidelines</a>
-          <a href="faqs.html">FAQs</a>
-          <a href="contact.html">Contact</a>
-        </nav>
-      </div>
+    <div id="mobilePanel" class="mobile-panel">
+      <a href="index.html">Home</a>
+      <a href="tools.html">AI Tools</a>
+      <a href="prompts.html">AI Prompts</a>
+      <a href="guidelines.html">Guidelines</a>
+      <a href="faqs.html">FAQs</a>
+      <a href="contact.html">Contact</a>
     </div>
   </header>
 
-  <main>
-    <section class="section">
-      <div class="container">
-        <h1 class="section-title" style="font-size:clamp(1.45rem, 2.6vw, 2.05rem); margin-bottom:10px;">AI Tools Directory</h1>
-        <p class="lead">Click a category (arrow) → pick a stage → see tools below.</p>
+  <main class="container">
+    <section class="page-head">
+      <h1>AI Tools Directory</h1>
+      <p class="muted">Click a category (arrow) → pick a stage → see tools below.</p>
+    </section>
 
-        <div style="height:12px;"></div>
+    <!-- ACCORDION -->
+    <section class="card card-pad">
+      <div id="toolsAccordion" class="tools-accordion" aria-label="Tools categories">
 
-        <div class="card card-pad" id="toolsAccordion" aria-label="Tool categories">
-          <!-- Category 1 -->
-          <div class="tool-acc-item">
-            <button class="tool-acc-btn" type="button"
-              aria-expanded="true"
-              aria-controls="panel-working-student"
-              data-category="working-student">
-              <span>Working Student</span>
-              <span class="tool-acc-arrow" aria-hidden="true">›</span>
-            </button>
+        <!-- Working Student -->
+        <div class="tool-acc-item">
+          <button
+            type="button"
+            class="tool-acc-btn"
+            data-category="working-student"
+            aria-expanded="true"
+            aria-controls="panel-working-student"
+            id="btn-working-student">
+            <span>Working Student</span>
+            <span class="tool-acc-icon" aria-hidden="true">▾</span>
+          </button>
 
-            <div class="tool-acc-panel" id="panel-working-student">
-              <div class="stage-row" role="tablist" aria-label="Working Student stages">
-                <button class="stage" type="button" role="tab" aria-selected="true" data-stage="orientation">Orientation</button>
-                <button class="stage" type="button" role="tab" aria-selected="false" data-stage="application">Application</button>
-                <button class="stage" type="button" role="tab" aria-selected="false" data-stage="interview">Interview</button>
-                <button class="stage" type="button" role="tab" aria-selected="false" data-stage="onboarding">Onboarding</button>
-              </div>
-            </div>
-          </div>
-
-          <div style="height:10px;"></div>
-
-          <!-- Category 2 -->
-          <div class="tool-acc-item">
-            <button class="tool-acc-btn" type="button"
-              aria-expanded="false"
-              aria-controls="panel-internship"
-              data-category="internship">
-              <span>Internship</span>
-              <span class="tool-acc-arrow" aria-hidden="true">›</span>
-            </button>
-
-            <div class="tool-acc-panel" id="panel-internship" hidden>
-              <div class="stage-row" role="tablist" aria-label="Internship stages">
-                <button class="stage" type="button" role="tab" aria-selected="true" data-stage="orientation">Orientation</button>
-                <button class="stage" type="button" role="tab" aria-selected="false" data-stage="application">Application</button>
-                <button class="stage" type="button" role="tab" aria-selected="false" data-stage="interview">Interview</button>
-                <button class="stage" type="button" role="tab" aria-selected="false" data-stage="onboarding">Onboarding</button>
-              </div>
-            </div>
-          </div>
-
-          <div style="height:10px;"></div>
-
-          <!-- Category 3 -->
-          <div class="tool-acc-item">
-            <button class="tool-acc-btn" type="button"
-              aria-expanded="false"
-              aria-controls="panel-master-thesis"
-              data-category="master-thesis">
-              <span>Master Thesis</span>
-              <span class="tool-acc-arrow" aria-hidden="true">›</span>
-            </button>
-
-            <div class="tool-acc-panel" id="panel-master-thesis" hidden>
-              <div class="stage-row" role="tablist" aria-label="Master Thesis stages">
-                <button class="stage" type="button" role="tab" aria-selected="true" data-stage="orientation">Orientation</button>
-                <button class="stage" type="button" role="tab" aria-selected="false" data-stage="application">Application</button>
-                <button class="stage" type="button" role="tab" aria-selected="false" data-stage="interview">Interview</button>
-                <button class="stage" type="button" role="tab" aria-selected="false" data-stage="onboarding">Onboarding</button>
-              </div>
-            </div>
-          </div>
-
-          <div style="height:10px;"></div>
-
-          <!-- Category 4 -->
-          <div class="tool-acc-item">
-            <button class="tool-acc-btn" type="button"
-              aria-expanded="false"
-              aria-controls="panel-full-time"
-              data-category="full-time">
-              <span>Full-Time</span>
-              <span class="tool-acc-arrow" aria-hidden="true">›</span>
-            </button>
-
-            <div class="tool-acc-panel" id="panel-full-time" hidden>
-              <div class="stage-row" role="tablist" aria-label="Full-Time stages">
-                <button class="stage" type="button" role="tab" aria-selected="true" data-stage="orientation">Orientation</button>
-                <button class="stage" type="button" role="tab" aria-selected="false" data-stage="application">Application</button>
-                <button class="stage" type="button" role="tab" aria-selected="false" data-stage="interview">Interview</button>
-                <button class="stage" type="button" role="tab" aria-selected="false" data-stage="onboarding">Onboarding</button>
-              </div>
+          <div
+            id="panel-working-student"
+            class="tool-acc-panel"
+            role="region"
+            aria-labelledby="btn-working-student">
+            <div class="stage-row" role="tablist" aria-label="Working Student stages">
+              <button type="button" class="stage" data-stage="orientation" aria-selected="true">Orientation</button>
+              <button type="button" class="stage" data-stage="application" aria-selected="false">Application</button>
+              <button type="button" class="stage" data-stage="interview" aria-selected="false">Interview</button>
+              <button type="button" class="stage" data-stage="onboarding" aria-selected="false">Onboarding</button>
             </div>
           </div>
         </div>
 
-        <div style="height:14px;"></div>
+        <!-- Internship -->
+        <div class="tool-acc-item">
+          <button
+            type="button"
+            class="tool-acc-btn"
+            data-category="internship"
+            aria-expanded="false"
+            aria-controls="panel-internship"
+            id="btn-internship">
+            <span>Internship</span>
+            <span class="tool-acc-icon" aria-hidden="true">▾</span>
+          </button>
 
-        <div class="tool-grid" id="toolsGrid" aria-live="polite"></div>
+          <div
+            id="panel-internship"
+            class="tool-acc-panel"
+            role="region"
+            aria-labelledby="btn-internship"
+            hidden>
+            <div class="stage-row" role="tablist" aria-label="Internship stages">
+              <button type="button" class="stage" data-stage="orientation" aria-selected="true">Orientation</button>
+              <button type="button" class="stage" data-stage="application" aria-selected="false">Application</button>
+              <button type="button" class="stage" data-stage="interview" aria-selected="false">Interview</button>
+              <button type="button" class="stage" data-stage="onboarding" aria-selected="false">Onboarding</button>
+            </div>
+          </div>
+        </div>
 
-        <!-- Data (same JSON as before) -->
-        <script type="application/json" id="toolsData">
+        <!-- Master Thesis -->
+        <div class="tool-acc-item">
+          <button
+            type="button"
+            class="tool-acc-btn"
+            data-category="master-thesis"
+            aria-expanded="false"
+            aria-controls="panel-master-thesis"
+            id="btn-master-thesis">
+            <span>Master Thesis</span>
+            <span class="tool-acc-icon" aria-hidden="true">▾</span>
+          </button>
+
+          <div
+            id="panel-master-thesis"
+            class="tool-acc-panel"
+            role="region"
+            aria-labelledby="btn-master-thesis"
+            hidden>
+            <div class="stage-row" role="tablist" aria-label="Master Thesis stages">
+              <button type="button" class="stage" data-stage="orientation" aria-selected="true">Orientation</button>
+              <button type="button" class="stage" data-stage="application" aria-selected="false">Application</button>
+              <button type="button" class="stage" data-stage="interview" aria-selected="false">Interview</button>
+              <button type="button" class="stage" data-stage="onboarding" aria-selected="false">Onboarding</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Full-Time -->
+        <div class="tool-acc-item">
+          <button
+            type="button"
+            class="tool-acc-btn"
+            data-category="full-time"
+            aria-expanded="false"
+            aria-controls="panel-full-time"
+            id="btn-full-time">
+            <span>Full-Time</span>
+            <span class="tool-acc-icon" aria-hidden="true">▾</span>
+          </button>
+
+          <div
+            id="panel-full-time"
+            class="tool-acc-panel"
+            role="region"
+            aria-labelledby="btn-full-time"
+            hidden>
+            <div class="stage-row" role="tablist" aria-label="Full-Time stages">
+              <button type="button" class="stage" data-stage="orientation" aria-selected="true">Orientation</button>
+              <button type="button" class="stage" data-stage="application" aria-selected="false">Application</button>
+              <button type="button" class="stage" data-stage="interview" aria-selected="false">Interview</button>
+              <button type="button" class="stage" data-stage="onboarding" aria-selected="false">Onboarding</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- TOOLS GRID -->
+    <section id="toolsGrid" class="tools-grid" aria-live="polite"></section>
+
+    <!-- DATA -->
+    <script id="toolsData" type="application/json">
 {
   "working-student": {
     "orientation": [
-      { "name": "LinkedIn Career Explorer", "desc": "Explore roles that match your current skills and identify skill gaps.", "url": "https://linkedin.github.io/career-explorer/", "tag": "Explore" },
-      { "name": "CareerExplorer", "desc": "Match your interests to suitable roles and career paths.", "url": "https://www.careerexplorer.com/", "tag": "Explore" },
-      { "name": "Indeed", "desc": "Search broadly for working-student and part-time roles.", "url": "https://de.indeed.com/", "tag": "Jobs" },
-      { "name": "JobMensa", "desc": "Student-focused job portal in Germany.", "url": "https://www.jobmensa.de/", "tag": "Jobs" },
-      { "name": "StepStone", "desc": "Job listings in Germany; useful filters and employer reach.", "url": "https://www.stepstone.de/", "tag": "Jobs" }
+      { "name": "LinkedIn", "desc": "Build your profile and discover roles.", "url": "https://www.linkedin.com/", "tag": "Orientation" },
+      { "name": "Google Jobs", "desc": "Search jobs across the web.", "url": "https://www.google.com/search?q=jobs", "tag": "Orientation" }
     ],
     "application": [
-      { "name": "Canva", "desc": "Create simple, clean CVs for student roles.", "url": "https://www.canva.com/", "tag": "CV" },
-      { "name": "Resume.io", "desc": "ATS-friendly resume builder.", "url": "https://resume.io/", "tag": "CV" },
-      { "name": "Simplify", "desc": "Faster applications and tracking.", "url": "https://simplify.jobs/", "tag": "Apply" },
-      { "name": "LoopCV", "desc": "Automates job applications and outreach.", "url": "https://www.loopcv.pro/", "tag": "Automate" }
+      { "name": "Europass CV", "desc": "Create an EU-format CV.", "url": "https://europass.europa.eu/en/create-europass-cv", "tag": "Application" }
     ],
     "interview": [
-      { "name": "Google Interview Warmup", "desc": "Practice common interview questions with feedback.", "url": "https://grow.google/certificates/interview-warmup/license", "tag": "Practice" },
-      { "name": "Interview Lift", "desc": "Mock interview support and preparation.", "url": "https://interviewlift.com/", "tag": "Mock" },
-      { "name": "Elevator Pitch", "desc": "Create a short self-introduction for quick hiring interviews.", "url": "https://elevatorpitch.app/", "tag": "Pitch" }
+      { "name": "Big Interview", "desc": "Interview practice and tips.", "url": "https://biginterview.com/", "tag": "Interview" }
     ],
     "onboarding": [
-      { "name": "ChatGPT", "desc": "Write emails, clarify shift communication, and draft workplace messages.", "url": "https://chat.openai.com/", "tag": "Writing" },
-      { "name": "DeepL", "desc": "High-quality translation for German workplace communication.", "url": "https://www.deepl.com/en/translator", "tag": "Language" },
-      { "name": "Google", "desc": "Research company basics, role expectations, and terms you don’t know.", "url": "https://www.google.com/", "tag": "Research" }
+      { "name": "Notion", "desc": "Track tasks and onboarding notes.", "url": "https://www.notion.so/", "tag": "Onboarding" }
     ]
   },
-
   "internship": {
-    "orientation": [
-      { "name": "Handshake", "desc": "Student-focused internship discovery.", "url": "https://joinhandshake.com/", "tag": "Internships" },
-      { "name": "LinkedIn Jobs", "desc": "Find paid and remote internships.", "url": "https://www.linkedin.com/jobs/", "tag": "Jobs" },
-      { "name": "Nextjobs", "desc": "Graduate and student roles.", "url": "https://www.next-jobs.de/", "tag": "Jobs" },
-      { "name": "Coursera", "desc": "Skill preparation for internships.", "url": "https://www.coursera.org/", "tag": "Skills" },
-      { "name": "praktikum.de", "desc": "German internship portal.", "url": "https://www.praktikum.de/", "tag": "Germany" },
-      { "name": "praktikum.info", "desc": "German internship portal.", "url": "https://www.praktikum.info/", "tag": "Germany" }
-    ],
-    "application": [
-      { "name": "Canva", "desc": "Student-friendly CV layouts and templates.", "url": "https://www.canva.com/", "tag": "CV" },
-      { "name": "VMock", "desc": "Resume feedback and improvement suggestions.", "url": "https://www.vmock.com/", "tag": "Feedback" },
-      { "name": "Simplify", "desc": "Autofill and track internship applications.", "url": "https://simplify.jobs/", "tag": "Apply" },
-      { "name": "Jobsgpt", "desc": "AI matching and job discovery helper.", "url": "https://jobsgpt.ai/", "tag": "Match" }
-    ],
-    "interview": [
-      { "name": "Google Interview Warmup", "desc": "Entry-level interview practice.", "url": "https://grow.google/certificates/interview-warmup/license", "tag": "Practice" },
-      { "name": "Elevator Pitch", "desc": "Improve your “Tell me about yourself”.", "url": "https://elevatorpitch.app/", "tag": "Pitch" },
-      { "name": "Yoodli Interview", "desc": "Communication improvement and speaking feedback.", "url": "https://www.yoodli.ai/", "tag": "Speaking" }
-    ],
-    "onboarding": [
-      { "name": "ChatGPT", "desc": "Internship reports, emails, learning plans.", "url": "https://chat.openai.com/", "tag": "Writing" },
-      { "name": "Google", "desc": "Tools & company basics (quick research).", "url": "https://www.google.com/", "tag": "Research" },
-      { "name": "DeepL", "desc": "Multilingual workplace communication.", "url": "https://www.deepl.com/en/translator", "tag": "Language" }
-    ]
+    "orientation": [],
+    "application": [],
+    "interview": [],
+    "onboarding": []
   },
-
   "master-thesis": {
-    "orientation": [
-      { "name": "Excelerate", "desc": "Company collaboration and project discovery.", "url": "https://excelerate.dk/en/", "tag": "Projects" },
-      { "name": "Studyond", "desc": "Thesis and research help platform.", "url": "https://studyond.com/", "tag": "Thesis" },
-      { "name": "Thesisforyou", "desc": "Thesis support and services.", "url": "https://thesisforyou.com/en/english/", "tag": "Thesis" },
-      { "name": "LinkedIn Career Explorer", "desc": "Explore industry research roles and skills.", "url": "https://linkedin.github.io/career-explorer/", "tag": "Explore" },
-      { "name": "Handshake", "desc": "Thesis + industry project discovery.", "url": "https://joinhandshake.com/", "tag": "Projects" }
-    ],
-    "application": [
-      { "name": "Cheetah AI", "desc": "Support for thesis proposal and motivation letter drafts.", "url": "https://www.cheetah.ai/", "tag": "Writing" }
-    ],
-    "interview": [
-      { "name": "Final Round AI", "desc": "Structured interview answers and explanations.", "url": "https://www.finalroundai.com/", "tag": "Structure" },
-      { "name": "Elevator Pitch", "desc": "Clarify your thesis topic quickly and clearly.", "url": "https://elevatorpitch.app/", "tag": "Pitch" },
-      { "name": "Interview Lift", "desc": "Presentation and discussion practice.", "url": "https://interviewlift.com/", "tag": "Mock" }
-    ],
-    "onboarding": [
-      { "name": "ChatGPT", "desc": "Literature review support, methodology drafts, writing assistance.", "url": "https://chat.openai.com/", "tag": "Writing" },
-      { "name": "DeepL", "desc": "Academic and professional language support.", "url": "https://www.deepl.com/en/translator", "tag": "Language" },
-      { "name": "Coach", "desc": "Research productivity and goal setting.", "url": "https://coach.me/", "tag": "Productivity" },
-      { "name": "Career Mastery", "desc": "Transition from thesis to job mindset and planning.", "url": "https://careermastery.io/", "tag": "Growth" }
-    ]
+    "orientation": [],
+    "application": [],
+    "interview": [],
+    "onboarding": []
   },
-
   "full-time": {
-    "orientation": [
-      { "name": "EURES", "desc": "European Job Mobility Portal and job search across Europe.", "url": "https://eures.europa.eu/index_en", "tag": "Europe" },
-      { "name": "XING", "desc": "Find jobs in the DACH region and set job preferences.", "url": "https://www.xing.com/en", "tag": "DACH" },
-      { "name": "LinkedIn Career Explorer", "desc": "Support career transitions with skills mapping.", "url": "https://linkedin.github.io/career-explorer/", "tag": "Explore" },
-      { "name": "Jobright.ai", "desc": "AI job recommendations and matching.", "url": "https://jobright.ai/", "tag": "Match" }
-    ],
-    "application": [
-      { "name": "VMock", "desc": "Resume scoring and optimization.", "url": "https://www.vmock.com/", "tag": "Feedback" },
-      { "name": "Resume.io", "desc": "Professional CV builder.", "url": "https://resume.io/", "tag": "CV" },
-      { "name": "Europass CV", "desc": "Create a Europass CV online (EU format).", "url": "https://europass.europa.eu/en/create-europass-cv", "tag": "EU" },
-      { "name": "Cheetah AI", "desc": "Support for cover letters and resume drafts.", "url": "https://www.cheetah.ai/", "tag": "Writing" },
-      { "name": "Notion", "desc": "Track applications and follow-ups.", "url": "https://www.notion.so/", "tag": "Tracking" },
-      { "name": "Airtable", "desc": "Spreadsheet-style tracking for job applications.", "url": "https://www.airtable.com/", "tag": "Tracking" }
-    ],
-    "interview": [
-      { "name": "Final Round AI", "desc": "Practice structured answers (e.g., STAR).", "url": "https://www.finalroundai.com/", "tag": "STAR" },
-      { "name": "Yoodli Interview", "desc": "Communication coaching and confidence building.", "url": "https://www.yoodli.ai/", "tag": "Speaking" },
-      { "name": "Interview Lift", "desc": "Behavioral and technical interview practice.", "url": "https://interviewlift.com/", "tag": "Mock" }
-    ],
-    "onboarding": [
-      { "name": "ChatGPT", "desc": "Workplace communication, learning plans, quick clarification.", "url": "https://chat.openai.com/", "tag": "Support" },
-      { "name": "Career Mastery", "desc": "Long-term growth mindset and career planning.", "url": "https://careermastery.io/", "tag": "Growth" },
-      { "name": "Coach", "desc": "Performance and habit building.", "url": "https://coach.me/", "tag": "Habits" }
-    ]
+    "orientation": [],
+    "application": [],
+    "interview": [],
+    "onboarding": []
   }
 }
-        </script>
-      </div>
-    </section>
+    </script>
   </main>
 
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-inner">
-        <div>
-          <h4>Hochschule Wismar</h4>
-          <p>University of Applied Sciences<br />Technology, Business and Design</p>
-          <p>Philipp-Müller-Straße 14<br />23966 Wismar, Germany</p>
-        </div>
-
-        <div>
-          <h4>Useful links</h4>
-          <p><a href="https://www.hs-wismar.de" target="_blank" rel="noopener">hs-wismar.de</a></p>
-          <p><a href="prompts.html">AI Prompts</a></p>
-          <p><a href="contact.html">Report an issue</a></p>
-        </div>
-
-        <div>
-          <h4>Tip</h4>
-          <p style="margin:0; color:rgba(255,255,255,.86);">
-            Choose one stage at a time and take action immediately (apply, practice, or message).
-          </p>
-        </div>
-      </div>
-
-      <div class="footer-bottom">
-        <p>&copy; 2026 Hochschule Wismar</p>
-      </div>
-    </div>
-  </footer>
-
-  <script src="js/main.js"></script>
+  <script src="js/main.js" defer></script>
 </body>
 </html>
