@@ -1,120 +1,232 @@
-// Central content store (keeps HTML clean)
+(() => {
+  const qs = (sel, root = document) => root.querySelector(sel);
+  const qsa = (sel, root = document) => Array.from(root.querySelectorAll(sel));
 
-window.HSW = window.HSW || {};
+  function setActiveNavLinks() {
+    const path = (window.location.pathname || "").split("/").pop() || "index.html";
 
-window.HSW.toolsByCategory = {
-  "working-student": {
-    orientation: [
-      { name: "Perplexity", desc: "Research companies, roles, and requirements with sourced answers.", url: "https://www.perplexity.ai" },
-      { name: "Google Gemini", desc: "Build search strategy and role targeting plan.", url: "https://gemini.google.com" }
-    ],
-    application: [
-      { name: "ChatGPT", desc: "Draft and tailor CV bullets and cover letters from your real experience.", url: "https://chat.openai.com" },
-      { name: "LanguageTool", desc: "German/English grammar and spelling checks.", url: "https://languagetool.org" },
-      { name: "DeepL Write", desc: "Rewrite text for clearer German/English tone.", url: "https://www.deepl.com/write" }
-    ],
-    interview: [
-      { name: "ChatGPT", desc: "Mock interviews, STAR answers, and question bank.", url: "https://chat.openai.com" },
-      { name: "Perplexity", desc: "Company/product research before interviews.", url: "https://www.perplexity.ai" }
-    ],
-    onboarding: [
-      { name: "DeepL", desc: "Translate onboarding docs and emails.", url: "https://www.deepl.com" },
-      { name: "Notion", desc: "Track onboarding tasks and notes.", url: "https://www.notion.so" }
-    ]
-  },
+    qsa('a[href]').forEach((a) => {
+      const href = a.getAttribute("href");
+      if (!href) return;
 
-  "internship": {
-    orientation: [
-      { name: "Perplexity", desc: "Research internship portals and company context.", url: "https://www.perplexity.ai" },
-      { name: "Google Gemini", desc: "Plan targeting and search queries.", url: "https://gemini.google.com" }
-    ],
-    application: [
-      { name: "ChatGPT", desc: "Draft applications; personalise and verify every claim.", url: "https://chat.openai.com" },
-      { name: "DeepL Write", desc: "Improve German/English tone.", url: "https://www.deepl.com/write" },
-      { name: "LanguageTool", desc: "Final language checks.", url: "https://languagetool.org" }
-    ],
-    interview: [
-      { name: "ChatGPT", desc: "Internship motivation + mock interview practice.", url: "https://chat.openai.com" },
-      { name: "Google Gemini", desc: "Role-specific Q&A practice.", url: "https://gemini.google.com" }
-    ],
-    onboarding: [
-      { name: "DeepL", desc: "Translate internal communications.", url: "https://www.deepl.com" },
-      { name: "Notion", desc: "Onboarding checklist and learning notes.", url: "https://www.notion.so" }
-    ]
-  },
+      const isExternal =
+        href.startsWith("http://") ||
+        href.startsWith("https://") ||
+        href.startsWith("mailto:") ||
+        href.startsWith("tel:");
 
-  "master-thesis": {
-    orientation: [
-      { name: "Perplexity", desc: "Explore thesis topics and company problems to solve.", url: "https://www.perplexity.ai" },
-      { name: "Google Scholar", desc: "Find papers and citations.", url: "https://scholar.google.com" }
-    ],
-    application: [
-      { name: "ChatGPT", desc: "Draft outreach emails and proposal outlines (customise).", url: "https://chat.openai.com" },
-      { name: "DeepL Write", desc: "Refine tone for German/English outreach.", url: "https://www.deepl.com/write" }
-    ],
-    interview: [
-      { name: "ChatGPT", desc: "Prepare for thesis discussions and technical questions.", url: "https://chat.openai.com" },
-      { name: "Perplexity", desc: "Company/domain research for meetings.", url: "https://www.perplexity.ai" }
-    ],
-    onboarding: [
-      { name: "Zotero", desc: "Reference manager for papers and thesis writing.", url: "https://www.zotero.org" },
-      { name: "Notion", desc: "Plan milestones and research logs.", url: "https://www.notion.so" }
-    ]
-  },
+      if (isExternal) return;
 
-  "full-time-job": {
-    orientation: [
-      { name: "Perplexity", desc: "Research roles, companies, and requirements with sources.", url: "https://www.perplexity.ai" },
-      { name: "Google Gemini", desc: "Plan targeting and skills gap analysis.", url: "https://gemini.google.com" }
-    ],
-    application: [
-      { name: "ChatGPT", desc: "Draft CV/cover letter; keep it factual and specific.", url: "https://chat.openai.com" },
-      { name: "LanguageTool", desc: "German/English quality checks.", url: "https://languagetool.org" },
-      { name: "Grammarly", desc: "Clarity and tone for English applications.", url: "https://www.grammarly.com" }
-    ],
-    interview: [
-      { name: "ChatGPT", desc: "Mock interviews, negotiation scripts, follow-ups.", url: "https://chat.openai.com" },
-      { name: "Perplexity", desc: "Fast company research before interviews.", url: "https://www.perplexity.ai" }
-    ],
-    onboarding: [
-      { name: "DeepL", desc: "Translate emails and documents.", url: "https://www.deepl.com" },
-      { name: "Notion", desc: "Organise onboarding tasks and notes.", url: "https://www.notion.so" }
-    ]
+      const normalized = href.split("#")[0].split("?")[0];
+      const current = normalized === path || (path === "" && normalized === "index.html");
+
+      if (current) a.setAttribute("aria-current", "page");
+      else if (a.getAttribute("aria-current") === "page") a.removeAttribute("aria-current");
+    });
   }
-};
 
-// Prompt templates (short + structured; you can expand later)
-window.HSW.prompts = {
-  categories: ["cv","cover-letter","interview","onboarding"],
-  actions: ["draft","improve","tailor","check"],
+  function initMobileMenu() {
+    const toggleBtn = qs(".mobile-toggle");
+    const panel = qs("#mobilePanel");
+    if (!toggleBtn || !panel) return;
 
-  templates: {
-    cv: {
-      draft: `Write 5–8 ATS-friendly CV bullet points for this experience.\n\nRole type: {{CATEGORY}}\nTarget job title: {{JOB_TITLE}}\nMy experience (facts only):\n{{EXPERIENCE}}\n\nRules:\n- Use action verbs, add measurable outcomes (time, scope, users, accuracy).\n- Keep each bullet 1 line.\n- Do not invent skills or results.`,
-      improve: `Improve these CV bullets for clarity and ATS keywords. Keep all facts unchanged.\n\nTarget job title: {{JOB_TITLE}}\nJob description keywords:\n{{JD_KEYWORDS}}\n\nBullets:\n{{TEXT}}`,
-      tailor: `Tailor my CV bullets to this job description. Keep facts unchanged.\n\nJob ad:\n{{JOB_AD}}\n\nMy bullets:\n{{TEXT}}`,
-      check: `Check these CV bullets for truthfulness risks, vague claims, and missing metrics. Suggest edits without inventing facts.\n\nBullets:\n{{TEXT}}`
-    },
+    const isOpen = () => panel.classList.contains("open");
 
-    "cover-letter": {
-      draft: `Draft a short cover letter (180–220 words) for Germany.\n\nRole type: {{CATEGORY}}\nCompany: {{COMPANY}}\nJob title: {{JOB_TITLE}}\nMy facts:\n{{FACTS}}\n\nRules:\n- Simple, direct language.\n- No exaggerated adjectives.\n- Mention 2–3 relevant proof points.`,
-      improve: `Improve this cover letter for clarity and consistency. Keep facts unchanged.\n\nLetter:\n{{TEXT}}`,
-      tailor: `Tailor this cover letter to the job ad. Keep facts unchanged.\n\nJob ad:\n{{JOB_AD}}\n\nLetter:\n{{TEXT}}`,
-      check: `Check the letter for risky claims, inconsistencies, and unnatural AI tone. Suggest safer wording.\n\nLetter:\n{{TEXT}}`
-    },
+    const open = () => {
+      panel.classList.add("open");
+      panel.setAttribute("aria-hidden", "false");
+      toggleBtn.setAttribute("aria-expanded", "true");
+    };
 
-    interview: {
-      draft: `Create an interview prep pack.\n\nRole type: {{CATEGORY}}\nJob title: {{JOB_TITLE}}\nCompany: {{COMPANY}}\nMy background (facts):\n{{FACTS}}\n\nOutput:\n- 10 likely questions\n- 6 STAR story outlines (context→action→result)\n- 6 questions to ask interviewer`,
-      improve: `Improve these interview answers for structure (context→action→result) and clarity. Keep facts unchanged.\n\nAnswers:\n{{TEXT}}`,
-      tailor: `Tailor my interview prep to the company and job ad.\n\nJob ad:\n{{JOB_AD}}\nCompany notes:\n{{COMPANY_NOTES}}\n\nMy answers:\n{{TEXT}}`,
-      check: `Check these interview answers for unverifiable claims and filler. Suggest improvements.\n\nAnswers:\n{{TEXT}}`
-    },
+    const close = () => {
+      panel.classList.remove("open");
+      panel.setAttribute("aria-hidden", "true");
+      toggleBtn.setAttribute("aria-expanded", "false");
+    };
 
-    onboarding: {
-      draft: `Create a 14-day onboarding plan for this role in Germany.\n\nRole type: {{CATEGORY}}\nJob title: {{JOB_TITLE}}\nTeam context:\n{{CONTEXT}}\n\nOutput:\n- Days 1–3, 4–7, 8–14 goals\n- Questions to ask\n- Documents to request`,
-      improve: `Improve this onboarding email/message for clarity and professionalism.\n\nText:\n{{TEXT}}`,
-      tailor: `Tailor this onboarding message to the company tone.\n\nCompany tone notes:\n{{COMPANY_TONE}}\nText:\n{{TEXT}}`,
-      check: `Check this message for grammar, tone, and clarity. Suggest a final version.\n\nText:\n{{TEXT}}`
+    toggleBtn.setAttribute("aria-expanded", "false");
+    panel.setAttribute("aria-hidden", "true");
+
+    toggleBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      isOpen() ? close() : open();
+    });
+
+    panel.addEventListener("click", (e) => {
+      const link = e.target.closest("a");
+      if (link) close();
+    });
+
+    document.addEventListener("click", (e) => {
+      if (!toggleBtn.contains(e.target) && !panel.contains(e.target)) close();
+    });
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") close();
+    });
+
+    window.addEventListener("resize", () => {
+      if (window.innerWidth > 860) close();
+    });
+  }
+
+  function initExternalLinks() {
+    qsa('a[href^="http://"], a[href^="https://"]').forEach((a) => {
+      const href = a.getAttribute("href");
+      if (!href) return;
+
+      let isSameHost = false;
+      try {
+        const u = new URL(href, window.location.href);
+        isSameHost = u.host === window.location.host;
+      } catch {
+        isSameHost = false;
+      }
+
+      if (!isSameHost) {
+        a.setAttribute("target", "_blank");
+        a.setAttribute("rel", "noopener noreferrer");
+      }
+    });
+  }
+
+  function initToolsDirectory() {
+    const grid = qs("#toolsGrid");
+    const categoryTabs = qsa('.tab[data-category]');
+    const stageTabs = qsa('.stage[data-stage]');
+    const dataEl = qs("#toolsData");
+
+    if (!grid || categoryTabs.length === 0 || stageTabs.length === 0 || !dataEl) return;
+
+    let data = {};
+    try {
+      data = JSON.parse(dataEl.textContent || "{}");
+    } catch {
+      data = {};
     }
+
+    const state = {
+      category: categoryTabs.find((t) => t.getAttribute("aria-selected") === "true")?.dataset.category || categoryTabs[0].dataset.category,
+      stage: stageTabs.find((t) => t.getAttribute("aria-selected") === "true")?.dataset.stage || stageTabs[0].dataset.stage,
+    };
+
+    const escapeHtml = (str) =>
+      String(str)
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+
+    const setSelected = (list, selectedEl) => {
+      list.forEach((el) => el.setAttribute("aria-selected", el === selectedEl ? "true" : "false"));
+    };
+
+    const render = () => {
+      const tools = data?.[state.category]?.[state.stage] ?? [];
+
+      if (!Array.isArray(tools) || tools.length === 0) {
+        grid.innerHTML = `
+          <div class="card card-pad" style="grid-column:1 / -1;">
+            <p class="lead" style="margin:0;">No tools available for this selection.</p>
+          </div>
+        `;
+        return;
+      }
+
+      grid.innerHTML = tools
+        .map((t) => {
+          const name = escapeHtml(t.name || "");
+          const desc = escapeHtml(t.desc || "");
+          const url = escapeHtml(t.url || "");
+          const tag = escapeHtml(t.tag || state.stage);
+
+          return `
+            <a class="tool-card" href="${url}">
+              <div class="tool-meta">
+                <span class="badge">${tag}</span>
+                <span class="badge">External</span>
+              </div>
+              <h3>${name}</h3>
+              <p>${desc}</p>
+              <div class="actions">
+                <span class="btn btn-link btn-sm" aria-hidden="true">Open →</span>
+              </div>
+            </a>
+          `;
+        })
+        .join("");
+    };
+
+    categoryTabs.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        state.category = btn.dataset.category;
+        setSelected(categoryTabs, btn);
+        render();
+      });
+    });
+
+    stageTabs.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        state.stage = btn.dataset.stage;
+        setSelected(stageTabs, btn);
+        render();
+      });
+    });
+
+    render();
   }
-};
+
+  function initContactFormAjax() {
+    const form = qs('form[data-web3forms="true"]');
+    const statusEl = qs("#formStatus");
+    if (!form || !statusEl) return;
+
+    const endpoint = form.getAttribute("action") || "https://api.web3forms.com/submit";
+
+    const setStatus = (type, message) => {
+      statusEl.textContent = message;
+      statusEl.style.display = "block";
+      statusEl.style.padding = "12px 12px";
+      statusEl.style.borderRadius = "12px";
+      statusEl.style.border = "1px solid rgba(0,0,0,.12)";
+      statusEl.style.background = type === "success" ? "rgba(51,153,51,.10)" : "rgba(255,93,2,.10)";
+    };
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      setStatus("info", "Sending…");
+
+      const fd = new FormData(form);
+
+      try {
+        const res = await fetch(endpoint, {
+          method: "POST",
+          body: fd,
+          headers: { Accept: "application/json" },
+        });
+
+        const json = await res.json().catch(() => null);
+
+        if (res.ok && json && json.success) {
+          form.reset();
+          setStatus("success", "Message sent successfully. Thank you.");
+          return;
+        }
+
+        setStatus("error", "Unable to send right now. Please try again.");
+      } catch {
+        setStatus("error", "Network error. Please try again.");
+      }
+    });
+  }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    setActiveNavLinks();
+    initMobileMenu();
+    initExternalLinks();
+    initToolsDirectory();
+    initContactFormAjax();
+  });
+})();
