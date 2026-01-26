@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>AI Prompts Library | Hochschule Wismar</title>
-  <meta name="description" content="Copy-ready AI prompts for job search tasks in Germany: CV, cover letters, interview prep, and onboarding." />
+  <title>AI Prompts | AI Job Search Support</title>
+  <meta name="description" content="Copy-ready AI prompts for Working Student, Internship, Master Thesis, and Full-Time roles across orientation, application, interview, and onboarding." />
   <link rel="stylesheet" href="css/style.css" />
 </head>
 
@@ -12,7 +12,7 @@
   <header class="header">
     <div class="container">
       <div class="header-inner">
-        <a class="brand" href="index.html" aria-label="Hochschule Wismar home">
+        <a class="brand" href="index.html" aria-label="Home">
           <img src="assets/hsw-logo.png" alt="Hochschule Wismar" />
           <div class="brand-title">
             <strong>AI Job Search Support</strong>
@@ -23,7 +23,7 @@
         <nav class="nav" aria-label="Primary">
           <a href="index.html">Home</a>
           <a href="tools.html">AI Tools</a>
-          <a href="prompts.html" aria-current="page">AI Prompts</a>
+          <a href="prompts.html">AI Prompts</a>
           <a href="guidelines.html">Guidelines</a>
           <a href="faqs.html">FAQs</a>
           <a href="contact.html">Contact</a>
@@ -40,7 +40,7 @@
         <nav class="mobile-nav" aria-label="Mobile">
           <a href="index.html">Home</a>
           <a href="tools.html">AI Tools</a>
-          <a href="prompts.html" aria-current="page">AI Prompts</a>
+          <a href="prompts.html">AI Prompts</a>
           <a href="guidelines.html">Guidelines</a>
           <a href="faqs.html">FAQs</a>
           <a href="contact.html">Contact</a>
@@ -52,35 +52,362 @@
   <main>
     <section class="section">
       <div class="container">
-        <h1 class="section-title" style="font-size:clamp(1.4rem, 2.4vw, 1.9rem); margin-bottom:10px;">AI Prompts Library</h1>
+        <h1 class="section-title" style="font-size:clamp(1.45rem, 2.6vw, 2.05rem); margin-bottom:10px;">AI Prompts</h1>
         <p class="lead">
-          Copy a prompt, replace the placeholders, and keep every claim factual. For German applications, write in simple, direct language.
+          Copy a prompt, paste it into ChatGPT (or another AI assistant), and replace the placeholders. Keep outputs truthful and consistent with your CV.
         </p>
-      </div>
-    </section>
 
-    <section class="section" style="padding-top:10px;">
-      <div class="container">
-        <div class="card card-pad">
-          <div class="tabs-row" role="tablist" aria-label="Prompt groups">
-            <button class="tab" type="button" role="tab" aria-selected="true" data-group="cv">CV</button>
-            <button class="tab" type="button" role="tab" aria-selected="false" data-group="cover-letter">Cover Letter</button>
-            <button class="tab" type="button" role="tab" aria-selected="false" data-group="interview">Interview</button>
-            <button class="tab" type="button" role="tab" aria-selected="false" data-group="outreach">Outreach</button>
-            <button class="tab" type="button" role="tab" aria-selected="false" data-group="onboarding">Onboarding</button>
-          </div>
+        <div style="height:12px;"></div>
 
-          <div style="margin-top:14px;">
-            <div class="stage-row" role="tablist" aria-label="Prompt intent">
-              <button class="stage" type="button" role="tab" aria-selected="true" data-intent="draft">Draft</button>
-              <button class="stage" type="button" role="tab" aria-selected="false" data-intent="improve">Improve</button>
-              <button class="stage" type="button" role="tab" aria-selected="false" data-intent="tailor">Tailor</button>
-              <button class="stage" type="button" role="tab" aria-selected="false" data-intent="check">Check</button>
-            </div>
+        <div class="card card-pad notice">
+          <div class="icon" aria-hidden="true">!</div>
+          <div>
+            <h2>How to use prompts</h2>
+            <ul>
+              <li>Replace placeholders like [ROLE], [COMPANY], [SKILLS], [EXPERIENCE].</li>
+              <li>Ask the AI to produce “2 versions” (short + detailed), then pick one.</li>
+              <li>For German applications, draft in English first, then translate with DeepL and polish. </li>
+            </ul>
           </div>
         </div>
 
-        <div id="promptsGrid" class="tool-grid" style="margin-top:16px;" aria-live="polite"></div>
+        <div style="height:18px;"></div>
+
+        <div class="grid grid-2">
+          <a class="tool-card" href="tools.html">
+            <div class="tool-meta">
+              <span class="badge">Tools</span>
+              <span class="badge">Directory</span>
+            </div>
+            <h3>Need the tool list?</h3>
+            <p>Go to AI Tools and pick a category + stage.</p>
+            <div class="actions">
+              <span class="btn btn-link btn-sm" aria-hidden="true">Open →</span>
+            </div>
+          </a>
+
+          <a class="tool-card" href="guidelines.html">
+            <div class="tool-meta">
+              <span class="badge">Rules</span>
+              <span class="badge">Quality</span>
+            </div>
+            <h3>Want quality rules?</h3>
+            <p>See writing + AI usage guidelines (no fake claims, proof-first writing).</p>
+            <div class="actions">
+              <span class="btn btn-link btn-sm" aria-hidden="true">Open →</span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <h2 class="section-title">Working Student</h2>
+
+        <div class="grid grid-2">
+          <div class="card card-pad">
+            <h3 style="margin:0 0 10px;">Orientation prompt</h3>
+            <p class="lead" style="margin:0 0 10px;">
+              Use this to decide what roles match your skills and schedule.
+            </p>
+            <pre style="margin:0; white-space:pre-wrap;">You are my career assistant for Germany. I want a Working Student (Werkstudent) role.
+
+My profile:
+- Current degree: [DEGREE] at Hochschule Wismar
+- Skills: [SKILLS]
+- Past experience: [EXPERIENCE]
+- Available hours/week: [HOURS]
+- Preferred location: [CITY / REMOTE]
+- Language level: German [LEVEL], English [LEVEL]
+
+Task:
+1) Suggest 8 role titles that fit my profile (with German + English job title versions).
+2) For each role, list top 5 skills employers expect in Germany.
+3) Recommend 5 keywords to search on LinkedIn/Indeed/StepStone.
+4) Give a 2-week action plan (small daily tasks, 20–30 minutes/day).</pre>
+          </div>
+
+          <div class="card card-pad">
+            <h3 style="margin:0 0 10px;">Application prompt</h3>
+            <p class="lead" style="margin:0 0 10px;">
+              Produces a CV bullet upgrade + short cover email.
+            </p>
+            <pre style="margin:0; white-space:pre-wrap;">Act as a German recruiter for a Working Student role.
+
+Job posting:
+[PASTE JOB DESCRIPTION]
+
+My background:
+[PASTE CV BULLETS OR SUMMARY]
+
+Write:
+1) 6 improved CV bullet points (impact-first, with metrics placeholders if missing).
+2) A short email to apply (120–160 words), professional and simple.
+3) A checklist of missing info I should add (portfolio links, certificates, GitHub, etc.).
+
+Rules:
+- Do not invent experience.
+- If a metric is missing, use [NUMBER] placeholders and tell me what to measure.</pre>
+          </div>
+
+          <div class="card card-pad">
+            <h3 style="margin:0 0 10px;">Interview prompt</h3>
+            <p class="lead" style="margin:0 0 10px;">
+              Great with Google Interview Warmup practice style. </p>
+            <pre style="margin:0; white-space:pre-wrap;">Pretend you are the interviewer. Ask me 8 Working Student interview questions.
+
+Context:
+- Role: [ROLE]
+- Company: [COMPANY]
+- Job description: [PASTE]
+- My CV: [PASTE]
+
+After each answer I give:
+- Give a score out of 10
+- Improve my answer using STAR
+- Suggest 1 follow-up question the interviewer might ask</pre>
+          </div>
+
+          <div class="card card-pad">
+            <h3 style="margin:0 0 10px;">Onboarding prompt</h3>
+            <p class="lead" style="margin:0 0 10px;">
+              Helps you sound clear and reliable in a German workplace. </p>
+            <pre style="margin:0; white-space:pre-wrap;">You are my onboarding coach for a Working Student job in Germany.
+
+I start on: [DATE]
+Role: [ROLE]
+Team: [TEAM INFO]
+My responsibilities: [LIST]
+
+Create:
+1) A 30/60/90-day plan (goals, deliverables, weekly habits).
+2) 5 short message templates for: asking for help, clarifying tasks, reporting progress, shift change, and being late.
+3) A list of 10 questions I should ask in the first week.</pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <h2 class="section-title">Internship</h2>
+
+        <div class="grid grid-2">
+          <div class="card card-pad">
+            <h3 style="margin:0 0 10px;">Orientation prompt</h3>
+            <pre style="margin:0; white-space:pre-wrap;">You are my internship search assistant for Germany/EU.
+
+My profile:
+- Degree + semester: [DEGREE, SEMESTER]
+- Target field: [FIELD]
+- Skills: [SKILLS]
+- Projects: [PROJECTS]
+- Location preference: [CITY/REMOTE]
+- Internship duration: [MONTHS]
+- Start date: [DATE]
+
+Task:
+1) Propose 10 realistic internship role titles.
+2) For each title: top 5 tools/skills + one mini project I can build in 7 days to prove fit.
+3) Create a shortlist strategy: which 3 platforms to use first and why.</pre>
+          </div>
+
+          <div class="card card-pad">
+            <h3 style="margin:0 0 10px;">Application prompt</h3>
+            <pre style="margin:0; white-space:pre-wrap;">Act as a hiring manager. Improve my internship application pack.
+
+Job description:
+[PASTE]
+
+My CV:
+[PASTE]
+
+Write:
+1) A tailored internship cover letter (250–320 words).
+2) 10 ATS keywords I should include naturally.
+3) A “skills evidence” table: skill → proof (project / course / experience), no fake claims.</pre>
+          </div>
+
+          <div class="card card-pad">
+            <h3 style="margin:0 0 10px;">Interview prompt</h3>
+            <pre style="margin:0; white-space:pre-wrap;">Run an internship mock interview.
+
+Role: [ROLE]
+Company: [COMPANY]
+My background: [PASTE]
+
+Ask:
+- 4 behavioral questions
+- 3 project questions (deep dive)
+- 2 “learning mindset” questions
+
+Then:
+- Give me a model answer outline for each
+- Tell me what to prepare as supporting evidence (links, screenshots, GitHub, report samples)</pre>
+          </div>
+
+          <div class="card card-pad">
+            <h3 style="margin:0 0 10px;">Onboarding prompt</h3>
+            <pre style="margin:0; white-space:pre-wrap;">You are my internship onboarding mentor.
+
+Internship goals: [GOALS]
+Tools used: [TOOLS]
+Team context: [TEAM]
+
+Create:
+1) A first-week checklist (meetings, access, documentation, expectations).
+2) A weekly status update template (short, clear, measurable).
+3) A learning plan: what to learn in week 1–4 with small outputs each week.</pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <h2 class="section-title">Master Thesis</h2>
+
+        <div class="grid grid-2">
+          <div class="card card-pad">
+            <h3 style="margin:0 0 10px;">Orientation prompt</h3>
+            <pre style="margin:0; white-space:pre-wrap;">You are my thesis topic and company-collaboration advisor.
+
+My program: [PROGRAM]
+Interests: [INTERESTS]
+Strengths: [STRENGTHS]
+Preferred industries: [INDUSTRIES]
+Constraints (time, data access, NDA): [CONSTRAINTS]
+
+Task:
+1) Suggest 8 thesis topic ideas suitable for a company collaboration (practical + research).
+2) For each topic: problem statement, objective, expected dataset, and measurable outcome.
+3) Write a 120-word email to a company asking for a thesis collaboration (professional, German-style tone).</pre>
+          </div>
+
+          <div class="card card-pad">
+            <h3 style="margin:0 0 10px;">Application prompt</h3>
+            <pre style="margin:0; white-space:pre-wrap;">Help me write a Master Thesis proposal outline for a company.
+
+Topic: [TOPIC]
+Company/industry: [COMPANY / INDUSTRY]
+My background: [PASTE]
+
+Deliver:
+1) A proposal outline: motivation, research question, methodology, timeline, deliverables.
+2) A risk section (data access, scope creep, legal/privacy).
+3) A short motivation letter (180–220 words) that matches my CV.</pre>
+          </div>
+
+          <div class="card card-pad">
+            <h3 style="margin:0 0 10px;">Interview prompt</h3>
+            <pre style="margin:0; white-space:pre-wrap;">Simulate a meeting with a professor + company supervisor.
+
+Context:
+- Topic: [TOPIC]
+- Company goal: [GOAL]
+- Constraints: [CONSTRAINTS]
+- My plan: [PASTE]
+
+Ask me 10 tough questions:
+- 4 about feasibility and timeline
+- 3 about methodology validity
+- 3 about deliverables and impact
+
+After my answers, rewrite them to sound clearer and more confident (no fake claims).</pre>
+          </div>
+
+          <div class="card card-pad">
+            <h3 style="margin:0 0 10px;">Onboarding prompt</h3>
+            <pre style="margin:0; white-space:pre-wrap;">You are my thesis execution manager.
+
+Thesis topic: [TOPIC]
+Deadline: [DATE]
+Weekly time available: [HOURS]
+Tools: [TOOLS]
+
+Create:
+1) A 10–12 week plan with weekly milestones.
+2) A “chapter-by-chapter” structure suggestion (what to write first).
+3) A literature review workflow (search terms, inclusion/exclusion rules, how to take notes).</pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <h2 class="section-title">Full-Time</h2>
+
+        <div class="grid grid-2">
+          <div class="card card-pad">
+            <h3 style="margin:0 0 10px;">Orientation prompt</h3>
+            <pre style="margin:0; white-space:pre-wrap;">You are my full-time job strategy coach for Germany/EU.
+
+My profile:
+- Target roles: [ROLES]
+- Skills: [SKILLS]
+- Experience: [EXPERIENCE]
+- Preferred locations: [LOCATIONS]
+- Visa/work authorization status: [STATUS]
+- Language levels: German [LEVEL], English [LEVEL]
+
+Create:
+1) A job search positioning statement (2 versions).
+2) A list of 12 target companies (mix: big + mid + startups).
+3) A weekly pipeline plan: applications/week, networking messages/week, interview practice schedule.</pre>
+          </div>
+
+          <div class="card card-pad">
+            <h3 style="margin:0 0 10px;">Application prompt</h3>
+            <pre style="margin:0; white-space:pre-wrap;">Act as an ATS and recruiter. Optimize my full-time application.
+
+Job description:
+[PASTE]
+
+My CV:
+[PASTE]
+
+Deliver:
+1) A tailored “Profile/Summary” (60–80 words).
+2) 8 improved bullet points aligned to the job requirements.
+3) A cover letter (250–320 words) with proof-first language.
+4) A list of 10 keywords missing from my CV (only if relevant).</pre>
+          </div>
+
+          <div class="card card-pad">
+            <h3 style="margin:0 0 10px;">Interview prompt</h3>
+            <pre style="margin:0; white-space:pre-wrap;">Conduct a full-time interview simulation.
+
+Role: [ROLE]
+Seniority: [ENTRY/JUNIOR/MID]
+My background: [PASTE]
+
+Ask:
+- 5 behavioral questions (use STAR)
+- 3 role-specific questions
+- 2 questions about working in Germany (communication, teamwork, reliability)
+
+Then:
+- Provide “strong answer frameworks”
+- Point out contradictions between my answers and my CV (if any)</pre>
+          </div>
+
+          <div class="card card-pad">
+            <h3 style="margin:0 0 10px;">Onboarding prompt</h3>
+            <pre style="margin:0; white-space:pre-wrap;">You are my new-job onboarding coach.
+
+Role: [ROLE]
+Company: [COMPANY]
+First day: [DATE]
+Team: [TEAM]
+
+Create:
+1) A 30/60/90 plan focused on measurable outcomes.
+2) A weekly review template (what I delivered, blockers, next steps).
+3) A relationship map: who to build trust with (manager, peers, stakeholders) and how.</pre>
+          </div>
+        </div>
       </div>
     </section>
   </main>
@@ -95,15 +422,17 @@
         </div>
 
         <div>
-          <h4>Contact</h4>
-          <p>Phone: +49 3841 753-0</p>
-          <p>Email: <a href="mailto:postmaster@hs-wismar.de">postmaster@hs-wismar.de</a></p>
-          <p><a href="https://www.hs-wismar.de" target="_blank" rel="noopener">www.hs-wismar.de</a></p>
+          <h4>Suggested tools</h4>
+          <p><a href="https://grow.google/certificates/interview-warmup/license" target="_blank" rel="noopener">Google Interview Warmup</a></p>
+          <p><a href="https://www.deepl.com/en/translator" target="_blank" rel="noopener">DeepL Translator</a></p>
+          <p><a href="tools.html">AI Tools directory</a></p>
         </div>
 
         <div>
-          <h4>Tip</h4>
-          <p>Keep your documents consistent with the job ad and your real experience.</p>
+          <h4>Support</h4>
+          <p style="margin:0; color:rgba(255,255,255,.86);">
+            If you find a broken link or want to add a tool, message via the Contact page.
+          </p>
         </div>
       </div>
 
@@ -114,565 +443,5 @@
   </footer>
 
   <script src="js/main.js"></script>
-
-  <script>
-    (() => {
-      const prompts = {
-        "cv": {
-          "draft": [
-            {
-              title: "ATS-ready bullet points from experience",
-              desc: "Turn raw experience into measurable CV bullets (German or English).",
-              text:
-`You are a career-focused writing assistant.
-
-Goal:
-Rewrite my experience into 5–8 ATS-friendly CV bullet points for a role in Germany.
-
-Input (paste):
-1) Target role title:
-2) Job description (paste):
-3) My raw notes / tasks / projects (paste):
-4) Tools/tech used:
-5) Results/metrics (numbers if possible):
-6) Language: German or English
-
-Constraints:
-- Use action verbs.
-- Keep each bullet 1–2 lines.
-- Include measurable outcomes when available.
-- Do not invent facts. If data is missing, ask up to 5 questions first.`
-            },
-            {
-              title: "CV summary (2 versions)",
-              desc: "Create a concise summary and a more detailed summary.",
-              text:
-`Write two CV summaries for the German job market based on my profile.
-
-Input:
-- Target role:
-- Top 5 skills:
-- 2–3 strongest projects/achievements (with metrics):
-- Work authorization status (optional):
-- Language: German or English
-
-Output:
-1) Summary (max 3 lines).
-2) Summary (max 6 lines).
-Rules:
-- Professional and direct.
-- No buzzword stuffing.
-- No invented claims.`
-            }
-          ],
-          "improve": [
-            {
-              title: "Improve clarity and remove fluff",
-              desc: "Reduce repetition, improve structure, keep it factual.",
-              text:
-`Improve my CV content for clarity and impact.
-
-Input:
-- Current CV bullets (paste):
-- Target role + job description (paste):
-- Language: German or English
-
-Tasks:
-- Remove fluff and generic phrases.
-- Make verbs stronger.
-- Align terminology with the job description.
-- Keep everything factual and consistent.
-
-Output:
-- Revised bullets.
-- 6 keywords that match the job ad (only if present in the ad).`
-            }
-          ],
-          "tailor": [
-            {
-              title: "Tailor CV to job ad (gap-aware)",
-              desc: "Align your bullets and highlight relevant skills without making false claims.",
-              text:
-`Tailor my CV to this job description for Germany.
-
-Input:
-- Job description (paste):
-- My CV (paste):
-- My skill inventory (bullet list):
-- Language: German or English
-
-Output:
-1) A tailored set of bullets for the most relevant 2–3 experiences.
-2) A short “skills” section (6–10 items).
-3) A list of gaps (skills asked but not present in my profile) without inventing anything.`
-            }
-          ],
-          "check": [
-            {
-              title: "Consistency + red-flag check",
-              desc: "Catch contradictions, vague claims, and risky statements.",
-              text:
-`Check my CV for issues that could reduce trust.
-
-Input:
-- CV (paste)
-- Optional: LinkedIn (paste)
-
-Check for:
-- Contradictions or timeline gaps.
-- Vague claims with no evidence.
-- Overstated responsibilities.
-- Grammar and tone issues.
-
-Output:
-- A list of issues (with exact text quoted).
-- A corrected version for each issue.`
-            }
-          ]
-        },
-
-        "cover-letter": {
-          "draft": [
-            {
-              title: "Cover letter draft (German market style)",
-              desc: "Short, direct structure with a clear value proposition.",
-              text:
-`Write a cover letter for the German job market.
-
-Input:
-- Job title:
-- Company:
-- Job description (paste):
-- My background (paste):
-- 2 relevant achievements with metrics:
-- Why this company (2 bullets):
-- Language: German or English
-
-Constraints:
-- Keep it to ~220–320 words.
-- Use simple sentences.
-- Do not invent achievements.
-- End with a polite, professional closing and availability.`
-            }
-          ],
-          "improve": [
-            {
-              title: "Improve cover letter (tone + structure)",
-              desc: "Make it tighter, more specific, and less generic.",
-              text:
-`Improve my cover letter for a German employer.
-
-Input:
-- Job ad (paste):
-- Current cover letter (paste):
-- Language: German or English
-
-Output:
-- Revised cover letter.
-- 5 concrete edits you made (short bullets).
-Rules:
-- Keep it concise.
-- Remove generic claims.
-- No invented facts.`
-            }
-          ],
-          "tailor": [
-            {
-              title: "Tailor to requirements (proof-first)",
-              desc: "Map requirements to proof from your experience.",
-              text:
-`Tailor my cover letter to the job requirements.
-
-Input:
-- Job description (paste)
-- My experience bullets (paste)
-
-Output:
-- A cover letter draft
-- A “requirement → proof” mapping table (requirement + where in my experience it is proven)
-Rules:
-- If a requirement has no proof, state “not covered” and suggest a truthful workaround (coursework, personal project, learning plan).`
-            }
-          ],
-          "check": [
-            {
-              title: "Fact-check + ATS phrase alignment",
-              desc: "Ensure claims are supported and wording matches the job ad.",
-              text:
-`Review my cover letter for:
-1) factual support,
-2) clarity,
-3) alignment with the job description language.
-
-Input:
-- Job description (paste)
-- Cover letter (paste)
-
-Output:
-- Lines that are too strong or unsupported (quote them).
-- Safer rewrites.
-- 8 ATS-friendly phrases extracted from the job ad (only exact phrases).`
-            }
-          ]
-        },
-
-        "interview": {
-          "draft": [
-            {
-              title: "Interview questions (role-specific)",
-              desc: "Generate a realistic interview pack based on the job ad.",
-              text:
-`Create a role-specific interview prep pack for Germany.
-
-Input:
-- Job description (paste)
-- My CV summary (paste)
-- Language: German or English
-
-Output:
-- 10 technical/role questions.
-- 10 behavioral questions.
-- 6 “company fit” questions.
-- A list of documents I should bring / have ready (Germany-friendly, generic).`
-            }
-          ],
-          "improve": [
-            {
-              title: "Improve my STAR answers",
-              desc: "Make answers clearer and more measurable.",
-              text:
-`Improve my STAR answers.
-
-Input:
-- Role + job description (paste)
-- My STAR answers (paste)
-
-Tasks:
-- Make the “Result” measurable where possible.
-- Reduce unnecessary detail.
-- Keep it truthful.
-
-Output:
-- Improved answers + 1 follow-up question per answer that an interviewer might ask.`
-            }
-          ],
-          "tailor": [
-            {
-              title: "Company research briefing",
-              desc: "Create a concise briefing from sources I paste.",
-              text:
-`Create a company research briefing for my interview.
-
-Input:
-- Company website text snippets I paste:
-- Product/service overview I paste:
-- Job description I paste:
-- Language: German or English
-
-Output:
-- 8 key facts (only from my pasted text).
-- 6 smart questions to ask the interviewer.
-- 3 risks/concerns to clarify during interview.`
-            }
-          ],
-          "check": [
-            {
-              title: "Red flags in my answers",
-              desc: "Detect oversharing, weak phrasing, and missing proof.",
-              text:
-`Review my interview answers for red flags.
-
-Input:
-- Job description (paste)
-- My answers (paste)
-
-Output:
-- Red flags (quote exact sentences).
-- Safer rewrites.
-- 5 “proof points” I should prepare (documents, numbers, examples).`
-            }
-          ]
-        },
-
-        "outreach": {
-          "draft": [
-            {
-              title: "Cold outreach email (short and professional)",
-              desc: "For internships, Werkstudent roles, or thesis collaboration.",
-              text:
-`Write a short cold outreach email to a company in Germany.
-
-Input:
-- Recipient role (HR / team lead / professor / supervisor):
-- Goal (internship / Werkstudent / thesis / full-time):
-- Role/topic interest:
-- 3 relevant strengths (bullets):
-- 1 project/portfolio link:
-- Language: German or English
-
-Constraints:
-- 120–160 words max.
-- Clear subject line.
-- Ask for a short call or next step.
-- No exaggerated claims.`
-            }
-          ],
-          "improve": [
-            {
-              title: "Improve email (clarity + CTA)",
-              desc: "Sharper subject line and clearer ask.",
-              text:
-`Improve my outreach email.
-
-Input:
-- Current email (paste)
-- Goal + role (paste)
-- Language: German or English
-
-Output:
-- Improved email
-- 3 alternative subject lines
-Rules:
-- Keep it short.
-- Make the call-to-action specific (e.g., 15-minute call).`
-            }
-          ],
-          "tailor": [
-            {
-              title: "Tailor outreach to a company page",
-              desc: "Use only facts from the pasted company text.",
-              text:
-`Tailor my outreach message using only the company information I paste.
-
-Input:
-- Company page text (paste):
-- My background (paste):
-- What I offer (bullets):
-- Language: German or English
-
-Output:
-- Tailored email
-- 2 tailored opening lines
-- 1 tailored “value proposition” sentence grounded in the pasted company text.`
-            }
-          ],
-          "check": [
-            {
-              title: "Check for tone and mistakes",
-              desc: "Avoid overly casual tone; fix grammar.",
-              text:
-`Check my outreach email for:
-- professionalism,
-- grammar,
-- clarity,
-- overly casual tone.
-
-Input:
-- Email draft (paste)
-- Language: German or English
-
-Output:
-- Corrected email
-- A short list of changes (max 6 bullets).`
-            }
-          ]
-        },
-
-        "onboarding": {
-          "draft": [
-            {
-              title: "30-60-90 plan (starter)",
-              desc: "Create a realistic onboarding plan for a new role.",
-              text:
-`Create a 30-60-90 day plan for my new role.
-
-Input:
-- Role title:
-- Team context (what I know):
-- Expected responsibilities (paste from job ad if available):
-- My skills (bullets):
-- Language: German or English
-
-Output:
-- 30/60/90 objectives
-- Key stakeholders to meet
-- Metrics to track
-Rules:
-- Keep it practical and realistic.`
-            }
-          ],
-          "improve": [
-            {
-              title: "Rewrite message for manager (status update)",
-              desc: "Short, structured weekly update draft.",
-              text:
-`Rewrite my weekly status update message for my manager.
-
-Input:
-- My rough notes (paste)
-- Language: German or English
-
-Output:
-- A short update with:
-  - Progress
-  - Blockers
-  - Next steps
-  - Help needed (if any)`
-            }
-          ],
-          "tailor": [
-            {
-              title: "Translate responsibilities into first-week checklist",
-              desc: "Turn a job description into actionable onboarding items.",
-              text:
-`Turn this job description into a first-week onboarding checklist.
-
-Input:
-- Job description (paste)
-- Tools used by the team (if known)
-- Language: German or English
-
-Output:
-- Checklist grouped by:
-  - Access & setup
-  - People to meet
-  - Systems to learn
-  - First deliverables
-- Keep each item short and actionable.`
-            }
-          ],
-          "check": [
-            {
-              title: "Email tone check (German workplace)",
-              desc: "Make it respectful and clear.",
-              text:
-`Check this email for German workplace tone and clarity.
-
-Input:
-- Email text (paste)
-- Context (who is the recipient and why)
-
-Output:
-- Improved email
-- 3 alternative subject lines (if applicable)
-Rules:
-- Keep it direct and polite.
-- Avoid over-apologizing.`
-            }
-          ]
-        }
-      };
-
-      const groupTabs = Array.from(document.querySelectorAll('.tab[data-group]'));
-      const intentTabs = Array.from(document.querySelectorAll('.stage[data-intent]'));
-      const grid = document.getElementById("promptsGrid");
-
-      if (!grid || groupTabs.length === 0 || intentTabs.length === 0) return;
-
-      const state = {
-        group: groupTabs.find(t => t.getAttribute("aria-selected") === "true")?.dataset.group || "cv",
-        intent: intentTabs.find(t => t.getAttribute("aria-selected") === "true")?.dataset.intent || "draft",
-      };
-
-      function setSelected(list, selectedEl) {
-        list.forEach((el) => el.setAttribute("aria-selected", el === selectedEl ? "true" : "false"));
-      }
-
-      function escapeHtml(str) {
-        return String(str)
-          .replaceAll("&", "&amp;")
-          .replaceAll("<", "&lt;")
-          .replaceAll(">", "&gt;")
-          .replaceAll('"', "&quot;")
-          .replaceAll("'", "&#039;");
-      }
-
-      async function copyToClipboard(text) {
-        try {
-          await navigator.clipboard.writeText(text);
-          return true;
-        } catch {
-          return false;
-        }
-      }
-
-      function render() {
-        const list = prompts?.[state.group]?.[state.intent] ?? [];
-        if (list.length === 0) {
-          grid.innerHTML = `
-            <div class="card card-pad" style="grid-column:1 / -1;">
-              <p class="lead" style="margin:0;">No prompts available for this selection.</p>
-            </div>
-          `;
-          return;
-        }
-
-        grid.innerHTML = list.map((p, idx) => {
-          const title = escapeHtml(p.title);
-          const desc = escapeHtml(p.desc);
-          const id = `prompt_${state.group}_${state.intent}_${idx}`;
-
-          return `
-            <article class="tool-card" style="cursor:default;">
-              <div class="tool-meta">
-                <span class="badge">${escapeHtml(state.group)}</span>
-                <span class="badge">${escapeHtml(state.intent)}</span>
-              </div>
-
-              <h3>${title}</h3>
-              <p>${desc}</p>
-
-              <div class="card" style="padding:12px; border-radius:12px; border-color:rgba(0,0,0,.10); box-shadow:none;">
-                <pre id="${id}" style="margin:0; white-space:pre-wrap; word-break:break-word; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace; font-size:.92rem; line-height:1.5;">${escapeHtml(p.text)}</pre>
-              </div>
-
-              <div class="actions" style="justify-content:flex-end;">
-                <button class="btn btn-primary btn-sm" type="button" data-copy="${id}">Copy prompt</button>
-              </div>
-            </article>
-          `;
-        }).join("");
-      }
-
-      groupTabs.forEach((btn) => {
-        btn.addEventListener("click", () => {
-          state.group = btn.dataset.group;
-          setSelected(groupTabs, btn);
-          render();
-        });
-      });
-
-      intentTabs.forEach((btn) => {
-        btn.addEventListener("click", () => {
-          state.intent = btn.dataset.intent;
-          setSelected(intentTabs, btn);
-          render();
-        });
-      });
-
-      document.addEventListener("click", async (e) => {
-        const btn = e.target.closest("button[data-copy]");
-        if (!btn) return;
-
-        const id = btn.getAttribute("data-copy");
-        const el = id ? document.getElementById(id) : null;
-        if (!el) return;
-
-        const text = el.textContent || "";
-        const ok = await copyToClipboard(text);
-
-        const original = btn.textContent;
-        btn.textContent = ok ? "Copied" : "Copy failed";
-        btn.disabled = true;
-
-        window.setTimeout(() => {
-          btn.textContent = original;
-          btn.disabled = false;
-        }, 1100);
-      });
-
-      render();
-    })();
-  </script>
 </body>
 </html>
