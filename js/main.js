@@ -90,20 +90,125 @@
     });
   }
 
-  function initToolsDirectory() {
-    const grid = qs("#toolsGrid");
-    const categoryTabs = qsa('.tab[data-category]');
-    const stageTabs = qsa('.stage[data-stage]');
-    const dataEl = qs("#toolsData");
+function initToolsDirectory() {
+  const grid = qs("#toolsGrid");
+  const dataEl = qs("#toolsData");
+  const accRoot = qs("#toolsAccordion");
 
-    if (!grid || categoryTabs.length === 0 || stageTabs.length === 0 || !dataEl) return;
+  if (!grid || !dataEl || !accRoot) return;
 
-    let data = {};
-    try {
-      data = JSON.parse(dataEl.textContent || "{}");
-    } catch {
-      data = {};
+  let data = {};
+  try {
+    data = JSON.parse(dataEl.textContent || "{}");
+  } catch {
+    data = {};
+  }
+
+  const accButtons = qsa(".tool-acc-btn", accRoot);
+
+  const escapeHtml = (str) =>
+    String(str)
+      .replaceAll("&", "&amp;")
+      .replaceAll("<", "&lt;")
+      .replaceAll(">", "&gt;")
+      .replaceAll('"', "&quot;")
+      .replaceAll("'", "&#039;");
+
+  const renderTools = (category, stage) => {
+    const tools = data?.[category]?.[stage] ?? [];
+
+    if (!Array.isArray(tools) || tools.length === 0) {
+      grid.innerHTML = `
+        <div class="card card-pad" style="grid-column:1 / -1;">
+          <p class="lead" style="margin:0;">No tools available for this selection.</p>
+        </div>
+      `;
+      return;
     }
+
+    grid.innerHTML = tools
+      .map((t) => {
+        const name = escapeHtml(t.name || "");
+        const desc = escapeHtml(t.desc || "");
+        const url = escapeHtml(t.url || "");
+        const tag = escapeHtml(t.tag || stage);
+
+        return `
+          <a class="tool-card" href="${url}">
+            <div class="tool-meta">
+              <span class="badge">${tag}</span>
+              <span class="badge">External</span>
+            </div>
+            <h3>${name}</h3>
+            <p>${desc}</p>
+            <div class="actions">
+              <span class="btn btn-link btn-sm" aria-hidden="true">Open →</span>
+            </div>
+          </a>
+        `;
+      })
+      .join("");
+  };
+
+  const closeAllExcept = (keepBtn) => {
+    accButtons.forEach((btn) => {
+      const panelId = btn.getAttribute("aria-controls");
+      const panel = panelId ? qs("#" + panelId) : null;
+
+      const shouldKeep = btn === keepBtn;
+      btn.setAttribute("aria-expanded", shouldKeep ? "true" : "false");
+      if (panel) panel.hidden = !shouldKeep;
+    });
+  };
+
+  const getSelectedStage = (panel) => {
+    const stages = qsa('.stage[data-stage]', panel);
+    const selected =
+      stages.find((s) => s.getAttribute("aria-selected") === "true") || stages[0];
+    return selected ? selected.dataset.stage : "orientation";
+  };
+
+  const setStageSelected = (panel, selectedBtn) => {
+    qsa('.stage[data-stage]', panel).forEach((btn) => {
+      btn.setAttribute("aria-selected", btn === selectedBtn ? "true" : "false");
+    });
+  };
+
+  accButtons.forEach((btn) => {
+    const category = btn.dataset.category;
+    const panelId = btn.getAttribute("aria-controls");
+    const panel = panelId ? qs("#" + panelId) : null;
+    if (!panel) return;
+
+    btn.addEventListener("click", () => {
+      closeAllExcept(btn);
+      const stage = getSelectedStage(panel);
+      renderTools(category, stage);
+    });
+
+    qsa('.stage[data-stage]', panel).forEach((stageBtn) => {
+      stageBtn.addEventListener("click", () => {
+        closeAllExcept(btn);
+        setStageSelected(panel, stageBtn);
+        renderTools(category, stageBtn.dataset.stage);
+      });
+    });
+  });
+
+  const openBtn =
+    accButtons.find((b) => b.getAttribute("aria-expanded") === "true") || accButtons[0];
+
+  closeAllExcept(openBtn);
+
+  const openPanelId = openBtn.getAttribute("aria-controls");
+  const openPanel = openPanelId ? qs("#" + openPanelId) : null;
+
+  const openCategory = openBtn.dataset.category || "working-student";
+  const openStage = openPanel ? getSelectedStage(openPanel) : "orientation";
+
+  renderTools(openCategory, openStage);
+}
+
 
     const state = {
       category: categoryTabs.find((t) => t.getAttribute("aria-selected") === "true")?.dataset.category || categoryTabs[0].dataset.category,
