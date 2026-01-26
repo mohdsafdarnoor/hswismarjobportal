@@ -1,46 +1,41 @@
 document.addEventListener('DOMContentLoaded', function() {
-    const hamburger = document.getElementById('hamburger');
-    const nav = document.getElementById('nav');
+    const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+    const mobileNav = document.querySelector('.mobile-nav');
 
-    if (hamburger) {
-        hamburger.addEventListener('click', function() {
-            hamburger.classList.toggle('active');
-            nav.classList.toggle('active');
+    if (mobileMenuToggle) {
+        mobileMenuToggle.addEventListener('click', function() {
+            mobileNav.classList.toggle('active');
+            this.classList.toggle('active');
         });
     }
 
     const accordionHeaders = document.querySelectorAll('.accordion-header');
-    
+
     accordionHeaders.forEach(header => {
         header.addEventListener('click', function() {
-            const accordionItem = this.parentElement;
-            const accordionContent = accordionItem.querySelector('.accordion-content');
-            const isActive = accordionItem.classList.contains('active');
+            const content = this.nextElementSibling;
+            const isActive = this.classList.contains('active');
 
-            document.querySelectorAll('.accordion-item').forEach(item => {
-                item.classList.remove('active');
-                item.querySelector('.accordion-content').style.maxHeight = null;
+            accordionHeaders.forEach(h => {
+                h.classList.remove('active');
+                h.nextElementSibling.classList.remove('active');
             });
 
             if (!isActive) {
-                accordionItem.classList.add('active');
-                accordionContent.style.maxHeight = accordionContent.scrollHeight + 'px';
+                this.classList.add('active');
+                content.classList.add('active');
             }
         });
     });
 
     const contactForm = document.getElementById('contactForm');
-    
+    const formResult = document.getElementById('formResult');
+
     if (contactForm) {
         contactForm.addEventListener('submit', async function(e) {
             e.preventDefault();
-            
+
             const formData = new FormData(contactForm);
-            const submitBtn = contactForm.querySelector('.submit-btn');
-            const originalText = submitBtn.textContent;
-            
-            submitBtn.textContent = 'Sending...';
-            submitBtn.disabled = true;
 
             try {
                 const response = await fetch('https://api.web3forms.com/submit', {
@@ -51,17 +46,37 @@ document.addEventListener('DOMContentLoaded', function() {
                 const data = await response.json();
 
                 if (data.success) {
-                    alert('Message sent successfully!');
+                    formResult.className = 'form-result success';
+                    formResult.textContent = 'Thank you for your message! We will get back to you soon.';
                     contactForm.reset();
                 } else {
-                    alert('Error sending message. Please try again.');
+                    throw new Error('Form submission failed');
                 }
             } catch (error) {
-                alert('Error sending message. Please try again.');
-            } finally {
-                submitBtn.textContent = originalText;
-                submitBtn.disabled = false;
+                formResult.className = 'form-result error';
+                formResult.textContent = 'There was an error sending your message. Please try again.';
             }
+
+            setTimeout(() => {
+                formResult.style.display = 'none';
+            }, 5000);
         });
     }
+
+    const toolCards = document.querySelectorAll('.tool-card');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+            }
+        });
+    }, { threshold: 0.1 });
+
+    toolCards.forEach(card => {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(20px)';
+        card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+        observer.observe(card);
+    });
 });
