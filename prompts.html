@@ -3,445 +3,134 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>AI Prompts | AI Job Search Support</title>
-  <meta name="description" content="Copy-ready AI prompts for Working Student, Internship, Master Thesis, and Full-Time roles across orientation, application, interview, and onboarding." />
+  <meta name="description" content="Copy ready-to-use AI prompts for resumes, cover letters, interview prep, and more. Organized by job category." />
+  <title>AI Prompts Library | AI Job Search Support</title>
   <link rel="stylesheet" href="css/style.css" />
 </head>
 
 <body>
-  <header class="header">
-    <div class="container">
-      <div class="header-inner">
-        <a class="brand" href="index.html" aria-label="Home">
-          <img src="assets/hsw-logo.png" alt="Hochschule Wismar" />
-          <div class="brand-title">
-            <strong>AI Job Search Support</strong>
-            <span>Hochschule Wismar</span>
-          </div>
-        </a>
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <a class="brand" href="index.html">
+        <span class="brand-title">Hochschule Wismar</span>
+        <span class="brand-sub">AI Job Search Support</span>
+      </a>
 
-        <nav class="nav" aria-label="Primary">
-          <a href="index.html">Home</a>
-          <a href="tools.html">AI Tools</a>
-          <a href="prompts.html">AI Prompts</a>
-          <a href="guidelines.html">Guidelines</a>
-          <a href="faqs.html">FAQs</a>
-          <a href="contact.html">Contact</a>
-        </nav>
+      <button class="mobile-toggle" type="button" aria-label="Open menu">☰</button>
 
-        <button class="mobile-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobilePanel">
-          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-            <path fill="currentColor" d="M4 6h16v2H4V6zm0 5h16v2H4v-2zm0 5h16v2H4v-2z"></path>
-          </svg>
-        </button>
-      </div>
+      <nav class="nav">
+        <a href="index.html">Home</a>
+        <a href="tools.html">AI Tools</a>
+        <a href="prompts.html">AI Prompts</a>
+        <a href="guidelines.html">Guidelines</a>
+        <a href="faqs.html">FAQs</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
 
-      <div class="mobile-panel" id="mobilePanel" aria-hidden="true">
-        <nav class="mobile-nav" aria-label="Mobile">
-          <a href="index.html">Home</a>
-          <a href="tools.html">AI Tools</a>
-          <a href="prompts.html">AI Prompts</a>
-          <a href="guidelines.html">Guidelines</a>
-          <a href="faqs.html">FAQs</a>
-          <a href="contact.html">Contact</a>
-        </nav>
-      </div>
+    <div id="mobilePanel" class="mobile-panel">
+      <a href="index.html">Home</a>
+      <a href="tools.html">AI Tools</a>
+      <a href="prompts.html">AI Prompts</a>
+      <a href="guidelines.html">Guidelines</a>
+      <a href="faqs.html">FAQs</a>
+      <a href="contact.html">Contact</a>
     </div>
   </header>
 
-  <main>
-    <section class="section">
-      <div class="container">
-        <h1 class="section-title" style="font-size:clamp(1.45rem, 2.6vw, 2.05rem); margin-bottom:10px;">AI Prompts</h1>
-        <p class="lead">
-          Copy a prompt, paste it into ChatGPT (or another AI assistant), and replace the placeholders. Keep outputs truthful and consistent with your CV.
-        </p>
+  <main class="container">
+    <section class="page-head">
+      <h1>AI Prompts Library</h1>
+      <p class="muted">Click "Copy" to use any prompt with ChatGPT, Claude, or your favorite AI tool.</p>
+    </section>
 
-        <div style="height:12px;"></div>
-
-        <div class="card card-pad notice">
-          <div class="icon" aria-hidden="true">!</div>
-          <div>
-            <h2>How to use prompts</h2>
-            <ul>
-              <li>Replace placeholders like [ROLE], [COMPANY], [SKILLS], [EXPERIENCE].</li>
-              <li>Ask the AI to produce “2 versions” (short + detailed), then pick one.</li>
-              <li>For German applications, draft in English first, then translate with DeepL and polish. </li>
-            </ul>
-          </div>
-        </div>
-
-        <div style="height:18px;"></div>
-
-        <div class="grid grid-2">
-          <a class="tool-card" href="tools.html">
-            <div class="tool-meta">
-              <span class="badge">Tools</span>
-              <span class="badge">Directory</span>
-            </div>
-            <h3>Need the tool list?</h3>
-            <p>Go to AI Tools and pick a category + stage.</p>
-            <div class="actions">
-              <span class="btn btn-link btn-sm" aria-hidden="true">Open →</span>
-            </div>
-          </a>
-
-          <a class="tool-card" href="guidelines.html">
-            <div class="tool-meta">
-              <span class="badge">Rules</span>
-              <span class="badge">Quality</span>
-            </div>
-            <h3>Want quality rules?</h3>
-            <p>See writing + AI usage guidelines (no fake claims, proof-first writing).</p>
-            <div class="actions">
-              <span class="btn btn-link btn-sm" aria-hidden="true">Open →</span>
-            </div>
-          </a>
-        </div>
+    <section class="card card-pad">
+      <div class="filter-row">
+        <label for="promptFilter" class="filter-label">Filter by category:</label>
+        <select id="promptFilter" class="filter-select">
+          <option value="all">All Categories</option>
+          <option value="working-student">Working Student</option>
+          <option value="internship">Internship</option>
+          <option value="master-thesis">Master Thesis</option>
+          <option value="full-time">Full-Time</option>
+        </select>
       </div>
     </section>
 
-    <section class="section">
-      <div class="container">
-        <h2 class="section-title">Working Student</h2>
+    <section id="promptsGrid" class="prompts-grid"></section>
 
-        <div class="grid grid-2">
-          <div class="card card-pad">
-            <h3 style="margin:0 0 10px;">Orientation prompt</h3>
-            <p class="lead" style="margin:0 0 10px;">
-              Use this to decide what roles match your skills and schedule.
-            </p>
-            <pre style="margin:0; white-space:pre-wrap;">You are my career assistant for Germany. I want a Working Student (Werkstudent) role.
-
-My profile:
-- Current degree: [DEGREE] at Hochschule Wismar
-- Skills: [SKILLS]
-- Past experience: [EXPERIENCE]
-- Available hours/week: [HOURS]
-- Preferred location: [CITY / REMOTE]
-- Language level: German [LEVEL], English [LEVEL]
-
-Task:
-1) Suggest 8 role titles that fit my profile (with German + English job title versions).
-2) For each role, list top 5 skills employers expect in Germany.
-3) Recommend 5 keywords to search on LinkedIn/Indeed/StepStone.
-4) Give a 2-week action plan (small daily tasks, 20–30 minutes/day).</pre>
-          </div>
-
-          <div class="card card-pad">
-            <h3 style="margin:0 0 10px;">Application prompt</h3>
-            <p class="lead" style="margin:0 0 10px;">
-              Produces a CV bullet upgrade + short cover email.
-            </p>
-            <pre style="margin:0; white-space:pre-wrap;">Act as a German recruiter for a Working Student role.
-
-Job posting:
-[PASTE JOB DESCRIPTION]
-
-My background:
-[PASTE CV BULLETS OR SUMMARY]
-
-Write:
-1) 6 improved CV bullet points (impact-first, with metrics placeholders if missing).
-2) A short email to apply (120–160 words), professional and simple.
-3) A checklist of missing info I should add (portfolio links, certificates, GitHub, etc.).
-
-Rules:
-- Do not invent experience.
-- If a metric is missing, use [NUMBER] placeholders and tell me what to measure.</pre>
-          </div>
-
-          <div class="card card-pad">
-            <h3 style="margin:0 0 10px;">Interview prompt</h3>
-            <p class="lead" style="margin:0 0 10px;">
-              Great with Google Interview Warmup practice style. </p>
-            <pre style="margin:0; white-space:pre-wrap;">Pretend you are the interviewer. Ask me 8 Working Student interview questions.
-
-Context:
-- Role: [ROLE]
-- Company: [COMPANY]
-- Job description: [PASTE]
-- My CV: [PASTE]
-
-After each answer I give:
-- Give a score out of 10
-- Improve my answer using STAR
-- Suggest 1 follow-up question the interviewer might ask</pre>
-          </div>
-
-          <div class="card card-pad">
-            <h3 style="margin:0 0 10px;">Onboarding prompt</h3>
-            <p class="lead" style="margin:0 0 10px;">
-              Helps you sound clear and reliable in a German workplace. </p>
-            <pre style="margin:0; white-space:pre-wrap;">You are my onboarding coach for a Working Student job in Germany.
-
-I start on: [DATE]
-Role: [ROLE]
-Team: [TEAM INFO]
-My responsibilities: [LIST]
-
-Create:
-1) A 30/60/90-day plan (goals, deliverables, weekly habits).
-2) 5 short message templates for: asking for help, clarifying tasks, reporting progress, shift change, and being late.
-3) A list of 10 questions I should ask in the first week.</pre>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="container">
-        <h2 class="section-title">Internship</h2>
-
-        <div class="grid grid-2">
-          <div class="card card-pad">
-            <h3 style="margin:0 0 10px;">Orientation prompt</h3>
-            <pre style="margin:0; white-space:pre-wrap;">You are my internship search assistant for Germany/EU.
-
-My profile:
-- Degree + semester: [DEGREE, SEMESTER]
-- Target field: [FIELD]
-- Skills: [SKILLS]
-- Projects: [PROJECTS]
-- Location preference: [CITY/REMOTE]
-- Internship duration: [MONTHS]
-- Start date: [DATE]
-
-Task:
-1) Propose 10 realistic internship role titles.
-2) For each title: top 5 tools/skills + one mini project I can build in 7 days to prove fit.
-3) Create a shortlist strategy: which 3 platforms to use first and why.</pre>
-          </div>
-
-          <div class="card card-pad">
-            <h3 style="margin:0 0 10px;">Application prompt</h3>
-            <pre style="margin:0; white-space:pre-wrap;">Act as a hiring manager. Improve my internship application pack.
-
-Job description:
-[PASTE]
-
-My CV:
-[PASTE]
-
-Write:
-1) A tailored internship cover letter (250–320 words).
-2) 10 ATS keywords I should include naturally.
-3) A “skills evidence” table: skill → proof (project / course / experience), no fake claims.</pre>
-          </div>
-
-          <div class="card card-pad">
-            <h3 style="margin:0 0 10px;">Interview prompt</h3>
-            <pre style="margin:0; white-space:pre-wrap;">Run an internship mock interview.
-
-Role: [ROLE]
-Company: [COMPANY]
-My background: [PASTE]
-
-Ask:
-- 4 behavioral questions
-- 3 project questions (deep dive)
-- 2 “learning mindset” questions
-
-Then:
-- Give me a model answer outline for each
-- Tell me what to prepare as supporting evidence (links, screenshots, GitHub, report samples)</pre>
-          </div>
-
-          <div class="card card-pad">
-            <h3 style="margin:0 0 10px;">Onboarding prompt</h3>
-            <pre style="margin:0; white-space:pre-wrap;">You are my internship onboarding mentor.
-
-Internship goals: [GOALS]
-Tools used: [TOOLS]
-Team context: [TEAM]
-
-Create:
-1) A first-week checklist (meetings, access, documentation, expectations).
-2) A weekly status update template (short, clear, measurable).
-3) A learning plan: what to learn in week 1–4 with small outputs each week.</pre>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="container">
-        <h2 class="section-title">Master Thesis</h2>
-
-        <div class="grid grid-2">
-          <div class="card card-pad">
-            <h3 style="margin:0 0 10px;">Orientation prompt</h3>
-            <pre style="margin:0; white-space:pre-wrap;">You are my thesis topic and company-collaboration advisor.
-
-My program: [PROGRAM]
-Interests: [INTERESTS]
-Strengths: [STRENGTHS]
-Preferred industries: [INDUSTRIES]
-Constraints (time, data access, NDA): [CONSTRAINTS]
-
-Task:
-1) Suggest 8 thesis topic ideas suitable for a company collaboration (practical + research).
-2) For each topic: problem statement, objective, expected dataset, and measurable outcome.
-3) Write a 120-word email to a company asking for a thesis collaboration (professional, German-style tone).</pre>
-          </div>
-
-          <div class="card card-pad">
-            <h3 style="margin:0 0 10px;">Application prompt</h3>
-            <pre style="margin:0; white-space:pre-wrap;">Help me write a Master Thesis proposal outline for a company.
-
-Topic: [TOPIC]
-Company/industry: [COMPANY / INDUSTRY]
-My background: [PASTE]
-
-Deliver:
-1) A proposal outline: motivation, research question, methodology, timeline, deliverables.
-2) A risk section (data access, scope creep, legal/privacy).
-3) A short motivation letter (180–220 words) that matches my CV.</pre>
-          </div>
-
-          <div class="card card-pad">
-            <h3 style="margin:0 0 10px;">Interview prompt</h3>
-            <pre style="margin:0; white-space:pre-wrap;">Simulate a meeting with a professor + company supervisor.
-
-Context:
-- Topic: [TOPIC]
-- Company goal: [GOAL]
-- Constraints: [CONSTRAINTS]
-- My plan: [PASTE]
-
-Ask me 10 tough questions:
-- 4 about feasibility and timeline
-- 3 about methodology validity
-- 3 about deliverables and impact
-
-After my answers, rewrite them to sound clearer and more confident (no fake claims).</pre>
-          </div>
-
-          <div class="card card-pad">
-            <h3 style="margin:0 0 10px;">Onboarding prompt</h3>
-            <pre style="margin:0; white-space:pre-wrap;">You are my thesis execution manager.
-
-Thesis topic: [TOPIC]
-Deadline: [DATE]
-Weekly time available: [HOURS]
-Tools: [TOOLS]
-
-Create:
-1) A 10–12 week plan with weekly milestones.
-2) A “chapter-by-chapter” structure suggestion (what to write first).
-3) A literature review workflow (search terms, inclusion/exclusion rules, how to take notes).</pre>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="container">
-        <h2 class="section-title">Full-Time</h2>
-
-        <div class="grid grid-2">
-          <div class="card card-pad">
-            <h3 style="margin:0 0 10px;">Orientation prompt</h3>
-            <pre style="margin:0; white-space:pre-wrap;">You are my full-time job strategy coach for Germany/EU.
-
-My profile:
-- Target roles: [ROLES]
-- Skills: [SKILLS]
-- Experience: [EXPERIENCE]
-- Preferred locations: [LOCATIONS]
-- Visa/work authorization status: [STATUS]
-- Language levels: German [LEVEL], English [LEVEL]
-
-Create:
-1) A job search positioning statement (2 versions).
-2) A list of 12 target companies (mix: big + mid + startups).
-3) A weekly pipeline plan: applications/week, networking messages/week, interview practice schedule.</pre>
-          </div>
-
-          <div class="card card-pad">
-            <h3 style="margin:0 0 10px;">Application prompt</h3>
-            <pre style="margin:0; white-space:pre-wrap;">Act as an ATS and recruiter. Optimize my full-time application.
-
-Job description:
-[PASTE]
-
-My CV:
-[PASTE]
-
-Deliver:
-1) A tailored “Profile/Summary” (60–80 words).
-2) 8 improved bullet points aligned to the job requirements.
-3) A cover letter (250–320 words) with proof-first language.
-4) A list of 10 keywords missing from my CV (only if relevant).</pre>
-          </div>
-
-          <div class="card card-pad">
-            <h3 style="margin:0 0 10px;">Interview prompt</h3>
-            <pre style="margin:0; white-space:pre-wrap;">Conduct a full-time interview simulation.
-
-Role: [ROLE]
-Seniority: [ENTRY/JUNIOR/MID]
-My background: [PASTE]
-
-Ask:
-- 5 behavioral questions (use STAR)
-- 3 role-specific questions
-- 2 questions about working in Germany (communication, teamwork, reliability)
-
-Then:
-- Provide “strong answer frameworks”
-- Point out contradictions between my answers and my CV (if any)</pre>
-          </div>
-
-          <div class="card card-pad">
-            <h3 style="margin:0 0 10px;">Onboarding prompt</h3>
-            <pre style="margin:0; white-space:pre-wrap;">You are my new-job onboarding coach.
-
-Role: [ROLE]
-Company: [COMPANY]
-First day: [DATE]
-Team: [TEAM]
-
-Create:
-1) A 30/60/90 plan focused on measurable outcomes.
-2) A weekly review template (what I delivered, blockers, next steps).
-3) A relationship map: who to build trust with (manager, peers, stakeholders) and how.</pre>
-          </div>
-        </div>
-      </div>
-    </section>
+    <script id="promptsData" type="application/json">
+[
+  {
+    "category": "working-student",
+    "title": "Resume Optimization",
+    "prompt": "Review my resume for a working student position in [field]. Suggest improvements to highlight relevant skills, coursework, and part-time experience. Make it ATS-friendly."
+  },
+  {
+    "category": "working-student",
+    "title": "Cover Letter Draft",
+    "prompt": "Write a cover letter for a working student role at [company] in [field]. Emphasize my ability to balance studies and work, highlight [specific skill], and show enthusiasm for learning."
+  },
+  {
+    "category": "working-student",
+    "title": "Interview Prep: Common Questions",
+    "prompt": "Generate 10 common interview questions for a working student position in [field]. Include behavioral and technical questions. Provide sample answers."
+  },
+  {
+    "category": "internship",
+    "title": "Internship Application Email",
+    "prompt": "Draft a professional email to apply for an internship at [company]. Attach my resume and express interest in [specific team/project]. Keep it concise and friendly."
+  },
+  {
+    "category": "internship",
+    "title": "Portfolio Project Ideas",
+    "prompt": "Suggest 5 portfolio projects for an internship application in [field]. Each project should demonstrate [specific skill] and be completable in 2-4 weeks."
+  },
+  {
+    "category": "internship",
+    "title": "Thank You Email After Interview",
+    "prompt": "Write a thank-you email after an internship interview at [company]. Reference [specific topic discussed], reaffirm my interest, and keep it under 150 words."
+  },
+  {
+    "category": "master-thesis",
+    "title": "Thesis Topic Brainstorm",
+    "prompt": "Suggest 5 master thesis topics in [field] related to [interest area]. Each topic should be research-feasible within 6 months and have practical applications."
+  },
+  {
+    "category": "master-thesis",
+    "title": "Research Proposal Outline",
+    "prompt": "Create an outline for a master thesis research proposal on [topic]. Include: background, research question, methodology, expected outcomes, and timeline."
+  },
+  {
+    "category": "master-thesis",
+    "title": "Literature Review Summary",
+    "prompt": "Summarize key themes from recent papers on [topic]. Identify research gaps and suggest how my thesis can contribute to the field."
+  },
+  {
+    "category": "full-time",
+    "title": "LinkedIn Profile Optimization",
+    "prompt": "Rewrite my LinkedIn headline and summary for a full-time role in [field]. Highlight [X years experience], key achievements, and career goals. Use keywords for recruiter visibility."
+  },
+  {
+    "category": "full-time",
+    "title": "Salary Negotiation Script",
+    "prompt": "Draft a professional script to negotiate salary for a full-time offer at [company]. I received an offer of [amount], but market rate is [amount]. Be respectful and data-driven."
+  },
+  {
+    "category": "full-time",
+    "title": "Resignation Letter",
+    "prompt": "Write a professional resignation letter for my current role at [company]. Give [X weeks] notice, express gratitude, and offer to assist with the transition."
+  }
+]
+    </script>
   </main>
 
   <footer class="footer">
     <div class="container">
-      <div class="footer-inner">
-        <div>
-          <h4>Hochschule Wismar</h4>
-          <p>University of Applied Sciences<br />Technology, Business and Design</p>
-          <p>Philipp-Müller-Straße 14<br />23966 Wismar, Germany</p>
-        </div>
-
-        <div>
-          <h4>Suggested tools</h4>
-          <p><a href="https://grow.google/certificates/interview-warmup/license" target="_blank" rel="noopener">Google Interview Warmup</a></p>
-          <p><a href="https://www.deepl.com/en/translator" target="_blank" rel="noopener">DeepL Translator</a></p>
-          <p><a href="tools.html">AI Tools directory</a></p>
-        </div>
-
-        <div>
-          <h4>Support</h4>
-          <p style="margin:0; color:rgba(255,255,255,.86);">
-            If you find a broken link or want to add a tool, message via the Contact page.
-          </p>
-        </div>
-      </div>
-
-      <div class="footer-bottom">
-        <p>&copy; 2026 Hochschule Wismar</p>
-      </div>
+      <p>&copy; 2026 Hochschule Wismar. All rights reserved.</p>
     </div>
   </footer>
 
-  <script src="js/main.js"></script>
+  <script src="js/main.js" defer></script>
 </body>
 </html>
