@@ -2,14 +2,13 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Browse AI tools organized by job category and stage. Find tools for working students, internships, thesis positions, and full-time roles." />
   <title>AI Tools Directory | AI Job Search Support</title>
-
   <link rel="stylesheet" href="css/style.css" />
 </head>
 
 <body>
-  <!-- Top Nav -->
   <header class="topbar">
     <div class="container topbar-inner">
       <a class="brand" href="index.html">
@@ -17,9 +16,7 @@
         <span class="brand-sub">AI Job Search Support</span>
       </a>
 
-      <button class="mobile-toggle" type="button" aria-label="Open menu">
-        ☰
-      </button>
+      <button class="mobile-toggle" type="button" aria-label="Open menu">☰</button>
 
       <nav class="nav">
         <a href="index.html">Home</a>
@@ -44,32 +41,19 @@
   <main class="container">
     <section class="page-head">
       <h1>AI Tools Directory</h1>
-      <p class="muted">Click a category (arrow) → pick a stage → see tools below.</p>
+      <p class="muted">Click a category → select a stage → explore tools below.</p>
     </section>
 
-    <!-- ACCORDION -->
     <section class="card card-pad">
       <div id="toolsAccordion" class="tools-accordion" aria-label="Tools categories">
 
-        <!-- Working Student -->
         <div class="tool-acc-item">
-          <button
-            type="button"
-            class="tool-acc-btn"
-            data-category="working-student"
-            aria-expanded="true"
-            aria-controls="panel-working-student"
-            id="btn-working-student">
+          <button type="button" class="tool-acc-btn" data-category="working-student" aria-expanded="true" aria-controls="panel-working-student" id="btn-working-student">
             <span>Working Student</span>
             <span class="tool-acc-icon" aria-hidden="true">▾</span>
           </button>
-
-          <div
-            id="panel-working-student"
-            class="tool-acc-panel"
-            role="region"
-            aria-labelledby="btn-working-student">
-            <div class="stage-row" role="tablist" aria-label="Working Student stages">
+          <div id="panel-working-student" class="tool-acc-panel" role="region" aria-labelledby="btn-working-student">
+            <div class="stage-row" aria-label="Working Student stages">
               <button type="button" class="stage" data-stage="orientation" aria-selected="true">Orientation</button>
               <button type="button" class="stage" data-stage="application" aria-selected="false">Application</button>
               <button type="button" class="stage" data-stage="interview" aria-selected="false">Interview</button>
@@ -78,26 +62,13 @@
           </div>
         </div>
 
-        <!-- Internship -->
         <div class="tool-acc-item">
-          <button
-            type="button"
-            class="tool-acc-btn"
-            data-category="internship"
-            aria-expanded="false"
-            aria-controls="panel-internship"
-            id="btn-internship">
+          <button type="button" class="tool-acc-btn" data-category="internship" aria-expanded="false" aria-controls="panel-internship" id="btn-internship">
             <span>Internship</span>
             <span class="tool-acc-icon" aria-hidden="true">▾</span>
           </button>
-
-          <div
-            id="panel-internship"
-            class="tool-acc-panel"
-            role="region"
-            aria-labelledby="btn-internship"
-            hidden>
-            <div class="stage-row" role="tablist" aria-label="Internship stages">
+          <div id="panel-internship" class="tool-acc-panel" role="region" aria-labelledby="btn-internship" hidden>
+            <div class="stage-row" aria-label="Internship stages">
               <button type="button" class="stage" data-stage="orientation" aria-selected="true">Orientation</button>
               <button type="button" class="stage" data-stage="application" aria-selected="false">Application</button>
               <button type="button" class="stage" data-stage="interview" aria-selected="false">Interview</button>
@@ -106,26 +77,13 @@
           </div>
         </div>
 
-        <!-- Master Thesis -->
         <div class="tool-acc-item">
-          <button
-            type="button"
-            class="tool-acc-btn"
-            data-category="master-thesis"
-            aria-expanded="false"
-            aria-controls="panel-master-thesis"
-            id="btn-master-thesis">
+          <button type="button" class="tool-acc-btn" data-category="master-thesis" aria-expanded="false" aria-controls="panel-master-thesis" id="btn-master-thesis">
             <span>Master Thesis</span>
             <span class="tool-acc-icon" aria-hidden="true">▾</span>
           </button>
-
-          <div
-            id="panel-master-thesis"
-            class="tool-acc-panel"
-            role="region"
-            aria-labelledby="btn-master-thesis"
-            hidden>
-            <div class="stage-row" role="tablist" aria-label="Master Thesis stages">
+          <div id="panel-master-thesis" class="tool-acc-panel" role="region" aria-labelledby="btn-master-thesis" hidden>
+            <div class="stage-row" aria-label="Master Thesis stages">
               <button type="button" class="stage" data-stage="orientation" aria-selected="true">Orientation</button>
               <button type="button" class="stage" data-stage="application" aria-selected="false">Application</button>
               <button type="button" class="stage" data-stage="interview" aria-selected="false">Interview</button>
@@ -134,26 +92,13 @@
           </div>
         </div>
 
-        <!-- Full-Time -->
         <div class="tool-acc-item">
-          <button
-            type="button"
-            class="tool-acc-btn"
-            data-category="full-time"
-            aria-expanded="false"
-            aria-controls="panel-full-time"
-            id="btn-full-time">
+          <button type="button" class="tool-acc-btn" data-category="full-time" aria-expanded="false" aria-controls="panel-full-time" id="btn-full-time">
             <span>Full-Time</span>
             <span class="tool-acc-icon" aria-hidden="true">▾</span>
           </button>
-
-          <div
-            id="panel-full-time"
-            class="tool-acc-panel"
-            role="region"
-            aria-labelledby="btn-full-time"
-            hidden>
-            <div class="stage-row" role="tablist" aria-label="Full-Time stages">
+          <div id="panel-full-time" class="tool-acc-panel" role="region" aria-labelledby="btn-full-time" hidden>
+            <div class="stage-row" aria-label="Full-Time stages">
               <button type="button" class="stage" data-stage="orientation" aria-selected="true">Orientation</button>
               <button type="button" class="stage" data-stage="application" aria-selected="false">Application</button>
               <button type="button" class="stage" data-stage="interview" aria-selected="false">Interview</button>
@@ -165,48 +110,76 @@
       </div>
     </section>
 
-    <!-- TOOLS GRID -->
     <section id="toolsGrid" class="tools-grid" aria-live="polite"></section>
 
-    <!-- DATA -->
     <script id="toolsData" type="application/json">
 {
   "working-student": {
     "orientation": [
       { "name": "LinkedIn", "desc": "Build your profile and discover roles.", "url": "https://www.linkedin.com/", "tag": "Orientation" },
-      { "name": "Google Jobs", "desc": "Search jobs across the web.", "url": "https://www.google.com/search?q=jobs", "tag": "Orientation" }
+      { "name": "Google Jobs", "desc": "Search jobs across the web.", "url": "https://www.google.com/search?q=jobs", "tag": "Orientation" },
+      { "name": "Indeed", "desc": "Global job search engine.", "url": "https://www.indeed.com/", "tag": "Orientation" }
     ],
     "application": [
-      { "name": "Europass CV", "desc": "Create an EU-format CV.", "url": "https://europass.europa.eu/en/create-europass-cv", "tag": "Application" }
+      { "name": "Europass CV", "desc": "Create an EU-format CV.", "url": "https://europass.europa.eu/en/create-europass-cv", "tag": "Application" },
+      { "name": "Grammarly", "desc": "Polish your cover letters and emails.", "url": "https://www.grammarly.com/", "tag": "Application" }
     ],
     "interview": [
-      { "name": "Big Interview", "desc": "Interview practice and tips.", "url": "https://biginterview.com/", "tag": "Interview" }
+      { "name": "Big Interview", "desc": "Interview practice and tips.", "url": "https://biginterview.com/", "tag": "Interview" },
+      { "name": "Pramp", "desc": "Peer mock interviews.", "url": "https://www.pramp.com/", "tag": "Interview" }
     ],
     "onboarding": [
-      { "name": "Notion", "desc": "Track tasks and onboarding notes.", "url": "https://www.notion.so/", "tag": "Onboarding" }
+      { "name": "Notion", "desc": "Track tasks and onboarding notes.", "url": "https://www.notion.so/", "tag": "Onboarding" },
+      { "name": "Trello", "desc": "Organize your first 90 days.", "url": "https://trello.com/", "tag": "Onboarding" }
     ]
   },
   "internship": {
-    "orientation": [],
-    "application": [],
-    "interview": [],
+    "orientation": [
+      { "name": "Glassdoor", "desc": "Research companies and reviews.", "url": "https://www.glassdoor.com/", "tag": "Orientation" }
+    ],
+    "application": [
+      { "name": "Canva", "desc": "Design creative resumes and portfolios.", "url": "https://www.canva.com/", "tag": "Application" }
+    ],
+    "interview": [
+      { "name": "InterviewBuddy", "desc": "Live mock interview sessions.", "url": "https://interviewbuddy.in/", "tag": "Interview" }
+    ],
     "onboarding": []
   },
   "master-thesis": {
-    "orientation": [],
-    "application": [],
+    "orientation": [
+      { "name": "ResearchGate", "desc": "Connect with researchers and papers.", "url": "https://www.researchgate.net/", "tag": "Orientation" }
+    ],
+    "application": [
+      { "name": "Overleaf", "desc": "LaTeX editor for academic writing.", "url": "https://www.overleaf.com/", "tag": "Application" }
+    ],
     "interview": [],
-    "onboarding": []
+    "onboarding": [
+      { "name": "Zotero", "desc": "Manage references and citations.", "url": "https://www.zotero.org/", "tag": "Onboarding" }
+    ]
   },
   "full-time": {
-    "orientation": [],
-    "application": [],
-    "interview": [],
-    "onboarding": []
+    "orientation": [
+      { "name": "Xing", "desc": "Professional network for German-speaking countries.", "url": "https://www.xing.com/", "tag": "Orientation" }
+    ],
+    "application": [
+      { "name": "Resume.io", "desc": "Build professional resumes quickly.", "url": "https://resume.io/", "tag": "Application" }
+    ],
+    "interview": [
+      { "name": "Interviewing.io", "desc": "Anonymous technical interviews.", "url": "https://interviewing.io/", "tag": "Interview" }
+    ],
+    "onboarding": [
+      { "name": "Asana", "desc": "Project management for team onboarding.", "url": "https://asana.com/", "tag": "Onboarding" }
+    ]
   }
 }
     </script>
   </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2026 Hochschule Wismar. All rights reserved.</p>
+    </div>
+  </footer>
 
   <script src="js/main.js" defer></script>
 </body>
