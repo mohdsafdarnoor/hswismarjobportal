@@ -2,10 +2,11 @@
   const qs = (sel, root = document) => root.querySelector(sel);
   const qsa = (sel, root = document) => Array.from(root.querySelectorAll(sel));
 
+  // ===== Active Nav Links =====
   function setActiveNavLinks() {
     const path = (window.location.pathname || "").split("/").pop() || "index.html";
 
-    qsa('a[href]').forEach((a) => {
+    qsa("a[href]").forEach((a) => {
       const href = a.getAttribute("href");
       if (!href) return;
 
@@ -25,6 +26,7 @@
     });
   }
 
+  // ===== Mobile Menu =====
   function initMobileMenu() {
     const toggleBtn = qs(".mobile-toggle");
     const panel = qs("#mobilePanel");
@@ -70,6 +72,7 @@
     });
   }
 
+  // ===== External Links =====
   function initExternalLinks() {
     qsa('a[href^="http://"], a[href^="https://"]').forEach((a) => {
       const href = a.getAttribute("href");
@@ -90,6 +93,7 @@
     });
   }
 
+  // ===== Tools Directory =====
   function initToolsDirectory() {
     const grid = qs("#toolsGrid");
     const dataEl = qs("#toolsData");
@@ -119,7 +123,7 @@
       if (!Array.isArray(tools) || tools.length === 0) {
         grid.innerHTML = `
           <div class="card card-pad" style="grid-column:1 / -1;">
-            <p class="lead" style="margin:0;">No tools available for this selection.</p>
+            <p class="muted" style="margin:0;">No tools available for this selection.</p>
           </div>
         `;
         return;
@@ -133,7 +137,7 @@
           const tag = escapeHtml(t.tag || stage);
 
           return `
-            <a class="tool-card" href="${url}">
+            <a class="tool-card" href="${url}" target="_blank" rel="noopener noreferrer">
               <div class="tool-meta">
                 <span class="badge">${tag}</span>
                 <span class="badge">External</span>
@@ -141,7 +145,7 @@
               <h3>${name}</h3>
               <p>${desc}</p>
               <div class="actions">
-                <span class="btn btn-link btn-sm" aria-hidden="true">Open →</span>
+                <span class="badge" aria-hidden="true">Open →</span>
               </div>
             </a>
           `;
@@ -209,6 +213,107 @@
     renderTools(openCategory, openStage);
   }
 
+  // ===== Prompts Library =====
+  function initPromptsLibrary() {
+    const grid = qs("#promptsGrid");
+    const dataEl = qs("#promptsData");
+    const filterSelect = qs("#promptFilter");
+    if (!grid || !dataEl || !filterSelect) return;
+
+    let prompts = [];
+    try {
+      prompts = JSON.parse(dataEl.textContent || "[]");
+    } catch {
+      prompts = [];
+    }
+
+    const escapeHtml = (str) =>
+      String(str)
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+
+    const renderPrompts = (filter) => {
+      const filtered =
+        filter === "all" ? prompts : prompts.filter((p) => p.category === filter);
+
+      if (filtered.length === 0) {
+        grid.innerHTML = `
+          <div class="card card-pad" style="grid-column:1 / -1;">
+            <p class="muted" style="margin:0;">No prompts found for this category.</p>
+          </div>
+        `;
+        return;
+      }
+
+      grid.innerHTML = filtered
+        .map((p, idx) => {
+          const title = escapeHtml(p.title || "");
+          const prompt = escapeHtml(p.prompt || "");
+          const cat = escapeHtml(p.category || "");
+
+          return `
+            <div class="prompt-card">
+              <div class="prompt-header">
+                <h3>${title}</h3>
+                <span class="badge">${cat}</span>
+              </div>
+              <div class="prompt-text">${prompt}</div>
+              <button class="copy-btn" data-idx="${idx}">Copy Prompt</button>
+            </div>
+          `;
+        })
+        .join("");
+
+      qsa(".copy-btn", grid).forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const idx = parseInt(btn.dataset.idx, 10);
+          const text = filtered[idx]?.prompt || "";
+
+          navigator.clipboard.writeText(text).then(() => {
+            btn.textContent = "Copied!";
+            btn.classList.add("copied");
+
+            setTimeout(() => {
+              btn.textContent = "Copy Prompt";
+              btn.classList.remove("copied");
+            }, 2000);
+          });
+        });
+      });
+    };
+
+    filterSelect.addEventListener("change", (e) => {
+      renderPrompts(e.target.value);
+    });
+
+    renderPrompts("all");
+  }
+
+  // ===== FAQ Accordion =====
+  function initFaqAccordion() {
+    const accRoot = qs("#faqAccordion");
+    if (!accRoot) return;
+
+    const buttons = qsa(".faq-btn", accRoot);
+
+    buttons.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const expanded = btn.getAttribute("aria-expanded") === "true";
+        const panelId = btn.getAttribute("aria-controls");
+        const panel = panelId ? qs("#" + panelId) : null;
+
+        if (!panel) return;
+
+        btn.setAttribute("aria-expanded", !expanded ? "true" : "false");
+        panel.hidden = expanded;
+      });
+    });
+  }
+
+  // ===== Contact Form (Web3Forms AJAX) =====
   function initContactFormAjax() {
     const form = qs('form[data-web3forms="true"]');
     const statusEl = qs("#formStatus");
@@ -219,10 +324,12 @@
     const setStatus = (type, message) => {
       statusEl.textContent = message;
       statusEl.style.display = "block";
-      statusEl.style.padding = "12px 12px";
+      statusEl.style.padding = "14px 16px";
       statusEl.style.borderRadius = "12px";
       statusEl.style.border = "1px solid rgba(0,0,0,.12)";
-      statusEl.style.background = type === "success" ? "rgba(51,153,51,.10)" : "rgba(255,93,2,.10)";
+      statusEl.style.background =
+        type === "success" ? "rgba(51,153,51,.12)" : "rgba(255,93,2,.12)";
+      statusEl.style.fontWeight = "700";
     };
 
     form.addEventListener("submit", async (e) => {
@@ -243,7 +350,7 @@
 
         if (res.ok && json && json.success) {
           form.reset();
-          setStatus("success", "Message sent successfully. Thank you.");
+          setStatus("success", "Message sent successfully. Thank you!");
           return;
         }
 
@@ -254,11 +361,14 @@
     });
   }
 
+  // ===== Initialize All =====
   document.addEventListener("DOMContentLoaded", () => {
     setActiveNavLinks();
     initMobileMenu();
     initExternalLinks();
     initToolsDirectory();
+    initPromptsLibrary();
+    initFaqAccordion();
     initContactFormAjax();
   });
 })();
