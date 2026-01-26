@@ -428,3 +428,45 @@ main{padding:24px 0 40px}
   .tool-grid{grid-template-columns:1fr}
   main{padding:18px 0 30px}
 }
+/* Tools accordion (categories -> stages) */
+.tool-acc-btn{
+  width:100%;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  padding:14px 12px;
+  border-radius:14px;
+  border:1px solid rgba(0,0,0,.14);
+  background:#fff;
+  cursor:pointer;
+  font-weight:900;
+}
+
+.tool-acc-btn:hover{
+  border-color:rgba(0,0,0,.26);
+  background:rgba(0,0,0,.02);
+}
+
+.tool-acc-arrow{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:34px;
+  height:34px;
+  border-radius:12px;
+  border:1px solid rgba(0,0,0,.12);
+  background:rgba(0,0,0,.03);
+  transform:rotate(0deg);
+  transition:transform .18s ease;
+  font-size:20px;
+  line-height:1;
+}
+
+.tool-acc-btn[aria-expanded="true"] .tool-acc-arrow{
+  transform:rotate(90deg);
+}
+
+.tool-acc-panel{
+  padding:12px 8px 4px;
+}
