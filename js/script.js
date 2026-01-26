@@ -1,374 +1,294 @@
-/**
- * AI Career Hub - JavaScript
- * Hochschule Wismar
- * 
- * Features:
- * - Mobile hamburger menu toggle
- * - Accordion functionality for AI Tools page
- * - Form submission handling
- * - Smooth scrolling
- */
+// AI Career Hub - JavaScript
+// Hochschule Wismar - Master's in International Management
 
-// ============================
 // Mobile Navigation Toggle
-// ============================
-
 document.addEventListener('DOMContentLoaded', function() {
-
-    // Get hamburger button and mobile nav
     const hamburger = document.querySelector('.hamburger');
-    const mobileNav = document.querySelector('.nav-mobile');
+    const navMobile = document.querySelector('.nav-mobile');
 
-    if (hamburger && mobileNav) {
+    if (hamburger) {
         hamburger.addEventListener('click', function() {
-            // Toggle active class on hamburger for animation
-            this.classList.toggle('active');
-
-            // Toggle active class on mobile nav to show/hide
-            mobileNav.classList.toggle('active');
-
-            // Prevent body scroll when menu is open
-            if (mobileNav.classList.contains('active')) {
-                document.body.style.overflow = 'hidden';
-            } else {
-                document.body.style.overflow = '';
-            }
-        });
-
-        // Close mobile menu when clicking on a link
-        const mobileLinks = mobileNav.querySelectorAll('a');
-        mobileLinks.forEach(link => {
-            link.addEventListener('click', function() {
-                hamburger.classList.remove('active');
-                mobileNav.classList.remove('active');
-                document.body.style.overflow = '';
-            });
+            hamburger.classList.toggle('active');
+            navMobile.classList.toggle('active');
         });
     }
 
-    // ============================
-    // Accordion Functionality
-    // ============================
+    // Close mobile nav when clicking outside
+    document.addEventListener('click', function(event) {
+        const isClickInsideNav = navMobile && navMobile.contains(event.target);
+        const isClickOnHamburger = hamburger && hamburger.contains(event.target);
 
+        if (!isClickInsideNav && !isClickOnHamburger && navMobile && navMobile.classList.contains('active')) {
+            hamburger.classList.remove('active');
+            navMobile.classList.remove('active');
+        }
+    });
+
+    // Close mobile nav when clicking a link
+    const mobileLinks = document.querySelectorAll('.nav-mobile a');
+    mobileLinks.forEach(link => {
+        link.addEventListener('click', function() {
+            if (hamburger && navMobile) {
+                hamburger.classList.remove('active');
+                navMobile.classList.remove('active');
+            }
+        });
+    });
+});
+
+// Accordion Functionality for AI Tools page
+document.addEventListener('DOMContentLoaded', function() {
     const accordionButtons = document.querySelectorAll('.accordion-button');
 
-    if (accordionButtons.length > 0) {
-        accordionButtons.forEach(button => {
-            button.addEventListener('click', function() {
-                // Get the parent accordion item
-                const accordionItem = this.parentElement;
-                const accordionContent = accordionItem.querySelector('.accordion-content');
+    accordionButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const accordionItem = this.parentElement;
+            const accordionContent = accordionItem.querySelector('.accordion-content');
+            const isExpanded = this.getAttribute('aria-expanded') === 'true';
 
-                // Check if this accordion is currently active
-                const isActive = this.classList.contains('active');
-
-                // Close all other accordions in the same category
-                const category = accordionItem.closest('.tools-category, .prompts-category');
-                if (category) {
-                    const allButtons = category.querySelectorAll('.accordion-button');
-                    const allContents = category.querySelectorAll('.accordion-content');
-
-                    allButtons.forEach(btn => btn.classList.remove('active'));
-                    allContents.forEach(content => content.classList.remove('active'));
-                }
-
-                // Toggle the clicked accordion
-                if (!isActive) {
-                    this.classList.add('active');
-                    accordionContent.classList.add('active');
-                }
-            });
-        });
-    }
-
-    // ============================
-    // Contact Form Handling
-    // ============================
-
-    const contactForm = document.getElementById('contactForm');
-    const formMessage = document.getElementById('formMessage');
-    const submitBtn = document.getElementById('submitBtn');
-
-    if (contactForm) {
-        contactForm.addEventListener('submit', async function(e) {
-            e.preventDefault();
-
-            // Disable submit button to prevent double submission
-            if (submitBtn) {
-                submitBtn.disabled = true;
-                submitBtn.textContent = 'Sending...';
-            }
-
-            // Hide any previous messages
-            if (formMessage) {
-                formMessage.style.display = 'none';
-            }
-
-            // Get form data
-            const formData = new FormData(contactForm);
-
-            try {
-                // Submit to Web3Forms
-                const response = await fetch('https://api.web3forms.com/submit', {
-                    method: 'POST',
-                    body: formData
-                });
-
-                const data = await response.json();
-
-                if (response.ok && data.success) {
-                    // Success
-                    if (formMessage) {
-                        formMessage.textContent = 'Thank you for your message! We will get back to you soon.';
-                        formMessage.className = 'form-message success';
-                        formMessage.style.display = 'block';
+            // Close all other accordions in the same category
+            const category = accordionItem.closest('.tools-category');
+            if (category) {
+                const allAccordions = category.querySelectorAll('.accordion-item');
+                allAccordions.forEach(item => {
+                    if (item !== accordionItem) {
+                        item.querySelector('.accordion-button').setAttribute('aria-expanded', 'false');
+                        item.querySelector('.accordion-content').style.maxHeight = '0';
                     }
+                });
+            }
 
-                    // Reset form
-                    contactForm.reset();
-
-                    // Scroll to message
-                    formMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
-
-                } else {
-                    // Error
-                    throw new Error(data.message || 'Something went wrong');
-                }
-
-            } catch (error) {
-                // Display error message
-                if (formMessage) {
-                    formMessage.textContent = 'Oops! There was a problem sending your message. Please try again or contact us directly.';
-                    formMessage.className = 'form-message error';
-                    formMessage.style.display = 'block';
-                }
-                console.error('Form submission error:', error);
-            } finally {
-                // Re-enable submit button
-                if (submitBtn) {
-                    submitBtn.disabled = false;
-                    submitBtn.textContent = 'Send Message';
-                }
+            // Toggle current accordion
+            if (isExpanded) {
+                this.setAttribute('aria-expanded', 'false');
+                accordionContent.style.maxHeight = '0';
+            } else {
+                this.setAttribute('aria-expanded', 'true');
+                accordionContent.style.maxHeight = accordionContent.scrollHeight + 'px';
             }
         });
-    }
+    });
+});
 
-    // ============================
-    // Smooth Scrolling for Anchor Links
-    // ============================
+// Smooth Scroll for Anchor Links
+document.addEventListener('DOMContentLoaded', function() {
+    const smoothScrollLinks = document.querySelectorAll('a[href^="#"]');
 
-    const anchorLinks = document.querySelectorAll('a[href^="#"]');
-
-    anchorLinks.forEach(link => {
+    smoothScrollLinks.forEach(link => {
         link.addEventListener('click', function(e) {
-            const href = this.getAttribute('href');
+            const targetId = this.getAttribute('href');
 
-            // Only handle internal anchors (not just #)
-            if (href && href !== '#' && href.length > 1) {
-                const target = document.querySelector(href);
+            if (targetId !== '#' && targetId !== '') {
+                const targetElement = document.querySelector(targetId);
 
-                if (target) {
+                if (targetElement) {
                     e.preventDefault();
 
-                    // Get header height for offset
-                    const header = document.querySelector('.header');
-                    const headerHeight = header ? header.offsetHeight : 0;
+                    const headerOffset = 100;
+                    const elementPosition = targetElement.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
 
-                    // Calculate position with offset
-                    const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - headerHeight - 20;
-
-                    // Smooth scroll
                     window.scrollTo({
-                        top: targetPosition,
+                        top: offsetPosition,
                         behavior: 'smooth'
                     });
                 }
             }
         });
     });
-
-    // ============================
-    // Scroll to Top on Page Load (if hash in URL)
-    // ============================
-
-    if (window.location.hash) {
-        setTimeout(() => {
-            const target = document.querySelector(window.location.hash);
-            if (target) {
-                const header = document.querySelector('.header');
-                const headerHeight = header ? header.offsetHeight : 0;
-                const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - headerHeight - 20;
-
-                window.scrollTo({
-                    top: targetPosition,
-                    behavior: 'smooth'
-                });
-            }
-        }, 100);
-    }
-
-    // ============================
-    // Close Mobile Menu on Window Resize
-    // ============================
-
-    let resizeTimer;
-    window.addEventListener('resize', function() {
-        clearTimeout(resizeTimer);
-        resizeTimer = setTimeout(function() {
-            if (window.innerWidth > 768) {
-                // Close mobile menu on desktop
-                if (hamburger) hamburger.classList.remove('active');
-                if (mobileNav) mobileNav.classList.remove('active');
-                document.body.style.overflow = '';
-            }
-        }, 250);
-    });
-
-    // ============================
-    // Form Field Enhancements
-    // ============================
-
-    // Add visual feedback for form fields
-    const formInputs = document.querySelectorAll('input, textarea, select');
-
-    formInputs.forEach(input => {
-        // Add focus effect
-        input.addEventListener('focus', function() {
-            this.parentElement.classList.add('focused');
-        });
-
-        input.addEventListener('blur', function() {
-            this.parentElement.classList.remove('focused');
-
-            // Add filled class if has value
-            if (this.value) {
-                this.parentElement.classList.add('filled');
-            } else {
-                this.parentElement.classList.remove('filled');
-            }
-        });
-
-        // Check on load if already filled
-        if (input.value) {
-            input.parentElement.classList.add('filled');
-        }
-    });
-
-    // ============================
-    // External Links - Open in New Tab
-    // ============================
-
-    const externalLinks = document.querySelectorAll('a[href^="http"]');
-
-    externalLinks.forEach(link => {
-        // Only add target="_blank" if not already set
-        if (!link.hasAttribute('target')) {
-            // Check if link is external (not same domain)
-            const linkHost = new URL(link.href).hostname;
-            const currentHost = window.location.hostname;
-
-            if (linkHost !== currentHost) {
-                link.setAttribute('target', '_blank');
-                link.setAttribute('rel', 'noopener noreferrer');
-            }
-        }
-    });
-
-    // ============================
-    // Lazy Loading for Images (if needed)
-    // ============================
-
-    if ('IntersectionObserver' in window) {
-        const lazyImages = document.querySelectorAll('img[data-src]');
-
-        const imageObserver = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const img = entry.target;
-                    img.src = img.dataset.src;
-                    img.removeAttribute('data-src');
-                    imageObserver.unobserve(img);
-                }
-            });
-        });
-
-        lazyImages.forEach(img => imageObserver.observe(img));
-    }
-
-    // ============================
-    // Accessibility: Keyboard Navigation for Accordions
-    // ============================
-
-    accordionButtons.forEach(button => {
-        button.addEventListener('keydown', function(e) {
-            // Enter or Space key
-            if (e.key === 'Enter' || e.key === ' ') {
-                e.preventDefault();
-                this.click();
-            }
-        });
-    });
-
-    // ============================
-    // Console Welcome Message
-    // ============================
-
-    console.log('%cAI Career Hub', 'font-size: 20px; font-weight: bold; color: #339933;');
-    console.log('%cHochschule Wismar - University of Applied Sciences', 'font-size: 14px; color: #2f3229;');
-    console.log('%cMaster's in International Management Project', 'font-size: 12px; color: #666;');
-    console.log('---');
-    console.log('Website loaded successfully! ✓');
-
 });
 
-// ============================
-// Service Worker Registration (Optional - for PWA)
-// ============================
+// Copy Prompt Functionality (for future enhancement)
+document.addEventListener('DOMContentLoaded', function() {
+    const promptBoxes = document.querySelectorAll('.prompt-box');
 
-// Uncomment if you want to add PWA functionality later
-/*
-if ('serviceWorker' in navigator) {
-    window.addEventListener('load', () => {
-        navigator.serviceWorker.register('/sw.js')
-            .then(registration => {
-                console.log('Service Worker registered successfully:', registration.scope);
+    promptBoxes.forEach(box => {
+        // Add a visual indicator that the prompt is copyable
+        box.style.cursor = 'pointer';
+        box.title = 'Click to copy prompt';
+
+        box.addEventListener('click', function() {
+            const textToCopy = this.textContent;
+
+            // Create temporary textarea to copy text
+            const textarea = document.createElement('textarea');
+            textarea.value = textToCopy;
+            textarea.style.position = 'fixed';
+            textarea.style.opacity = '0';
+            document.body.appendChild(textarea);
+            textarea.select();
+
+            try {
+                document.execCommand('copy');
+
+                // Visual feedback
+                const originalBg = this.style.backgroundColor;
+                this.style.backgroundColor = '#339933';
+                this.style.color = 'white';
+
+                // Create "Copied!" notification
+                const notification = document.createElement('span');
+                notification.textContent = '✓ Copied!';
+                notification.style.cssText = 'position: absolute; background: #339933; color: white; padding: 5px 10px; border-radius: 4px; font-size: 14px; margin-left: 10px; animation: fadeOut 2s forwards;';
+                this.parentElement.style.position = 'relative';
+                this.parentElement.appendChild(notification);
+
+                setTimeout(() => {
+                    this.style.backgroundColor = originalBg;
+                    this.style.color = '';
+                    notification.remove();
+                }, 2000);
+
+            } catch (err) {
+                console.error('Failed to copy text:', err);
+            }
+
+            document.body.removeChild(textarea);
+        });
+    });
+});
+
+// Form Submission Handler for Contact Page
+document.addEventListener('DOMContentLoaded', function() {
+    const contactForm = document.getElementById('contactForm');
+
+    if (contactForm) {
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const formMessage = document.getElementById('formMessage');
+            const submitBtn = document.getElementById('submitBtn');
+
+            // Disable submit button
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Sending...';
+
+            // Get form data
+            const formData = new FormData(contactForm);
+
+            // Submit to Web3Forms
+            fetch('https://api.web3forms.com/submit', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    formMessage.textContent = '✓ Thank you! Your message has been sent successfully. We will get back to you soon.';
+                    formMessage.style.display = 'block';
+                    formMessage.style.backgroundColor = '#d4edda';
+                    formMessage.style.color = '#155724';
+                    formMessage.style.border = '1px solid #c3e6cb';
+                    formMessage.style.padding = '15px';
+                    formMessage.style.borderRadius = '5px';
+                    formMessage.style.marginBottom = '20px';
+
+                    contactForm.reset();
+                } else {
+                    throw new Error('Form submission failed');
+                }
             })
             .catch(error => {
-                console.log('Service Worker registration failed:', error);
+                formMessage.textContent = '✗ Sorry, there was an error sending your message. Please try again or contact us directly via email.';
+                formMessage.style.display = 'block';
+                formMessage.style.backgroundColor = '#f8d7da';
+                formMessage.style.color = '#721c24';
+                formMessage.style.border = '1px solid #f5c6cb';
+                formMessage.style.padding = '15px';
+                formMessage.style.borderRadius = '5px';
+                formMessage.style.marginBottom = '20px';
+            })
+            .finally(() => {
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Send Message';
             });
+        });
+    }
+});
+
+// Scroll-to-Top Button (Optional Enhancement)
+document.addEventListener('DOMContentLoaded', function() {
+    // Create scroll-to-top button
+    const scrollBtn = document.createElement('button');
+    scrollBtn.innerHTML = '↑';
+    scrollBtn.className = 'scroll-to-top';
+    scrollBtn.setAttribute('aria-label', 'Scroll to top');
+    scrollBtn.style.cssText = `
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background-color: #339933;
+        color: white;
+        border: none;
+        font-size: 24px;
+        cursor: pointer;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        z-index: 999;
+    `;
+
+    document.body.appendChild(scrollBtn);
+
+    // Show/hide button based on scroll position
+    window.addEventListener('scroll', function() {
+        if (window.pageYOffset > 300) {
+            scrollBtn.style.opacity = '1';
+            scrollBtn.style.visibility = 'visible';
+        } else {
+            scrollBtn.style.opacity = '0';
+            scrollBtn.style.visibility = 'hidden';
+        }
     });
-}
-*/
 
-// ============================
-// Analytics (Optional)
-// ============================
+    // Scroll to top on click
+    scrollBtn.addEventListener('click', function() {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
 
-// Add your analytics code here if needed
-// Example: Google Analytics, Matomo, etc.
+    // Hover effect
+    scrollBtn.addEventListener('mouseenter', function() {
+        this.style.backgroundColor = '#2d7d2d';
+        this.style.transform = 'scale(1.1)';
+    });
 
-// ============================
-// Error Handling
-// ============================
-
-window.addEventListener('error', function(e) {
-    console.error('JavaScript Error:', e.error);
-    // You can add error reporting here if needed
-});
-
-// ============================
-// Print Functionality Enhancement
-// ============================
-
-window.addEventListener('beforeprint', function() {
-    // Close all accordions before printing
-    const accordionContents = document.querySelectorAll('.accordion-content');
-    accordionContents.forEach(content => {
-        content.classList.add('active');
+    scrollBtn.addEventListener('mouseleave', function() {
+        this.style.backgroundColor = '#339933';
+        this.style.transform = 'scale(1)';
     });
 });
 
-window.addEventListener('afterprint', function() {
-    // Restore accordion state after printing
-    // (optional - you might want to keep them open)
+// Add fade-in animation to cards on scroll
+document.addEventListener('DOMContentLoaded', function() {
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver(function(entries) {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+            }
+        });
+    }, observerOptions);
+
+    // Observe all cards
+    const cards = document.querySelectorAll('.feature-card, .tool-card, .prompt-card');
+    cards.forEach((card, index) => {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(20px)';
+        card.style.transition = `opacity 0.6s ease ${index * 0.1}s, transform 0.6s ease ${index * 0.1}s`;
+        observer.observe(card);
+    });
 });
+
+console.log('✓ AI Career Hub JavaScript loaded - Hochschule Wismar');
