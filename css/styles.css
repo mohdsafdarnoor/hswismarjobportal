@@ -1,34 +1,20 @@
-/**
- * AI Career Hub - Hochschule Wismar
- * Authentic Corporate Design matching hs-wismar.de
- * Updated: January 2026
- */
+/* AI Career Hub - Hochschule Wismar
+   Clean, Professional Design - January 2026 */
 
-/* ============================================
-   RESET & BASE STYLES
-   ============================================ */
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
+/* ========== CSS Variables ========== */
 :root {
     /* Hochschule Wismar Official Colors */
-    --color-anthrazit: #2f3229;
-    --color-green: #339933;
-    --color-blue: #00b1db;
-    --color-orange: #ff5d02;
-    --color-gray: #afafaf;
-    --color-white: #ffffff;
-    --color-light-gray: #f5f5f5;
-    --color-border: #e0e0e0;
+    --hs-green: #339933;
+    --hs-blue: #00b1db;
+    --hs-orange: #ff5d02;
+    --hs-dark: #2f3229;
+    --hs-grey: #666666;
 
-    /* Typography */
-    --font-primary: 'Meta', 'Segoe UI', Arial, sans-serif;
-    --font-size-base: 16px;
-    --line-height-base: 1.6;
+    /* Neutral Colors */
+    --white: #ffffff;
+    --light-grey: #f5f5f5;
+    --border-grey: #e0e0e0;
+    --text-dark: #333333;
 
     /* Spacing */
     --spacing-xs: 8px;
@@ -36,821 +22,120 @@
     --spacing-md: 24px;
     --spacing-lg: 40px;
     --spacing-xl: 60px;
-
-    /* Container */
-    --container-max-width: 1200px;
-
-    /* Transitions */
-    --transition-base: all 0.3s ease;
 }
 
-html {
-    font-size: var(--font-size-base);
-    scroll-behavior: smooth;
+/* ========== Reset & Base ========== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body {
-    font-family: var(--font-primary);
-    line-height: var(--line-height-base);
-    color: var(--color-anthrazit);
-    background-color: var(--color-white);
-    overflow-x: hidden;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    line-height: 1.6;
+    color: var(--text-dark);
+    background-color: var(--white);
 }
 
 .container {
-    max-width: var(--container-max-width);
+    max-width: 1200px;
     margin: 0 auto;
-    padding: 0 20px;
+    padding: 0 var(--spacing-md);
 }
 
-/* ============================================
-   HEADER - Matching hs-wismar.de
-   ============================================ */
-
+/* ========== GREEN HEADER ========== */
 .header {
-    background-color: var(--color-white);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    background-color: var(--hs-green);
+    color: var(--white);
+    padding: var(--spacing-sm) 0;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     position: sticky;
     top: 0;
     z-index: 1000;
-}
-
-/* Color Bar - Signature HS Wismar Element */
-.header-colorbar {
-    height: 6px;
-    display: flex;
-}
-
-.header-colorbar .bar-blue {
-    flex: 1;
-    background-color: var(--color-blue);
-}
-
-.header-colorbar .bar-green {
-    flex: 1;
-    background-color: var(--color-green);
-}
-
-.header-colorbar .bar-orange {
-    flex: 1;
-    background-color: var(--color-orange);
 }
 
 .header-content {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px 0;
 }
 
-/* Logo Styling */
-.logo {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-}
-
+/* Logo - Small and Clean */
 .logo a {
     display: flex;
     align-items: center;
     gap: 12px;
     text-decoration: none;
+    color: var(--white);
 }
 
-.logo-image {
-    width: 50px;
-    height: 50px;
-    background-color: var(--color-anthrazit);
-    border-radius: 50%;
+.logo-icon {
+    width: 40px;
+    height: 40px;
+    background-color: var(--white);
+    color: var(--hs-green);
+    border-radius: 8px;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: var(--color-white);
     font-weight: bold;
-    font-size: 20px;
-}
-
-.logo-text-container {
-    display: flex;
-    flex-direction: column;
+    font-size: 18px;
 }
 
 .logo-text {
-    font-size: 18px;
-    font-weight: bold;
-    color: var(--color-anthrazit);
-    line-height: 1.2;
+    font-size: 20px;
+    font-weight: 600;
 }
 
 .logo-subtitle {
-    font-size: 12px;
-    color: var(--color-gray);
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
+    font-size: 13px;
+    opacity: 0.9;
+    display: block;
 }
 
 /* Navigation */
-.nav-desktop {
-    display: flex;
-}
-
 .nav-desktop ul {
     display: flex;
     list-style: none;
-    gap: 30px;
+    gap: var(--spacing-md);
 }
 
 .nav-desktop a {
+    color: var(--white);
     text-decoration: none;
-    color: var(--color-anthrazit);
-    font-size: 15px;
-    font-weight: 500;
-    padding: 8px 0;
-    position: relative;
-    transition: var(--transition-base);
+    padding: 8px 16px;
+    border-radius: 4px;
+    transition: background-color 0.3s;
 }
 
 .nav-desktop a:hover,
 .nav-desktop a.active {
-    color: var(--color-green);
+    background-color: rgba(255,255,255,0.2);
 }
 
-.nav-desktop a::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background-color: var(--color-green);
-    transition: var(--transition-base);
-}
-
-.nav-desktop a:hover::after,
-.nav-desktop a.active::after {
-    width: 100%;
-}
-
-/* Mobile Navigation */
+/* Mobile Menu */
 .hamburger {
     display: none;
     flex-direction: column;
-    gap: 5px;
+    gap: 4px;
     background: none;
     border: none;
     cursor: pointer;
-    padding: 5px;
+    padding: 8px;
 }
 
 .hamburger span {
     width: 25px;
     height: 3px;
-    background-color: var(--color-anthrazit);
-    transition: var(--transition-base);
-}
-
-.hamburger.active span:nth-child(1) {
-    transform: rotate(45deg) translate(8px, 8px);
-}
-
-.hamburger.active span:nth-child(2) {
-    opacity: 0;
-}
-
-.hamburger.active span:nth-child(3) {
-    transform: rotate(-45deg) translate(7px, -7px);
+    background-color: var(--white);
+    border-radius: 2px;
+    transition: all 0.3s;
 }
 
 .nav-mobile {
     display: none;
-    background-color: var(--color-white);
-    border-top: 1px solid var(--color-border);
-    padding: 20px 0;
 }
-
-.nav-mobile.active {
-    display: block;
-}
-
-.nav-mobile ul {
-    list-style: none;
-}
-
-.nav-mobile a {
-    display: block;
-    padding: 12px 0;
-    text-decoration: none;
-    color: var(--color-anthrazit);
-    font-size: 16px;
-    transition: var(--transition-base);
-}
-
-.nav-mobile a:hover,
-.nav-mobile a.active {
-    color: var(--color-green);
-    padding-left: 10px;
-}
-
-/* ============================================
-   HERO SECTION - Modern HS Wismar Style
-   ============================================ */
-
-.hero {
-    background: linear-gradient(135deg, var(--color-blue) 0%, var(--color-green) 100%);
-    color: var(--color-white);
-    padding: var(--spacing-xl) 0;
-    text-align: center;
-}
-
-.hero h1 {
-    font-size: 42px;
-    font-weight: bold;
-    margin-bottom: var(--spacing-md);
-    line-height: 1.2;
-}
-
-.hero p {
-    font-size: 20px;
-    max-width: 700px;
-    margin: 0 auto var(--spacing-lg);
-    opacity: 0.95;
-}
-
-.hero-buttons {
-    display: flex;
-    gap: 20px;
-    justify-content: center;
-    flex-wrap: wrap;
-}
-
-/* Page Hero (for subpages) */
-.page-hero {
-    background: linear-gradient(135deg, var(--color-anthrazit) 0%, #4a4d43 100%);
-    color: var(--color-white);
-    padding: 50px 0;
-    text-align: center;
-}
-
-.page-hero h1 {
-    font-size: 36px;
-    margin-bottom: 10px;
-}
-
-.page-hero p {
-    font-size: 18px;
-    opacity: 0.9;
-}
-
-/* ============================================
-   BUTTONS - Modern Style
-   ============================================ */
-
-.btn {
-    display: inline-block;
-    padding: 14px 32px;
-    border-radius: 4px;
-    text-decoration: none;
-    font-weight: 600;
-    font-size: 16px;
-    transition: var(--transition-base);
-    border: 2px solid transparent;
-    cursor: pointer;
-}
-
-.btn-primary {
-    background-color: var(--color-green);
-    color: var(--color-white);
-}
-
-.btn-primary:hover {
-    background-color: #2d8529;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(51, 153, 51, 0.3);
-}
-
-.btn-secondary {
-    background-color: var(--color-white);
-    color: var(--color-green);
-    border-color: var(--color-white);
-}
-
-.btn-secondary:hover {
-    background-color: transparent;
-    color: var(--color-white);
-    transform: translateY(-2px);
-}
-
-.btn-outline {
-    background-color: transparent;
-    color: var(--color-anthrazit);
-    border-color: var(--color-anthrazit);
-}
-
-.btn-outline:hover {
-    background-color: var(--color-anthrazit);
-    color: var(--color-white);
-}
-
-/* ============================================
-   SECTIONS - Clean Modern Layout
-   ============================================ */
-
-.section {
-    padding: var(--spacing-xl) 0;
-}
-
-.section-white {
-    background-color: var(--color-white);
-}
-
-.section-gray {
-    background-color: var(--color-light-gray);
-}
-
-.section h2 {
-    font-size: 32px;
-    font-weight: bold;
-    color: var(--color-anthrazit);
-    margin-bottom: var(--spacing-md);
-    text-align: center;
-}
-
-.section p {
-    font-size: 16px;
-    line-height: 1.8;
-    color: #555;
-    max-width: 800px;
-    margin: 0 auto var(--spacing-md);
-}
-
-.section ul {
-    max-width: 800px;
-    margin: 0 auto var(--spacing-md);
-}
-
-.section li {
-    margin-bottom: 12px;
-    line-height: 1.8;
-    color: #555;
-}
-
-/* ============================================
-   CARDS - Modern HS Wismar Style
-   ============================================ */
-
-.features-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 30px;
-    margin-top: var(--spacing-lg);
-}
-
-.feature-card {
-    background-color: var(--color-white);
-    border-radius: 8px;
-    padding: 30px;
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
-    transition: var(--transition-base);
-    border-top: 4px solid transparent;
-}
-
-.feature-card:nth-child(1) { border-top-color: var(--color-blue); }
-.feature-card:nth-child(2) { border-top-color: var(--color-green); }
-.feature-card:nth-child(3) { border-top-color: var(--color-orange); }
-.feature-card:nth-child(4) { border-top-color: var(--color-anthrazit); }
-
-.feature-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
-}
-
-.feature-icon {
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 20px;
-}
-
-.feature-icon svg {
-    width: 30px;
-    height: 30px;
-    color: var(--color-white);
-}
-
-.feature-card h3 {
-    font-size: 20px;
-    font-weight: bold;
-    color: var(--color-anthrazit);
-    margin-bottom: 12px;
-}
-
-.feature-card p {
-    font-size: 15px;
-    line-height: 1.6;
-    color: #666;
-    margin-bottom: 0;
-}
-
-/* ============================================
-   WARNING BOX - Prominent Style
-   ============================================ */
-
-.warning-box {
-    background-color: #fff3e0;
-    border-left: 5px solid var(--color-orange);
-    border-radius: 4px;
-    padding: 30px;
-    margin: var(--spacing-lg) auto;
-    max-width: 900px;
-}
-
-.warning-box h3 {
-    color: var(--color-orange);
-    font-size: 22px;
-    margin-bottom: 16px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.warning-box p {
-    color: #555;
-    margin-bottom: 12px;
-}
-
-.warning-box strong {
-    color: var(--color-anthrazit);
-}
-
-/* ============================================
-   ACCORDION - Clean Modern Design
-   ============================================ */
-
-.tools-category,
-.prompts-category {
-    margin-bottom: var(--spacing-lg);
-}
-
-.category-header {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    margin-bottom: var(--spacing-md);
-    padding-bottom: 15px;
-    border-bottom: 3px solid var(--color-border);
-}
-
-.category-icon {
-    width: 50px;
-    height: 50px;
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 24px;
-}
-
-.category-header h2 {
-    margin: 0;
-    font-size: 28px;
-    text-align: left;
-}
-
-.category-header p {
-    margin: 0;
-    text-align: left;
-}
-
-.accordion-item {
-    margin-bottom: 16px;
-    border: 1px solid var(--color-border);
-    border-radius: 8px;
-    overflow: hidden;
-    background-color: var(--color-white);
-}
-
-.accordion-button {
-    width: 100%;
-    background-color: var(--color-light-gray);
-    border: none;
-    padding: 20px 24px;
-    text-align: left;
-    font-size: 18px;
-    font-weight: 600;
-    color: var(--color-anthrazit);
-    cursor: pointer;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    transition: var(--transition-base);
-}
-
-.accordion-button:hover {
-    background-color: #e8e8e8;
-}
-
-.accordion-button.active {
-    background-color: var(--color-green);
-    color: var(--color-white);
-}
-
-.accordion-button::after {
-    content: '+';
-    font-size: 24px;
-    font-weight: bold;
-    transition: var(--transition-base);
-}
-
-.accordion-button.active::after {
-    content: '−';
-}
-
-.accordion-content {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.4s ease;
-}
-
-.accordion-content.active {
-    max-height: 5000px;
-}
-
-.accordion-content-inner {
-    padding: 24px;
-}
-
-/* Tool Cards inside Accordion */
-.tools-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 20px;
-}
-
-.tool-card {
-    background-color: var(--color-white);
-    border: 1px solid var(--color-border);
-    border-radius: 8px;
-    padding: 20px;
-    transition: var(--transition-base);
-}
-
-.tool-card:hover {
-    border-color: var(--color-green);
-    box-shadow: 0 4px 12px rgba(51, 153, 51, 0.15);
-    transform: translateY(-3px);
-}
-
-.tool-card h4 {
-    font-size: 18px;
-    font-weight: bold;
-    color: var(--color-anthrazit);
-    margin-bottom: 12px;
-}
-
-.tool-card p {
-    font-size: 14px;
-    line-height: 1.6;
-    color: #666;
-    margin-bottom: 16px;
-}
-
-.tool-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 5px;
-    color: var(--color-green);
-    text-decoration: none;
-    font-weight: 600;
-    font-size: 14px;
-    transition: var(--transition-base);
-}
-
-.tool-link:hover {
-    color: #2d8529;
-    gap: 8px;
-}
-
-/* ============================================
-   PROMPTS STYLING
-   ============================================ */
-
-.prompt-card {
-    background-color: var(--color-white);
-    border: 1px solid var(--color-border);
-    border-radius: 8px;
-    padding: 24px;
-    margin-bottom: 24px;
-}
-
-.prompt-card h4 {
-    font-size: 20px;
-    font-weight: bold;
-    color: var(--color-anthrazit);
-    margin-bottom: 16px;
-}
-
-.prompt-section {
-    margin-bottom: 20px;
-}
-
-.prompt-section h5 {
-    font-size: 16px;
-    font-weight: 600;
-    color: var(--color-green);
-    margin-bottom: 12px;
-}
-
-.prompt-section ul {
-    margin-left: 20px;
-    margin-bottom: 12px;
-}
-
-.prompt-section li {
-    margin-bottom: 8px;
-    color: #555;
-}
-
-.prompt-box {
-    background-color: #f9f9f9;
-    border-left: 4px solid var(--color-green);
-    padding: 16px;
-    border-radius: 4px;
-    font-family: 'Courier New', monospace;
-    font-size: 14px;
-    line-height: 1.8;
-    color: #333;
-    white-space: pre-wrap;
-}
-
-/* ============================================
-   CONTACT FORM - Modern Style
-   ============================================ */
-
-.contact-form {
-    max-width: 700px;
-    margin: 0 auto;
-    background-color: var(--color-white);
-    padding: 40px;
-    border-radius: 8px;
-    box-shadow: 0 2px 16px rgba(0, 0, 0, 0.1);
-}
-
-.form-group {
-    margin-bottom: 24px;
-}
-
-.form-group label {
-    display: block;
-    font-weight: 600;
-    color: var(--color-anthrazit);
-    margin-bottom: 8px;
-    font-size: 15px;
-}
-
-.form-group input,
-.form-group textarea,
-.form-group select {
-    width: 100%;
-    padding: 12px 16px;
-    border: 2px solid var(--color-border);
-    border-radius: 4px;
-    font-size: 15px;
-    font-family: var(--font-primary);
-    transition: var(--transition-base);
-}
-
-.form-group input:focus,
-.form-group textarea:focus,
-.form-group select:focus {
-    outline: none;
-    border-color: var(--color-green);
-    box-shadow: 0 0 0 3px rgba(51, 153, 51, 0.1);
-}
-
-.form-group textarea {
-    resize: vertical;
-    min-height: 120px;
-}
-
-.form-submit {
-    text-align: center;
-    margin-top: 32px;
-}
-
-.form-message {
-    padding: 16px;
-    border-radius: 4px;
-    margin-bottom: 24px;
-    font-weight: 500;
-}
-
-.form-message.success {
-    background-color: #d4edda;
-    color: #155724;
-    border: 1px solid #c3e6cb;
-}
-
-.form-message.error {
-    background-color: #f8d7da;
-    color: #721c24;
-    border: 1px solid #f5c6cb;
-}
-
-/* ============================================
-   FOOTER - HS Wismar Style
-   ============================================ */
-
-.footer {
-    background-color: var(--color-anthrazit);
-    color: var(--color-white);
-    padding: var(--spacing-xl) 0 var(--spacing-md);
-}
-
-.footer-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 40px;
-    margin-bottom: var(--spacing-lg);
-}
-
-.footer-column h3 {
-    font-size: 18px;
-    font-weight: bold;
-    margin-bottom: 16px;
-    color: var(--color-white);
-}
-
-.footer-column p,
-.footer-column .footer-address {
-    font-size: 14px;
-    line-height: 1.8;
-    color: rgba(255, 255, 255, 0.8);
-    margin-bottom: 12px;
-}
-
-.footer-links {
-    list-style: none;
-}
-
-.footer-links li {
-    margin-bottom: 10px;
-}
-
-.footer-links a {
-    color: rgba(255, 255, 255, 0.8);
-    text-decoration: none;
-    font-size: 14px;
-    transition: var(--transition-base);
-}
-
-.footer-links a:hover {
-    color: var(--color-green);
-}
-
-.social-links {
-    display: flex;
-    gap: 15px;
-}
-
-.social-links a {
-    width: 40px;
-    height: 40px;
-    background-color: rgba(255, 255, 255, 0.1);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--color-white);
-    transition: var(--transition-base);
-}
-
-.social-links a:hover {
-    background-color: var(--color-green);
-    transform: translateY(-3px);
-}
-
-.social-links svg {
-    width: 20px;
-    height: 20px;
-}
-
-.footer-bottom {
-    border-top: 1px solid rgba(255, 255, 255, 0.2);
-    padding-top: var(--spacing-md);
-    text-align: center;
-}
-
-.footer-bottom p {
-    font-size: 13px;
-    color: rgba(255, 255, 255, 0.7);
-}
-
-/* ============================================
-   RESPONSIVE DESIGN
-   ============================================ */
 
 @media (max-width: 768px) {
     .nav-desktop {
@@ -861,78 +146,415 @@ body {
         display: flex;
     }
 
-    .hero h1 {
-        font-size: 32px;
+    .nav-mobile {
+        display: block;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s;
     }
 
-    .hero p {
-        font-size: 18px;
+    .nav-mobile.active {
+        max-height: 300px;
     }
 
-    .section h2 {
-        font-size: 26px;
+    .nav-mobile ul {
+        list-style: none;
+        padding-top: var(--spacing-sm);
     }
 
-    .features-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .contact-form {
-        padding: 24px;
-    }
-
-    .footer-grid {
-        grid-template-columns: 1fr;
-        gap: 30px;
-    }
-}
-
-@media (max-width: 480px) {
-    .hero h1 {
-        font-size: 28px;
-    }
-
-    .hero p {
-        font-size: 16px;
-    }
-
-    .btn {
-        padding: 12px 24px;
-        font-size: 14px;
+    .nav-mobile a {
+        display: block;
+        color: var(--white);
+        text-decoration: none;
+        padding: 12px 0;
+        border-bottom: 1px solid rgba(255,255,255,0.1);
     }
 }
 
-/* ============================================
-   UTILITY CLASSES
-   ============================================ */
+/* ========== HERO SECTION ========== */
+.hero {
+    background: linear-gradient(135deg, var(--hs-green) 0%, var(--hs-blue) 100%);
+    color: var(--white);
+    padding: var(--spacing-xl) 0;
+    text-align: center;
+}
 
+.hero h1 {
+    font-size: 42px;
+    margin-bottom: var(--spacing-sm);
+    font-weight: 700;
+}
+
+.hero p {
+    font-size: 20px;
+    opacity: 0.95;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.page-hero {
+    background: linear-gradient(135deg, var(--hs-green) 0%, var(--hs-blue) 100%);
+    color: var(--white);
+    padding: var(--spacing-lg) 0;
+    text-align: center;
+}
+
+.page-hero h1 {
+    font-size: 36px;
+    margin-bottom: var(--spacing-xs);
+}
+
+.page-hero p {
+    font-size: 18px;
+    opacity: 0.95;
+}
+
+/* ========== MAIN CONTENT ========== */
+.section {
+    padding: var(--spacing-xl) 0;
+}
+
+.section-white {
+    background-color: var(--white);
+}
+
+.section-grey {
+    background-color: var(--light-grey);
+}
+
+/* Content Styling */
+h2 {
+    font-size: 28px;
+    color: var(--hs-green);
+    margin-bottom: var(--spacing-md);
+}
+
+h3 {
+    font-size: 22px;
+    color: var(--text-dark);
+    margin-bottom: var(--spacing-sm);
+}
+
+p {
+    margin-bottom: var(--spacing-sm);
+    line-height: 1.8;
+}
+
+/* ========== CARDS ========== */
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--spacing-md);
+    margin-top: var(--spacing-lg);
+}
+
+.card {
+    background: var(--white);
+    border: 1px solid var(--border-grey);
+    border-radius: 8px;
+    padding: var(--spacing-md);
+    transition: all 0.3s;
+}
+
+.card:hover {
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    transform: translateY(-2px);
+}
+
+.card h3 {
+    color: var(--hs-green);
+    margin-bottom: var(--spacing-sm);
+}
+
+.card-icon {
+    width: 50px;
+    height: 50px;
+    background-color: var(--hs-green);
+    color: var(--white);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    margin-bottom: var(--spacing-sm);
+}
+
+/* ========== ACCORDION (AI Tools) ========== */
+.category-section {
+    margin-bottom: var(--spacing-xl);
+}
+
+.category-header {
+    background-color: var(--hs-green);
+    color: var(--white);
+    padding: var(--spacing-md);
+    border-radius: 8px;
+    margin-bottom: var(--spacing-md);
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.category-header h2 {
+    color: var(--white);
+    margin: 0;
+    font-size: 24px;
+}
+
+.category-header .arrow {
+    font-size: 24px;
+    transition: transform 0.3s;
+}
+
+.category-header.active .arrow {
+    transform: rotate(180deg);
+}
+
+/* Phase Accordion */
+.phase-accordion {
+    margin-bottom: var(--spacing-sm);
+}
+
+.phase-button {
+    width: 100%;
+    background-color: var(--light-grey);
+    border: 1px solid var(--border-grey);
+    padding: var(--spacing-sm);
+    text-align: left;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 6px;
+    transition: all 0.3s;
+}
+
+.phase-button:hover {
+    background-color: #e8e8e8;
+}
+
+.phase-button .arrow {
+    transition: transform 0.3s;
+}
+
+.phase-button.active {
+    background-color: var(--hs-green);
+    color: var(--white);
+}
+
+.phase-button.active .arrow {
+    transform: rotate(180deg);
+}
+
+.phase-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+}
+
+.phase-content.active {
+    max-height: 2000px;
+}
+
+.phase-content-inner {
+    padding: var(--spacing-md);
+    background-color: var(--white);
+    border: 1px solid var(--border-grey);
+    border-top: none;
+    border-radius: 0 0 6px 6px;
+}
+
+/* Tool Items */
+.tool-item {
+    background-color: var(--white);
+    border-left: 3px solid var(--hs-blue);
+    padding: var(--spacing-sm);
+    margin-bottom: var(--spacing-sm);
+    border-radius: 4px;
+}
+
+.tool-item h4 {
+    color: var(--hs-blue);
+    margin-bottom: 8px;
+}
+
+.tool-item a {
+    color: var(--hs-green);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.tool-item a:hover {
+    text-decoration: underline;
+}
+
+/* ========== PROMPTS ========== */
+.prompt-section {
+    margin-bottom: var(--spacing-lg);
+}
+
+.prompt-header {
+    background-color: var(--hs-green);
+    color: var(--white);
+    padding: var(--spacing-sm) var(--spacing-md);
+    border-radius: 6px 6px 0 0;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.prompt-header h3 {
+    color: var(--white);
+    margin: 0;
+}
+
+.prompt-content {
+    background-color: var(--white);
+    border: 1px solid var(--border-grey);
+    border-top: none;
+    padding: var(--spacing-md);
+    border-radius: 0 0 6px 6px;
+}
+
+.prompt-box {
+    background-color: var(--light-grey);
+    border-left: 4px solid var(--hs-blue);
+    padding: var(--spacing-sm);
+    margin: var(--spacing-sm) 0;
+    font-family: monospace;
+    font-size: 14px;
+    line-height: 1.6;
+    white-space: pre-wrap;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.prompt-box:hover {
+    background-color: #e8f5e9;
+}
+
+/* ========== GREY FOOTER ========== */
+.footer {
+    background-color: var(--hs-grey);
+    color: var(--white);
+    padding: var(--spacing-lg) 0 var(--spacing-md);
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--spacing-lg);
+    margin-bottom: var(--spacing-md);
+}
+
+.footer h3 {
+    color: var(--white);
+    font-size: 18px;
+    margin-bottom: var(--spacing-sm);
+}
+
+.footer p,
+.footer a {
+    color: rgba(255,255,255,0.9);
+    font-size: 14px;
+}
+
+.footer a {
+    text-decoration: none;
+}
+
+.footer a:hover {
+    text-decoration: underline;
+}
+
+.footer ul {
+    list-style: none;
+}
+
+.footer ul li {
+    margin-bottom: 8px;
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: var(--spacing-md);
+    border-top: 1px solid rgba(255,255,255,0.2);
+    font-size: 13px;
+    color: rgba(255,255,255,0.8);
+}
+
+/* ========== BUTTONS ========== */
+.btn {
+    display: inline-block;
+    padding: 12px 24px;
+    border-radius: 6px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s;
+    cursor: pointer;
+    border: none;
+    font-size: 16px;
+}
+
+.btn-primary {
+    background-color: var(--hs-green);
+    color: var(--white);
+}
+
+.btn-primary:hover {
+    background-color: #2d7d2d;
+}
+
+/* ========== FORMS ========== */
+.form-group {
+    margin-bottom: var(--spacing-sm);
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 600;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--border-grey);
+    border-radius: 6px;
+    font-size: 16px;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: var(--hs-green);
+}
+
+/* ========== UTILITY CLASSES ========== */
 .text-center {
     text-align: center;
 }
 
-.mb-0 { margin-bottom: 0; }
-.mb-1 { margin-bottom: var(--spacing-xs); }
-.mb-2 { margin-bottom: var(--spacing-sm); }
-.mb-3 { margin-bottom: var(--spacing-md); }
-.mb-4 { margin-bottom: var(--spacing-lg); }
-
-.mt-0 { margin-top: 0; }
-.mt-1 { margin-top: var(--spacing-xs); }
-.mt-2 { margin-top: var(--spacing-sm); }
-.mt-3 { margin-top: var(--spacing-md); }
-.mt-4 { margin-top: var(--spacing-lg); }
-
-.hidden {
-    display: none;
+.mb-lg {
+    margin-bottom: var(--spacing-lg);
 }
 
-/* Print Styles */
-@media print {
-    .header, .footer, .btn {
-        display: none;
-    }
+.warning-box {
+    background-color: #fff3cd;
+    border-left: 4px solid var(--hs-orange);
+    padding: var(--spacing-md);
+    margin-bottom: var(--spacing-lg);
+    border-radius: 6px;
+}
 
-    .accordion-content {
-        max-height: none !important;
-    }
+.warning-box h3 {
+    color: var(--hs-orange);
+    margin-bottom: var(--spacing-sm);
 }
