@@ -65,15 +65,31 @@ header .container {
     gap: 2rem;
 }
 
-.desktop-nav a {
+.nav-link {
     color: var(--white);
     text-decoration: none;
     font-weight: 500;
     transition: color 0.3s ease;
+    position: relative;
 }
 
-.desktop-nav a:hover {
+.nav-link:hover {
     color: var(--university-green);
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--university-green);
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover::after {
+    width: 100%;
 }
 
 .mobile-menu-toggle {
