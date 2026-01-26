@@ -3,146 +3,130 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>FAQs | Hochschule Wismar</title>
-  <meta name="description" content="Frequently asked questions about using AI tools and prompts for job search and applications in Germany." />
+  <meta name="description" content="Frequently asked questions about using AI tools and prompts for your job search." />
+  <title>FAQs | AI Job Search Support</title>
   <link rel="stylesheet" href="css/style.css" />
 </head>
 
 <body>
-  <header class="header">
-    <div class="container">
-      <div class="header-inner">
-        <a class="brand" href="index.html" aria-label="Hochschule Wismar home">
-          <img src="assets/hsw-logo.png" alt="Hochschule Wismar" />
-          <div class="brand-title">
-            <strong>AI Job Search Support</strong>
-            <span>Hochschule Wismar</span>
-          </div>
-        </a>
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <a class="brand" href="index.html">
+        <span class="brand-title">Hochschule Wismar</span>
+        <span class="brand-sub">AI Job Search Support</span>
+      </a>
 
-        <nav class="nav" aria-label="Primary">
-          <a href="index.html">Home</a>
-          <a href="tools.html">AI Tools</a>
-          <a href="prompts.html">AI Prompts</a>
-          <a href="guidelines.html">Guidelines</a>
-          <a href="faqs.html" aria-current="page">FAQs</a>
-          <a href="contact.html">Contact</a>
-        </nav>
+      <button class="mobile-toggle" type="button" aria-label="Open menu">☰</button>
 
-        <button class="mobile-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobilePanel">
-          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-            <path fill="currentColor" d="M4 6h16v2H4V6zm0 5h16v2H4v-2zm0 5h16v2H4v-2z"></path>
-          </svg>
-        </button>
-      </div>
+      <nav class="nav">
+        <a href="index.html">Home</a>
+        <a href="tools.html">AI Tools</a>
+        <a href="prompts.html">AI Prompts</a>
+        <a href="guidelines.html">Guidelines</a>
+        <a href="faqs.html">FAQs</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
 
-      <div class="mobile-panel" id="mobilePanel" aria-hidden="true">
-        <nav class="mobile-nav" aria-label="Mobile">
-          <a href="index.html">Home</a>
-          <a href="tools.html">AI Tools</a>
-          <a href="prompts.html">AI Prompts</a>
-          <a href="guidelines.html">Guidelines</a>
-          <a href="faqs.html" aria-current="page">FAQs</a>
-          <a href="contact.html">Contact</a>
-        </nav>
-      </div>
+    <div id="mobilePanel" class="mobile-panel">
+      <a href="index.html">Home</a>
+      <a href="tools.html">AI Tools</a>
+      <a href="prompts.html">AI Prompts</a>
+      <a href="guidelines.html">Guidelines</a>
+      <a href="faqs.html">FAQs</a>
+      <a href="contact.html">Contact</a>
     </div>
   </header>
 
-  <main>
-    <section class="section">
-      <div class="container">
-        <h1 class="section-title" style="font-size:clamp(1.4rem, 2.4vw, 1.9rem); margin-bottom:10px;">FAQs</h1>
-        <p class="lead">Clear, practical answers for using AI tools responsibly in the German job market.</p>
-      </div>
+  <main class="container">
+    <section class="page-head">
+      <h1>Frequently Asked Questions</h1>
+      <p class="muted">Click a question to reveal the answer.</p>
     </section>
 
-    <section class="section" style="padding-top:10px;">
-      <div class="container">
-        <div class="grid" style="gap:14px;">
-          <article class="card card-pad">
-            <h2 style="margin:0 0 10px; font-size:1.15rem;">Can I use AI to write my CV and cover letter?</h2>
-            <p class="lead" style="margin:0;">
-              Yes—use AI for structure, grammar, and brainstorming, but keep the content truthful and specific to your experience.
-            </p>
-          </article>
+    <section class="card card-pad">
+      <div id="faqAccordion" class="faq-accordion" aria-label="Frequently Asked Questions">
 
-          <article class="card card-pad">
-            <h2 style="margin:0 0 10px; font-size:1.15rem;">How do I avoid “AI-sounding” applications?</h2>
-            <p class="lead" style="margin:0;">
-              Remove generic adjectives, add concrete proof points, and rewrite final text in your own voice before submitting.
-            </p>
-          </article>
-
-          <article class="card card-pad">
-            <h2 style="margin:0 0 10px; font-size:1.15rem;">Should I apply in German or English?</h2>
-            <p class="lead" style="margin:0;">
-              Follow the job advertisement language first. If the job ad is German, a German application is usually expected.
-            </p>
-          </article>
-
-          <article class="card card-pad">
-            <h2 style="margin:0 0 10px; font-size:1.15rem;">What should I prepare for interviews in Germany?</h2>
-            <p class="lead" style="margin:0;">
-              Prepare a 60–90 second introduction, 5 proof points with numbers, and a list of questions about the team, tasks, and next steps.
-            </p>
-          </article>
-
-          <article class="card card-pad">
-            <h2 style="margin:0 0 10px; font-size:1.15rem;">Where can I report broken links or suggest tools?</h2>
-            <p class="lead" style="margin:0;">
-              Use the contact form to report issues or send suggestions.
-              <a href="contact.html" style="font-weight:900; text-decoration:underline; text-underline-offset:3px;">Go to Contact</a>.
-            </p>
-          </article>
-
-          <article class="card card-pad notice">
-            <div class="icon" aria-hidden="true">!</div>
-            <div>
-              <h2>Brand note</h2>
-              <p>
-                Hochschule Wismar’s slogan is “Mit allen Wassern gewaschen.” [web:560]
-              </p>
-              <p style="margin:10px 0 0; color:var(--muted);">
-                Use a consistent visual style across pages to keep the portal trustworthy and professional.
-              </p>
-            </div>
-          </article>
+        <div class="faq-item">
+          <button type="button" class="faq-btn" aria-expanded="false" aria-controls="faq-1" id="btn-faq-1">
+            <span>What AI tools do you recommend for resume writing?</span>
+            <span class="faq-icon" aria-hidden="true">+</span>
+          </button>
+          <div id="faq-1" class="faq-panel" role="region" aria-labelledby="btn-faq-1" hidden>
+            <p>We recommend tools like Grammarly for grammar and tone, Resume.io for templates, and ChatGPT for generating bullet points based on your experience. Always review and personalize AI-generated content.</p>
+          </div>
         </div>
+
+        <div class="faq-item">
+          <button type="button" class="faq-btn" aria-expanded="false" aria-controls="faq-2" id="btn-faq-2">
+            <span>Are the AI prompts free to use?</span>
+            <span class="faq-icon" aria-hidden="true">+</span>
+          </button>
+          <div id="faq-2" class="faq-panel" role="region" aria-labelledby="btn-faq-2" hidden>
+            <p>Yes, all prompts on this site are completely free for Hochschule Wismar students. You can copy and customize them for any AI tool.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button type="button" class="faq-btn" aria-expanded="false" aria-controls="faq-3" id="btn-faq-3">
+            <span>How do I use the tools directory?</span>
+            <span class="faq-icon" aria-hidden="true">+</span>
+          </button>
+          <div id="faq-3" class="faq-panel" role="region" aria-labelledby="btn-faq-3" hidden>
+            <p>Click on your job category (Working Student, Internship, etc.), then select a stage (Orientation, Application, Interview, Onboarding). Tools relevant to that stage will appear below.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button type="button" class="faq-btn" aria-expanded="false" aria-controls="faq-4" id="btn-faq-4">
+            <span>Can I suggest new tools or prompts?</span>
+            <span class="faq-icon" aria-hidden="true">+</span>
+          </button>
+          <div id="faq-4" class="faq-panel" role="region" aria-labelledby="btn-faq-4" hidden>
+            <p>Absolutely! Use the Contact page to send us your suggestions. We regularly update the site based on student feedback.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button type="button" class="faq-btn" aria-expanded="false" aria-controls="faq-5" id="btn-faq-5">
+            <span>Is this platform only for Hochschule Wismar students?</span>
+            <span class="faq-icon" aria-hidden="true">+</span>
+          </button>
+          <div id="faq-5" class="faq-panel" role="region" aria-labelledby="btn-faq-5" hidden>
+            <p>This site is designed for Hochschule Wismar students, but the tools and prompts are useful for anyone conducting a job search or academic research.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button type="button" class="faq-btn" aria-expanded="false" aria-controls="faq-6" id="btn-faq-6">
+            <span>Do I need to create an account to access resources?</span>
+            <span class="faq-icon" aria-hidden="true">+</span>
+          </button>
+          <div id="faq-6" class="faq-panel" role="region" aria-labelledby="btn-faq-6" hidden>
+            <p>No account needed. All tools, prompts, and guidelines are openly accessible. Just browse and use what you need.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button type="button" class="faq-btn" aria-expanded="false" aria-controls="faq-7" id="btn-faq-7">
+            <span>How often are new tools and prompts added?</span>
+            <span class="faq-icon" aria-hidden="true">+</span>
+          </button>
+          <div id="faq-7" class="faq-panel" role="region" aria-labelledby="btn-faq-7" hidden>
+            <p>We update the site monthly with new tools, prompts, and guidelines based on industry trends and student feedback.</p>
+          </div>
+        </div>
+
       </div>
     </section>
   </main>
 
   <footer class="footer">
     <div class="container">
-      <div class="footer-inner">
-        <div>
-          <h4>Hochschule Wismar</h4>
-          <p>University of Applied Sciences<br />Technology, Business and Design</p>
-          <p>Philipp-Müller-Straße 14<br />23966 Wismar, Germany</p>
-        </div>
-
-        <div>
-          <h4>Contact</h4>
-          <p>Phone: +49 3841 753-0</p>
-          <p>Email: <a href="mailto:postmaster@hs-wismar.de">postmaster@hs-wismar.de</a></p>
-          <p><a href="https://www.hs-wismar.de" target="_blank" rel="noopener">www.hs-wismar.de</a></p>
-        </div>
-
-        <div>
-          <h4>Official info</h4>
-          <p>
-            Campus Wismar address: Philipp-Müller-Straße 14, 23966 Wismar. [web:565]
-          </p>
-        </div>
-      </div>
-
-      <div class="footer-bottom">
-        <p>&copy; 2026 Hochschule Wismar</p>
-      </div>
+      <p>&copy; 2026 Hochschule Wismar. All rights reserved.</p>
     </div>
   </footer>
 
-  <script src="js/main.js"></script>
+  <script src="js/main.js" defer></script>
 </body>
 </html>
