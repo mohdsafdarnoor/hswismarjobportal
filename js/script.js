@@ -1,294 +1,130 @@
 // AI Career Hub - JavaScript
-// Hochschule Wismar - Master's in International Management
+// Hochschule Wismar - 2026
 
 // Mobile Navigation Toggle
 document.addEventListener('DOMContentLoaded', function() {
     const hamburger = document.querySelector('.hamburger');
     const navMobile = document.querySelector('.nav-mobile');
 
-    if (hamburger) {
+    if (hamburger && navMobile) {
         hamburger.addEventListener('click', function() {
-            hamburger.classList.toggle('active');
             navMobile.classList.toggle('active');
         });
     }
+});
 
-    // Close mobile nav when clicking outside
-    document.addEventListener('click', function(event) {
-        const isClickInsideNav = navMobile && navMobile.contains(event.target);
-        const isClickOnHamburger = hamburger && hamburger.contains(event.target);
+// Toggle Category (AI Tools page)
+function toggleCategory(header) {
+    const content = header.nextElementSibling;
+    const arrow = header.querySelector('.arrow');
 
-        if (!isClickInsideNav && !isClickOnHamburger && navMobile && navMobile.classList.contains('active')) {
-            hamburger.classList.remove('active');
-            navMobile.classList.remove('active');
+    if (content.style.display === 'none' || content.style.display === '') {
+        content.style.display = 'block';
+        arrow.textContent = '▲';
+    } else {
+        content.style.display = 'none';
+        arrow.textContent = '▼';
+    }
+}
+
+// Toggle Phase (AI Tools page)
+function togglePhase(button) {
+    const content = button.nextElementSibling;
+    const arrow = button.querySelector('.arrow');
+
+    // Close all other phases in same category
+    const category = button.closest('.category-content');
+    const allPhases = category.querySelectorAll('.phase-content');
+    const allButtons = category.querySelectorAll('.phase-button');
+
+    allPhases.forEach((phase, index) => {
+        if (phase !== content) {
+            phase.classList.remove('active');
+            allButtons[index].classList.remove('active');
+            allButtons[index].querySelector('.arrow').textContent = '▼';
         }
     });
 
-    // Close mobile nav when clicking a link
-    const mobileLinks = document.querySelectorAll('.nav-mobile a');
-    mobileLinks.forEach(link => {
-        link.addEventListener('click', function() {
-            if (hamburger && navMobile) {
-                hamburger.classList.remove('active');
-                navMobile.classList.remove('active');
-            }
-        });
+    // Toggle current phase
+    if (content.classList.contains('active')) {
+        content.classList.remove('active');
+        button.classList.remove('active');
+        arrow.textContent = '▼';
+    } else {
+        content.classList.add('active');
+        button.classList.add('active');
+        arrow.textContent = '▲';
+    }
+}
+
+// Toggle Prompt (AI Prompts page)
+function togglePrompt(header) {
+    const content = header.nextElementSibling;
+    const arrow = header.querySelector('.arrow');
+
+    if (content.style.display === 'none' || content.style.display === '') {
+        content.style.display = 'block';
+        arrow.textContent = '▲';
+    } else {
+        content.style.display = 'none';
+        arrow.textContent = '▼';
+    }
+}
+
+// Copy Prompt to Clipboard
+function copyPrompt(element) {
+    const text = element.textContent;
+
+    // Copy to clipboard
+    navigator.clipboard.writeText(text).then(function() {
+        // Visual feedback
+        const originalBg = element.style.backgroundColor;
+        element.style.backgroundColor = '#339933';
+        element.style.color = 'white';
+
+        // Show "Copied!" message
+        const originalText = element.innerHTML;
+        element.innerHTML = '✓ Copied to clipboard!';
+
+        setTimeout(function() {
+            element.style.backgroundColor = originalBg;
+            element.style.color = '';
+            element.innerHTML = originalText;
+        }, 1500);
+    }).catch(function(err) {
+        alert('Could not copy text. Please select and copy manually.');
     });
-});
+}
 
-// Accordion Functionality for AI Tools page
+// Contact Form Submission
 document.addEventListener('DOMContentLoaded', function() {
-    const accordionButtons = document.querySelectorAll('.accordion-button');
+    const form = document.getElementById('contactForm');
 
-    accordionButtons.forEach(button => {
-        button.addEventListener('click', function() {
-            const accordionItem = this.parentElement;
-            const accordionContent = accordionItem.querySelector('.accordion-content');
-            const isExpanded = this.getAttribute('aria-expanded') === 'true';
-
-            // Close all other accordions in the same category
-            const category = accordionItem.closest('.tools-category');
-            if (category) {
-                const allAccordions = category.querySelectorAll('.accordion-item');
-                allAccordions.forEach(item => {
-                    if (item !== accordionItem) {
-                        item.querySelector('.accordion-button').setAttribute('aria-expanded', 'false');
-                        item.querySelector('.accordion-content').style.maxHeight = '0';
-                    }
-                });
-            }
-
-            // Toggle current accordion
-            if (isExpanded) {
-                this.setAttribute('aria-expanded', 'false');
-                accordionContent.style.maxHeight = '0';
-            } else {
-                this.setAttribute('aria-expanded', 'true');
-                accordionContent.style.maxHeight = accordionContent.scrollHeight + 'px';
-            }
-        });
-    });
-});
-
-// Smooth Scroll for Anchor Links
-document.addEventListener('DOMContentLoaded', function() {
-    const smoothScrollLinks = document.querySelectorAll('a[href^="#"]');
-
-    smoothScrollLinks.forEach(link => {
-        link.addEventListener('click', function(e) {
-            const targetId = this.getAttribute('href');
-
-            if (targetId !== '#' && targetId !== '') {
-                const targetElement = document.querySelector(targetId);
-
-                if (targetElement) {
-                    e.preventDefault();
-
-                    const headerOffset = 100;
-                    const elementPosition = targetElement.getBoundingClientRect().top;
-                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-
-                    window.scrollTo({
-                        top: offsetPosition,
-                        behavior: 'smooth'
-                    });
-                }
-            }
-        });
-    });
-});
-
-// Copy Prompt Functionality (for future enhancement)
-document.addEventListener('DOMContentLoaded', function() {
-    const promptBoxes = document.querySelectorAll('.prompt-box');
-
-    promptBoxes.forEach(box => {
-        // Add a visual indicator that the prompt is copyable
-        box.style.cursor = 'pointer';
-        box.title = 'Click to copy prompt';
-
-        box.addEventListener('click', function() {
-            const textToCopy = this.textContent;
-
-            // Create temporary textarea to copy text
-            const textarea = document.createElement('textarea');
-            textarea.value = textToCopy;
-            textarea.style.position = 'fixed';
-            textarea.style.opacity = '0';
-            document.body.appendChild(textarea);
-            textarea.select();
-
-            try {
-                document.execCommand('copy');
-
-                // Visual feedback
-                const originalBg = this.style.backgroundColor;
-                this.style.backgroundColor = '#339933';
-                this.style.color = 'white';
-
-                // Create "Copied!" notification
-                const notification = document.createElement('span');
-                notification.textContent = '✓ Copied!';
-                notification.style.cssText = 'position: absolute; background: #339933; color: white; padding: 5px 10px; border-radius: 4px; font-size: 14px; margin-left: 10px; animation: fadeOut 2s forwards;';
-                this.parentElement.style.position = 'relative';
-                this.parentElement.appendChild(notification);
-
-                setTimeout(() => {
-                    this.style.backgroundColor = originalBg;
-                    this.style.color = '';
-                    notification.remove();
-                }, 2000);
-
-            } catch (err) {
-                console.error('Failed to copy text:', err);
-            }
-
-            document.body.removeChild(textarea);
-        });
-    });
-});
-
-// Form Submission Handler for Contact Page
-document.addEventListener('DOMContentLoaded', function() {
-    const contactForm = document.getElementById('contactForm');
-
-    if (contactForm) {
-        contactForm.addEventListener('submit', function(e) {
+    if (form) {
+        form.addEventListener('submit', async function(e) {
             e.preventDefault();
 
-            const formMessage = document.getElementById('formMessage');
-            const submitBtn = document.getElementById('submitBtn');
+            const formData = new FormData(form);
 
-            // Disable submit button
-            submitBtn.disabled = true;
-            submitBtn.textContent = 'Sending...';
+            try {
+                const response = await fetch('https://api.web3forms.com/submit', {
+                    method: 'POST',
+                    body: formData
+                });
 
-            // Get form data
-            const formData = new FormData(contactForm);
+                const data = await response.json();
 
-            // Submit to Web3Forms
-            fetch('https://api.web3forms.com/submit', {
-                method: 'POST',
-                body: formData
-            })
-            .then(response => response.json())
-            .then(data => {
                 if (data.success) {
-                    formMessage.textContent = '✓ Thank you! Your message has been sent successfully. We will get back to you soon.';
-                    formMessage.style.display = 'block';
-                    formMessage.style.backgroundColor = '#d4edda';
-                    formMessage.style.color = '#155724';
-                    formMessage.style.border = '1px solid #c3e6cb';
-                    formMessage.style.padding = '15px';
-                    formMessage.style.borderRadius = '5px';
-                    formMessage.style.marginBottom = '20px';
-
-                    contactForm.reset();
+                    alert('✓ Message sent successfully! We will get back to you soon.');
+                    form.reset();
                 } else {
-                    throw new Error('Form submission failed');
+                    alert('✗ There was an error. Please try again or email us directly.');
                 }
-            })
-            .catch(error => {
-                formMessage.textContent = '✗ Sorry, there was an error sending your message. Please try again or contact us directly via email.';
-                formMessage.style.display = 'block';
-                formMessage.style.backgroundColor = '#f8d7da';
-                formMessage.style.color = '#721c24';
-                formMessage.style.border = '1px solid #f5c6cb';
-                formMessage.style.padding = '15px';
-                formMessage.style.borderRadius = '5px';
-                formMessage.style.marginBottom = '20px';
-            })
-            .finally(() => {
-                submitBtn.disabled = false;
-                submitBtn.textContent = 'Send Message';
-            });
+            } catch (error) {
+                alert('✗ There was an error. Please try again or email us directly.');
+            }
         });
     }
 });
 
-// Scroll-to-Top Button (Optional Enhancement)
-document.addEventListener('DOMContentLoaded', function() {
-    // Create scroll-to-top button
-    const scrollBtn = document.createElement('button');
-    scrollBtn.innerHTML = '↑';
-    scrollBtn.className = 'scroll-to-top';
-    scrollBtn.setAttribute('aria-label', 'Scroll to top');
-    scrollBtn.style.cssText = `
-        position: fixed;
-        bottom: 30px;
-        right: 30px;
-        width: 50px;
-        height: 50px;
-        border-radius: 50%;
-        background-color: #339933;
-        color: white;
-        border: none;
-        font-size: 24px;
-        cursor: pointer;
-        opacity: 0;
-        visibility: hidden;
-        transition: all 0.3s ease;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-        z-index: 999;
-    `;
-
-    document.body.appendChild(scrollBtn);
-
-    // Show/hide button based on scroll position
-    window.addEventListener('scroll', function() {
-        if (window.pageYOffset > 300) {
-            scrollBtn.style.opacity = '1';
-            scrollBtn.style.visibility = 'visible';
-        } else {
-            scrollBtn.style.opacity = '0';
-            scrollBtn.style.visibility = 'hidden';
-        }
-    });
-
-    // Scroll to top on click
-    scrollBtn.addEventListener('click', function() {
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-        });
-    });
-
-    // Hover effect
-    scrollBtn.addEventListener('mouseenter', function() {
-        this.style.backgroundColor = '#2d7d2d';
-        this.style.transform = 'scale(1.1)';
-    });
-
-    scrollBtn.addEventListener('mouseleave', function() {
-        this.style.backgroundColor = '#339933';
-        this.style.transform = 'scale(1)';
-    });
-});
-
-// Add fade-in animation to cards on scroll
-document.addEventListener('DOMContentLoaded', function() {
-    const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-    };
-
-    const observer = new IntersectionObserver(function(entries) {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.style.opacity = '1';
-                entry.target.style.transform = 'translateY(0)';
-            }
-        });
-    }, observerOptions);
-
-    // Observe all cards
-    const cards = document.querySelectorAll('.feature-card, .tool-card, .prompt-card');
-    cards.forEach((card, index) => {
-        card.style.opacity = '0';
-        card.style.transform = 'translateY(20px)';
-        card.style.transition = `opacity 0.6s ease ${index * 0.1}s, transform 0.6s ease ${index * 0.1}s`;
-        observer.observe(card);
-    });
-});
-
-console.log('✓ AI Career Hub JavaScript loaded - Hochschule Wismar');
+console.log('✓ AI Career Hub loaded - Hochschule Wismar 2026');
